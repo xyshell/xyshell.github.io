@@ -31,4 +31,62 @@
         <tag>Hexo</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux Note</title>
+    <url>/2020/06/08/linux-note/</url>
+    <content><![CDATA[<html><head></head><body><h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><pre><code class="bash">ssh -i &lt;path-to-pem&gt; admin@&lt;ip/dns&gt;</code></pre>
+<h1 id="SCP"><a href="#SCP" class="headerlink" title="SCP"></a>SCP</h1><pre><code class="bash">scp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip/dns&gt;:/home/admin/&lt;path-to-target-file&gt;</code></pre>
+</body></html>]]></content>
+  </entry>
+  <entry>
+    <title>Git Note</title>
+    <url>/2020/06/08/git-note/</url>
+    <content><![CDATA[<html><head></head><body><h1 id="Git-Submodule"><a href="#Git-Submodule" class="headerlink" title="Git Submodule"></a>Git Submodule</h1><h2 id="Add-Submodule"><a href="#Add-Submodule" class="headerlink" title="Add Submodule"></a>Add Submodule</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Confirm submodule is added by <code>cat .gitmodules</code>.</p>
+<p>Set git config to show submodule summary when running <code>git status</code>:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git config --global status.submoduleSummary <span class="hljs-literal">true</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git config --global diff.submodule <span class="hljs-built_in">log</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Add-amp-Commit"><a href="#Add-amp-Commit" class="headerlink" title="Add &amp; Commit"></a>Add &amp; Commit</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="hljs-string">&quot;add submodule&quot;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Clone-a-repo-containing-submodules"><a href="#Clone-a-repo-containing-submodules" class="headerlink" title="Clone a repo containing submodules"></a>Clone a repo containing submodules</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git <span class="hljs-built_in">clone</span> &lt;url&gt; &lt;path&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>If <code>cd submodules/</code>, nothing exists, need to do:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git submodule init</span><br><span class="line">$ git submodule update</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Then <code>cd submodules/</code>, everything is okay.</p>
+<h2 id="Switch-submodule&#x2019;s-version"><a href="#Switch-submodule&#x2019;s-version" class="headerlink" title="Switch submodule&#x2019;s version"></a>Switch submodule&#x2019;s version</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> submodules/</span><br><span class="line">$ git fetch</span><br><span class="line">$ git checkout beta</span><br><span class="line">$ <span class="hljs-built_in">cd</span> ..</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Run <code>git status</code> to see new commit in submodule.</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="hljs-string">&quot;change submodule to beta version&quot;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Remove-submodule"><a href="#Remove-submodule" class="headerlink" title="Remove submodule"></a>Remove submodule</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git submodule deinit &lt;path-to-submodule&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>At this point, we can reinit this submodule.</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git rm &lt;path-to-submodule&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Run <code>git status</code> to confirm.</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="hljs-string">&quot;remove submodule&quot;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Multiple-Nested-Submodules"><a href="#Multiple-Nested-Submodules" class="headerlink" title="Multiple Nested Submodules"></a>Multiple Nested Submodules</h2><p>Clone a repo containing multiple nested submodules:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git <span class="hljs-built_in">clone</span> --recursive &lt;url&gt; &lt;path&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Run <code>cat .gitmodules</code> to confirm first layer of submodules.</p>
+<p>To look into submodules&#x2019; <code>cat .gitmodules</code>, run:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git submodule foreach <span class="hljs-string">&apos;cat .gitmodules&apos;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Update-from-submodules"><a href="#Update-from-submodules" class="headerlink" title="Update from submodules"></a>Update from submodules</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Teammates may add/delete/change/redirect a submodule. Run:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git submodule sync --recursive</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Then bring change for each submodule by:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">$ git submodule uodate --init --recursive</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Edit-submodules"><a href="#Edit-submodules" class="headerlink" title="Edit submodules"></a>Edit submodules</h2><p><code>cd submodule/</code>, <code>git pull --rebase</code>, make some changes, <code>git commit -am &quot;edit something</code>, <strong>Not to push now</strong>.</p>
+<p><code>cd ..</code>, run <code>git status</code> to see new commits in submodule, then commit in <strong>parent</strong> repository by <code>git commit -am &quot;edit submodule</code></p>
+<p>If <code>git push</code> right now, would push a commit not yet pushed in submodule. Could check each indidual submodule carefully before push in parent repo, but might miss.</p>
+<p>In git version &gt; 2.7, can do:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">git config --global push.recurseSubmodules on-demand</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Then <code>git push</code>.</p>
+</body></html>]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AWS Note</title>
+    <url>/2020/06/08/aws-note/</url>
+    <content><![CDATA[<html><head></head><body><h1 id="AWS-CLI"><a href="#AWS-CLI" class="headerlink" title="AWS CLI"></a>AWS CLI</h1><h2 id="Upload-folder-to-S3"><a href="#Upload-folder-to-S3" class="headerlink" title="Upload folder to S3"></a>Upload folder to S3</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">aws s3 cp &lt;path-to-source-folder&gt; s3://&lt;path-to-target-folder&gt; --recursive --exclude <span class="hljs-string">&quot;.DS_Store&quot;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+</body></html>]]></content>
+      <tags>
+        <tag>aws</tag>
+      </tags>
+  </entry>
 </search>
