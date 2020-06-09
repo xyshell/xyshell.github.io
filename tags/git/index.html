@@ -96,7 +96,7 @@
             
             
             
-            <a class="navbar-item" title="GitHub" href="https://github.com/xyshell" target="_blank" rel="noopener">
+            <a class="navbar-item" title="GitHub" href="https://github.com/xyshell/xyshell.github.io" target="_blank" rel="noopener">
                 
                 <i class="fab fa-github"></i>
                 
@@ -165,7 +165,7 @@
 <p>Teammates may add/delete/change/redirect a submodule. Run:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule sync --recursive</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>Then bring change for each submodule by:</p>
-<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule uodate --init --recursive</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule update --init --recursive</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h2 id="Edit-submodules"><a href="#Edit-submodules" class="headerlink" title="Edit submodules"></a>Edit submodules</h2><p><code>cd submodule/</code>, <code>git pull --rebase</code>, make some changes, <code>git commit -am &quot;edit something</code>, <strong>Not to push now</strong>.</p>
 <p><code>cd ..</code>, run <code>git status</code> to see new commits in submodule, then commit in <strong>parent</strong> repository by <code>git commit -am &quot;edit submodule</code></p>
 <p>If <code>git push</code> right now, would push a commit not yet pushed in submodule. Could check each indidual submodule carefully before push in parent repo, but might miss.</p>
