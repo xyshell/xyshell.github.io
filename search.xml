@@ -83,7 +83,7 @@
       </tags>
   </entry>
   <entry>
-    <title>DCA-note</title>
+    <title>DCA Note</title>
     <url>/2020/06/11/DCA-note/</url>
     <content><![CDATA[<html><head></head><body><h1 id="Docker-Certified-Associate-Exam-Preparation-Guide-v1-3"><a href="#Docker-Certified-Associate-Exam-Preparation-Guide-v1-3" class="headerlink" title="Docker Certified Associate Exam Preparation Guide (v1.3)"></a>Docker Certified Associate Exam Preparation Guide (v1.3)</h1><h2 id="Domain-1-Orchestration-25-of-exam"><a href="#Domain-1-Orchestration-25-of-exam" class="headerlink" title="Domain 1: Orchestration (25% of exam)"></a>Domain 1: Orchestration (25% of exam)</h2><ul>
 <li><a href="https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/" target="_blank" rel="noopener">Complete the setup of a swarm mode cluster, with managers and worker nodes</a></li>
