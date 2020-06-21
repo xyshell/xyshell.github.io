@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>k8s Note - You Xie&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="Kubernetes Architecture Master Node control plane responsible for managing the state of a Kubernetes cluster(brain) users send requests to the master node via a Command Line Interface (CLI) tool, a We">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s Note">
+<meta property="og:url" content="http://yoursite.com/2020/06/17/k8s-note/index.html">
+<meta property="og:site_name" content="You Xie&#39;s Blog">
+<meta property="og:description" content="Kubernetes Architecture Master Node control plane responsible for managing the state of a Kubernetes cluster(brain) users send requests to the master node via a Command Line Interface (CLI) tool, a We">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/photos/k8s-note/k8s_architecture.png">
+<meta property="og:image" content="http://yoursite.com/photos/k8s-note/master_node.png">
+<meta property="og:image" content="http://yoursite.com/photos/k8s-note/worker_node.png">
+<meta property="og:image" content="http://yoursite.com/photos/k8s-note/CRI.png">
+<meta property="og:image" content="http://yoursite.com/photos/k8s-note/dockershim.png">
+<meta property="og:image" content="http://yoursite.com/photos/k8s-note/cri-containerd.png">
+<meta property="og:image" content="http://yoursite.com/photos/k8s-note/cri-o.png">
+<meta property="article:published_time" content="2020-06-18T01:00:10.000Z">
+<meta property="article:modified_time" content="2020-06-18T21:36:34.061Z">
+<meta property="article:author" content="You Xie">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/photos/k8s-note/k8s_architecture.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="You Xie's Blog" type="application/atom+xml">
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Kubernetes-Architecture">1&nbsp;&nbsp;<b>Kubernetes Architecture</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Master-Node">1.1&nbsp;&nbsp;Master Node</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#API-Server">1.1.1&nbsp;&nbsp;API Server</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Scheduler">1.1.2&nbsp;&nbsp;Scheduler</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Controller-Managers">1.1.3&nbsp;&nbsp;Controller Managers</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#etcd">1.1.4&nbsp;&nbsp;etcd</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Worker-Node">1.2&nbsp;&nbsp;Worker Node</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Container-Runtime">1.2.1&nbsp;&nbsp;Container Runtime</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Kubelet">1.2.2&nbsp;&nbsp;Kubelet</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Kube-proxy">1.2.3&nbsp;&nbsp;Kube-proxy</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Addons">1.2.4&nbsp;&nbsp;Addons</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Networking-Challenges">1.3&nbsp;&nbsp;Networking Challenges</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Container-to-Container-Communication-Inside-Pods">1.3.1&nbsp;&nbsp;Container-to-Container Communication Inside Pods</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Pod-to-Pod-Communication-Across-Nodes">1.3.2&nbsp;&nbsp;Pod-to-Pod Communication Across Nodes</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Pod-to-External-World-Communication">1.3.3&nbsp;&nbsp;Pod-to-External World Communication</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Installing-Kubernetes">2&nbsp;&nbsp;<b>Installing Kubernetes</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Kubernetes-Configuration">2.1&nbsp;&nbsp;Kubernetes Configuration</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Localhost-Installation">2.2&nbsp;&nbsp;Localhost Installation</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#On-Premise-Installation">2.3&nbsp;&nbsp;On-Premise Installation</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Cloud-Installation">2.4&nbsp;&nbsp;Cloud Installation</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Kubernetes-Installation-Tools-Resources">2.5&nbsp;&nbsp;Kubernetes Installation Tools/Resources</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Minikube">2.6&nbsp;&nbsp;Minikube</a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/xyshell/xyshell.github.io" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            k8s Note
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-06-18T01:00:10.000Z" itemprop="datePublished">Jun 17 2020</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            13 minutes read (About 1908 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h1 id="Kubernetes-Architecture"><a href="#Kubernetes-Architecture" class="headerlink" title="Kubernetes Architecture"></a>Kubernetes Architecture</h1><p><img src="/photos/k8s-note/k8s_architecture.png" alt="k8s_architecture"></p>
+<h2 id="Master-Node"><a href="#Master-Node" class="headerlink" title="Master Node"></a>Master Node</h2><p><img src="/photos/k8s-note/master_node.png" alt="master_node"></p>
+<p>control plane responsible for managing the state of a Kubernetes cluster(brain)</p>
+<p>users send requests to the master node via a Command Line Interface (CLI) tool, a Web User-Interface (Web UI) Dashboard, or Application Programming Interface (API)</p>
+<p>master node replicas are added to the cluster, configured in High-Availability (HA) mode to ensure the control plane&#x2019;s fault tolerance. While only one of the master node replicas actively manages the cluster, the control plane components stay in sync across the master node replicas</p>
+<p>4 components:</p>
+<ol>
+<li>API server</li>
+<li>Scheduler</li>
+<li>Controller managers</li>
+<li>etcd</li>
+</ol>
+<h3 id="API-Server"><a href="#API-Server" class="headerlink" title="API Server"></a>API Server</h3><p>a central control plane component, coordinating all the administrative tasks</p>
+<p>reads the Kubernetes cluster&#x2019;s current state from the etcd, and after a call&#x2019;s execution, saves the resulting state of the Kubernetes cluster in etcd(only master plane component talks to etcd)</p>
+<p>designed to scale horizontally: it scales by deploying more instances to balance traffic between those instances</p>
+<p>highly configurable and customizable, supports the addition of custom API servers</p>
+<h3 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h3><p>assign new objects, such as pods, to nodes, based on current Kubernetes cluster state and new object&#x2019;s requirements</p>
+<p>takes into account: individual and collective resource requirements, hardware/software/policy constraints, affinity and anti-affinity specifications, data locality, inter-workload interference, and deadlines.</p>
+<p>highly configurable and customizable, supports additional custom schedulers (specify the name of the custom scheduler in object &#x2018;s configuration data)</p>
+<h3 id="Controller-Managers"><a href="#Controller-Managers" class="headerlink" title="Controller Managers"></a>Controller Managers</h3><p>run controllers to regulate the state of the Kubernetes cluster</p>
+<p>controllers are watch-loops continuously running and comparing the cluster&#x2019;s desired state (provided by objects&#x2019; configuration data) with its current state (obtained from etcd data store via the API server), includes:</p>
+<ul>
+<li>Node controller: Responsible for noticing and responding when nodes go down.</li>
+<li>Replication controller: Responsible for maintaining the correct number of pods for every replication controller object in the system.</li>
+<li>Endpoints controller: Populates the Endpoints object (that is, joins Services &amp; Pods).</li>
+<li>Service Account &amp; Token controllers: Create default accounts and API access tokens for new namespaces.</li>
+</ul>
+<p>corrective action is taken in the cluster until its current state matches the desired state.</p>
+<ul>
+<li><p>kube-controller-manager: runs controllers responsible to act when nodes become unavailable, to ensure pod counts are as expected, to create endpoints, service accounts, and API access tokens.</p>
+</li>
+<li><p>cloud-controller-manager: runs controllers responsible to interact with the underlying infrastructure of a cloud provider when nodes become unavailable, to manage storage volumes when provided by a cloud service, and to manage load balancing and routing.</p>
+<ul>
+<li>Node controller: For checking the cloud provider to determine if a node has been deleted in the cloud after it stops responding</li>
+<li>Route controller: For setting up routes in the underlying cloud infrastructure</li>
+<li>Service controller: For creating, updating and deleting cloud provider load balancers</li>
+</ul>
+</li>
+</ul>
+<h3 id="etcd"><a href="#etcd" class="headerlink" title="etcd"></a><a href="https://etcd.io/docs/" target="_blank" rel="noopener">etcd</a></h3><p>a distributed key-value store which holds cluster state related data, to persist the Kubernetes cluster&#x2019;s state</p>
+<p>either configured on the master node (stacked) or on its dedicated host (external)</p>
+<ul>
+<li>when stacked: HA master node replicas ensure etcd resiliency.</li>
+<li>when external: etcd hosts have to be separately replicated for HA mode configuration.</li>
+</ul>
+<p>based on <a href="https://web.stanford.edu/~ouster/cgi-bin/papers/raft-atc14" target="_blank" rel="noopener">Raft Consensus Algorithm</a>, written in Golang, besides storing the cluster state, also used to store configuration details such as subnets, ConfigMaps, Secrets, etc.</p>
+<h2 id="Worker-Node"><a href="#Worker-Node" class="headerlink" title="Worker Node"></a>Worker Node</h2><p><img src="/photos/k8s-note/worker_node.png" alt="worker_node"></p>
+<p>provides a running environment for client applications, which are encapsulated in Pods, controlled by the cluster control plane agents running on the master node</p>
+<p>Pods are scheduled on worker nodes, where they find required compute, memory and storage resources to run, and networking to talk to each other and the outside world.</p>
+<p>A Pod is the smallest scheduling unit in Kubernetes, a logical collection of one or more containers scheduled together.</p>
+<p>to access the applications from the external world, we connect to worker nodes and not to the master node.</p>
+<p>4 parts:</p>
+<ol>
+<li>Container runtime</li>
+<li>kubelet</li>
+<li>kube-proxy</li>
+<li>Addons for DNS, Dashboard, cluster-level monitoring and logging.</li>
+</ol>
+<h3 id="Container-Runtime"><a href="#Container-Runtime" class="headerlink" title="Container Runtime"></a>Container Runtime</h3><p>responsible for running containers, e.x. Docker, containerd, CRI-O</p>
+<h3 id="Kubelet"><a href="#Kubelet" class="headerlink" title="Kubelet"></a>Kubelet</h3><p>an agent running on each node, communicates with the control plane components from the master node, makes sure containers are running in a Pod.</p>
+<p>receives Pod definitions, primarily from the API server, and interacts with the container runtime on the node to run containers associated with the Pod.</p>
+<p>monitors the health of the Pod&#x2019;s running container</p>
+<p>connects to the container runtime using Container Runtime Interface (CRI). which consists of protocol buffers, gRPC API, and libraries.</p>
+<p><img src="/photos/k8s-note/CRI.png" alt="CRI"></p>
+<p>CRI implements two services:</p>
+<ul>
+<li>ImageService: responsible for all the image-related operations</li>
+<li>RuntimeService: responsible for all the Pod and container-related operations.</li>
+</ul>
+<p>some examples of CRI shims:</p>
+<ul>
+<li>dockershim: with dockershim, containers are created using Docker installed on the worker nodes. Internally, Docker uses containerd to create and manage containers.</li>
+</ul>
+<p><img src="/photos/k8s-note/dockershim.png" alt="dockershim"></p>
+<ul>
+<li>cri-containerd: with cri-containerd, we can directly use Docker&#x2019;s smaller offspring containerd to create and manage containers.</li>
+</ul>
+<p><img src="/photos/k8s-note/cri-containerd.png" alt="cri-containerd"></p>
+<ul>
+<li>cri-o: cri-o enables using any Open Container Initiative (OCI) compatible runtimes with Kubernetes. At the time this course was created, CRI-O supported runC and Clear Containers as container runtimes. However, in principle, any OCI-compliant runtime can be plugged-in.</li>
+</ul>
+<p><img src="/photos/k8s-note/cri-o.png" alt="cri-o"></p>
+<h3 id="Kube-proxy"><a href="#Kube-proxy" class="headerlink" title="Kube-proxy"></a>Kube-proxy</h3><p>network agent which runs on each node, responsible for dynamic updates and maintenance of all networking rules on the node, abstracts the details of Pods networking and forwards connection requests to Pods.</p>
+<p>implements part of the Kubernetes Service concept.</p>
+<p>maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.</p>
+<p>uses the operating system packet filtering layer if there is one and it&#x2019;s available. Otherwise, forwards the traffic itself.</p>
+<h3 id="Addons"><a href="#Addons" class="headerlink" title="Addons"></a>Addons</h3><p>use Kubernetes resources (DaemonSet, Deployment, etc) to implement cluster features and functionality not yet available in Kubernetes, therefore implemented through 3rd-party pods and services.</p>
+<ul>
+<li>DNS: cluster DNS is a DNS server for Kubernetes services, required to assign DNS records to Kubernetes objects and resources</li>
+<li>Web UI(Dashboard): a general purposed web-based user interface for cluster management</li>
+<li>Container Resource Monitoring: records generic time-series metrics about containers in a central database, and provides a UI for browsing that data.</li>
+<li>Cluster-level Logging: responsible for saving container logs to a central log store with search/browsing interface.</li>
+</ul>
+<h2 id="Networking-Challenges"><a href="#Networking-Challenges" class="headerlink" title="Networking Challenges"></a>Networking Challenges</h2><h3 id="Container-to-Container-Communication-Inside-Pods"><a href="#Container-to-Container-Communication-Inside-Pods" class="headerlink" title="Container-to-Container Communication Inside Pods"></a>Container-to-Container Communication Inside Pods</h3><p>When a Pod is started, a network namespace is created inside the Pod, and all containers running inside the Pod will share that network namespace so that they can talk to each other via localhost.</p>
+<h3 id="Pod-to-Pod-Communication-Across-Nodes"><a href="#Pod-to-Pod-Communication-Across-Nodes" class="headerlink" title="Pod-to-Pod Communication Across Nodes"></a>Pod-to-Pod Communication Across Nodes</h3><p>Kubernetes network model &#x201C;IP-per-Pod&#x201D;</p>
+<p>containers are integrated with the overall Kubernetes networking model through the use of the <a href="https://github.com/containernetworking/cni" target="_blank" rel="noopener">Container Network Interface</a> (CNI) supported by <a href="https://github.com/containernetworking/cni#3rd-party-plugins" target="_blank" rel="noopener">CNI plugins</a>.</p>
+<h3 id="Pod-to-External-World-Communication"><a href="#Pod-to-External-World-Communication" class="headerlink" title="Pod-to-External World Communication"></a>Pod-to-External World Communication</h3><p>by services, complex constructs which encapsulate networking rules definitions on cluster nodes. By exposing services to the external world with kube-proxy, applications become accessible from outside the cluster over a virtual IP.</p>
+<h1 id="Installing-Kubernetes"><a href="#Installing-Kubernetes" class="headerlink" title="Installing Kubernetes"></a>Installing Kubernetes</h1><h2 id="Kubernetes-Configuration"><a href="#Kubernetes-Configuration" class="headerlink" title="Kubernetes Configuration"></a>Kubernetes Configuration</h2><p>four major installation types:</p>
+<ul>
+<li>All-in-One Single-Node Installation:</li>
+</ul>
+<p>In this setup, all the master and worker components are installed and running on a single-node. While it is useful for learning, development, and testing, it should not be used in production. Minikube is one such example, and we are going to explore it in future chapters.</p>
+<ul>
+<li>Single-Node etcd, Single-Master and Multi-Worker Installation:</li>
+</ul>
+<p>In this setup, we have a single-master node, which also runs a single-node etcd instance. Multiple worker nodes are connected to the master node.</p>
+<ul>
+<li>Single-Node etcd, Multi-Master and Multi-Worker Installation:</li>
+</ul>
+<p>In this setup, we have multiple-master nodes configured in HA mode, but we have a single-node etcd instance. Multiple worker nodes are connected to the master nodes.</p>
+<ul>
+<li>Multi-Node etcd, Multi-Master and Multi-Worker Installation:</li>
+</ul>
+<p>In this mode, etcd is configured in clustered HA mode, the master nodes are all configured in HA mode, connecting to multiple worker nodes. This is the most advanced and recommended production setup.</p>
+<h2 id="Localhost-Installation"><a href="#Localhost-Installation" class="headerlink" title="Localhost Installation"></a>Localhost Installation</h2><p>localhost installation options available to deploy single- or multi-node Kubernetes clusters on our workstation/laptop:</p>
+<ul>
+<li>Minikube: single-node local Kubernetes cluster</li>
+<li>Docker Desktop: single-node local Kubernetes cluster for Windows and Mac</li>
+<li>CDK on LXD: multi-node local cluster with LXD containers.</li>
+</ul>
+<h2 id="On-Premise-Installation"><a href="#On-Premise-Installation" class="headerlink" title="On-Premise Installation"></a>On-Premise Installation</h2><p>Kubernetes can be installed on-premise on VMs and bare metal.</p>
+<ul>
+<li>On-Premise VMs:</li>
+</ul>
+<p>Kubernetes can be installed on VMs created via Vagrant, VMware vSphere, KVM, or another Configuration Management (CM) tool in conjunction with a hypervisor software. There are different tools available to automate the installation, such as Ansible or kubeadm.</p>
+<ul>
+<li>On-Premise Bare Metal:</li>
+</ul>
+<p>Kubernetes can be installed on on-premise bare metal, on top of different operating systems, like RHEL, CoreOS, CentOS, Fedora, Ubuntu, etc. Most of the tools used to install Kubernetes on VMs can be used with bare metal installations as well.</p>
+<h2 id="Cloud-Installation"><a href="#Cloud-Installation" class="headerlink" title="Cloud Installation"></a>Cloud Installation</h2><p>Kubernetes can be installed and managed on almost any cloud environment:</p>
+<ul>
+<li>Hosted Solutions:</li>
+</ul>
+<p>With Hosted Solutions, any given software is completely managed by the provider. The user pays hosting and management charges. Some of the vendors providing hosted solutions for Kubernetes are:</p>
+<blockquote>
+<p>Google Kubernetes Engine (GKE)<br>Azure Kubernetes Service (AKS)<br>Amazon Elastic Container Service for Kubernetes (EKS)<br>DigitalOcean Kubernetes<br>OpenShift Dedicated<br>Platform9<br>IBM Cloud Kubernetes Service.</p>
+</blockquote>
+<ul>
+<li>Turnkey Cloud Solutions:</li>
+</ul>
+<p>Below are only a few of the Turnkey Cloud Solutions, to install Kubernetes with just a few commands on an underlying IaaS platform, such as:</p>
+<blockquote>
+<p>Google Compute Engine (GCE)<br>Amazon AWS (AWS EC2)<br>Microsoft Azure (AKS).</p>
+</blockquote>
+<ul>
+<li>Turnkey On-Premise Solutions:</li>
+</ul>
+<p>The On-Premise Solutions install Kubernetes on secure internal private clouds with just a few commands:</p>
+<blockquote>
+<p>GKE On-Prem by Google Cloud<br>IBM Cloud Private<br>OpenShift Container Platform by Red Hat.</p>
+</blockquote>
+<h2 id="Kubernetes-Installation-Tools-Resources"><a href="#Kubernetes-Installation-Tools-Resources" class="headerlink" title="Kubernetes Installation Tools/Resources"></a>Kubernetes Installation Tools/Resources</h2><p>It is worth checking out the <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way" target="_blank" rel="noopener">Kubernetes The Hard Way</a> GitHub project</p>
+<p>some useful tools/resources available:</p>
+<ul>
+<li>kubeadm:</li>
+</ul>
+<p>kubeadm is a first-class citizen on the Kubernetes ecosystem. It is a secure and recommended way to bootstrap a single- or multi-node Kubernetes cluster. It has a set of building blocks to setup the cluster, but it is easily extendable to add more features. Please note that kubeadm does not support the provisioning of hosts.</p>
+<ul>
+<li>kubespray</li>
+</ul>
+<p>With kubespray (formerly known as kargo), we can install Highly Available Kubernetes clusters on AWS, GCE, Azure, OpenStack, or bare metal. Kubespray is based on Ansible, and is available on most Linux distributions. It is a Kubernetes Incubator project.</p>
+<ul>
+<li>kops</li>
+</ul>
+<p>With kops, we can create, destroy, upgrade, and maintain production-grade, highly-available Kubernetes clusters from the command line. It can provision the machines as well. Currently, AWS is officially supported. Support for GCE is in beta, and VMware vSphere in alpha stage, and other platforms are planned for the future. Explore the kops project for more details.</p>
+<ul>
+<li>kube-aws</li>
+</ul>
+<p>With kube-aws we can create, upgrade and destroy Kubernetes clusters on AWS from the command line. Kube-aws is also a Kubernetes Incubator project.</p>
+<h2 id="Minikube"><a href="#Minikube" class="headerlink" title="Minikube"></a>Minikube</h2><p>A Local Single-Node Kubernetes Cluster</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/k8s/">#k8s</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2020/06/20/intro-network-note/">Intro Network Note</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/06/11/DCA-note/">DCA Note</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5eddd95596db7c49"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en-AU/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="http://yoursite.com/2020/06/17/k8s-note/" data-num-posts="5"></div>
+
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 You Xie&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/xyshell" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
