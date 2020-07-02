@@ -16,15 +16,15 @@
 
 
 
-    <meta name="description" content="SSHssh -i &lt;path-to-pem&gt; admin@&lt;ip&#x2F;dns&gt; SCPscp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip&#x2F;dns&gt;:&#x2F;home&#x2F;admin&#x2F;&lt;path-to-target-file&gt;">
+    <meta name="description" content="SSH123456789101112131415ssh -i &lt;path-to-pem&gt; admin@&lt;ip&#x2F;dns&gt;&#96;&#96;&#96; # SCP&#96;&#96;&#96; bashscp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip&#x2F;dns&gt;:&#x2F;home&#x2F;admin&#x2F;&lt;path-to-target-file&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux Note">
 <meta property="og:url" content="http://yoursite.com/2020/06/08/linux-note/index.html">
 <meta property="og:site_name" content="You Xie&#39;s Blog">
-<meta property="og:description" content="SSHssh -i &lt;path-to-pem&gt; admin@&lt;ip&#x2F;dns&gt; SCPscp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip&#x2F;dns&gt;:&#x2F;home&#x2F;admin&#x2F;&lt;path-to-target-file&gt;">
+<meta property="og:description" content="SSH123456789101112131415ssh -i &lt;path-to-pem&gt; admin@&lt;ip&#x2F;dns&gt;&#96;&#96;&#96; # SCP&#96;&#96;&#96; bashscp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip&#x2F;dns&gt;:&#x2F;home&#x2F;admin&#x2F;&lt;path-to-target-file&amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-08T05:26:27.000Z">
-<meta property="article:modified_time" content="2020-06-08T06:52:06.897Z">
+<meta property="article:modified_time" content="2020-06-25T05:26:33.753Z">
 <meta property="article:author" content="You Xie">
 <meta name="twitter:card" content="summary">
 
@@ -128,14 +128,13 @@
         <span class="column is-narrow">
             
             
-            a few seconds read (About 12 words)
+            a few seconds read (About 38 words)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><pre><code class="bash">ssh -i &lt;path-to-pem&gt; admin@&lt;ip/dns&gt;</code></pre>
-<h1 id="SCP"><a href="#SCP" class="headerlink" title="SCP"></a>SCP</h1><pre><code class="bash">scp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip/dns&gt;:/home/admin/&lt;path-to-target-file&gt;</code></pre>
+        <html><head></head><body><h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ssh -i &lt;path-to-pem&gt; admin@&lt;ip/dns&gt;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># SCP</span></span><br><span class="line">``` bash</span><br><span class="line">scp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip/dns&gt;:/home/admin/&lt;path-to-target-file&gt;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Auto-start after reboot</span></span><br><span class="line">```bash</span><br><span class="line">$ systemctl <span class="hljs-built_in">enable</span> docker</span><br><span class="line">Synchronizing state of docker.service...</span><br><span class="line">Executing /lib/systemd/systemd-sysv-install <span class="hljs-built_in">enable</span> docker</span><br><span class="line">$ systemctl is-enabled docker</span><br><span class="line">enabled</span><br></pre></td></tr></tbody></table></figure><p></p>
 </body></html>
     
     </div>

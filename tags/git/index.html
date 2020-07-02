@@ -132,13 +132,14 @@
         <span class="column is-narrow">
             
             
-            2 minutes read (About 295 words)
+            2 minutes read (About 308 words)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><h1 id="Git-Submodule"><a href="#Git-Submodule" class="headerlink" title="Git Submodule"></a>Git Submodule</h1><h2 id="Add-Submodule"><a href="#Add-Submodule" class="headerlink" title="Add Submodule"></a>Add Submodule</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+        <html><head></head><body><h1 id="Git-Object-Model"><a href="#Git-Object-Model" class="headerlink" title="Git Object Model"></a>Git Object Model</h1><p><img src="/photos/git-note/git-obj-mdl.png" alt="git-obj-mdl"></p>
+<h1 id="Git-Submodule"><a href="#Git-Submodule" class="headerlink" title="Git Submodule"></a>Git Submodule</h1><h2 id="Add-Submodule"><a href="#Add-Submodule" class="headerlink" title="Add Submodule"></a>Add Submodule</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>Confirm submodule is added by <code>cat .gitmodules</code>.</p>
 <p>Set git config to show submodule summary when running <code>git status</code>:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global status.submoduleSummary <span class="hljs-literal">true</span></span><br></pre></td></tr></tbody></table></figure><p></p>

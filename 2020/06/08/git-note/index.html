@@ -16,18 +16,20 @@
 
 
 
-    <meta name="description" content="Git SubmoduleAdd Submodule1$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt; Confirm submodule is added by cat .gitmodules. Set git config to show submodule summary when running git status: 1$">
+    <meta name="description" content="Git Object Model Git SubmoduleAdd Submodule1$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt; Confirm submodule is added by cat .gitmodules. Set git config to show submodule summary when runni">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Note">
 <meta property="og:url" content="http://yoursite.com/2020/06/08/git-note/index.html">
 <meta property="og:site_name" content="You Xie&#39;s Blog">
-<meta property="og:description" content="Git SubmoduleAdd Submodule1$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt; Confirm submodule is added by cat .gitmodules. Set git config to show submodule summary when running git status: 1$">
+<meta property="og:description" content="Git Object Model Git SubmoduleAdd Submodule1$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt; Confirm submodule is added by cat .gitmodules. Set git config to show submodule summary when runni">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/photos/git-note/git-obj-mdl.png">
 <meta property="article:published_time" content="2020-06-08T04:50:13.000Z">
-<meta property="article:modified_time" content="2020-06-08T17:39:47.792Z">
+<meta property="article:modified_time" content="2020-07-02T03:30:19.530Z">
 <meta property="article:author" content="You Xie">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/photos/git-note/git-obj-mdl.png">
 
 
 
@@ -109,39 +111,45 @@
                     
                     
                     
-                    <a class="navbar-item" href="#Git-Submodule">1&nbsp;&nbsp;<b>Git Submodule</b></a>
+                    <a class="navbar-item" href="#Git-Object-Model">1&nbsp;&nbsp;<b>Git Object Model</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Git-Submodule">2&nbsp;&nbsp;<b>Git Submodule</b></a>
                     
                     
                     
-                    <a class="navbar-item" href="#Add-Submodule">1.1&nbsp;&nbsp;Add Submodule</a>
+                    <a class="navbar-item" href="#Add-Submodule">2.1&nbsp;&nbsp;Add Submodule</a>
                     
                     
                     
-                    <a class="navbar-item" href="#Add-amp-Commit">1.2&nbsp;&nbsp;Add &amp;amp; Commit</a>
+                    <a class="navbar-item" href="#Add-amp-Commit">2.2&nbsp;&nbsp;Add &amp;amp; Commit</a>
                     
                     
                     
-                    <a class="navbar-item" href="#Clone-a-repo-containing-submodules">1.3&nbsp;&nbsp;Clone a repo containing submodules</a>
+                    <a class="navbar-item" href="#Clone-a-repo-containing-submodules">2.3&nbsp;&nbsp;Clone a repo containing submodules</a>
                     
                     
                     
-                    <a class="navbar-item" href="#Switch-submodule’s-version">1.4&nbsp;&nbsp;Switch submodule’s version</a>
+                    <a class="navbar-item" href="#Switch-submodule’s-version">2.4&nbsp;&nbsp;Switch submodule’s version</a>
                     
                     
                     
-                    <a class="navbar-item" href="#Remove-submodule">1.5&nbsp;&nbsp;Remove submodule</a>
+                    <a class="navbar-item" href="#Remove-submodule">2.5&nbsp;&nbsp;Remove submodule</a>
                     
                     
                     
-                    <a class="navbar-item" href="#Multiple-Nested-Submodules">1.6&nbsp;&nbsp;Multiple Nested Submodules</a>
+                    <a class="navbar-item" href="#Multiple-Nested-Submodules">2.6&nbsp;&nbsp;Multiple Nested Submodules</a>
                     
                     
                     
-                    <a class="navbar-item" href="#Update-from-submodules">1.7&nbsp;&nbsp;Update from submodules</a>
+                    <a class="navbar-item" href="#Update-from-submodules">2.7&nbsp;&nbsp;Update from submodules</a>
                     
                     
                     
-                    <a class="navbar-item" href="#Edit-submodules">1.8&nbsp;&nbsp;Edit submodules</a>
+                    <a class="navbar-item" href="#Edit-submodules">2.8&nbsp;&nbsp;Edit submodules</a>
                     
                 </div>
             </div>
@@ -175,13 +183,14 @@
         <span class="column is-narrow">
             
             
-            2 minutes read (About 295 words)
+            2 minutes read (About 308 words)
         </span>
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><h1 id="Git-Submodule"><a href="#Git-Submodule" class="headerlink" title="Git Submodule"></a>Git Submodule</h1><h2 id="Add-Submodule"><a href="#Add-Submodule" class="headerlink" title="Add Submodule"></a>Add Submodule</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+        <html><head></head><body><h1 id="Git-Object-Model"><a href="#Git-Object-Model" class="headerlink" title="Git Object Model"></a>Git Object Model</h1><p><img src="/photos/git-note/git-obj-mdl.png" alt="git-obj-mdl"></p>
+<h1 id="Git-Submodule"><a href="#Git-Submodule" class="headerlink" title="Git Submodule"></a>Git Submodule</h1><h2 id="Add-Submodule"><a href="#Add-Submodule" class="headerlink" title="Add Submodule"></a>Add Submodule</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>Confirm submodule is added by <code>cat .gitmodules</code>.</p>
 <p>Set git config to show submodule summary when running <code>git status</code>:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global status.submoduleSummary <span class="hljs-literal">true</span></span><br></pre></td></tr></tbody></table></figure><p></p>
