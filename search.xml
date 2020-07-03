@@ -927,4 +927,48 @@
         <tag>network</tag>
       </tags>
   </entry>
+  <entry>
+    <title>js-note</title>
+    <url>/2020/07/02/js-note/</url>
+    <content><![CDATA[<html><head></head><body><h1 id="Template-literals-String-literals"><a href="#Template-literals-String-literals" class="headerlink" title="Template literals (String literals)"></a>Template literals (String literals)</h1><p>add variables at runtime</p>
+<p></p><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> msg = <span class="hljs-string">`some <span class="hljs-subst">${variable1}</span>, </span></span><br><span class="line"><span class="hljs-string">    <span class="hljs-subst">${<span class="hljs-string">&quot;$&quot;</span> + variable2}</span>`</span>;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>use tag function to add bold style to variables in template literals</p>
+<p></p><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">highlighText</span>(<span class="hljs-params">strings, ...values</span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;&quot;</span>;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; strings.raw.lengths; i++) {</span><br><span class="line">    <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span>) {</span><br><span class="line">      str += <span class="hljs-string">`&lt;b&gt;<span class="hljs-subst">${values[i - <span class="hljs-number">1</span>]}</span>&lt;/b&gt;`</span>;</span><br><span class="line">    }</span><br><span class="line">    str += strings.raw[i];</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> msg = highlighText<span class="hljs-string">`some <span class="hljs-subst">${variable1}</span>, <span class="hljs-subst">${<span class="hljs-string">&quot;$&quot;</span> + variable2}</span>`</span>;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="var-let-and-const"><a href="#var-let-and-const" class="headerlink" title="var, let and const"></a>var, let and const</h1><p>var:</p>
+<ul>
+<li>no block scope</li>
+<li>can be redeclared anywhere</li>
+<li>can be used and reassigned anywhere</li>
+</ul>
+<p>let:</p>
+<ul>
+<li>block scope</li>
+<li>can&#x2019;t be redeclared within scope</li>
+<li>can be reassigned within scope</li>
+</ul>
+<p>const:</p>
+<ul>
+<li>block scope</li>
+<li>can&#x2019;t be reassigned or redeclared</li>
+<li>the value <strong>can</strong> be changed</li>
+</ul>
+<p>const is more used as readability purpose</p>
+<p></p><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];</span><br><span class="line">arr = <span class="hljs-number">3</span>; <span class="hljs-comment">// error</span></span><br><span class="line">arr[<span class="hljs-number">0</span>] = <span class="hljs-number">22</span>; <span class="hljs-comment">// okay!</span></span><br><span class="line"><span class="hljs-keyword">var</span> arr = <span class="hljs-built_in">Object</span>.freeze([<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]); <span class="hljs-comment">// instead</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="Destructing-an-array-or-object"><a href="#Destructing-an-array-or-object" class="headerlink" title="Destructing an array or object"></a>Destructing an array or object</h1><p>array:</p>
+<ul>
+<li>don&#x2019;t have to catch all values in the array</li>
+<li>variable is undefined if arr is not enough to unpack</li>
+<li>can set default value</li>
+</ul>
+<p></p><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> [a, b = <span class="hljs-literal">true</span>, c, ...moreArgs] = arr;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>object:</p>
+<p></p><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> { Id, ApplicantName = <span class="hljs-string">&quot;Barry&quot;</span> } = obj;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><p></p><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line">str.trim(); <span class="hljs-comment">// trim white space</span></span><br><span class="line">str.toLowerCase();</span><br><span class="line">str.startWith(<span class="hljs-string">&quot;dr&quot;</span>);</span><br><span class="line">str.endWith(<span class="hljs-string">&quot;md&quot;</span>, <span class="hljs-number">4</span>);</span><br><span class="line">str.search(<span class="hljs-string">&quot;house&quot;</span>);</span><br><span class="line">str.includes(<span class="hljs-string">&quot;house&quot;</span>);</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h1><p></p><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">Number</span>.isInteger(num); <span class="hljs-comment">// 25.0 is integer</span></span><br><span class="line"><span class="hljs-built_in">Number</span>.MAX_SAFE_INTEGER; <span class="hljs-comment">// Number.MIN_SAFE_INTEGER</span></span><br><span class="line"><span class="hljs-built_in">Number</span>.isSafeInteger(num);</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h1><p></p><figure class="highlight js hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> id = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> id2 = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(id === id2); <span class="hljs-comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> id = <span class="hljs-built_in">Symbol</span>.for(<span class="hljs-string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> id2 = <span class="hljs-built_in">Symbol</span>.for(<span class="hljs-string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(id === id2); <span class="hljs-comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// create secret property</span></span><br><span class="line"><span class="hljs-keyword">var</span> loan = {</span><br><span class="line">    name: <span class="hljs-string">&quot;Barry&quot;</span>,</span><br><span class="line">    [<span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&quot;income&quot;</span>)]: <span class="hljs-number">15000</span></span><br><span class="line">};</span><br><span class="line"><span class="hljs-built_in">console</span>.log(load[<span class="hljs-built_in">Symbol</span>.for(<span class="hljs-string">&quot;income&quot;</span>)]); <span class="hljs-comment">// 15000</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.getOwnPropertyNames(loan)); <span class="hljs-comment">// [&quot;name&quot;]</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.getOwnPropertySymbol(loan)); <span class="hljs-comment">// [Symbol(income)]</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+</body></html>]]></content>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
 </search>
