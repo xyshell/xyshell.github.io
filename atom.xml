@@ -141,15 +141,15 @@
     <link href="http://yoursite.com/2020/06/08/aws-note/"/>
     <id>http://yoursite.com/2020/06/08/aws-note/</id>
     <published>2020-06-08T05:30:49.000Z</published>
-    <updated>2020-06-08T06:52:21.600Z</updated>
+    <updated>2020-07-05T23:01:56.033Z</updated>
     
-    <content type="html"><![CDATA[<html><head></head><body><h1 id="AWS-CLI"><a href="#AWS-CLI" class="headerlink" title="AWS CLI"></a>AWS CLI</h1><h2 id="Upload-folder-to-S3"><a href="#Upload-folder-to-S3" class="headerlink" title="Upload folder to S3"></a>Upload folder to S3</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws s3 cp &lt;path-to-source-folder&gt; s3://&lt;path-to-target-folder&gt; --recursive --exclude <span class="hljs-string">&quot;.DS_Store&quot;</span></span><br></pre></td></tr></tbody></table></figure><p></p></body></html>]]></content>
+    <content type="html"><![CDATA[<html><head></head><body><h1 id="AWS-website"><a href="#AWS-website" class="headerlink" title="AWS website"></a>AWS website</h1><p><a href="https://infrastructure.aws/" target="_blank" rel="noopener">infrastructure.aws</a></p><p><a href="http://awstcocalculator.com/" target="_blank" rel="noopener">TCO(total cost of ownership) Calculator</a></p><p><a href="https://calculator.aws/#/" target="_blank" rel="noopener">Pricing Calculator</a></p><h1 id="AWS-CLI"><a href="#AWS-CLI" class="headerlink" title="AWS CLI"></a>AWS CLI</h1><h2 id="Upload-folder-to-S3"><a href="#Upload-folder-to-S3" class="headerlink" title="Upload folder to S3"></a>Upload folder to S3</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws s3 cp &lt;path-to-source-folder&gt; s3://&lt;path-to-target-folder&gt; --recursive --exclude <span class="hljs-string">&quot;.DS_Store&quot;</span></span><br></pre></td></tr></tbody></table></figure><p></p></body></html>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;AWS-CLI&quot;&gt;&lt;a href=&quot;#AWS-CLI&quot; class=&quot;headerlink&quot; title=&quot;AWS CLI&quot;&gt;&lt;/a&gt;AWS CLI&lt;/h1&gt;&lt;h2 id=&quot;Upload-folder-to-S3&quot;
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;AWS-website&quot;&gt;&lt;a href=&quot;#AWS-website&quot; class=&quot;headerlink&quot; title=&quot;AWS website&quot;&gt;&lt;/a&gt;AWS website&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;
       
     
     </summary>
