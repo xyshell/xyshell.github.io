@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Tag: cpp - You Xie&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="You Xie&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/tags/cpp/index.html">
+<meta property="og:site_name" content="You Xie&#39;s Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="You Xie">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="You Xie's Blog" type="application/atom+xml">
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/xyshell/xyshell.github.io" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5>#cpp</h5>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2020/07/13/cpp-note/" itemprop="url">cpp-note</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-07-13T05:56:16.000Z" itemprop="datePublished">Jul 13 2020</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            13 minutes read (About 1947 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h1 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h1><p><a href="https://chenxiaowei.gitbook.io/cmake-cookbook/" target="_blank" rel="noopener">Cmake Cookbook</a></p>
+<h2 id="Chapter-1-From-a-Simple-Executable-to-Libraries"><a href="#Chapter-1-From-a-Simple-Executable-to-Libraries" class="headerlink" title="Chapter 1: From a Simple Executable to Libraries"></a>Chapter 1: From a Simple Executable to Libraries</h2><h3 id="1-Compiling-a-single-source-file-into-an-executable"><a href="#1-Compiling-a-single-source-file-into-an-executable" class="headerlink" title="1. Compiling a single source file into an executable"></a>1. Compiling a single source file into an executable</h3><p>CmakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line">project(recipe-01 LANGUAGES CXX) <span class="hljs-comment"># default language is c++</span></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Normal steps:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p build</span><br><span class="line">$ <span class="hljs-built_in">cd</span> build</span><br><span class="line">$ cmake .. <span class="hljs-comment"># ../CmakeLists.txt exsits</span></span><br><span class="line">$ cmake --build .bash</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Single command build:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -H. -Bbuild</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Build outside:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p /tmp/someplace</span><br><span class="line">$ <span class="hljs-built_in">cd</span> /tmp/someplace</span><br><span class="line">$ cmake /path/to/<span class="hljs-built_in">source</span></span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>available targets:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cmake --build . -t <span class="hljs-built_in">help</span> <span class="hljs-comment"># --target</span></span><br><span class="line"></span><br><span class="line">The following are some of the valid targets <span class="hljs-keyword">for</span> this Makefile:</span><br><span class="line">... all (the default <span class="hljs-keyword">if</span> no target is provided)</span><br><span class="line">... clean</span><br><span class="line">... depend</span><br><span class="line">... edit_cache</span><br><span class="line">... rebuild_cache</span><br><span class="line">... hello-world</span><br><span class="line">... hello-world.o</span><br><span class="line">... hello-world.i</span><br><span class="line">... hello-world.s</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="2-Switching-generators"><a href="#2-Switching-generators" class="headerlink" title="2. Switching generators"></a>2. Switching generators</h3><p>Choose Ninja:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p build</span><br><span class="line">$ <span class="hljs-built_in">cd</span> build</span><br><span class="line">$ cmake -G Ninja .. <span class="hljs-comment"># must install Ninja first</span></span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Single command:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -H. -Bbuild -GNinja</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="3-Building-and-linking-static-and-shared-libraries"><a href="#3-Building-and-linking-static-and-shared-libraries" class="headerlink" title="3. Building and linking static and shared libraries"></a>3. Building and linking static and shared libraries</h3><p>CmakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line">project(recipe-03 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># generate a library from sources</span></span><br><span class="line">add_library(message</span><br><span class="line">  STATIC</span><br><span class="line">    Message.hpp</span><br><span class="line">    Message.cpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(hello-world message)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<ul>
+<li><code>add_library(message STATIC Message.hpp Message.cpp)</code>: add_library&#x2019;s first param is target name, available for entire CMakeLists.txt to be refered. Actually name will be prefixed with lib and suffixed withbash proper extension by cmake, determined by (STATIC or SHARED) and OS</li>
+<li><code>target_link_libraries(hello-world message)</code>: link library to executable and make sure hello-world depends correctly on library. Must after <code>add_library</code>.</li>
+</ul>
+<p>After build, we get <code>libmessage.a</code> together with executable <code>hello-world</code>.</p>
+<p>second parameter of <code>add_library</code>:</p>
+<ul>
+<li>STATIC&#xFF1A;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x9759;&#x6001;&#x5E93;&#xFF0C;&#x5373;&#x7F16;&#x8BD1;&#x6587;&#x4EF6;&#x7684;&#x6253;&#x5305;&#x5B58;&#x6863;&#xFF0C;&#x4EE5;&#x4FBF;&#x5728;&#x94FE;&#x63A5;&#x5176;&#x4ED6;&#x76EE;&#x6807;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;</li>
+<li>SHARED&#xFF1A;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x52A8;&#x6001;&#x5E93;&#xFF0C;&#x5373;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF0C;&#x5E76;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x52A0;&#x8F7D;&#x7684;&#x5E93;&#x3002;&#x53EF;&#x4EE5;&#x5728; CMakeLists.txt &#x4E2D;&#x4F7F;&#x7528;<code>add_library(message SHAREDbash Message.hpp Message.cpp)</code>&#x4ECE;&#x9759;&#x6001;&#x5E93;&#x5207;&#x6362;&#x5230;&#x52A8;&#x6001;&#x5171;&#x4EAB;&#x5BF9;&#x8C61;(DSO)&#x3002;</li>
+<li>OBJECT&#xFF1A;&#x53EF;&#x5C06;&#x7ED9;&#x5B9A; add_library &#x7684;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5230;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x5C06;&#x5B83;&#x4EEC;&#x5F52;&#x6863;&#x5230;&#x9759;&#x6001;&#x5E93;&#x4E2D;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x5C06;&#x5B83;&#x4EEC;&#x94FE;&#x63A5;&#x5230;&#x5171;&#x4EAB;&#x5BF9;&#x8C61;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x4E00;&#x6B21;&#x6027;&#x521B;&#x5EFA;&#x9759;&#x6001;&#x5E93;&#x548C;&#x52A8;&#x6001;&#x5E93;&#xFF0C;&#x90A3;&#x4E48;&#x4F7F;&#x7528;&#x5BF9;&#x8C61;&#x5E93;&#x5C24;&#x5176;&#x6709;&#x7528;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x672C;&#x793A;&#x4F8B;&#x4E2D;&#x6F14;&#x793A;&#x3002;</li>
+<li>MODULE&#xFF1A;&#x53C8;&#x4E3A; DSO &#x7EC4;&#x3002;&#x4E0E; SHARED &#x5E93;&#x4E0D;&#x540C;&#xFF0C;&#x5B83;&#x4EEC;&#x4E0D;&#x94FE;&#x63A5;&#x5230;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x76EE;&#x6807;&#xFF0C;&#x4E0D;&#x8FC7;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x3002;&#x8BE5;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x8FD0;&#x884C;&#x65F6;&#x63D2;&#x4EF6;&#x3002;</li>
+</ul>
+<p>other special type of library:</p>
+<ul>
+<li>IMPORTED&#xFF1A;&#x6B64;&#x7C7B;&#x5E93;&#x76EE;&#x6807;&#x8868;&#x793A;&#x4F4D;&#x4E8E;&#x9879;&#x76EE;&#x5916;&#x90E8;&#x7684;&#x5E93;&#x3002;&#x6B64;&#x7C7B;&#x5E93;&#x7684;&#x4E3B;&#x8981;&#x7528;&#x9014;&#x662F;&#xFF0C;&#x5BF9;&#x73B0;&#x6709;&#x4F9D;&#x8D56;&#x9879;&#x8FDB;&#x884C;&#x6784;&#x5EFA;&#x3002;&#x56E0;&#x6B64;&#xFF0C;IMPORTED &#x5E93;&#x5C06;&#x88AB;&#x89C6;&#x4E3A;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x672C;&#x4E66;&#x7684;&#x5176;&#x4ED6;&#x7AE0;&#x8282;&#x6F14;&#x793A;&#x4F7F;&#x7528; IMPORTED &#x5E93;&#x7684;&#x793A;&#x4F8B;&#x3002;&#x53C2;&#x89C1;: <a href="https://cmake.org/cmake/help/latest/manual/cmakebuildsystem.7.html#imported-targets" target="_blank" rel="noopener">https://cmake.org/cmake/help/latest/manual/cmakebuildsystem.7.html#imported-targets</a></li>
+<li>INTERFACE&#xFF1A;&#x4E0E; IMPORTED &#x5E93;&#x7C7B;&#x4F3C;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x8BE5;&#x7C7B;&#x578B;&#x5E93;&#x53EF;&#x53D8;&#xFF0C;&#x6CA1;&#x6709;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#x3002;&#x5B83;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x9879;&#x76EE;&#x4E4B;&#x5916;&#x7684;&#x76EE;&#x6807;&#x6784;&#x5EFA;&#x4F7F;&#x7528;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x672C;&#x7AE0;&#x7B2C; 5 &#x8282;&#x4E2D;&#x6F14;&#x793A; INTERFACE &#x5E93;&#x7684;&#x793A;&#x4F8B;&#x3002;&#x53C2;&#x89C1;: <a href="https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#interface-libraries" target="_blank" rel="noopener">https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#interface-libraries</a></li>
+<li>ALIAS&#xFF1A;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x8FD9;&#x79CD;&#x5E93;&#x4E3A;&#x9879;&#x76EE;&#x4E2D;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x5E93;&#x76EE;&#x6807;&#x5B9A;&#x4E49;&#x522B;&#x540D;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x4E0D;&#x80FD;&#x4E3A; IMPORTED &#x5E93;&#x9009;&#x62E9;&#x522B;&#x540D;&#x3002;&#x53C2;&#x89C1;: <a href="https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#alias-libraries" target="_blank" rel="noopener">https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#alias-libraries</a></li>
+</ul>
+<p>Make dynamic linking, optional to set name to <code>message-shared</code> and use set_target_properties so <code>#include &quot;message.h&quot;</code> is available in source code:</p>
+<p>CmakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line">project(recipe-03 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">add_library(message-shared</span><br><span class="line">  SHARED</span><br><span class="line">    Message.hpp</span><br><span class="line">    Message.cpp</span><br><span class="line">  )</span><br><span class="line">set_target_properties(message-shared</span><br><span class="line">  PROPERTIES</span><br><span class="line">    OUTPUT_NAME <span class="hljs-string">&quot;message&quot;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(hello-world message-shared)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="4-Controlling-compilation-with-conditionals"><a href="#4-Controlling-compilation-with-conditionals" class="headerlink" title="4. Controlling compilation with conditionals"></a>4. Controlling compilation with conditionals</h3><p>CmakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># project name and language</span></span><br><span class="line">project(recipe-04 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># introduce a toggle for using a library</span></span><br><span class="line"><span class="hljs-built_in">set</span>(USE_LIBRARY OFF)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="hljs-string">&quot;Compile sources into a library? <span class="hljs-variable">${USE_LIBRARY}</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># BUILD_SHARED_LIBS is a global flag offered by CMake</span></span><br><span class="line"><span class="hljs-comment"># to toggle the behavior of add_library</span></span><br><span class="line"><span class="hljs-built_in">set</span>(BUILD_SHARED_LIBS OFF)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># list sources</span></span><br><span class="line">list(APPEND _sources Message.hpp Message.cpp)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span>(USE_LIBRARY)</span><br><span class="line">  <span class="hljs-comment"># add_library will create a static library</span></span><br><span class="line">  <span class="hljs-comment"># since BUILD_SHARED_LIBS is OFF</span></span><br><span class="line">  add_library(message <span class="hljs-variable">${_sources}</span>)</span><br><span class="line"></span><br><span class="line">  add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">  target_link_libraries(hello-world message)</span><br><span class="line"><span class="hljs-keyword">else</span>()</span><br><span class="line">  add_executable(hello-world hello-world.cpp <span class="hljs-variable">${_sources}</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="5-Presenting-options-to-the-user"><a href="#5-Presenting-options-to-the-user" class="headerlink" title="5. Presenting options to the user"></a>5. Presenting options to the user</h3><p>CmakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># project name and language</span></span><br><span class="line">project(recipe-05 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># expose options to the user</span></span><br><span class="line">option(USE_LIBRARY <span class="hljs-string">&quot;Compile sources into a library&quot;</span> OFF)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="hljs-string">&quot;Compile sources into a library? <span class="hljs-variable">${USE_LIBRARY}</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">include(CMakeDependentOption)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># second option depends on the value of the first</span></span><br><span class="line">cmake_dependent_option(</span><br><span class="line">  MAKE_STATIC_LIBRARY <span class="hljs-string">&quot;Compile sources into a static library&quot;</span> OFF</span><br><span class="line">  <span class="hljs-string">&quot;USE_LIBRARY&quot;</span> ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># third option depends on the value of the first</span></span><br><span class="line">cmake_dependent_option(</span><br><span class="line">  MAKE_SHARED_LIBRARY <span class="hljs-string">&quot;Compile sources into a shared library&quot;</span> ON</span><br><span class="line">  <span class="hljs-string">&quot;USE_LIBRARY&quot;</span> ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">set</span>(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># list sources</span></span><br><span class="line">list(APPEND _sources Message.hpp Message.cpp)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span>(USE_LIBRARY)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;Compile sources into a STATIC library? <span class="hljs-variable">${MAKE_STATIC_LIBRARY}</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;Compile sources into a SHARED library? <span class="hljs-variable">${MAKE_SHARED_LIBRARY}</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span>(MAKE_SHARED_LIBRARY)</span><br><span class="line">    add_library(message SHARED <span class="hljs-variable">${_sources}</span>)</span><br><span class="line"></span><br><span class="line">    add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">    target_link_libraries(hello-world message)</span><br><span class="line">  endif()</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span>(MAKE_STATIC_LIBRARY)</span><br><span class="line">    add_library(message STATIC <span class="hljs-variable">${_sources}</span>)</span><br><span class="line"></span><br><span class="line">    add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">    target_link_libraries(hello-world message)</span><br><span class="line">  endif()</span><br><span class="line"><span class="hljs-keyword">else</span>()</span><br><span class="line">  add_executable(hello-world hello-world.cpp <span class="hljs-variable">${_sources}</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>to toggle options:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -D USE_LIBRARY=OFF -D MAKE_SHARED_LIBRARY=ON ..</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="6-Specifying-the-compiler"><a href="#6-Specifying-the-compiler" class="headerlink" title="6. Specifying the compiler"></a>6. Specifying the compiler</h3><p>prefered:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -D CMAKE_CXX_COMPILER=clang++ ..</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>not prefered:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ env CXX=clang++ cmake ..</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>CMakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># project name and language</span></span><br><span class="line">project(recipe-06 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="hljs-string">&quot;Is the C++ compiler loaded? <span class="hljs-variable">${CMAKE_CXX_COMPILER_LOADED}</span>&quot;</span>)</span><br><span class="line"><span class="hljs-keyword">if</span>(CMAKE_CXX_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;The C++ compiler ID is: <span class="hljs-variable">${CMAKE_CXX_COMPILER_ID}</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;Is the C++ from GNU? <span class="hljs-variable">${CMAKE_COMPILER_IS_GNUCXX}</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;The C++ compiler version is: <span class="hljs-variable">${CMAKE_CXX_COMPILER_VERSION}</span>&quot;</span>)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="hljs-string">&quot;Is the C compiler loaded? <span class="hljs-variable">${CMAKE_C_COMPILER_LOADED}</span>&quot;</span>)</span><br><span class="line"><span class="hljs-keyword">if</span>(CMAKE_C_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;The C compiler ID is: <span class="hljs-variable">${CMAKE_C_COMPILER_ID}</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;Is the C from GNU? <span class="hljs-variable">${CMAKE_COMPILER_IS_GNUCC}</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;The C compiler version is: <span class="hljs-variable">${CMAKE_C_COMPILER_VERSION}</span>&quot;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="7-Switching-the-build-type"><a href="#7-Switching-the-build-type" class="headerlink" title="7. Switching the build type"></a>7. Switching the build type</h3><ul>
+<li>Debug&#xFF1A;&#x7528;&#x4E8E;&#x5728;&#x6CA1;&#x6709;&#x4F18;&#x5316;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F7F;&#x7528;&#x5E26;&#x6709;&#x8C03;&#x8BD5;&#x7B26;&#x53F7;&#x6784;&#x5EFA;&#x5E93;&#x6216;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;</li>
+<li>Release&#xFF1A;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x7684;&#x4F18;&#x5316;&#x7684;&#x5E93;&#x6216;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x5305;&#x542B;&#x8C03;&#x8BD5;&#x7B26;&#x53F7;&#x3002;</li>
+<li>RelWithDebInfo&#xFF1A;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x8F83;&#x5C11;&#x7684;&#x4F18;&#x5316;&#x5E93;&#x6216;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x5305;&#x542B;&#x8C03;&#x8BD5;&#x7B26;&#x53F7;&#x3002;</li>
+<li>MinSizeRel&#xFF1A;&#x7528;&#x4E8E;&#x4E0D;&#x589E;&#x52A0;&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x5927;&#x5C0F;&#x7684;&#x4F18;&#x5316;&#x65B9;&#x5F0F;&#xFF0C;&#x6765;&#x6784;&#x5EFA;&#x5E93;&#x6216;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<p>CMakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># project name and language</span></span><br><span class="line">project(recipe-07 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># we default to Release build type</span></span><br><span class="line"><span class="hljs-keyword">if</span>(NOT CMAKE_BUILD_TYPE)</span><br><span class="line">  <span class="hljs-built_in">set</span>(CMAKE_BUILD_TYPE Release CACHE STRING <span class="hljs-string">&quot;Build type&quot;</span> FORCE)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="hljs-string">&quot;Build type: <span class="hljs-variable">${CMAKE_BUILD_TYPE}</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="hljs-string">&quot;C flags, Debug configuration: <span class="hljs-variable">${CMAKE_C_FLAGS_DEBUG}</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="hljs-string">&quot;C flags, Release configuration: <span class="hljs-variable">${CMAKE_C_FLAGS_RELEASE}</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="hljs-string">&quot;C flags, Release configuration with Debug info: <span class="hljs-variable">${CMAKE_C_FLAGS_RELWITHDEBINFO}</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="hljs-string">&quot;C flags, minimal Release configuration: <span class="hljs-variable">${CMAKE_C_FLAGS_MINSIZEREL}</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="hljs-string">&quot;C++ flags, Debug configuration: <span class="hljs-variable">${CMAKE_CXX_FLAGS_DEBUG}</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="hljs-string">&quot;C++ flags, Release configuration: <span class="hljs-variable">${CMAKE_CXX_FLAGS_RELEASE}</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="hljs-string">&quot;C++ flags, Release configuration with Debug info: <span class="hljs-variable">${CMAKE_CXX_FLAGS_RELWITHDEBINFO}</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="hljs-string">&quot;C++ flags, minimal Release configuration: <span class="hljs-variable">${CMAKE_CXX_FLAGS_MINSIZEREL}</span>&quot;</span>)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>to switch build type:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -D CMAKE_BUILD_TYPE=Debug ..</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="8-Controlling-compiler-flags"><a href="#8-Controlling-compiler-flags" class="headerlink" title="8. Controlling compiler flags"></a>8. Controlling compiler flags</h3><p>CMakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># project name and language</span></span><br><span class="line">project(recipe-08 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">message(<span class="hljs-string">&quot;C++ compiler flags: <span class="hljs-variable">${CMAKE_CXX_FLAGS}</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">list(APPEND flags <span class="hljs-string">&quot;-fPIC&quot;</span> <span class="hljs-string">&quot;-Wall&quot;</span>)</span><br><span class="line"><span class="hljs-keyword">if</span>(NOT WIN32)</span><br><span class="line">  list(APPEND flags <span class="hljs-string">&quot;-Wextra&quot;</span> <span class="hljs-string">&quot;-Wpedantic&quot;</span>)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">add_library(geometry</span><br><span class="line">  STATIC</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_circle.hpp</span><br><span class="line">    geometry_polygon.cpp</span><br><span class="line">    geometry_polygon.hpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">    geometry_rhombus.hpp</span><br><span class="line">    geometry_square.cpp</span><br><span class="line">    geometry_square.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_compile_options(geometry</span><br><span class="line">  PRIVATE</span><br><span class="line">    <span class="hljs-variable">${flags}</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(compute-areas compute-areas.cpp)</span><br><span class="line"></span><br><span class="line">target_compile_options(compute-areas</span><br><span class="line">  PRIVATE</span><br><span class="line">    <span class="hljs-string">&quot;-fPIC&quot;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_link_libraries(compute-areas geometry)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="9-Setting-the-standard-for-the-language"><a href="#9-Setting-the-standard-for-the-language" class="headerlink" title="9. Setting the standard for the language"></a>9. Setting the standard for the language</h3><p>CMakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># project name and language</span></span><br><span class="line">project(recipe-09 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">set</span>(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)</span><br><span class="line"></span><br><span class="line">add_library(animals</span><br><span class="line">  SHARED</span><br><span class="line">    Animal.cpp</span><br><span class="line">    Animal.hpp</span><br><span class="line">    Cat.cpp</span><br><span class="line">    Cat.hpp</span><br><span class="line">    Dog.cpp</span><br><span class="line">    Dog.hpp</span><br><span class="line">    Factory.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">set_target_properties(animals</span><br><span class="line">  PROPERTIES</span><br><span class="line">    CXX_STANDARD 14</span><br><span class="line">    CXX_EXTENSIONS OFF</span><br><span class="line">    CXX_STANDARD_REQUIRED ON</span><br><span class="line">    POSITION_INDEPENDENT_CODE 1</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(animal-farm animal-farm.cpp)</span><br><span class="line"></span><br><span class="line">set_target_properties(animal-farm</span><br><span class="line">  PROPERTIES</span><br><span class="line">    CXX_STANDARD 14</span><br><span class="line">    CXX_EXTENSIONS OFF</span><br><span class="line">    CXX_STANDARD_REQUIRED ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_link_libraries(animal-farm animals)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="10-Using-control-flow-constructs"><a href="#10-Using-control-flow-constructs" class="headerlink" title="10. Using control flow constructs"></a>10. Using control flow constructs</h3><p>CMakeLists.txt</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># project name and language</span></span><br><span class="line">project(recipe-10 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">add_library(geometry</span><br><span class="line">  STATIC</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_circle.hpp</span><br><span class="line">    geometry_polygon.cpp</span><br><span class="line">    geometry_polygon.hpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">    geometry_rhombus.hpp</span><br><span class="line">    geometry_square.cpp</span><br><span class="line">    geometry_square.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># we wish to compile the library with the optimization flag: -O3</span></span><br><span class="line">target_compile_options(geometry</span><br><span class="line">  PRIVATE</span><br><span class="line">    -O3</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">list(</span><br><span class="line">  APPEND sources_with_lower_optimization</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># we use the IN LISTS foreach syntax to set source properties</span></span><br><span class="line">message(STATUS <span class="hljs-string">&quot;Setting source properties using IN LISTS syntax:&quot;</span>)</span><br><span class="line">foreach(_source IN LISTS sources_with_lower_optimization)</span><br><span class="line">  set_source_files_properties(<span class="hljs-variable">${_source}</span> PROPERTIES COMPILE_FLAGS -O2)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;Appending -O2 flag for <span class="hljs-variable">${_source}</span>&quot;</span>)</span><br><span class="line">endforeach()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># we demonstrate the plain foreach syntax to query source properties</span></span><br><span class="line"><span class="hljs-comment"># which requires to expand the contents of the variable</span></span><br><span class="line">message(STATUS <span class="hljs-string">&quot;Querying sources properties using plain syntax:&quot;</span>)</span><br><span class="line">foreach(_source <span class="hljs-variable">${sources_with_lower_optimization}</span>)</span><br><span class="line">  get_source_file_property(_flags <span class="hljs-variable">${_source}</span> COMPILE_FLAGS)</span><br><span class="line">  message(STATUS <span class="hljs-string">&quot;Source <span class="hljs-variable">${_source}</span> has the following extra COMPILE_FLAGS: <span class="hljs-variable">${_flags}</span>&quot;</span>)</span><br><span class="line">endforeach()</span><br><span class="line"></span><br><span class="line">add_executable(compute-areas compute-areas.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(compute-areas geometry)</span><br></pre></td></tr></tbody></table></figure><p></p>
+</body></html>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 You Xie&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/xyshell" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
