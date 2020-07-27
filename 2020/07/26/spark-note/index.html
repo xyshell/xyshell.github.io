@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>spark-note - You Xie&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="Data ProcessingCreating a SparkSession Object1234from pyspark.sql import SparkSessionspark&#x3D;SparkSession.builder.appName(&amp;apos;data_processing&amp;apos;).getOrCreate()import pyspark.sql.functions as Ffrom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spark-note">
+<meta property="og:url" content="http://yoursite.com/2020/07/26/spark-note/index.html">
+<meta property="og:site_name" content="You Xie&#39;s Blog">
+<meta property="og:description" content="Data ProcessingCreating a SparkSession Object1234from pyspark.sql import SparkSessionspark&#x3D;SparkSession.builder.appName(&amp;apos;data_processing&amp;apos;).getOrCreate()import pyspark.sql.functions as Ffrom">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-27T02:27:48.000Z">
+<meta property="article:modified_time" content="2020-07-27T04:15:59.026Z">
+<meta property="article:author" content="You Xie">
+<meta property="article:tag" content="spark">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="You Xie's Blog" type="application/atom+xml">
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Data-Processing">1&nbsp;&nbsp;<b>Data Processing</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Creating-a-SparkSession-Object">1.1&nbsp;&nbsp;Creating a SparkSession Object</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Creating-Dataframes">1.2&nbsp;&nbsp;Creating Dataframes</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Null-Values">1.3&nbsp;&nbsp;Null Values</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Subset-of-a-Dataframe">1.4&nbsp;&nbsp;Subset of a Dataframe</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Aggregations">1.5&nbsp;&nbsp;Aggregations</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Collect">1.6&nbsp;&nbsp;Collect</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#User-Defined-Functions-UDFs">1.7&nbsp;&nbsp;User-Defined Functions (UDFs)</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Joins">1.8&nbsp;&nbsp;Joins</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Pivoting">1.9&nbsp;&nbsp;Pivoting</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Window-Functions-or-Windowed-Aggregates">1.10&nbsp;&nbsp;Window Functions or Windowed Aggregates</a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/xyshell/xyshell.github.io" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            spark-note
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-07-27T02:27:48.000Z" itemprop="datePublished">Jul 26 2020</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            4 minutes read (About 656 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h1 id="Data-Processing"><a href="#Data-Processing" class="headerlink" title="Data Processing"></a>Data Processing</h1><h2 id="Creating-a-SparkSession-Object"><a href="#Creating-a-SparkSession-Object" class="headerlink" title="Creating a SparkSession Object"></a>Creating a SparkSession Object</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> pyspark.sql <span class="hljs-keyword">import</span> SparkSession</span><br><span class="line">spark=SparkSession.builder.appName(<span class="hljs-string">&apos;data_processing&apos;</span>).getOrCreate()</span><br><span class="line"><span class="hljs-keyword">import</span> pyspark.sql.functions <span class="hljs-keyword">as</span> F</span><br><span class="line"><span class="hljs-keyword">from</span> pyspark.sql.types <span class="hljs-keyword">import</span> *</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Creating-Dataframes"><a href="#Creating-Dataframes" class="headerlink" title="Creating Dataframes"></a>Creating Dataframes</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">schema=StructType() \</span><br><span class="line">    .add(<span class="hljs-string">&quot;user_id&quot;</span>,<span class="hljs-string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="hljs-string">&quot;country&quot;</span>,<span class="hljs-string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="hljs-string">&quot;browser&quot;</span>, <span class="hljs-string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="hljs-string">&quot;OS&quot;</span>,<span class="hljs-string">&apos;string&apos;</span>) \</span><br><span class="line">    .add(<span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;integer&quot;</span>)</span><br><span class="line">df=spark.createDataFrame([</span><br><span class="line">    (<span class="hljs-string">&quot;A203&quot;</span>,<span class="hljs-string">&apos;India&apos;</span>,<span class="hljs-string">&quot;Chrome&quot;</span>,<span class="hljs-string">&quot;WIN&quot;</span>,<span class="hljs-number">33</span>),</span><br><span class="line">    (<span class="hljs-string">&quot;A201&quot;</span>,<span class="hljs-string">&apos;China&apos;</span>,<span class="hljs-string">&quot;Safari&quot;</span>,<span class="hljs-string">&quot;MacOS&quot;</span>,<span class="hljs-number">35</span>),</span><br><span class="line">    (<span class="hljs-string">&quot;A205&quot;</span>,<span class="hljs-string">&apos;UK&apos;</span>,<span class="hljs-string">&quot;Mozilla&quot;</span>,<span class="hljs-string">&quot;Linux&quot;</span>,<span class="hljs-number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df.printSchema()</span><br><span class="line">df.show()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Null-Values"><a href="#Null-Values" class="headerlink" title="Null Values"></a>Null Values</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">df_na=spark.createDataFrame([</span><br><span class="line">    (<span class="hljs-string">&quot;A203&quot;</span>,<span class="hljs-literal">None</span>,<span class="hljs-string">&quot;Chrome&quot;</span>,<span class="hljs-string">&quot;WIN&quot;</span>,<span class="hljs-number">33</span>),</span><br><span class="line">    (<span class="hljs-string">&quot;A201&quot;</span>,<span class="hljs-string">&apos;China&apos;</span>,<span class="hljs-literal">None</span>,<span class="hljs-string">&quot;MacOS&quot;</span>,<span class="hljs-number">35</span>),</span><br><span class="line">    (<span class="hljs-string">&quot;A205&quot;</span>,<span class="hljs-string">&apos;UK&apos;</span>,<span class="hljs-string">&quot;Mozilla&quot;</span>,<span class="hljs-string">&quot;Linux&quot;</span>,<span class="hljs-number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df_na.show()</span><br><span class="line">df_na.fillna(<span class="hljs-string">&apos;0&apos;</span>).show()</span><br><span class="line">df_na.fillna( { <span class="hljs-string">&apos;country&apos;</span>:<span class="hljs-string">&apos;USA&apos;</span>, <span class="hljs-string">&apos;browser&apos;</span>:<span class="hljs-string">&apos;Safari&apos;</span> } ).show()</span><br><span class="line">df_na.na.drop().show() <span class="hljs-comment"># dropna row</span></span><br><span class="line">df_na.na.drop(subset=<span class="hljs-string">&apos;country&apos;</span>).show() <span class="hljs-comment"># dropna row for column</span></span><br><span class="line">df_na.replace(<span class="hljs-string">&quot;Chrome&quot;</span>,<span class="hljs-string">&quot;Google Chrome&quot;</span>).show()</span><br><span class="line">df_na.drop(<span class="hljs-string">&apos;user_id&apos;</span>).show() <span class="hljs-comment"># drop column</span></span><br><span class="line"></span><br><span class="line">df=spark.read.csv(<span class="hljs-string">&quot;customer_data.csv&quot;</span>,header=<span class="hljs-literal">True</span>,inferSchema=<span class="hljs-literal">True</span>)</span><br><span class="line">df.count()</span><br><span class="line">len(df.columns)</span><br><span class="line">df.show(<span class="hljs-number">3</span>)</span><br><span class="line">df.summary().show() <span class="hljs-comment"># describe</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Subset-of-a-Dataframe"><a href="#Subset-of-a-Dataframe" class="headerlink" title="Subset of a Dataframe"></a>Subset of a Dataframe</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df.select([<span class="hljs-string">&apos;Customer_subtype&apos;</span>,<span class="hljs-string">&apos;Avg_Salary&apos;</span>]).show()</span><br><span class="line"></span><br><span class="line">df.filter(df[<span class="hljs-string">&apos;Avg_Salary&apos;</span>] &gt; <span class="hljs-number">1000000</span>).count()</span><br><span class="line">df.filter(df[<span class="hljs-string">&apos;Avg_Salary&apos;</span>] &gt; <span class="hljs-number">1000000</span>).show()</span><br><span class="line">df.filter(df[<span class="hljs-string">&apos;Avg_Salary&apos;</span>] &gt; <span class="hljs-number">500000</span>).filter(df[<span class="hljs-string">&apos;Number_of_houses&apos;</span>] &gt; <span class="hljs-number">2</span>).show()</span><br><span class="line"></span><br><span class="line">df.where((df[<span class="hljs-string">&apos;Avg_Salary&apos;</span>] &gt; <span class="hljs-number">500000</span>) &amp; (df[<span class="hljs-string">&apos;Number_of_houses&apos;</span>] &gt; <span class="hljs-number">2</span>)).show()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Aggregations"><a href="#Aggregations" class="headerlink" title="Aggregations"></a>Aggregations</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">df.groupBy(<span class="hljs-string">&apos;Customer_subtype&apos;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> col <span class="hljs-keyword">in</span> df.columns:</span><br><span class="line">    <span class="hljs-keyword">if</span> col !=<span class="hljs-string">&apos;Avg_Salary&apos;</span>:</span><br><span class="line">        print(<span class="hljs-string">f&quot; Aggregation for <span class="hljs-subst">{col}</span>&quot;</span>)</span><br><span class="line">        df.groupBy(col).count().orderBy(<span class="hljs-string">&apos;count&apos;</span>,ascending=<span class="hljs-literal">False</span>).show(truncate=<span class="hljs-literal">False</span>)</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="hljs-string">&apos;Customer_main_type&apos;</span>).agg(F.mean(<span class="hljs-string">&apos;Avg_Salary&apos;</span>)).show()</span><br><span class="line">df.groupBy(<span class="hljs-string">&apos;Customer_main_type&apos;</span>).agg(F.max(<span class="hljs-string">&apos;Avg_Salary&apos;</span>)).show()</span><br><span class="line">df.groupBy(<span class="hljs-string">&apos;Customer_main_type&apos;</span>).agg(F.min(<span class="hljs-string">&apos;Avg_Salary&apos;</span>)).show()</span><br><span class="line">df.groupBy(<span class="hljs-string">&apos;Customer_main_type&apos;</span>).agg(F.sum(<span class="hljs-string">&apos;Avg_Salary&apos;</span>)).show()</span><br><span class="line"></span><br><span class="line">df.sort(<span class="hljs-string">&quot;Avg_Salary&quot;</span>, ascending=<span class="hljs-literal">False</span>).show()</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="hljs-string">&apos;Customer_subtype&apos;</span>) \</span><br><span class="line">    .agg(F.avg(<span class="hljs-string">&apos;Avg_Salary&apos;</span>) \</span><br><span class="line">    .alias(<span class="hljs-string">&apos;mean_salary&apos;</span>)) \</span><br><span class="line">    .orderBy(<span class="hljs-string">&apos;mean_salary&apos;</span>,ascending=<span class="hljs-literal">False</span>) \</span><br><span class="line">    .show(<span class="hljs-number">50</span>,<span class="hljs-literal">False</span>)</span><br><span class="line">df.groupBy(<span class="hljs-string">&apos;Customer_subtype&apos;</span>) \</span><br><span class="line">    .agg(F.max(<span class="hljs-string">&apos;Avg_Salary&apos;</span>) \</span><br><span class="line">    .alias(<span class="hljs-string">&apos;max_salary&apos;</span>)) \</span><br><span class="line">    .orderBy(<span class="hljs-string">&apos;max_salary&apos;</span>,ascending=<span class="hljs-literal">False</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Collect"><a href="#Collect" class="headerlink" title="Collect"></a>Collect</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="hljs-string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_set(<span class="hljs-string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line">df.groupby(<span class="hljs-string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_list(<span class="hljs-string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line"></span><br><span class="line">df=df.withColumn(<span class="hljs-string">&apos;constant&apos;</span>,F.lit(<span class="hljs-string">&apos;finance&apos;</span>))</span><br><span class="line">df.select(<span class="hljs-string">&apos;Customer_subtype&apos;</span>,<span class="hljs-string">&apos;constant&apos;</span>).show()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="User-Defined-Functions-UDFs"><a href="#User-Defined-Functions-UDFs" class="headerlink" title="User-Defined Functions (UDFs)"></a>User-Defined Functions (UDFs)</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> pyspark.sql.functions <span class="hljs-keyword">import</span> udf</span><br><span class="line">df.groupby(<span class="hljs-string">&quot;Avg_age&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">age_category</span><span class="hljs-params">(age)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">if</span> age == <span class="hljs-string">&quot;20-30 years&quot;</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Young&quot;</span></span><br><span class="line">    <span class="hljs-keyword">elif</span> age== <span class="hljs-string">&quot;30-40 years&quot;</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Mid Aged&quot;</span></span><br><span class="line">    <span class="hljs-keyword">elif</span> ((age== <span class="hljs-string">&quot;40-50 years&quot;</span>) <span class="hljs-keyword">or</span> (age== <span class="hljs-string">&quot;50-60 years&quot;</span>)) :</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Old&quot;</span></span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Very Old&quot;</span></span><br><span class="line">age_udf=udf(age_category,StringType())</span><br><span class="line">df=df.withColumn(<span class="hljs-string">&apos;age_category&apos;</span>,age_udf(df[<span class="hljs-string">&apos;Avg_age&apos;</span>]))</span><br><span class="line">df.select(<span class="hljs-string">&apos;Avg_age&apos;</span>,<span class="hljs-string">&apos;age_category&apos;</span>).show()</span><br><span class="line">df.groupby(<span class="hljs-string">&quot;age_category&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line">df.select(<span class="hljs-string">&apos;Avg_Salary&apos;</span>).summary().show()</span><br><span class="line">min_sal=<span class="hljs-number">1361</span></span><br><span class="line">max_sal=<span class="hljs-number">48919896</span></span><br><span class="line"><span class="hljs-keyword">from</span> pyspark.sql.functions <span class="hljs-keyword">import</span> pandas_udf, PandasUDFType</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">scaled_salary</span><span class="hljs-params">(salary)</span>:</span></span><br><span class="line">    scaled_sal=(salary-min_sal)/(max_sal-min_sal)</span><br><span class="line">    <span class="hljs-keyword">return</span> scaled_sal</span><br><span class="line">scaling_udf = pandas_udf(scaled_salary, DoubleType())</span><br><span class="line">df.withColumn(<span class="hljs-string">&quot;scaled_salary&quot;</span>,scaling_udf(df[<span class="hljs-string">&apos;Avg_Salary&apos;</span>])) \</span><br><span class="line">    .show(<span class="hljs-number">10</span>,<span class="hljs-literal">False</span>)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Joins"><a href="#Joins" class="headerlink" title="Joins"></a>Joins</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">region_data = spark.createDataFrame([</span><br><span class="line">    (<span class="hljs-string">&apos;Family with grown ups&apos;</span>,<span class="hljs-string">&apos;PN&apos;</span>),</span><br><span class="line">    (<span class="hljs-string">&apos;Driven Growers&apos;</span>,<span class="hljs-string">&apos;GJ&apos;</span>),</span><br><span class="line">    (<span class="hljs-string">&apos;Conservative families&apos;</span>,<span class="hljs-string">&apos;DD&apos;</span>),</span><br><span class="line">    (<span class="hljs-string">&apos;Cruising Seniors&apos;</span>,<span class="hljs-string">&apos;DL&apos;</span>),</span><br><span class="line">    (<span class="hljs-string">&apos;Average Family &apos;</span>,<span class="hljs-string">&apos;MN&apos;</span>),</span><br><span class="line">    (<span class="hljs-string">&apos;Living well&apos;</span>,<span class="hljs-string">&apos;KA&apos;</span>),</span><br><span class="line">    (<span class="hljs-string">&apos;Successful hedonists&apos;</span>,<span class="hljs-string">&apos;JH&apos;</span>),</span><br><span class="line">    (<span class="hljs-string">&apos;Retired and Religious&apos;</span>,<span class="hljs-string">&apos;AX&apos;</span>),</span><br><span class="line">    (<span class="hljs-string">&apos;Career Loners&apos;</span>,<span class="hljs-string">&apos;HY&apos;</span>),(<span class="hljs-string">&apos;Farmers&apos;</span>,<span class="hljs-string">&apos;JH&apos;</span>)</span><br><span class="line">], schema=StructType() \</span><br><span class="line">    .add(<span class="hljs-string">&quot;Customer_main_type&quot;</span>,<span class="hljs-string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="hljs-string">&quot;Region Code&quot;</span>,<span class="hljs-string">&quot;string&quot;</span>))</span><br><span class="line">new_df=df.join(region_data,on=<span class="hljs-string">&apos;Customer_main_type&apos;</span>)</span><br><span class="line">new_df.groupby(<span class="hljs-string">&quot;Region Code&quot;</span>).count().show()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Pivoting"><a href="#Pivoting" class="headerlink" title="Pivoting"></a>Pivoting</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df.groupBy(<span class="hljs-string">&apos;Customer_main_type&apos;</span>) \</span><br><span class="line">    .pivot(<span class="hljs-string">&apos;Avg_age&apos;</span>) \ </span><br><span class="line">    .sum(<span class="hljs-string">&apos;Avg_Salary&apos;</span>) \</span><br><span class="line">    .fillna(<span class="hljs-number">0</span>) \ </span><br><span class="line">    .show()</span><br><span class="line">df.groupBy(<span class="hljs-string">&apos;Customer_main_type&apos;</span>) \</span><br><span class="line">    .pivot(<span class="hljs-string">&apos;label&apos;</span>) \</span><br><span class="line">    .sum(<span class="hljs-string">&apos;Avg_Salary&apos;</span>) \</span><br><span class="line">    .fillna(<span class="hljs-number">0</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Window-Functions-or-Windowed-Aggregates"><a href="#Window-Functions-or-Windowed-Aggregates" class="headerlink" title="Window Functions or Windowed Aggregates"></a>Window Functions or Windowed Aggregates</h2><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> pyspark.sql.window <span class="hljs-keyword">import</span> Window</span><br><span class="line"><span class="hljs-keyword">from</span> pyspark.sql.functions <span class="hljs-keyword">import</span> col,row_number</span><br><span class="line">win = Window.orderBy(df[<span class="hljs-string">&apos;Avg_Salary&apos;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="hljs-string">&apos;rank&apos;</span>, row_number().over(win).alias(<span class="hljs-string">&apos;rank&apos;</span>)).show()</span><br><span class="line"></span><br><span class="line">win_1=Window.partitionBy(<span class="hljs-string">&quot;Customer_subtype&quot;</span>).orderBy(df[<span class="hljs-string">&apos;Avg_Salary&apos;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="hljs-string">&apos;rank&apos;</span>, row_number().over(win_1).alias(<span class="hljs-string">&apos;rank&apos;</span>))</span><br><span class="line">df.groupBy(<span class="hljs-string">&apos;rank&apos;</span>).count().orderBy(<span class="hljs-string">&apos;rank&apos;</span>).show()</span><br><span class="line">df.filter(col(<span class="hljs-string">&apos;rank&apos;</span>) &lt; <span class="hljs-number">4</span>).show()</span><br></pre></td></tr></tbody></table></figure><p></p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/spark/">#spark</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/07/13/cpp-note/">cpp-note</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5eddd95596db7c49"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en-AU/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-width="100%" data-href="http://yoursite.com/2020/07/26/spark-note/" data-num-posts="5"></div>
+
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 You Xie&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/xyshell" target="_blank" rel="noopener">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
