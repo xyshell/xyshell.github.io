@@ -132,7 +132,7 @@
         <span class="column is-narrow">
             
             
-            a few seconds read (About 105 words)
+            a minute read (About 124 words)
         </span>
         
     </div>
@@ -150,6 +150,8 @@
 <li><p>Functions that write to their arguments have names that end in !. These are sometimes called &#x201C;mutating&#x201D; or &#x201C;in-place&#x201D; functions because they are intended to produce changes in their arguments after the function is called, not just return a value.</p>
 </li>
 </ul>
+<h1 id="Package"><a href="#Package" class="headerlink" title="Package"></a>Package</h1><h2 id="Add-package"><a href="#Add-package" class="headerlink" title="Add package"></a>Add package</h2><p></p><figure class="highlight julia hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Pkg; Pkg.add(<span class="hljs-string">&quot;Date&quot;</span>)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Use-package"><a href="#Use-package" class="headerlink" title="Use package"></a>Use package</h2><p></p><figure class="highlight julia hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> Dates</span><br><span class="line">isleapyear(<span class="hljs-number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> Dates</span><br><span class="line">Dates.isleapyear(<span class="hljs-number">4</span>)</span><br></pre></td></tr></tbody></table></figure><p></p>
 </body></html>
     
     </div>

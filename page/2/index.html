@@ -113,6 +113,40 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2020/06/08/linux-note/" itemprop="url">Linux Note</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-06-08T05:26:27.000Z" itemprop="datePublished">Jun 8 2020</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            a few seconds read (About 48 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh -i &lt;path-to-pem&gt; admin@&lt;ip/dns&gt;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">Local Port Forwarding:</span><br><span class="line">``` bash</span><br><span class="line">ssh -i &lt;path-to-pem&gt; -l admin &lt;ip/dns&gt; -L 9999:localhost:9999</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="SCP"><a href="#SCP" class="headerlink" title="SCP"></a>SCP</h1><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">scp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip/dns&gt;:/home/admin/&lt;path-to-target-file&gt;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Auto-start after reboot</span></span><br><span class="line">```bash</span><br><span class="line">$ systemctl <span class="hljs-built_in">enable</span> docker</span><br><span class="line">Synchronizing state of docker.service...</span><br><span class="line">Executing /lib/systemd/systemd-sysv-install <span class="hljs-built_in">enable</span> docker</span><br><span class="line">$ systemctl is-enabled docker</span><br><span class="line">enabled</span><br></pre></td></tr></tbody></table></figure><p></p>
+</body></html>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2020/06/08/git-note/" itemprop="url">Git Note</a>
         
     </h1>
