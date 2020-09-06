@@ -1108,4 +1108,27 @@
         <tag>algo</tag>
       </tags>
   </entry>
+  <entry>
+    <title>regex-note</title>
+    <url>/2020/09/05/regex-note/</url>
+    <content><![CDATA[<html><head></head><body><p><img src="/photos/regex-note/reference.png" alt="reference"></p>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><ul>
+<li>email address: <code>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</code></li>
+</ul>
+</body></html>]]></content>
+      <tags>
+        <tag>regex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>email-note</title>
+    <url>/2020/09/05/email-note/</url>
+    <content><![CDATA[<html><head></head><body><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="https://julien.danjou.info/sending-emails-in-python-tutorial-code-examples/" target="_blank" rel="noopener">Send email in Python</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24180606" target="_blank" rel="noopener">&#x7B80;&#x5355;&#x4E09;&#x6B65;&#xFF0C;&#x7528; Python &#x53D1;&#x90AE;&#x4EF6;</a></li>
+</ul>
+<h1 id="Send-email-from-gmail"><a href="#Send-email-from-gmail" class="headerlink" title="Send email from gmail:"></a>Send email from gmail:</h1><p>Turn on <a href="https://myaccount.google.com/lesssecureapps" target="_blank" rel="noopener">Less secure app access</a></p>
+<p></p><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> smtplib</span><br><span class="line"><span class="hljs-keyword">from</span> email.mime.text <span class="hljs-keyword">import</span> MIMEText</span><br><span class="line"><span class="hljs-keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">port = <span class="hljs-number">465</span></span><br><span class="line">password = input(<span class="hljs-string">&quot;your password&quot;</span>)</span><br><span class="line">context = ssl.create_default_context()</span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="hljs-string">&quot;The body of the email is here&quot;</span>)</span><br><span class="line">msg[<span class="hljs-string">&apos;Subject&apos;</span>] = <span class="hljs-string">&quot;An Email Alert&quot;</span></span><br><span class="line">msg[<span class="hljs-string">&apos;From&apos;</span>] = <span class="hljs-string">&quot;my@gmail.com&quot;</span></span><br><span class="line">msg[<span class="hljs-string">&apos;To&apos;</span>] = <span class="hljs-string">&quot;other@xxx.xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">with</span> smtplib.SMTP_SSL(<span class="hljs-string">&quot;smtp.gmail.com&quot;</span>, port, context=context) <span class="hljs-keyword">as</span> server:</span><br><span class="line">    server.login(<span class="hljs-string">&quot;my@gmail.com&quot;</span>, password)</span><br><span class="line">    server.send_message(msg)</span><br></pre></td></tr></tbody></table></figure><p></p>
+</body></html>]]></content>
+  </entry>
 </search>

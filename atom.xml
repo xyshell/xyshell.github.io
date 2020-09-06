@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-08-12T19:30:56.706Z</updated>
+  <updated>2020-09-06T00:44:18.377Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>email-note</title>
+    <link href="http://yoursite.com/2020/09/05/email-note/"/>
+    <id>http://yoursite.com/2020/09/05/email-note/</id>
+    <published>2020-09-06T00:37:37.000Z</published>
+    <updated>2020-09-06T00:44:18.377Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul><li><a href="https://julien.danjou.info/sending-emails-in-python-tutorial-code-examples/" target="_blank" rel="noopener">Send email in Python</a></li><li><a href="https://zhuanlan.zhihu.com/p/24180606" target="_blank" rel="noopener">&#x7B80;&#x5355;&#x4E09;&#x6B65;&#xFF0C;&#x7528; Python &#x53D1;&#x90AE;&#x4EF6;</a></li></ul><h1 id="Send-email-from-gmail"><a href="#Send-email-from-gmail" class="headerlink" title="Send email from gmail:"></a>Send email from gmail:</h1><p>Turn on <a href="https://myaccount.google.com/lesssecureapps" target="_blank" rel="noopener">Less secure app access</a></p><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> smtplib</span><br><span class="line"><span class="hljs-keyword">from</span> email.mime.text <span class="hljs-keyword">import</span> MIMEText</span><br><span class="line"><span class="hljs-keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">port = <span class="hljs-number">465</span></span><br><span class="line">password = input(<span class="hljs-string">&quot;your password&quot;</span>)</span><br><span class="line">context = ssl.create_default_context()</span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="hljs-string">&quot;The body of the email is here&quot;</span>)</span><br><span class="line">msg[<span class="hljs-string">&apos;Subject&apos;</span>] = <span class="hljs-string">&quot;An Email Alert&quot;</span></span><br><span class="line">msg[<span class="hljs-string">&apos;From&apos;</span>] = <span class="hljs-string">&quot;my@gmail.com&quot;</span></span><br><span class="line">msg[<span class="hljs-string">&apos;To&apos;</span>] = <span class="hljs-string">&quot;other@xxx.xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">with</span> smtplib.SMTP_SSL(<span class="hljs-string">&quot;smtp.gmail.com&quot;</span>, port, context=context) <span class="hljs-keyword">as</span> server:</span><br><span class="line">    server.login(<span class="hljs-string">&quot;my@gmail.com&quot;</span>, password)</span><br><span class="line">    server.send_message(msg)</span><br></pre></td></tr></tbody></table></figure><p></p></body></html>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference&quot;&gt;&lt;/a&gt;Reference&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;ht
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>regex-note</title>
+    <link href="http://yoursite.com/2020/09/05/regex-note/"/>
+    <id>http://yoursite.com/2020/09/05/regex-note/</id>
+    <published>2020-09-05T18:51:44.000Z</published>
+    <updated>2020-09-05T18:54:44.382Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><p><img src="/photos/regex-note/reference.png" alt="reference"></p><h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><ul><li>email address: <code>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</code></li></ul></body></html>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;/photos/regex-note/reference.png&quot; alt=&quot;reference&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Example&quot;&gt;&lt;a href=&quot;#Example&quot; class=&quot;head
+      
+    
+    </summary>
+    
+    
+    
+      <category term="regex" scheme="http://yoursite.com/tags/regex/"/>
+    
+  </entry>
   
   <entry>
     <title>algo-note</title>
