@@ -1131,4 +1131,10 @@
 <p></p><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> smtplib</span><br><span class="line"><span class="hljs-keyword">from</span> email.mime.text <span class="hljs-keyword">import</span> MIMEText</span><br><span class="line"><span class="hljs-keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">port = <span class="hljs-number">465</span></span><br><span class="line">password = input(<span class="hljs-string">&quot;your password&quot;</span>)</span><br><span class="line">context = ssl.create_default_context()</span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="hljs-string">&quot;The body of the email is here&quot;</span>)</span><br><span class="line">msg[<span class="hljs-string">&apos;Subject&apos;</span>] = <span class="hljs-string">&quot;An Email Alert&quot;</span></span><br><span class="line">msg[<span class="hljs-string">&apos;From&apos;</span>] = <span class="hljs-string">&quot;my@gmail.com&quot;</span></span><br><span class="line">msg[<span class="hljs-string">&apos;To&apos;</span>] = <span class="hljs-string">&quot;other@xxx.xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">with</span> smtplib.SMTP_SSL(<span class="hljs-string">&quot;smtp.gmail.com&quot;</span>, port, context=context) <span class="hljs-keyword">as</span> server:</span><br><span class="line">    server.login(<span class="hljs-string">&quot;my@gmail.com&quot;</span>, password)</span><br><span class="line">    server.send_message(msg)</span><br></pre></td></tr></tbody></table></figure><p></p>
 </body></html>]]></content>
   </entry>
+  <entry>
+    <title>trick-note</title>
+    <url>/2020/10/07/trick-note/</url>
+    <content><![CDATA[<html><head></head><body><p>document.querySelector(&#x2018;input[type=password]&#x2019;).value</p>
+</body></html>]]></content>
+  </entry>
 </search>

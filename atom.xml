@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-06T00:44:18.377Z</updated>
+  <updated>2020-10-07T21:18:34.219Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>trick-note</title>
+    <link href="http://yoursite.com/2020/10/07/trick-note/"/>
+    <id>http://yoursite.com/2020/10/07/trick-note/</id>
+    <published>2020-10-07T21:18:23.000Z</published>
+    <updated>2020-10-07T21:18:34.219Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><p>document.querySelector(&#x2018;input[type=password]&#x2019;).value</p></body></html>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;document.querySelector(&amp;#x2018;input[type=password]&amp;#x2019;).value&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>email-note</title>
