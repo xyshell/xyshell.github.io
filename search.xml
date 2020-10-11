@@ -46,15 +46,15 @@
   <entry>
     <title>AWS Note</title>
     <url>/2020/06/08/aws-note/</url>
-    <content><![CDATA[<html><head></head><body><h1 id="AWS-website"><a href="#AWS-website" class="headerlink" title="AWS website"></a>AWS website</h1><p><a href="https://infrastructure.aws/" target="_blank" rel="noopener">infrastructure.aws</a></p>
+    <content><![CDATA[<html><head></head><body><h1 id="AWS-Basics"><a href="#AWS-Basics" class="headerlink" title="AWS Basics"></a>AWS Basics</h1><h2 id="AWS-website"><a href="#AWS-website" class="headerlink" title="AWS website"></a>AWS website</h2><p><a href="https://infrastructure.aws/" target="_blank" rel="noopener">infrastructure.aws</a></p>
 <p><a href="http://awstcocalculator.com/" target="_blank" rel="noopener">TCO(total cost of ownership) Calculator</a></p>
 <p><a href="https://calculator.aws/#/" target="_blank" rel="noopener">Pricing Calculator</a></p>
-<h1 id="Install-the-AWS-CLI-and-Boto3"><a href="#Install-the-AWS-CLI-and-Boto3" class="headerlink" title="Install the AWS CLI and Boto3"></a>Install the AWS CLI and Boto3</h1><h2 id="Amazon-Linux-2"><a href="#Amazon-Linux-2" class="headerlink" title="Amazon Linux 2"></a>Amazon Linux 2</h2><p>The AWS CLI is already installed on Amazon Linux 2.</p>
+<h2 id="Install-the-AWS-CLI-and-Boto3"><a href="#Install-the-AWS-CLI-and-Boto3" class="headerlink" title="Install the AWS CLI and Boto3"></a>Install the AWS CLI and Boto3</h2><h3 id="Amazon-Linux-2"><a href="#Amazon-Linux-2" class="headerlink" title="Amazon Linux 2"></a>Amazon Linux 2</h3><p>The AWS CLI is already installed on Amazon Linux 2.</p>
 <p>Install Python 3:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">sudo yum install -y python3-pip python3 python3-setuptools</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>Install Boto3:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">pip3 install boto3 --user</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>Install Python3 using Homebrew:</p>
+<h3 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h3><p>Install Python3 using Homebrew:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">ruby -e <span class="hljs-string">&quot;<span class="hljs-variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>&quot;</span></span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>Install Python 3:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">brew install python</span><br></pre></td></tr></tbody></table></figure><p></p>
@@ -64,12 +64,12 @@
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>Install the AWS CLI and Boto3:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">pip install awscli boto3 --upgrade --user</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h1 id="Configuring-your-AWS-environment"><a href="#Configuring-your-AWS-environment" class="headerlink" title="Configuring your AWS environment"></a>Configuring your AWS environment</h1><p>Obtain your AWS access key and secret access key from the AWS Management Console. Run the following command:</p>
+<h2 id="Configuring-your-AWS-environment"><a href="#Configuring-your-AWS-environment" class="headerlink" title="Configuring your AWS environment"></a>Configuring your AWS environment</h2><p>Obtain your AWS access key and secret access key from the AWS Management Console. Run the following command:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">aws configure</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>This sets up a text file that the AWS CLI and Boto3 libraries look at by default for your credentials: <code>~/.aws/credentials</code>.</p>
 <p>The file should look like this:</p>
 <p></p><figure class="highlight plain hljs"><table><tbody><tr><td class="code"><pre><span class="line">[default]</span><br><span class="line">aws_access_key_id = AKIAIOSFODNN7EXAMPLE</span><br><span class="line">aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h1 id="Test-Your-Credentials"><a href="#Test-Your-Credentials" class="headerlink" title="Test Your Credentials"></a>Test Your Credentials</h1><p>AWS CLI<br>Run the following command:</p>
+<h2 id="Test-Your-Credentials"><a href="#Test-Your-Credentials" class="headerlink" title="Test Your Credentials"></a>Test Your Credentials</h2><p>AWS CLI<br>Run the following command:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="code"><pre><span class="line">aws sts get-caller-identity</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>The output should look like this:</p>
 <p></p><figure class="highlight python hljs"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="hljs-string">&quot;UserId&quot;</span>: <span class="hljs-string">&quot;AIDAJKLMNOPQRSTUVWXYZ&quot;</span>,</span><br><span class="line">    <span class="hljs-string">&quot;Account&quot;</span>: <span class="hljs-string">&quot;123456789012&quot;</span>,</span><br><span class="line">    <span class="hljs-string">&quot;Arn&quot;</span>: <span class="hljs-string">&quot;arn:aws:iam::123456789012:userdevuser&quot;</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
