@@ -113,6 +113,60 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2020/10/12/sql-note/" itemprop="url">sql-note</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2020-10-13T03:27:52.000Z" itemprop="datePublished">Oct 12 2020</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 minutes read (About 834 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>This note follows Essential SQLAlchemy 2nd Edition</p>
+<p>Github repo: <a href="https://github.com/oreillymedia/essential-sqlalchemy-2e/" target="_blank" rel="noopener">https://github.com/oreillymedia/essential-sqlalchemy-2e/</a></p>
+<h1 id="SQLAlchemy-Core"><a href="#SQLAlchemy-Core" class="headerlink" title="SQLAlchemy Core"></a>SQLAlchemy Core</h1><h2 id="Create-Schema"><a href="#Create-Schema" class="headerlink" title="Create Schema"></a>Create Schema</h2><p><img src="/photos/sql-note/Relationship-visualization.png" alt="Relationship-visualization"></p>
+<p>Full in-memory SQLite code sample</p>
+<p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime</span><br><span class="line"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> (MetaData, Table, Column, Integer, Numeric, String, DateTime, ForeignKey, create_engine)</span><br><span class="line"></span><br><span class="line">metadata = MetaData()</span><br><span class="line">cookies = Table(<span class="hljs-string">&apos;cookies&apos;</span>, metadata,</span><br><span class="line">    Column(<span class="hljs-string">&apos;cookie_id&apos;</span>, Integer(), primary_key=<span class="hljs-literal">True</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;cookie_name&apos;</span>, String(<span class="hljs-number">50</span>), index=<span class="hljs-literal">True</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;cookie_recipe_url&apos;</span>, String(<span class="hljs-number">255</span>)),</span><br><span class="line">    Column(<span class="hljs-string">&apos;cookie_sku&apos;</span>, String(<span class="hljs-number">55</span>)),</span><br><span class="line">    Column(<span class="hljs-string">&apos;quantity&apos;</span>, Integer()),</span><br><span class="line">    Column(<span class="hljs-string">&apos;unit_cost&apos;</span>, Numeric(<span class="hljs-number">12</span>, <span class="hljs-number">2</span>))</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">users = Table(<span class="hljs-string">&apos;users&apos;</span>, metadata,</span><br><span class="line">    Column(<span class="hljs-string">&apos;user_id&apos;</span>, Integer(), primary_key=<span class="hljs-literal">True</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;customer_number&apos;</span>, Integer(), autoincrement=<span class="hljs-literal">True</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;username&apos;</span>, String(<span class="hljs-number">15</span>), nullable=<span class="hljs-literal">False</span>, unique=<span class="hljs-literal">True</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;email_address&apos;</span>, String(<span class="hljs-number">255</span>), nullable=<span class="hljs-literal">False</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;phone&apos;</span>, String(<span class="hljs-number">20</span>), nullable=<span class="hljs-literal">False</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;password&apos;</span>, String(<span class="hljs-number">25</span>), nullable=<span class="hljs-literal">False</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;created_on&apos;</span>, DateTime(), default=datetime.now),</span><br><span class="line">    Column(<span class="hljs-string">&apos;updated_on&apos;</span>, DateTime(), default=datetime.now, onupdate=datetime.now)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">orders = Table(<span class="hljs-string">&apos;orders&apos;</span>, metadata,</span><br><span class="line">    Column(<span class="hljs-string">&apos;order_id&apos;</span>, Integer(), primary_key=<span class="hljs-literal">True</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;user_id&apos;</span>, ForeignKey(<span class="hljs-string">&apos;users.user_id&apos;</span>))</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">line_items = Table(<span class="hljs-string">&apos;line_items&apos;</span>, metadata,</span><br><span class="line">    Column(<span class="hljs-string">&apos;line_items_id&apos;</span>, Integer(), primary_key=<span class="hljs-literal">True</span>),</span><br><span class="line">    Column(<span class="hljs-string">&apos;order_id&apos;</span>, ForeignKey(<span class="hljs-string">&apos;orders.order_id&apos;</span>)),</span><br><span class="line">    Column(<span class="hljs-string">&apos;cookie_id&apos;</span>, ForeignKey(<span class="hljs-string">&apos;cookies.cookie_id&apos;</span>)),</span><br><span class="line">    Column(<span class="hljs-string">&apos;quantity&apos;</span>, Integer()),</span><br><span class="line">    Column(<span class="hljs-string">&apos;extended_cost&apos;</span>, Numeric(<span class="hljs-number">12</span>, <span class="hljs-number">2</span>))</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">engine = create_engine(<span class="hljs-string">&apos;sqlite:///:memory:&apos;</span>)</span><br><span class="line">metadata.create_all(engine)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="Data-Operation"><a href="#Data-Operation" class="headerlink" title="Data Operation"></a>Data Operation</h2><h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h3><p>Way1:<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ins = cookies.insert().values(</span><br><span class="line">    cookie_name=<span class="hljs-string">&quot;chocolate chip&quot;</span>,</span><br><span class="line">    cookie_recipe_url=<span class="hljs-string">&quot;http://some.aweso.me/cookie/recipe.html&quot;</span>,</span><br><span class="line">    cookie_sku=<span class="hljs-string">&quot;CC01&quot;</span>,</span><br><span class="line">    quantity=<span class="hljs-string">&quot;12&quot;</span>,</span><br><span class="line">    unit_cost=<span class="hljs-string">&quot;0.50&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="hljs-comment"># str(ins)</span></span><br><span class="line">result = connection.execute(ins)</span><br><span class="line"><span class="hljs-comment"># result.inserted_primary_key</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Way2:<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> insert</span><br><span class="line">ins = insert(cookies).values(</span><br><span class="line">    cookie_name=<span class="hljs-string">&quot;chocolate chip&quot;</span>,</span><br><span class="line">    cookie_recipe_url=<span class="hljs-string">&quot;http://some.aweso.me/cookie/recipe.html&quot;</span>,</span><br><span class="line">    cookie_sku=<span class="hljs-string">&quot;CC01&quot;</span>,</span><br><span class="line">    quantity=<span class="hljs-string">&quot;12&quot;</span>,</span><br><span class="line">    unit_cost=<span class="hljs-string">&quot;0.50&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Way3:<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ins = cookies.insert()</span><br><span class="line">result = connection.execute(</span><br><span class="line">    ins,</span><br><span class="line">    cookie_name=<span class="hljs-string">&apos;dark chocolate chip&apos;</span>,</span><br><span class="line">    cookie_recipe_url=<span class="hljs-string">&apos;http://some.aweso.me/cookie/recipe_dark.html&apos;</span>,</span><br><span class="line">    cookie_sku=<span class="hljs-string">&apos;CC02&apos;</span>,</span><br><span class="line">    quantity=<span class="hljs-string">&apos;1&apos;</span>,</span><br><span class="line">    unit_cost=<span class="hljs-string">&apos;0.75&apos;</span>)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Multiple:<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">inventory_list = [</span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-string">&apos;cookie_name&apos;</span>: <span class="hljs-string">&apos;peanut butter&apos;</span>,</span><br><span class="line">        <span class="hljs-string">&apos;cookie_recipe_url&apos;</span>: <span class="hljs-string">&apos;http://some.aweso.me/cookie/peanut.html&apos;</span>,</span><br><span class="line">        <span class="hljs-string">&apos;cookie_sku&apos;</span>: <span class="hljs-string">&apos;PB01&apos;</span>,</span><br><span class="line">        <span class="hljs-string">&apos;quantity&apos;</span>: <span class="hljs-string">&apos;24&apos;</span>,</span><br><span class="line">        <span class="hljs-string">&apos;unit_cost&apos;</span>: <span class="hljs-string">&apos;0.25&apos;</span></span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-string">&apos;cookie_name&apos;</span>: <span class="hljs-string">&apos;oatmeal raisin&apos;</span>,</span><br><span class="line">        <span class="hljs-string">&apos;cookie_recipe_url&apos;</span>: <span class="hljs-string">&apos;http://some.okay.me/cookie/raisin.html&apos;</span>,</span><br><span class="line">        <span class="hljs-string">&apos;cookie_sku&apos;</span>: <span class="hljs-string">&apos;EWW01&apos;</span>,</span><br><span class="line">        <span class="hljs-string">&apos;quantity&apos;</span>: <span class="hljs-string">&apos;100&apos;</span>,</span><br><span class="line">        <span class="hljs-string">&apos;unit_cost&apos;</span>: <span class="hljs-string">&apos;1.00&apos;</span></span><br><span class="line">    }</span><br><span class="line">]</span><br><span class="line">result = connection.execute(ins, inventory_list)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h3><p>Way1:<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sqlalchemy.sql <span class="hljs-keyword">import</span> select</span><br><span class="line">s = select([cookies])</span><br><span class="line"><span class="hljs-comment"># str(s)</span></span><br><span class="line">rp = connection.execute(s)</span><br><span class="line">results = rp.fetchall()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Way2:<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = cookies.select()</span><br><span class="line">rp = connection.execute(s)</span><br><span class="line"><span class="hljs-keyword">for</span> record <span class="hljs-keyword">in</span> rp:</span><br><span class="line">    print(record.cookie_name)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Sepcify columns, order by, limit, cast:<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> desc</span><br><span class="line"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> cast</span><br><span class="line"></span><br><span class="line">s = select([cookies.c.cookie_name, cookies.c.quantity, <span class="hljs-string">&apos;SKU-&apos;</span> + cookies.c.cookie_sku,</span><br><span class="line">cast((cookies.c.quantity * cookies.c.unit_cost), Numeric(<span class="hljs-number">12</span>,<span class="hljs-number">2</span>)).label(<span class="hljs-string">&apos;inv_cost&apos;</span>)]])</span><br><span class="line">s = s.order_by(desc(cookies.c.quantity), cookies.c.cookie_name)</span><br><span class="line">s = s.limit(<span class="hljs-number">2</span>) <span class="hljs-comment"># Also by, s = cookies.select(limit=1)</span></span><br><span class="line">rp = connection.execute(s)</span><br><span class="line"><span class="hljs-comment"># rp.keys()</span></span><br><span class="line"><span class="hljs-keyword">for</span> cookie <span class="hljs-keyword">in</span> rp:</span><br><span class="line">    print(<span class="hljs-string">&apos;{} - {}&apos;</span>.format(cookie.quantity, cookie.cookie_name))</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Aggregate:<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sqlalchemy.sql <span class="hljs-keyword">import</span> func</span><br><span class="line"></span><br><span class="line">s = select([func.count(cookies.c.cookie_name).label(<span class="hljs-string">&apos;inventory_count&apos;</span>)])</span><br><span class="line">rp = connection.execute(s)</span><br><span class="line">record = rp.first()</span><br><span class="line"><span class="hljs-comment"># record.keys()</span></span><br><span class="line"><span class="hljs-comment"># record.inventory_count</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>Filter(Where):<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">s = select([cookies]).where(cookies.c.cookie_name == <span class="hljs-string">&apos;chocolate chip&apos;</span>)</span><br><span class="line">rp = connection.execute(s)</span><br><span class="line">record = rp.first()</span><br><span class="line"><span class="hljs-comment"># record.items()</span></span><br><span class="line"></span><br><span class="line">s = select([cookies]).where(cookies.c.cookie_name.like(<span class="hljs-string">&apos;%chocolate%&apos;</span>)).where(cookies.c.quantity == <span class="hljs-number">12</span>)</span><br><span class="line"><span class="hljs-comment"># str(s)</span></span><br><span class="line">rp = connection.execute(s)</span><br><span class="line"><span class="hljs-keyword">for</span> record <span class="hljs-keyword">in</span> rp.fetchall():</span><br><span class="line">    print(record.cookie_name)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> and_, or_, not_</span><br><span class="line">s = select([cookies]).where(or_(</span><br><span class="line">    cookies.c.quantity.between(<span class="hljs-number">10</span>, <span class="hljs-number">50</span>),</span><br><span class="line">    cookies.c.cookie_name.contains(<span class="hljs-string">&apos;chip&apos;</span>)</span><br><span class="line">))</span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> connection.execute(s):</span><br><span class="line">    print(row.cookie_name)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> update</span><br><span class="line">u = update(cookies).where(cookies.c.cookie_name == <span class="hljs-string">&quot;chocolate chip&quot;</span>)</span><br><span class="line">u = u.values(quantity=(cookies.c.quantity + <span class="hljs-number">120</span>))</span><br><span class="line">result = connection.execute(u)</span><br><span class="line">print(result.rowcount)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> delete</span><br><span class="line">u = delete(cookies).where(cookies.c.cookie_name == <span class="hljs-string">&quot;dark chocolate chip&quot;</span>)</span><br><span class="line">result = connection.execute(u)</span><br><span class="line">print(result.rowcount)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="Join"><a href="#Join" class="headerlink" title="Join"></a>Join</h3><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">columns = [orders.c.order_id, users.c.username, users.c.phone, cookies.c.cookie_name, line_items.c.quantity, line_items.c.extended_cost]</span><br><span class="line">cookiemon_orders = select(columns)</span><br><span class="line">cookiemon_orders = cookiemon_orders.select_from(users.join(orders).join(line_items).join(cookies)).where(users.c.username == <span class="hljs-string">&apos;cookiemon&apos;</span>)</span><br><span class="line">result = connection.execute(cookiemon_orders).fetchall()</span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> result:</span><br><span class="line">    print(row)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>outerjoin:<br></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">columns = [users.c.username, orders.c.order_id]</span><br><span class="line">all_orders = select(columns)</span><br><span class="line">all_orders = all_orders.select_from(users.outerjoin(orders))</span><br><span class="line">result = connection.execute(all_orders).fetchall()</span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> result:</span><br><span class="line">    print(row)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="Alias"><a href="#Alias" class="headerlink" title="Alias"></a>Alias</h3><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">manager = employee_table.alias()</span><br><span class="line">stmt = select([employee_table.c.name], and_(employee_table.c.manager_id==manager.c.id, manager.c.name==<span class="hljs-string">&apos;Fred&apos;</span>))</span><br><span class="line">print(stmt)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="Groupby"><a href="#Groupby" class="headerlink" title="Groupby"></a>Groupby</h3><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">columns = [users.c.username, func.count(orders.c.order_id)]</span><br><span class="line">all_orders = select(columns)</span><br><span class="line">all_orders = all_orders.select_from(users.outerjoin(orders)).group_by(users.c.username)</span><br><span class="line">print(str(all_orders))</span><br><span class="line">result = connection.execute(all_orders).fetchall()</span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> result:</span><br><span class="line">    print(row)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="Raw-Queries"><a href="#Raw-Queries" class="headerlink" title="Raw Queries"></a>Raw Queries</h3><p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = connection.execute(<span class="hljs-string">&quot;select * from orders&quot;</span>).fetchall()</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p></p><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> text</span><br><span class="line">stmt = select([users]).where(text(<span class="hljs-string">&apos;username=&quot;cookiemon&quot;&apos;</span>))</span><br><span class="line">print(connection.execute(stmt).fetchall())</span><br></pre></td></tr></tbody></table></figure><p></p>
+</body></html>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2020/10/07/trick-note/" itemprop="url">trick-note</a>
         
     </h1>
@@ -599,208 +653,6 @@
 <h2 id="Address-types"><a href="#Address-types" class="headerlink" title="Address types"></a>Address types</h2><p><img src="/photos/intro-network-note/address_types.png" alt="address_types"></p>
 <h2 id="Private-ip-address"><a href="#Private-ip-address" class="headerlink" title="Private ip address"></a>Private ip address</h2><p>127.0.0.1: loopback address, localhost</p>
 <p><img src="/photos/intro-network-note/private_ip.png" alt="private_ip"></p>
-</body></html>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2020/06/17/k8s-note/" itemprop="url">k8s Note</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2020-06-18T01:00:10.000Z" itemprop="datePublished">Jun 17 2020</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            13 minutes read (About 1908 words)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><h1 id="Kubernetes-Architecture"><a href="#Kubernetes-Architecture" class="headerlink" title="Kubernetes Architecture"></a>Kubernetes Architecture</h1><p><img src="/photos/k8s-note/k8s_architecture.png" alt="k8s_architecture"></p>
-<h2 id="Master-Node"><a href="#Master-Node" class="headerlink" title="Master Node"></a>Master Node</h2><p><img src="/photos/k8s-note/master_node.png" alt="master_node"></p>
-<p>control plane responsible for managing the state of a Kubernetes cluster(brain)</p>
-<p>users send requests to the master node via a Command Line Interface (CLI) tool, a Web User-Interface (Web UI) Dashboard, or Application Programming Interface (API)</p>
-<p>master node replicas are added to the cluster, configured in High-Availability (HA) mode to ensure the control plane&#x2019;s fault tolerance. While only one of the master node replicas actively manages the cluster, the control plane components stay in sync across the master node replicas</p>
-<p>4 components:</p>
-<ol>
-<li>API server</li>
-<li>Scheduler</li>
-<li>Controller managers</li>
-<li>etcd</li>
-</ol>
-<h3 id="API-Server"><a href="#API-Server" class="headerlink" title="API Server"></a>API Server</h3><p>a central control plane component, coordinating all the administrative tasks</p>
-<p>reads the Kubernetes cluster&#x2019;s current state from the etcd, and after a call&#x2019;s execution, saves the resulting state of the Kubernetes cluster in etcd(only master plane component talks to etcd)</p>
-<p>designed to scale horizontally: it scales by deploying more instances to balance traffic between those instances</p>
-<p>highly configurable and customizable, supports the addition of custom API servers</p>
-<h3 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h3><p>assign new objects, such as pods, to nodes, based on current Kubernetes cluster state and new object&#x2019;s requirements</p>
-<p>takes into account: individual and collective resource requirements, hardware/software/policy constraints, affinity and anti-affinity specifications, data locality, inter-workload interference, and deadlines.</p>
-<p>highly configurable and customizable, supports additional custom schedulers (specify the name of the custom scheduler in object &#x2018;s configuration data)</p>
-<h3 id="Controller-Managers"><a href="#Controller-Managers" class="headerlink" title="Controller Managers"></a>Controller Managers</h3><p>run controllers to regulate the state of the Kubernetes cluster</p>
-<p>controllers are watch-loops continuously running and comparing the cluster&#x2019;s desired state (provided by objects&#x2019; configuration data) with its current state (obtained from etcd data store via the API server), includes:</p>
-<ul>
-<li>Node controller: Responsible for noticing and responding when nodes go down.</li>
-<li>Replication controller: Responsible for maintaining the correct number of pods for every replication controller object in the system.</li>
-<li>Endpoints controller: Populates the Endpoints object (that is, joins Services &amp; Pods).</li>
-<li>Service Account &amp; Token controllers: Create default accounts and API access tokens for new namespaces.</li>
-</ul>
-<p>corrective action is taken in the cluster until its current state matches the desired state.</p>
-<ul>
-<li><p>kube-controller-manager: runs controllers responsible to act when nodes become unavailable, to ensure pod counts are as expected, to create endpoints, service accounts, and API access tokens.</p>
-</li>
-<li><p>cloud-controller-manager: runs controllers responsible to interact with the underlying infrastructure of a cloud provider when nodes become unavailable, to manage storage volumes when provided by a cloud service, and to manage load balancing and routing.</p>
-<ul>
-<li>Node controller: For checking the cloud provider to determine if a node has been deleted in the cloud after it stops responding</li>
-<li>Route controller: For setting up routes in the underlying cloud infrastructure</li>
-<li>Service controller: For creating, updating and deleting cloud provider load balancers</li>
-</ul>
-</li>
-</ul>
-<h3 id="etcd"><a href="#etcd" class="headerlink" title="etcd"></a><a href="https://etcd.io/docs/" target="_blank" rel="noopener">etcd</a></h3><p>a distributed key-value store which holds cluster state related data, to persist the Kubernetes cluster&#x2019;s state</p>
-<p>either configured on the master node (stacked) or on its dedicated host (external)</p>
-<ul>
-<li>when stacked: HA master node replicas ensure etcd resiliency.</li>
-<li>when external: etcd hosts have to be separately replicated for HA mode configuration.</li>
-</ul>
-<p>based on <a href="https://web.stanford.edu/~ouster/cgi-bin/papers/raft-atc14" target="_blank" rel="noopener">Raft Consensus Algorithm</a>, written in Golang, besides storing the cluster state, also used to store configuration details such as subnets, ConfigMaps, Secrets, etc.</p>
-<h2 id="Worker-Node"><a href="#Worker-Node" class="headerlink" title="Worker Node"></a>Worker Node</h2><p><img src="/photos/k8s-note/worker_node.png" alt="worker_node"></p>
-<p>provides a running environment for client applications, which are encapsulated in Pods, controlled by the cluster control plane agents running on the master node</p>
-<p>Pods are scheduled on worker nodes, where they find required compute, memory and storage resources to run, and networking to talk to each other and the outside world.</p>
-<p>A Pod is the smallest scheduling unit in Kubernetes, a logical collection of one or more containers scheduled together.</p>
-<p>to access the applications from the external world, we connect to worker nodes and not to the master node.</p>
-<p>4 parts:</p>
-<ol>
-<li>Container runtime</li>
-<li>kubelet</li>
-<li>kube-proxy</li>
-<li>Addons for DNS, Dashboard, cluster-level monitoring and logging.</li>
-</ol>
-<h3 id="Container-Runtime"><a href="#Container-Runtime" class="headerlink" title="Container Runtime"></a>Container Runtime</h3><p>responsible for running containers, e.x. Docker, containerd, CRI-O</p>
-<h3 id="Kubelet"><a href="#Kubelet" class="headerlink" title="Kubelet"></a>Kubelet</h3><p>an agent running on each node, communicates with the control plane components from the master node, makes sure containers are running in a Pod.</p>
-<p>receives Pod definitions, primarily from the API server, and interacts with the container runtime on the node to run containers associated with the Pod.</p>
-<p>monitors the health of the Pod&#x2019;s running container</p>
-<p>connects to the container runtime using Container Runtime Interface (CRI). which consists of protocol buffers, gRPC API, and libraries.</p>
-<p><img src="/photos/k8s-note/CRI.png" alt="CRI"></p>
-<p>CRI implements two services:</p>
-<ul>
-<li>ImageService: responsible for all the image-related operations</li>
-<li>RuntimeService: responsible for all the Pod and container-related operations.</li>
-</ul>
-<p>some examples of CRI shims:</p>
-<ul>
-<li>dockershim: with dockershim, containers are created using Docker installed on the worker nodes. Internally, Docker uses containerd to create and manage containers.</li>
-</ul>
-<p><img src="/photos/k8s-note/dockershim.png" alt="dockershim"></p>
-<ul>
-<li>cri-containerd: with cri-containerd, we can directly use Docker&#x2019;s smaller offspring containerd to create and manage containers.</li>
-</ul>
-<p><img src="/photos/k8s-note/cri-containerd.png" alt="cri-containerd"></p>
-<ul>
-<li>cri-o: cri-o enables using any Open Container Initiative (OCI) compatible runtimes with Kubernetes. At the time this course was created, CRI-O supported runC and Clear Containers as container runtimes. However, in principle, any OCI-compliant runtime can be plugged-in.</li>
-</ul>
-<p><img src="/photos/k8s-note/cri-o.png" alt="cri-o"></p>
-<h3 id="Kube-proxy"><a href="#Kube-proxy" class="headerlink" title="Kube-proxy"></a>Kube-proxy</h3><p>network agent which runs on each node, responsible for dynamic updates and maintenance of all networking rules on the node, abstracts the details of Pods networking and forwards connection requests to Pods.</p>
-<p>implements part of the Kubernetes Service concept.</p>
-<p>maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.</p>
-<p>uses the operating system packet filtering layer if there is one and it&#x2019;s available. Otherwise, forwards the traffic itself.</p>
-<h3 id="Addons"><a href="#Addons" class="headerlink" title="Addons"></a>Addons</h3><p>use Kubernetes resources (DaemonSet, Deployment, etc) to implement cluster features and functionality not yet available in Kubernetes, therefore implemented through 3rd-party pods and services.</p>
-<ul>
-<li>DNS: cluster DNS is a DNS server for Kubernetes services, required to assign DNS records to Kubernetes objects and resources</li>
-<li>Web UI(Dashboard): a general purposed web-based user interface for cluster management</li>
-<li>Container Resource Monitoring: records generic time-series metrics about containers in a central database, and provides a UI for browsing that data.</li>
-<li>Cluster-level Logging: responsible for saving container logs to a central log store with search/browsing interface.</li>
-</ul>
-<h2 id="Networking-Challenges"><a href="#Networking-Challenges" class="headerlink" title="Networking Challenges"></a>Networking Challenges</h2><h3 id="Container-to-Container-Communication-Inside-Pods"><a href="#Container-to-Container-Communication-Inside-Pods" class="headerlink" title="Container-to-Container Communication Inside Pods"></a>Container-to-Container Communication Inside Pods</h3><p>When a Pod is started, a network namespace is created inside the Pod, and all containers running inside the Pod will share that network namespace so that they can talk to each other via localhost.</p>
-<h3 id="Pod-to-Pod-Communication-Across-Nodes"><a href="#Pod-to-Pod-Communication-Across-Nodes" class="headerlink" title="Pod-to-Pod Communication Across Nodes"></a>Pod-to-Pod Communication Across Nodes</h3><p>Kubernetes network model &#x201C;IP-per-Pod&#x201D;</p>
-<p>containers are integrated with the overall Kubernetes networking model through the use of the <a href="https://github.com/containernetworking/cni" target="_blank" rel="noopener">Container Network Interface</a> (CNI) supported by <a href="https://github.com/containernetworking/cni#3rd-party-plugins" target="_blank" rel="noopener">CNI plugins</a>.</p>
-<h3 id="Pod-to-External-World-Communication"><a href="#Pod-to-External-World-Communication" class="headerlink" title="Pod-to-External World Communication"></a>Pod-to-External World Communication</h3><p>by services, complex constructs which encapsulate networking rules definitions on cluster nodes. By exposing services to the external world with kube-proxy, applications become accessible from outside the cluster over a virtual IP.</p>
-<h1 id="Installing-Kubernetes"><a href="#Installing-Kubernetes" class="headerlink" title="Installing Kubernetes"></a>Installing Kubernetes</h1><h2 id="Kubernetes-Configuration"><a href="#Kubernetes-Configuration" class="headerlink" title="Kubernetes Configuration"></a>Kubernetes Configuration</h2><p>four major installation types:</p>
-<ul>
-<li>All-in-One Single-Node Installation:</li>
-</ul>
-<p>In this setup, all the master and worker components are installed and running on a single-node. While it is useful for learning, development, and testing, it should not be used in production. Minikube is one such example, and we are going to explore it in future chapters.</p>
-<ul>
-<li>Single-Node etcd, Single-Master and Multi-Worker Installation:</li>
-</ul>
-<p>In this setup, we have a single-master node, which also runs a single-node etcd instance. Multiple worker nodes are connected to the master node.</p>
-<ul>
-<li>Single-Node etcd, Multi-Master and Multi-Worker Installation:</li>
-</ul>
-<p>In this setup, we have multiple-master nodes configured in HA mode, but we have a single-node etcd instance. Multiple worker nodes are connected to the master nodes.</p>
-<ul>
-<li>Multi-Node etcd, Multi-Master and Multi-Worker Installation:</li>
-</ul>
-<p>In this mode, etcd is configured in clustered HA mode, the master nodes are all configured in HA mode, connecting to multiple worker nodes. This is the most advanced and recommended production setup.</p>
-<h2 id="Localhost-Installation"><a href="#Localhost-Installation" class="headerlink" title="Localhost Installation"></a>Localhost Installation</h2><p>localhost installation options available to deploy single- or multi-node Kubernetes clusters on our workstation/laptop:</p>
-<ul>
-<li>Minikube: single-node local Kubernetes cluster</li>
-<li>Docker Desktop: single-node local Kubernetes cluster for Windows and Mac</li>
-<li>CDK on LXD: multi-node local cluster with LXD containers.</li>
-</ul>
-<h2 id="On-Premise-Installation"><a href="#On-Premise-Installation" class="headerlink" title="On-Premise Installation"></a>On-Premise Installation</h2><p>Kubernetes can be installed on-premise on VMs and bare metal.</p>
-<ul>
-<li>On-Premise VMs:</li>
-</ul>
-<p>Kubernetes can be installed on VMs created via Vagrant, VMware vSphere, KVM, or another Configuration Management (CM) tool in conjunction with a hypervisor software. There are different tools available to automate the installation, such as Ansible or kubeadm.</p>
-<ul>
-<li>On-Premise Bare Metal:</li>
-</ul>
-<p>Kubernetes can be installed on on-premise bare metal, on top of different operating systems, like RHEL, CoreOS, CentOS, Fedora, Ubuntu, etc. Most of the tools used to install Kubernetes on VMs can be used with bare metal installations as well.</p>
-<h2 id="Cloud-Installation"><a href="#Cloud-Installation" class="headerlink" title="Cloud Installation"></a>Cloud Installation</h2><p>Kubernetes can be installed and managed on almost any cloud environment:</p>
-<ul>
-<li>Hosted Solutions:</li>
-</ul>
-<p>With Hosted Solutions, any given software is completely managed by the provider. The user pays hosting and management charges. Some of the vendors providing hosted solutions for Kubernetes are:</p>
-<blockquote>
-<p>Google Kubernetes Engine (GKE)<br>Azure Kubernetes Service (AKS)<br>Amazon Elastic Container Service for Kubernetes (EKS)<br>DigitalOcean Kubernetes<br>OpenShift Dedicated<br>Platform9<br>IBM Cloud Kubernetes Service.</p>
-</blockquote>
-<ul>
-<li>Turnkey Cloud Solutions:</li>
-</ul>
-<p>Below are only a few of the Turnkey Cloud Solutions, to install Kubernetes with just a few commands on an underlying IaaS platform, such as:</p>
-<blockquote>
-<p>Google Compute Engine (GCE)<br>Amazon AWS (AWS EC2)<br>Microsoft Azure (AKS).</p>
-</blockquote>
-<ul>
-<li>Turnkey On-Premise Solutions:</li>
-</ul>
-<p>The On-Premise Solutions install Kubernetes on secure internal private clouds with just a few commands:</p>
-<blockquote>
-<p>GKE On-Prem by Google Cloud<br>IBM Cloud Private<br>OpenShift Container Platform by Red Hat.</p>
-</blockquote>
-<h2 id="Kubernetes-Installation-Tools-Resources"><a href="#Kubernetes-Installation-Tools-Resources" class="headerlink" title="Kubernetes Installation Tools/Resources"></a>Kubernetes Installation Tools/Resources</h2><p>It is worth checking out the <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way" target="_blank" rel="noopener">Kubernetes The Hard Way</a> GitHub project</p>
-<p>some useful tools/resources available:</p>
-<ul>
-<li>kubeadm:</li>
-</ul>
-<p>kubeadm is a first-class citizen on the Kubernetes ecosystem. It is a secure and recommended way to bootstrap a single- or multi-node Kubernetes cluster. It has a set of building blocks to setup the cluster, but it is easily extendable to add more features. Please note that kubeadm does not support the provisioning of hosts.</p>
-<ul>
-<li>kubespray</li>
-</ul>
-<p>With kubespray (formerly known as kargo), we can install Highly Available Kubernetes clusters on AWS, GCE, Azure, OpenStack, or bare metal. Kubespray is based on Ansible, and is available on most Linux distributions. It is a Kubernetes Incubator project.</p>
-<ul>
-<li>kops</li>
-</ul>
-<p>With kops, we can create, destroy, upgrade, and maintain production-grade, highly-available Kubernetes clusters from the command line. It can provision the machines as well. Currently, AWS is officially supported. Support for GCE is in beta, and VMware vSphere in alpha stage, and other platforms are planned for the future. Explore the kops project for more details.</p>
-<ul>
-<li>kube-aws</li>
-</ul>
-<p>With kube-aws we can create, upgrade and destroy Kubernetes clusters on AWS from the command line. Kube-aws is also a Kubernetes Incubator project.</p>
-<h2 id="Minikube"><a href="#Minikube" class="headerlink" title="Minikube"></a>Minikube</h2><p>A Local Single-Node Kubernetes Cluster</p>
 </body></html>
     
     </div>
