@@ -132,7 +132,7 @@
         <span class="column is-narrow">
             
             
-            31 minutes read (About 4714 words)
+            31 minutes read (About 4721 words)
         </span>
         
     </div>
@@ -151,6 +151,8 @@
 <p>Avoid <code>sudo</code> when running docker:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nano /etc/group</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>add username to <code>docker:x:999:&lt;username&gt;</code>, e.x. <code>docker:x:999:admin</code></p>
+<p>Or:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G docker &lt;username&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h2 id="On-Ubuntu-by-Shell-Script"><a href="#On-Ubuntu-by-Shell-Script" class="headerlink" title="On Ubuntu by Shell Script"></a>On Ubuntu by Shell Script</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>add user accout to local unix docker group, to avoid <code>sudo</code>:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker &lt;username&gt; <span class="hljs-comment"># e.x. admin</span></span><br></pre></td></tr></tbody></table></figure><p></p>

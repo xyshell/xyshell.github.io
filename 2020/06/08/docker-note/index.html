@@ -46,7 +46,7 @@
 <meta property="og:image" content="http://yoursite.com/photos/docker-note/routing_mesh.png">
 <meta property="og:image" content="http://yoursite.com/photos/docker-note/HRM.png">
 <meta property="article:published_time" content="2020-06-08T17:40:24.000Z">
-<meta property="article:modified_time" content="2020-06-17T13:30:04.683Z">
+<meta property="article:modified_time" content="2020-10-17T21:56:08.520Z">
 <meta property="article:author" content="You Xie">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -474,7 +474,7 @@
         <span class="column is-narrow">
             
             
-            31 minutes read (About 4714 words)
+            31 minutes read (About 4721 words)
         </span>
         
     </div>
@@ -493,6 +493,8 @@
 <p>Avoid <code>sudo</code> when running docker:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nano /etc/group</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>add username to <code>docker:x:999:&lt;username&gt;</code>, e.x. <code>docker:x:999:admin</code></p>
+<p>Or:</p>
+<p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G docker &lt;username&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h2 id="On-Ubuntu-by-Shell-Script"><a href="#On-Ubuntu-by-Shell-Script" class="headerlink" title="On Ubuntu by Shell Script"></a>On Ubuntu by Shell Script</h2><p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>add user accout to local unix docker group, to avoid <code>sudo</code>:</p>
 <p></p><figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker &lt;username&gt; <span class="hljs-comment"># e.x. admin</span></span><br></pre></td></tr></tbody></table></figure><p></p>
