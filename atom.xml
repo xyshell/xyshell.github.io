@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-17T01:39:54.840Z</updated>
+  <updated>2020-11-20T22:46:20.595Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cpa-note</title>
+    <link href="http://yoursite.com/2020/11/20/cpa-note/"/>
+    <id>http://yoursite.com/2020/11/20/cpa-note/</id>
+    <published>2020-11-20T22:19:42.000Z</published>
+    <updated>2020-11-20T22:46:20.595Z</updated>
+    
+    <content type="html"><![CDATA[<html><head></head><body><h1 id="CPA-&#x2013;-C-Certified-Associate-Programmer"><a href="#CPA-&#x2013;-C-Certified-Associate-Programmer" class="headerlink" title="CPA &#x2013; C++ Certified Associate Programmer"></a>CPA &#x2013; C++ Certified Associate Programmer</h1><h2 id="Readings"><a href="#Readings" class="headerlink" title="Readings"></a>Readings</h2><ul><li><a href="https://www.stroustrup.com/4th.html" target="_blank" rel="noopener">The C++ Programming Language (4th Edition)</a> by Bjarne Stroustrup</li><li>Thinking in C++ by Bruce Eckel</li><li><a href="https://www.cprogramming.com/c++book/?inl=sb" target="_blank" rel="noopener">Jumping into C++.</a></li><li><a href="https://www.amazon.com/gp/product/0321334876?ie=UTF8&amp;tag=aristeia.com-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321334876" target="_blank" rel="noopener">Effective C++.</a> by Scott Meyers</li></ul><p>More books: <a href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list" target="_blank" rel="noopener">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul><li><a href="https://isocpp.org/std" target="_blank" rel="noopener">https://isocpp.org/std</a></li><li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#main" target="_blank" rel="noopener">C++ Core Guidelines</a></li></ul><h2 id="cout-manipulator"><a href="#cout-manipulator" class="headerlink" title="cout manipulator"></a>cout manipulator</h2><p></p><figure class="highlight c++ hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> <span class="hljs-keyword">byte</span> = <span class="hljs-number">255</span>;</span><br><span class="line"><span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Byte in hex: &quot;</span> &lt;&lt; hex &lt;&lt; <span class="hljs-keyword">byte</span>;</span><br><span class="line"><span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Byte in decimal: &quot;</span> &lt;&lt; dec &lt;&lt; <span class="hljs-keyword">byte</span>;</span><br><span class="line"><span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Byte in octal: &quot;</span> &lt;&lt; oct &lt;&lt; <span class="hljs-keyword">byte</span>;</span><br></pre></td></tr></tbody></table></figure><p></p><p></p><figure class="highlight c++ hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line"><span class="hljs-keyword">int</span> <span class="hljs-keyword">byte</span> = <span class="hljs-number">255</span>;</span><br><span class="line"><span class="hljs-built_in">cout</span> &lt;&lt; setbase(<span class="hljs-number">16</span>) &lt;&lt; <span class="hljs-keyword">byte</span>;</span><br><span class="line"><span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p><p></p><figure class="highlight c++ hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">float</span> x = <span class="hljs-number">2.5</span>, y = <span class="hljs-number">0.0000000025</span>;</span><br><span class="line"><span class="hljs-built_in">cout</span> &lt;&lt; fixed &lt;&lt; x &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line"><span class="hljs-built_in">cout</span> &lt;&lt; scientific &lt;&lt; x &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br></pre></td></tr></tbody></table></figure><p></p></body></html>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;CPA-&amp;#x2013;-C-Certified-Associate-Programmer&quot;&gt;&lt;a href=&quot;#CPA-&amp;#x2013;-C-Certified-Associate-Programmer&quot; cla
+      
+    
+    </summary>
+    
+    
+    
+      <category term="cpp, cpa" scheme="http://yoursite.com/tags/cpp-cpa/"/>
+    
+  </entry>
   
   <entry>
     <title>sql-note</title>
