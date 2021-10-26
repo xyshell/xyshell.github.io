@@ -887,7 +887,7 @@ html {
 body {
   position: relative;
   background-color: #fff;
-  font-family: "Raleway-Medium", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 1.4rem;
   line-height: 1.7;
   color: #1e3e3f;
@@ -2020,7 +2020,7 @@ a.toc-link {
 }
 .article-entry pre,
 .article-entry code {
-  font-family: inherit;
+  font-family: "Source Code Pro", monospace;
   text-shadow: none;
 }
 .article-entry code {

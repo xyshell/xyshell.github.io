@@ -1,8 +1,8 @@
 !(function ($, window) {
   var TEXT = {
-    default: '复制',
-    success: '复制成功',
-    fail: '复制失败',
+    default: 'copy',
+    success: 'copied',
+    fail: 'failed',
   };
 
   /**
