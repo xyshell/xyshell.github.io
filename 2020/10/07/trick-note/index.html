@@ -59,17 +59,30 @@
 
     
     
+<div class="tocbot"></div>
+
     
 
     <div class="article-entry" itemprop="articleBody">
       
       
       
-      <p>show password in web</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&#x27;input[type=password]&#x27;).value</span><br></pre></td></tr></table></figure>
+      <p>References of some interesting tricks.</p>
+<h2 id="show-password-in-web"><a href="#show-password-in-web" class="headerlink" title="show password in web"></a>show password in web</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;input[type=password]&#x27;</span>).value</span><br></pre></td></tr></table></figure>
 
-<p>show ip address</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl ifconfig.me</span><br></pre></td></tr></table></figure>
+<h2 id="show-IP-address"><a href="#show-IP-address" class="headerlink" title="show IP address"></a>show IP address</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl ifconfig.me</span><br></pre></td></tr></table></figure>
+
+<h2 id="Send-email-from-gmail"><a href="#Send-email-from-gmail" class="headerlink" title="Send email from gmail"></a>Send email from gmail</h2><p>Reference:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://julien.danjou.info/sending-emails-in-python-tutorial-code-examples/">Send email in Python</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24180606">简单三步，用 Python 发邮件</a></li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>Turn on <a target="_blank" rel="noopener" href="https://myaccount.google.com/lesssecureapps">Less secure app access</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">port = <span class="number">465</span></span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&quot;your password&quot;</span>)</span><br><span class="line">context = ssl.create_default_context()</span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&quot;The body of the email is here&quot;</span>)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = <span class="string">&quot;An Email Alert&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = <span class="string">&quot;my@gmail.com&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = <span class="string">&quot;other@xxx.xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> smtplib.SMTP_SSL(<span class="string">&quot;smtp.gmail.com&quot;</span>, port, context=context) <span class="keyword">as</span> server:</span><br><span class="line">    server.login(<span class="string">&quot;my@gmail.com&quot;</span>, password)</span><br><span class="line">    server.send_message(msg)</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
