@@ -12,6 +12,7 @@
     
     You Xie&#39;s Blog
   </title>
+  <!-- Icon -->
   
     <link rel="shortcut icon" href="/favicon.ico">
     
@@ -26,7 +27,7 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <main class="content">
@@ -38,12 +39,12 @@
     
     <header class="article-header">
       
-
-<h1 class="article-title" itemprop="name">
-  CPP Note
-</h1>
-
-
+  
+  <h1 class="article-title" itemprop="name">
+    CPP Note
+  </h1>
+  
+  
 
     </header>
     
@@ -51,7 +52,7 @@
     
     <div class="article-meta">
       <a href="/2020/07/13/cpp-note/" class="article-date">
-  <time datetime="2020-07-13T06:56:16.000Z" itemprop="datePublished">2020-07-13</time>
+  <time datetime="2020-07-13T01:56:16.000Z" itemprop="datePublished">2020-07-13</time>
 </a>
       
     </div>
@@ -67,24 +68,24 @@
       
       
       
-      <h1 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h1><p><a target="_blank" rel="noopener" href="https://chenxiaowei.gitbook.io/cmake-cookbook/">Cmake Cookbook</a></p>
+        <h1 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h1><p><a target="_blank" rel="noopener" href="https://chenxiaowei.gitbook.io/cmake-cookbook/">Cmake Cookbook</a></p>
 <h2 id="Chapter-1-From-a-Simple-Executable-to-Libraries"><a href="#Chapter-1-From-a-Simple-Executable-to-Libraries" class="headerlink" title="Chapter 1: From a Simple Executable to Libraries"></a>Chapter 1: From a Simple Executable to Libraries</h2><h3 id="1-Compiling-a-single-source-file-into-an-executable"><a href="#1-Compiling-a-single-source-file-into-an-executable" class="headerlink" title="1. Compiling a single source file into an executable"></a>1. Compiling a single source file into an executable</h3><p>CmakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line">project(recipe-01 LANGUAGES CXX) <span class="comment"># default language is c++</span></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br></pre></td></tr></table></figure>
 
 <p>Normal steps:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake .. <span class="comment"># ../CmakeLists.txt exsits</span></span><br><span class="line">$ cmake --build .bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake .. <span class="comment"># ../CmakeLists.txt exsits</span></span><br><span class="line">$ cmake --build .bash</span><br></pre></td></tr></table></figure>
 
 <p>Single command build:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -H. -Bbuild</span><br></pre></td></tr></table></figure>
 
 <p>Build outside:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p /tmp/someplace</span><br><span class="line">$ <span class="built_in">cd</span> /tmp/someplace</span><br><span class="line">$ cmake /path/to/<span class="built_in">source</span></span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p /tmp/someplace</span><br><span class="line">$ <span class="built_in">cd</span> /tmp/someplace</span><br><span class="line">$ cmake /path/to/source</span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
 
 <p>available targets:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cmake --build . -t <span class="built_in">help</span> <span class="comment"># --target</span></span><br><span class="line"></span><br><span class="line">The following are some of the valid targets <span class="keyword">for</span> this Makefile:</span><br><span class="line">... all (the default <span class="keyword">if</span> no target is provided)</span><br><span class="line">... clean</span><br><span class="line">... depend</span><br><span class="line">... edit_cache</span><br><span class="line">... rebuild_cache</span><br><span class="line">... hello-world</span><br><span class="line">... hello-world.o</span><br><span class="line">... hello-world.i</span><br><span class="line">... hello-world.s</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-Switching-generators"><a href="#2-Switching-generators" class="headerlink" title="2. Switching generators"></a>2. Switching generators</h3><p>Choose Ninja:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake -G Ninja .. <span class="comment"># must install Ninja first</span></span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake -G Ninja .. <span class="comment"># must install Ninja first</span></span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
 
 <p>Single command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -H. -Bbuild -GNinja</span><br></pre></td></tr></table></figure>
@@ -127,7 +128,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -D CMAKE_CXX_COMPILER=clang++ ..</span><br></pre></td></tr></table></figure>
 
 <p>not prefered:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ env CXX=clang++ cmake ..</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">env</span> CXX=clang++ cmake ..</span><br></pre></td></tr></table></figure>
 
 <p>CMakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-06 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Is the C++ compiler loaded? <span class="variable">$&#123;CMAKE_CXX_COMPILER_LOADED&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(CMAKE_CXX_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C++ compiler ID is: <span class="variable">$&#123;CMAKE_CXX_COMPILER_ID&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Is the C++ from GNU? <span class="variable">$&#123;CMAKE_COMPILER_IS_GNUCXX&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C++ compiler version is: <span class="variable">$&#123;CMAKE_CXX_COMPILER_VERSION&#125;</span>&quot;</span>)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Is the C compiler loaded? <span class="variable">$&#123;CMAKE_C_COMPILER_LOADED&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(CMAKE_C_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C compiler ID is: <span class="variable">$&#123;CMAKE_C_COMPILER_ID&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Is the C from GNU? <span class="variable">$&#123;CMAKE_COMPILER_IS_GNUCC&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C compiler version is: <span class="variable">$&#123;CMAKE_C_COMPILER_VERSION&#125;</span>&quot;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
@@ -156,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2020/07/13/cpp-note/" data-id="ckv8l62vp0008h1mn13cobfco" class="article-share-link">
+      <a data-url="https://xyshell.github.io/2020/07/13/cpp-note/" data-id="cln1ce6c9000424o69ozxbijt" class="article-share-link">
         Share
       </a>
       
@@ -198,23 +199,25 @@
 </section>
     <footer class="footer">
   <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
-  
-</ul>
-    </div>
     <ul class="list-inline">
-      <li>You Xie&#39;s Blog &copy; 2022</li>
+      <li>You Xie&#39;s Blog &copy; 2023</li>
       
-        <li>ZHWANGART</li>
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
       
       <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
       <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
     </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul></p>
   </div>
 </footer>
   </main>
@@ -294,13 +297,9 @@
 
 
 
-<script src="/js/copybtn.js"></script>
-
-
-
-
 
 <script src="/js/tocbot.min.js"></script>
+
 
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
