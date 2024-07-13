@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    JS Note |
+    
+    You Xie&#39;s Blog
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-js-note" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    JS Note
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/07/02/js-note/" class="article-date">
+  <time datetime="2020-07-02T23:23:21.000Z" itemprop="datePublished">2020-07-02</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h1 id="Template-literals-String-literals"><a href="#Template-literals-String-literals" class="headerlink" title="Template literals (String literals)"></a>Template literals (String literals)</h1><p>add variables at runtime</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> msg = <span class="string">`some <span class="subst">$&#123;variable1&#125;</span>, </span></span><br><span class="line"><span class="string">    <span class="subst">$&#123;<span class="string">&quot;$&quot;</span> + variable2&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+
+<p>use tag function to add bold style to variables in template literals</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">highlighText</span>(<span class="params">strings, ...values</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; strings.<span class="property">raw</span>.<span class="property">lengths</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      str += <span class="string">`&lt;b&gt;<span class="subst">$&#123;values[i - <span class="number">1</span>]&#125;</span>&lt;/b&gt;`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    str += strings.<span class="property">raw</span>[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> msg = highlighText<span class="string">`some <span class="subst">$&#123;variable1&#125;</span>, <span class="subst">$&#123;<span class="string">&quot;$&quot;</span> + variable2&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="var-let-and-const"><a href="#var-let-and-const" class="headerlink" title="var, let and const"></a>var, let and const</h1><p>var:</p>
+<ul>
+<li>no block scope</li>
+<li>can be redeclared anywhere</li>
+<li>can be used and reassigned anywhere</li>
+</ul>
+<p>let:</p>
+<ul>
+<li>block scope</li>
+<li>can’t be redeclared within scope</li>
+<li>can be reassigned within scope</li>
+</ul>
+<p>const:</p>
+<ul>
+<li>block scope</li>
+<li>can’t be reassigned or redeclared</li>
+<li>the value <strong>can</strong> be changed</li>
+</ul>
+<p>const is more used as readability purpose</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">arr = <span class="number">3</span>; <span class="comment">// error</span></span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">22</span>; <span class="comment">// okay!</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="title class_">Object</span>.<span class="title function_">freeze</span>([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]); <span class="comment">// instead</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Destructing-an-array-or-object"><a href="#Destructing-an-array-or-object" class="headerlink" title="Destructing an array or object"></a>Destructing an array or object</h1><p>array:</p>
+<ul>
+<li>don’t have to catch all values in the array</li>
+<li>variable is undefined if arr is not enough to unpack</li>
+<li>can set default value</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a, b = <span class="literal">true</span>, c, ...moreArgs] = arr;</span><br></pre></td></tr></table></figure>
+
+<p>object:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> &#123; <span class="title class_">Id</span>, <span class="title class_">ApplicantName</span> = <span class="string">&quot;Barry&quot;</span> &#125; = obj;</span><br></pre></td></tr></table></figure>
+
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str.<span class="title function_">trim</span>(); <span class="comment">// trim white space</span></span><br><span class="line">str.<span class="title function_">toLowerCase</span>();</span><br><span class="line">str.<span class="title function_">startWith</span>(<span class="string">&quot;dr&quot;</span>);</span><br><span class="line">str.<span class="title function_">endWith</span>(<span class="string">&quot;md&quot;</span>, <span class="number">4</span>);</span><br><span class="line">str.<span class="title function_">search</span>(<span class="string">&quot;house&quot;</span>);</span><br><span class="line">str.<span class="title function_">includes</span>(<span class="string">&quot;house&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="title function_">isInteger</span>(num); <span class="comment">// 25.0 is integer</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property">MAX_SAFE_INTEGER</span>; <span class="comment">// Number.MIN_SAFE_INTEGER</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">isSafeInteger</span>(num);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = <span class="title class_">Symbol</span>(<span class="string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> id2 = <span class="title class_">Symbol</span>(<span class="string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(id === id2); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> id = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> id2 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(id === id2); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// create secret property</span></span><br><span class="line"><span class="keyword">var</span> loan = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;Barry&quot;</span>,</span><br><span class="line">    [<span class="title class_">Symbol</span>(<span class="string">&quot;income&quot;</span>)]: <span class="number">15000</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(load[<span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;income&quot;</span>)]); <span class="comment">// 15000</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(loan)); <span class="comment">// [&quot;name&quot;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbol</span>(loan)); <span class="comment">// [Symbol(income)]</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xyshell.github.io/2020/07/02/js-note/" data-id="clykq2ryt000m44955wxv23p6" class="article-share-link">
+        Share
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2020/07/09/julia-note/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      Julia Note
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2020/06/20/network-note/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">Network Note</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>You Xie&#39;s Blog &copy; 2024</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul></p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="You Xie&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

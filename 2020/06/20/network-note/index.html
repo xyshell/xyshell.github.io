@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    Network Note |
+    
+    You Xie&#39;s Blog
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-network-note" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    Network Note
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/20/network-note/" class="article-date">
+  <time datetime="2020-06-20T18:45:44.000Z" itemprop="datePublished">2020-06-20</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h1 id="OSI-Model"><a href="#OSI-Model" class="headerlink" title="OSI Model"></a>OSI Model</h1><p><img src="/photos/intro-network-note/OSI_model.png" alt="OSI_model"></p>
+<h1 id="Protocols"><a href="#Protocols" class="headerlink" title="Protocols"></a>Protocols</h1><h2 id="Data-Transfer"><a href="#Data-Transfer" class="headerlink" title="Data Transfer"></a>Data Transfer</h2><p><img src="/photos/intro-network-note/http.png" alt="http"></p>
+<h2 id="File-Transfer"><a href="#File-Transfer" class="headerlink" title="File Transfer"></a>File Transfer</h2><p><img src="/photos/intro-network-note/ftp.png" alt="ftp"></p>
+<h2 id="Email"><a href="#Email" class="headerlink" title="Email"></a>Email</h2><p><img src="/photos/intro-network-note/email.png" alt="email"></p>
+<h2 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h2><p><img src="/photos/intro-network-note/auth.png" alt="auth"></p>
+<h2 id="Network-Service"><a href="#Network-Service" class="headerlink" title="Network Service"></a>Network Service</h2><p><img src="/photos/intro-network-note/dhcp.png" alt="dhcp"></p>
+<h2 id="Domain-Name-System-DNS"><a href="#Domain-Name-System-DNS" class="headerlink" title="Domain Name System(DNS)"></a>Domain Name System(DNS)</h2><p><img src="/photos/intro-network-note/dns.png" alt="dns"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ nslookup google.com <span class="comment"># check google&#x27;s ip</span></span><br><span class="line">$ nslookup </span><br><span class="line">&gt; facebook.com</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ nslookup</span><br><span class="line">&gt; server 8.8.8.8 <span class="comment"># config dns server</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Network-Time-Protocol-NTP"><a href="#Network-Time-Protocol-NTP" class="headerlink" title="Network Time Protocol(NTP)"></a>Network Time Protocol(NTP)</h2><p><img src="/photos/intro-network-note/ntp.png" alt="ntp"></p>
+<h2 id="Network-Management"><a href="#Network-Management" class="headerlink" title="Network Management"></a>Network Management</h2><p><img src="/photos/intro-network-note/ssh_telnet.png" alt="ssh_telnet"></p>
+<p>ssh: encryted; telnet: clear text</p>
+<p>ssh used encrypt ftp</p>
+<p><img src="/photos/intro-network-note/snmp.png" alt="snmp"></p>
+<p>Walk the tree: server collect information(statistics, log) from client</p>
+<p>Trap: client send SNMP trap to server</p>
+<h2 id="Remote-Desktop-Protocol-RDP"><a href="#Remote-Desktop-Protocol-RDP" class="headerlink" title="Remote Desktop Protocol(RDP)"></a>Remote Desktop Protocol(RDP)</h2><p><img src="/photos/intro-network-note/rdp.png" alt="rdp"></p>
+<h2 id="Audio-Visual-Protocol"><a href="#Audio-Visual-Protocol" class="headerlink" title="Audio&#x2F;Visual Protocol"></a>Audio&#x2F;Visual Protocol</h2><p><img src="/photos/intro-network-note/h323.png" alt="h323"></p>
+<p><img src="/photos/intro-network-note/sip.png" alt="sip"></p>
+<p>session initiation protocol: voice over ip communication</p>
+<h1 id="TCP-and-UDP"><a href="#TCP-and-UDP" class="headerlink" title="TCP and UDP"></a>TCP and UDP</h1><p>TCP: transmission control protocol</p>
+<p>UDP: user datagram protocol</p>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>reliable, verifiable(sequence numbers &#x2F; acknowledge numbers), notion of session</p>
+<h3 id="The-3-way-handshake"><a href="#The-3-way-handshake" class="headerlink" title="The 3-way handshake"></a>The 3-way handshake</h3><p><img src="/photos/intro-network-note/3way.png" alt="3way"></p>
+<ol>
+<li>SYN: send syn msg, wait for reply from server(change state to SYN-RECEIVED)</li>
+<li>SYN-ACK: send msg to client</li>
+<li>ACK: client respond to server</li>
+</ol>
+<p>then session establish between client and server by layer 4 protocol</p>
+<p>client or server can ask for missing &#x2F; additional information from each other</p>
+<p>then use layer 7 protocol</p>
+<h3 id="The-4-way-Disconnect"><a href="#The-4-way-Disconnect" class="headerlink" title="The 4-way Disconnect"></a>The 4-way Disconnect</h3><p><img src="/photos/intro-network-note/4way.png" alt="4way"></p>
+<ol>
+<li>FIN: server to client</li>
+<li>FIN-ACK: client to server</li>
+<li>FIN: client to server</li>
+<li>FIN-ACK</li>
+</ol>
+<p>shutdown the session</p>
+<p>RST: tcp reset, server to client, to shutdown quickly</p>
+<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>no 3-way handshake, no reliable communication, no sequence numbers &#x2F; acknowledge numbers</p>
+<p>very efficient for small data transfer (e.x. DNS)</p>
+<p><img src="/photos/intro-network-note/udp.png" alt="udp"></p>
+<h2 id="Port-numbers-Transport-layer-addressing"><a href="#Port-numbers-Transport-layer-addressing" class="headerlink" title="Port numbers(Transport layer addressing)"></a>Port numbers(Transport layer addressing)</h2><p><img src="/photos/intro-network-note/port.png" alt="port"></p>
+<h3 id="Source-port-and-Destination-port"><a href="#Source-port-and-Destination-port" class="headerlink" title="Source port and Destination port"></a>Source port and Destination port</h3><p><img src="/photos/intro-network-note/src_dstnt.png" alt="src_dstnt"></p>
+<h2 id="Application-layer-portocol-dependency"><a href="#Application-layer-portocol-dependency" class="headerlink" title="Application layer portocol dependency"></a>Application layer portocol dependency</h2><p><img src="/photos/intro-network-note/protocol_dependency_1.png" alt="protocol_dependency_1"></p>
+<p><img src="/photos/intro-network-note/protocol_dependency_2.png" alt="protocol_dependency_2"></p>
+<h1 id="IP-Addressing"><a href="#IP-Addressing" class="headerlink" title="IP Addressing"></a>IP Addressing</h1><ul>
+<li><p>unicast: class A, B, C(public internet), one device to one device</p>
+</li>
+<li><p>multicast: class D(enterprise org’s live video streamming), one device to many devices</p>
+</li>
+<li><p>experimental: class E</p>
+</li>
+</ul>
+<h2 id="class-A"><a href="#class-A" class="headerlink" title="class A"></a>class A</h2><p><img src="/photos/intro-network-note/class_a.png" alt="class_a"></p>
+<h2 id="class-B"><a href="#class-B" class="headerlink" title="class B"></a>class B</h2><p><img src="/photos/intro-network-note/class_b.png" alt="class_b"></p>
+<h2 id="class-C"><a href="#class-C" class="headerlink" title="class C"></a>class C</h2><p><img src="/photos/intro-network-note/class_c.png" alt="class_c"></p>
+<h2 id="class-D"><a href="#class-D" class="headerlink" title="class D"></a>class D</h2><p><img src="/photos/intro-network-note/class_d.png" alt="class_d"></p>
+<h2 id="Address-types"><a href="#Address-types" class="headerlink" title="Address types"></a>Address types</h2><p><img src="/photos/intro-network-note/address_types.png" alt="address_types"></p>
+<h2 id="Private-ip-address"><a href="#Private-ip-address" class="headerlink" title="Private ip address"></a>Private ip address</h2><p>127.0.0.1: loopback address, localhost</p>
+<p><img src="/photos/intro-network-note/private_ip.png" alt="private_ip"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xyshell.github.io/2020/06/20/network-note/" data-id="clykq2ryw000u44950tzcej7f" class="article-share-link">
+        Share
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/" rel="tag">network</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2020/07/02/js-note/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      JS Note
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2020/06/17/k8s-note/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">k8s Note</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>You Xie&#39;s Blog &copy; 2024</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul></p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="You Xie&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

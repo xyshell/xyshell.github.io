@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    CPA Note |
+    
+    You Xie&#39;s Blog
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-cpa-note" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    CPA Note
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/11/20/cpa-note/" class="article-date">
+  <time datetime="2020-11-20T23:19:42.000Z" itemprop="datePublished">2020-11-20</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h1 id="CPA-–-C-Certified-Associate-Programmer"><a href="#CPA-–-C-Certified-Associate-Programmer" class="headerlink" title="CPA – C++ Certified Associate Programmer"></a>CPA – C++ Certified Associate Programmer</h1><h2 id="Readings"><a href="#Readings" class="headerlink" title="Readings"></a>Readings</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.stroustrup.com/4th.html">The C++ Programming Language (4th Edition)</a> by Bjarne Stroustrup</li>
+<li>Thinking in C++ by Bruce Eckel</li>
+<li><a target="_blank" rel="noopener" href="https://www.cprogramming.com/c++book/?inl=sb">Jumping into C++.</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0321334876?ie=UTF8&tag=aristeia.com-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0321334876">Effective C++.</a> by Scott Meyers</li>
+</ul>
+<p>More books: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://isocpp.org/std">https://isocpp.org/std</a></li>
+<li><a target="_blank" rel="noopener" href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#main">C++ Core Guidelines</a></li>
+</ul>
+<h2 id="cout-manipulator"><a href="#cout-manipulator" class="headerlink" title="cout manipulator"></a>cout manipulator</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> byte = <span class="number">255</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in hex: &quot;</span> &lt;&lt; hex &lt;&lt; byte;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in decimal: &quot;</span> &lt;&lt; dec &lt;&lt; byte;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in octal: &quot;</span> &lt;&lt; oct &lt;&lt; byte;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> byte = <span class="number">255</span>;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">setbase</span>(<span class="number">16</span>) &lt;&lt; byte;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> x = <span class="number">2.5</span>, y = <span class="number">0.0000000025</span>;</span><br><span class="line">cout &lt;&lt; fixed &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; scientific &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h2 id="String-methods"><a href="#String-methods" class="headerlink" title="String methods"></a>String methods</h2><h3 id="compare"><a href="#compare" class="headerlink" title="compare"></a>compare</h3><p>str1.compare(str2)</p>
+<ul>
+<li><p>str1.compare(str2) &#x3D;&#x3D; 0 when str1 &#x3D;&#x3D; str2</p>
+</li>
+<li><p>str1.compare(str2) &gt; 0 when str1 &gt; str2</p>
+</li>
+<li><p>str1.compare(str2) &lt; 0 when str1 &lt; str2</p>
+</li>
+</ul>
+<p>S.compare(substr_start, substr_length, other_string)</p>
+<p>S.compare(substr_start, substr_length, other_string, other_substr_start, other_substr_length)</p>
+<h3 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string newstr = oldstr.<span class="built_in">substr</span>(substring_start_position, length_of_substring)</span><br></pre></td></tr></table></figure>
+
+<h3 id="length-size-capacity-max-size"><a href="#length-size-capacity-max-size" class="headerlink" title="length, size, capacity, max_size"></a>length, size, capacity, max_size</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> string_size = S.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_length = S.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_capacity = s.<span class="built_in">capacity</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_max_size = s.<span class="built_in">max_size</span>();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TheString.<span class="built_in">reserve</span>(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="reserve-resize-clear-empty"><a href="#reserve-resize-clear-empty" class="headerlink" title="reserve, resize, clear, empty"></a>reserve, resize, clear, empty</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> is_empty = TheString.<span class="built_in">empty</span>();</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">resize</span>(<span class="number">50</span>,<span class="string">&#x27;?&#x27;</span>);</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">resize</span>(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> where_it_begins = S.<span class="built_in">find</span>(another_string, start_here);</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> where_it_is = S.<span class="built_in">find</span>(any_character, start_here);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> comma = greeting.<span class="built_in">find</span>(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(comma != string::npos)&#123;</span><br><span class="line">	<span class="comment">//found</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="append-push-back-insert"><a href="#append-push-back-insert" class="headerlink" title="append, push_back, insert"></a>append, push_back, insert</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NewString.<span class="built_in">append</span>(TheString);</span><br><span class="line">NewString.<span class="built_in">append</span>(TheString,<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line">NewString.<span class="built_in">append</span>(<span class="number">2</span>,<span class="string">&#x27;!&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TheString.<span class="built_in">push_back</span>(car);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string quote = <span class="string">&quot;Whyserious?&quot;</span>, anyword = <span class="string">&quot;monsoon&quot;</span>;</span><br><span class="line">quote.<span class="built_in">insert</span>(<span class="number">3</span>,<span class="number">2</span>,<span class="string">&#x27; &#x27;</span>).<span class="built_in">insert</span>(<span class="number">4</span>,anyword,<span class="number">3</span>,<span class="number">2</span>); <span class="comment">// Why so serious?</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="assign"><a href="#assign" class="headerlink" title="assign"></a>assign</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string sky; </span><br><span class="line">sky.<span class="built_in">assign</span>(<span class="number">80</span>,<span class="string">&#x27;*&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string ToDo = <span class="string">&quot;I&#x27;ll think about that in one hour&quot;</span>; </span><br><span class="line">string Schedule = <span class="string">&quot;today yesterday tomorrow&quot;</span>;</span><br><span class="line"></span><br><span class="line">ToDo.<span class="built_in">replace</span>(<span class="number">22</span>, <span class="number">12</span>, Schedule, <span class="number">16</span>, <span class="number">8</span>); <span class="comment">// I&#x27;ll think about that tomorrow</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="erase"><a href="#erase" class="headerlink" title="erase"></a>erase</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string WhereAreWe = <span class="string">&quot;I&#x27;ve got a feeling we&#x27;re not in Kansas anymore&quot;</span>; </span><br><span class="line"></span><br><span class="line">WhereAreWe.<span class="built_in">erase</span>(<span class="number">38</span>, <span class="number">8</span>).<span class="built_in">erase</span>(<span class="number">25</span>, <span class="number">4</span>); <span class="comment">// I&#x27;ve got a feeling we&#x27;re in Kansas</span></span><br><span class="line">TheString.<span class="built_in">erase</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="swap"><a href="#swap" class="headerlink" title="swap"></a>swap</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string Drink = <span class="string">&quot;A martini&quot;</span>;</span><br><span class="line">string Needs = <span class="string">&quot;Shaken, not stirred&quot;</span>;</span><br><span class="line">	</span><br><span class="line">Drink.<span class="built_in">swap</span>(Needs);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xyshell.github.io/2020/11/20/cpa-note/" data-id="clykq2ryn000844954ko59g5a" class="article-share-link">
+        Share
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp-cpa/" rel="tag">cpp, cpa</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2021/07/30/ide-note/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      IDE Note
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2020/10/12/sql-note/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">Sql Note</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>You Xie&#39;s Blog &copy; 2024</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul></p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="You Xie&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>
