@@ -27,7 +27,11 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <main class="content">
@@ -72,7 +76,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.stroustrup.com/4th.html">The C++ Programming Language (4th Edition)</a> by Bjarne Stroustrup</li>
 <li>Thinking in C++ by Bruce Eckel</li>
 <li><a target="_blank" rel="noopener" href="https://www.cprogramming.com/c++book/?inl=sb">Jumping into C++.</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0321334876?ie=UTF8&tag=aristeia.com-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0321334876">Effective C++.</a> by Scott Meyers</li>
+<li><a target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0321334876?ie=UTF8&amp;tag=aristeia.com-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321334876">Effective C++.</a> by Scott Meyers</li>
 </ul>
 <p>More books: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
@@ -80,14 +84,11 @@
 <li><a target="_blank" rel="noopener" href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#main">C++ Core Guidelines</a></li>
 </ul>
 <h2 id="cout-manipulator"><a href="#cout-manipulator" class="headerlink" title="cout manipulator"></a>cout manipulator</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> byte = <span class="number">255</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in hex: &quot;</span> &lt;&lt; hex &lt;&lt; byte;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in decimal: &quot;</span> &lt;&lt; dec &lt;&lt; byte;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in octal: &quot;</span> &lt;&lt; oct &lt;&lt; byte;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> byte = <span class="number">255</span>;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">setbase</span>(<span class="number">16</span>) &lt;&lt; byte;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> x = <span class="number">2.5</span>, y = <span class="number">0.0000000025</span>;</span><br><span class="line">cout &lt;&lt; fixed &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; scientific &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <h2 id="String-methods"><a href="#String-methods" class="headerlink" title="String methods"></a>String methods</h2><h3 id="compare"><a href="#compare" class="headerlink" title="compare"></a>compare</h3><p>str1.compare(str2)</p>
 <ul>
-<li><p>str1.compare(str2) &#x3D;&#x3D; 0 when str1 &#x3D;&#x3D; str2</p>
+<li><p>str1.compare(str2) == 0 when str1 == str2</p>
 </li>
 <li><p>str1.compare(str2) &gt; 0 when str1 &gt; str2</p>
 </li>
@@ -97,34 +98,22 @@
 <p>S.compare(substr_start, substr_length, other_string)</p>
 <p>S.compare(substr_start, substr_length, other_string, other_substr_start, other_substr_length)</p>
 <h3 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string newstr = oldstr.<span class="built_in">substr</span>(substring_start_position, length_of_substring)</span><br></pre></td></tr></table></figure>
-
 <h3 id="length-size-capacity-max-size"><a href="#length-size-capacity-max-size" class="headerlink" title="length, size, capacity, max_size"></a>length, size, capacity, max_size</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> string_size = S.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_length = S.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_capacity = s.<span class="built_in">capacity</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_max_size = s.<span class="built_in">max_size</span>();</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TheString.<span class="built_in">reserve</span>(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
-
 <h3 id="reserve-resize-clear-empty"><a href="#reserve-resize-clear-empty" class="headerlink" title="reserve, resize, clear, empty"></a>reserve, resize, clear, empty</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> is_empty = TheString.<span class="built_in">empty</span>();</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">resize</span>(<span class="number">50</span>,<span class="string">&#x27;?&#x27;</span>);</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">resize</span>(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
-
 <h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> where_it_begins = S.<span class="built_in">find</span>(another_string, start_here);</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> where_it_is = S.<span class="built_in">find</span>(any_character, start_here);</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> comma = greeting.<span class="built_in">find</span>(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(comma != string::npos)&#123;</span><br><span class="line">	<span class="comment">//found</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <h3 id="append-push-back-insert"><a href="#append-push-back-insert" class="headerlink" title="append, push_back, insert"></a>append, push_back, insert</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NewString.<span class="built_in">append</span>(TheString);</span><br><span class="line">NewString.<span class="built_in">append</span>(TheString,<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line">NewString.<span class="built_in">append</span>(<span class="number">2</span>,<span class="string">&#x27;!&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TheString.<span class="built_in">push_back</span>(car);</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string quote = <span class="string">&quot;Whyserious?&quot;</span>, anyword = <span class="string">&quot;monsoon&quot;</span>;</span><br><span class="line">quote.<span class="built_in">insert</span>(<span class="number">3</span>,<span class="number">2</span>,<span class="string">&#x27; &#x27;</span>).<span class="built_in">insert</span>(<span class="number">4</span>,anyword,<span class="number">3</span>,<span class="number">2</span>); <span class="comment">// Why so serious?</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="assign"><a href="#assign" class="headerlink" title="assign"></a>assign</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string sky; </span><br><span class="line">sky.<span class="built_in">assign</span>(<span class="number">80</span>,<span class="string">&#x27;*&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
 <h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string ToDo = <span class="string">&quot;I&#x27;ll think about that in one hour&quot;</span>; </span><br><span class="line">string Schedule = <span class="string">&quot;today yesterday tomorrow&quot;</span>;</span><br><span class="line"></span><br><span class="line">ToDo.<span class="built_in">replace</span>(<span class="number">22</span>, <span class="number">12</span>, Schedule, <span class="number">16</span>, <span class="number">8</span>); <span class="comment">// I&#x27;ll think about that tomorrow</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="erase"><a href="#erase" class="headerlink" title="erase"></a>erase</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string WhereAreWe = <span class="string">&quot;I&#x27;ve got a feeling we&#x27;re not in Kansas anymore&quot;</span>; </span><br><span class="line"></span><br><span class="line">WhereAreWe.<span class="built_in">erase</span>(<span class="number">38</span>, <span class="number">8</span>).<span class="built_in">erase</span>(<span class="number">25</span>, <span class="number">4</span>); <span class="comment">// I&#x27;ve got a feeling we&#x27;re in Kansas</span></span><br><span class="line">TheString.<span class="built_in">erase</span>();</span><br></pre></td></tr></table></figure>
-
 <h3 id="swap"><a href="#swap" class="headerlink" title="swap"></a>swap</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string Drink = <span class="string">&quot;A martini&quot;</span>;</span><br><span class="line">string Needs = <span class="string">&quot;Shaken, not stirred&quot;</span>;</span><br><span class="line">	</span><br><span class="line">Drink.<span class="built_in">swap</span>(Needs);</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2020/11/20/cpa-note/" data-id="clykq2ryn000844954ko59g5a" class="article-share-link">
+      <a data-url="https://xyshell.github.io/2020/11/20/cpa-note/" data-id="clywj85g10009t895fb4r9a3r" class="article-share-link">
         Share
       </a>
       

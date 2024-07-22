@@ -27,7 +27,11 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <main class="content">
@@ -69,45 +73,33 @@
       
       
         <p><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>, <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a>, <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a>, <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub Issues</a>.</p>
-<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><h2 id="Install-Setup"><a href="#Install-Setup" class="headerlink" title="Install &amp; Setup"></a>Install &amp; Setup</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
+<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><h2 id="Install-amp-Setup"><a href="#Install-amp-Setup" class="headerlink" title="Install &amp; Setup"></a>Install &amp; Setup</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <h2 id="Initialize"><a href="#Initialize" class="headerlink" title="Initialize"></a>Initialize</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-
 <p>File Structure:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">|-- _config.yml # configuration file for hexo</span><br><span class="line">|-- source</span><br><span class="line">    |-- _posts</span><br><span class="line">        |-- one_blog.md # blog file</span><br><span class="line">    |-- _drafts</span><br><span class="line">        |-- one_draft.md # draft file</span><br><span class="line">|-- themes</span><br><span class="line">    |-- landscape # default theme</span><br><span class="line">    |-- ocean </span><br><span class="line">        |-- _config.yml # configuration file for ocean</span><br></pre></td></tr></table></figure>
-
 <h2 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span> / $ hexo n <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h2 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server / $ hexo s</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
 <h2 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate / $ hexo g</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h2 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy / $ hexo d</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 <h2 id="Deploy-to-github"><a href="#Deploy-to-github" class="headerlink" title="Deploy to github"></a>Deploy to github</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add hexo-deployer-git</span><br></pre></td></tr></table></figure>
-
 <p>Then, go to hexo’s _config.yml, add this to deploy session:</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/xyshell/xyshell.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h1><h2 id="Install-Setup-Update"><a href="#Install-Setup-Update" class="headerlink" title="Install &amp; Setup &amp; Update"></a>Install &amp; Setup &amp; Update</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</span><br></pre></td></tr></table></figure>
-
+<h1 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h1><h2 id="Install-amp-Setup-amp-Update"><a href="#Install-amp-Setup-amp-Update" class="headerlink" title="Install &amp; Setup &amp; Update"></a>Install &amp; Setup &amp; Update</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</span><br></pre></td></tr></table></figure>
 <p>Modify theme setting in hexo’s _config.yml to ocean:</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">ocean</span></span><br></pre></td></tr></table></figure>
-
 <p>Further update:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/ocean</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-
 <h1 id="Theme-Reference"><a href="#Theme-Reference" class="headerlink" title="Theme Reference"></a>Theme Reference</h1><h2 id="Ocean"><a href="#Ocean" class="headerlink" title="Ocean"></a>Ocean</h2><p><a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">https://github.com/zhwangart/hexo-theme-ocean</a></p>
 <h2 id="Minos"><a href="#Minos" class="headerlink" title="Minos"></a>Minos</h2><p><a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-minos">https://github.com/ppoffice/hexo-theme-minos</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2023/09/27/hello-world/" data-id="clykq2rys000j44955sqtf8hs" class="article-share-link">
+      <a data-url="https://xyshell.github.io/2023/09/27/hello-world/" data-id="clywj85g5000jt895brs2fuk9" class="article-share-link">
         Share
       </a>
       

@@ -27,7 +27,11 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <main class="content">
@@ -81,12 +85,11 @@
 </li>
 </ul>
 <h1 id="Package"><a href="#Package" class="headerlink" title="Package"></a>Package</h1><h2 id="Add-package"><a href="#Add-package" class="headerlink" title="Add package"></a>Add package</h2><figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Pkg; Pkg.add(<span class="string">&quot;Date&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h2 id="Use-package"><a href="#Use-package" class="headerlink" title="Use package"></a>Use package</h2><figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Dates</span><br><span class="line">isleapyear(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Dates</span><br><span class="line">Dates.isleapyear(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2020/07/09/julia-note/" data-id="clykq2ryv000q449530922fdj" class="article-share-link">
+      <a data-url="https://xyshell.github.io/2020/07/09/julia-note/" data-id="clywj85g7000pt895bqsh12kq" class="article-share-link">
         Share
       </a>
       

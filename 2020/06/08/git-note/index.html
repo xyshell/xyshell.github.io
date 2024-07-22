@@ -27,7 +27,11 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <main class="content">
@@ -70,61 +74,44 @@
       
         <h1 id="Git-Object-Model"><a href="#Git-Object-Model" class="headerlink" title="Git Object Model"></a>Git Object Model</h1><p><img src="/photos/git-note/git-obj-mdl.png" alt="git-obj-mdl"></p>
 <h1 id="Git-Submodule"><a href="#Git-Submodule" class="headerlink" title="Git Submodule"></a>Git Submodule</h1><h2 id="Add-Submodule"><a href="#Add-Submodule" class="headerlink" title="Add Submodule"></a>Add Submodule</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule add &lt;url&gt; &lt;path-to-submodule&gt;</span><br></pre></td></tr></table></figure>
-
 <p>Confirm submodule is added by <code>cat .gitmodules</code>.</p>
 <p>Set git config to show submodule summary when running <code>git status</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global status.submoduleSummary <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global diff.submodule <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Add-Commit"><a href="#Add-Commit" class="headerlink" title="Add &amp; Commit"></a>Add &amp; Commit</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">&quot;add submodule&quot;</span></span><br></pre></td></tr></table></figure>
-
+<h2 id="Add-amp-Commit"><a href="#Add-amp-Commit" class="headerlink" title="Add &amp; Commit"></a>Add &amp; Commit</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">&quot;add submodule&quot;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Clone-a-repo-containing-submodules"><a href="#Clone-a-repo-containing-submodules" class="headerlink" title="Clone a repo containing submodules"></a>Clone a repo containing submodules</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> &lt;url&gt; &lt;path&gt;</span><br></pre></td></tr></table></figure>
-
 <p>If <code>cd submodules/</code>, nothing exists, need to do:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule init</span><br><span class="line">$ git submodule update</span><br></pre></td></tr></table></figure>
-
 <p>Then <code>cd submodules/</code>, everything is okay.</p>
 <h2 id="Switch-submodule’s-version"><a href="#Switch-submodule’s-version" class="headerlink" title="Switch submodule’s version"></a>Switch submodule’s version</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> submodules/</span><br><span class="line">$ git fetch</span><br><span class="line">$ git checkout beta</span><br><span class="line">$ <span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
-
 <p>Run <code>git status</code> to see new commit in submodule.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">&quot;change submodule to beta version&quot;</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="Remove-submodule"><a href="#Remove-submodule" class="headerlink" title="Remove submodule"></a>Remove submodule</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule deinit &lt;path-to-submodule&gt;</span><br></pre></td></tr></table></figure>
-
 <p>At this point, we can reinit this submodule.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">rm</span> &lt;path-to-submodule&gt;</span><br></pre></td></tr></table></figure>
-
 <p>Run <code>git status</code> to confirm.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">&quot;remove submodule&quot;</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="Multiple-Nested-Submodules"><a href="#Multiple-Nested-Submodules" class="headerlink" title="Multiple Nested Submodules"></a>Multiple Nested Submodules</h2><p>Clone a repo containing multiple nested submodules:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> --recursive &lt;url&gt; &lt;path&gt;</span><br></pre></td></tr></table></figure>
-
 <p>Run <code>cat .gitmodules</code> to confirm first layer of submodules.</p>
 <p>To look into submodules’ <code>cat .gitmodules</code>, run:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule foreach <span class="string">&#x27;cat .gitmodules&#x27;</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="Update-from-submodules"><a href="#Update-from-submodules" class="headerlink" title="Update from submodules"></a>Update from submodules</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-
-<p>Teammates may add&#x2F;delete&#x2F;change&#x2F;redirect a submodule. Run:</p>
+<p>Teammates may add/delete/change/redirect a submodule. Run:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule <span class="built_in">sync</span> --recursive</span><br></pre></td></tr></table></figure>
-
 <p>Then bring change for each submodule by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
-
 <h2 id="Edit-submodules"><a href="#Edit-submodules" class="headerlink" title="Edit submodules"></a>Edit submodules</h2><p><code>cd submodule/</code>, <code>git pull --rebase</code>, make some changes, <code>git commit -am &quot;edit something</code>, <strong>Not to push now</strong>.</p>
 <p><code>cd ..</code>, run <code>git status</code> to see new commits in submodule, then commit in <strong>parent</strong> repository by <code>git commit -am &quot;edit submodule</code></p>
 <p>If <code>git push</code> right now, would push a commit not yet pushed in submodule. Could check each indidual submodule carefully before push in parent repo, but might miss.</p>
 <p>In git version &gt; 2.7, can do:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global push.recurseSubmodules on-demand</span><br></pre></td></tr></table></figure>
-
 <p>Then <code>git push</code>.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2020/06/08/git-note/" data-id="clykq2ryq000d44951pno4488" class="article-share-link">
+      <a data-url="https://xyshell.github.io/2020/06/08/git-note/" data-id="clywj85g3000dt895eywz41cu" class="article-share-link">
         Share
       </a>
       

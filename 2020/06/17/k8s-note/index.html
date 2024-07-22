@@ -27,7 +27,11 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <main class="content">
@@ -85,7 +89,7 @@
 <p>designed to scale horizontally: it scales by deploying more instances to balance traffic between those instances</p>
 <p>highly configurable and customizable, supports the addition of custom API servers</p>
 <h3 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h3><p>assign new objects, such as pods, to nodes, based on current Kubernetes cluster state and new object’s requirements</p>
-<p>takes into account: individual and collective resource requirements, hardware&#x2F;software&#x2F;policy constraints, affinity and anti-affinity specifications, data locality, inter-workload interference, and deadlines.</p>
+<p>takes into account: individual and collective resource requirements, hardware/software/policy constraints, affinity and anti-affinity specifications, data locality, inter-workload interference, and deadlines.</p>
 <p>highly configurable and customizable, supports additional custom schedulers (specify the name of the custom scheduler in object ‘s configuration data)</p>
 <h3 id="Controller-Managers"><a href="#Controller-Managers" class="headerlink" title="Controller Managers"></a>Controller Managers</h3><p>run controllers to regulate the state of the Kubernetes cluster</p>
 <p>controllers are watch-loops continuously running and comparing the cluster’s desired state (provided by objects’ configuration data) with its current state (obtained from etcd data store via the API server), includes:</p>
@@ -159,7 +163,7 @@
 <li>DNS: cluster DNS is a DNS server for Kubernetes services, required to assign DNS records to Kubernetes objects and resources</li>
 <li>Web UI(Dashboard): a general purposed web-based user interface for cluster management</li>
 <li>Container Resource Monitoring: records generic time-series metrics about containers in a central database, and provides a UI for browsing that data.</li>
-<li>Cluster-level Logging: responsible for saving container logs to a central log store with search&#x2F;browsing interface.</li>
+<li>Cluster-level Logging: responsible for saving container logs to a central log store with search/browsing interface.</li>
 </ul>
 <h2 id="Networking-Challenges"><a href="#Networking-Challenges" class="headerlink" title="Networking Challenges"></a>Networking Challenges</h2><h3 id="Container-to-Container-Communication-Inside-Pods"><a href="#Container-to-Container-Communication-Inside-Pods" class="headerlink" title="Container-to-Container Communication Inside Pods"></a>Container-to-Container Communication Inside Pods</h3><p>When a Pod is started, a network namespace is created inside the Pod, and all containers running inside the Pod will share that network namespace so that they can talk to each other via localhost.</p>
 <h3 id="Pod-to-Pod-Communication-Across-Nodes"><a href="#Pod-to-Pod-Communication-Across-Nodes" class="headerlink" title="Pod-to-Pod Communication Across Nodes"></a>Pod-to-Pod Communication Across Nodes</h3><p>Kubernetes network model “IP-per-Pod”</p>
@@ -182,7 +186,7 @@
 <li>Multi-Node etcd, Multi-Master and Multi-Worker Installation:</li>
 </ul>
 <p>In this mode, etcd is configured in clustered HA mode, the master nodes are all configured in HA mode, connecting to multiple worker nodes. This is the most advanced and recommended production setup.</p>
-<h2 id="Localhost-Installation"><a href="#Localhost-Installation" class="headerlink" title="Localhost Installation"></a>Localhost Installation</h2><p>localhost installation options available to deploy single- or multi-node Kubernetes clusters on our workstation&#x2F;laptop:</p>
+<h2 id="Localhost-Installation"><a href="#Localhost-Installation" class="headerlink" title="Localhost Installation"></a>Localhost Installation</h2><p>localhost installation options available to deploy single- or multi-node Kubernetes clusters on our workstation/laptop:</p>
 <ul>
 <li>Minikube: single-node local Kubernetes cluster</li>
 <li>Docker Desktop: single-node local Kubernetes cluster for Windows and Mac</li>
@@ -219,8 +223,8 @@
 <blockquote>
 <p>GKE On-Prem by Google Cloud<br>IBM Cloud Private<br>OpenShift Container Platform by Red Hat.</p>
 </blockquote>
-<h2 id="Kubernetes-Installation-Tools-Resources"><a href="#Kubernetes-Installation-Tools-Resources" class="headerlink" title="Kubernetes Installation Tools&#x2F;Resources"></a>Kubernetes Installation Tools&#x2F;Resources</h2><p>It is worth checking out the <a target="_blank" rel="noopener" href="https://github.com/kelseyhightower/kubernetes-the-hard-way">Kubernetes The Hard Way</a> GitHub project</p>
-<p>some useful tools&#x2F;resources available:</p>
+<h2 id="Kubernetes-Installation-Tools-Resources"><a href="#Kubernetes-Installation-Tools-Resources" class="headerlink" title="Kubernetes Installation Tools/Resources"></a>Kubernetes Installation Tools/Resources</h2><p>It is worth checking out the <a target="_blank" rel="noopener" href="https://github.com/kelseyhightower/kubernetes-the-hard-way">Kubernetes The Hard Way</a> GitHub project</p>
+<p>some useful tools/resources available:</p>
 <ul>
 <li>kubeadm:</li>
 </ul>
@@ -242,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2020/06/17/k8s-note/" data-id="clykq2ryu000p4495gno3biw6" class="article-share-link">
+      <a data-url="https://xyshell.github.io/2020/06/17/k8s-note/" data-id="clywj85g9000st895bjmf94mm" class="article-share-link">
         Share
       </a>
       

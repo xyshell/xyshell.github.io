@@ -27,7 +27,11 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <main class="content">
@@ -69,17 +73,13 @@
       
       
         <h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i &lt;path-to-pem&gt; admin@&lt;ip/dns&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Local Port Forwarding:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i &lt;path-to-pem&gt; -l admin &lt;ip/dns&gt; -L 9999:localhost:9999</span><br></pre></td></tr></table></figure>
-
+<p>Local Port Forwarding:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i &lt;path-to-pem&gt; -l admin &lt;ip/dns&gt; -L 9999:localhost:9999</span><br></pre></td></tr></table></figure></p>
 <h1 id="SCP"><a href="#SCP" class="headerlink" title="SCP"></a>SCP</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip/dns&gt;:/home/admin/&lt;path-to-target-file&gt;</span><br></pre></td></tr></table></figure>
-
 <h1 id="Auto-start-after-reboot"><a href="#Auto-start-after-reboot" class="headerlink" title="Auto-start after reboot"></a>Auto-start after reboot</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl <span class="built_in">enable</span> docker</span><br><span class="line">Synchronizing state of docker.service...</span><br><span class="line">Executing /lib/systemd/systemd-sysv-install <span class="built_in">enable</span> docker</span><br><span class="line">$ systemctl is-enabled docker</span><br><span class="line">enabled</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2020/06/08/linux-note/" data-id="clykq2ryv000s4495c1z07056" class="article-share-link">
+      <a data-url="https://xyshell.github.io/2020/06/08/linux-note/" data-id="clywj85g8000qt895a9svgcjj" class="article-share-link">
         Share
       </a>
       
