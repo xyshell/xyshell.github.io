@@ -1,252 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  <title>
-    Spark Note |
-    
-    You Xie&#39;s Blog
-  </title>
-  <!-- Icon -->
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-    
-  
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
 
-  
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xyshell.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":350,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Data Processing  Creating a SparkSession Object 1234from pyspark.sql import SparkSessionspark&#x3D;SparkSession.builder.appName(&#x27;data_processing&#x27;).getOrCreate()import pyspark.sql.functions as Ff">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark Note">
+<meta property="og:url" content="https://xyshell.github.io/2020/07/26/spark-note/index.html">
+<meta property="og:site_name" content="You Xie&#39;s Blog">
+<meta property="og:description" content="Data Processing  Creating a SparkSession Object 1234from pyspark.sql import SparkSessionspark&#x3D;SparkSession.builder.appName(&#x27;data_processing&#x27;).getOrCreate()import pyspark.sql.functions as Ff">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-27T03:27:48.000Z">
+<meta property="article:modified_time" content="2023-09-27T05:59:01.873Z">
+<meta property="article:author" content="You Xie">
+<meta property="article:tag" content="spark">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://xyshell.github.io/2020/07/26/spark-note/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://xyshell.github.io/2020/07/26/spark-note/","path":"2020/07/26/spark-note/","title":"Spark Note"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Spark Note | You Xie's Blog</title>
   
-  
-<script src="/js/pace.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJL0CGYTBX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-KJL0CGYTBX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
-<body>
-  <main class="content">
-    <section class="outer">
-  <article id="post-spark-note" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
 
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-  <h1 class="article-title" itemprop="name">
-    Spark Note
-  </h1>
-  
-  
 
-    </header>
-    
 
-    
-    <div class="article-meta">
-      <a href="/2020/07/26/spark-note/" class="article-date">
-  <time datetime="2020-07-27T03:27:48.000Z" itemprop="datePublished">2020-07-26</time>
-</a>
-      
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-    
-
-    
-    
-<div class="tocbot"></div>
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h1 id="Data-Processing"><a href="#Data-Processing" class="headerlink" title="Data Processing"></a>Data Processing</h1><h2 id="Creating-a-SparkSession-Object"><a href="#Creating-a-SparkSession-Object" class="headerlink" title="Creating a SparkSession Object"></a>Creating a SparkSession Object</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line">spark=SparkSession.builder.appName(<span class="string">&#x27;data_processing&#x27;</span>).getOrCreate()</span><br><span class="line"><span class="keyword">import</span> pyspark.sql.functions <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
-<h2 id="Creating-Dataframes"><a href="#Creating-Dataframes" class="headerlink" title="Creating Dataframes"></a>Creating Dataframes</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">schema=StructType() \</span><br><span class="line">    .add(<span class="string">&quot;user_id&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;country&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;browser&quot;</span>, <span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;OS&quot;</span>,<span class="string">&#x27;string&#x27;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;integer&quot;</span>)</span><br><span class="line">df=spark.createDataFrame([</span><br><span class="line">    (<span class="string">&quot;A203&quot;</span>,<span class="string">&#x27;India&#x27;</span>,<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;WIN&quot;</span>,<span class="number">33</span>),</span><br><span class="line">    (<span class="string">&quot;A201&quot;</span>,<span class="string">&#x27;China&#x27;</span>,<span class="string">&quot;Safari&quot;</span>,<span class="string">&quot;MacOS&quot;</span>,<span class="number">35</span>),</span><br><span class="line">    (<span class="string">&quot;A205&quot;</span>,<span class="string">&#x27;UK&#x27;</span>,<span class="string">&quot;Mozilla&quot;</span>,<span class="string">&quot;Linux&quot;</span>,<span class="number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df.printSchema()</span><br><span class="line">df.show()</span><br></pre></td></tr></table></figure>
-<h2 id="Null-Values"><a href="#Null-Values" class="headerlink" title="Null Values"></a>Null Values</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">df_na=spark.createDataFrame([</span><br><span class="line">    (<span class="string">&quot;A203&quot;</span>,<span class="literal">None</span>,<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;WIN&quot;</span>,<span class="number">33</span>),</span><br><span class="line">    (<span class="string">&quot;A201&quot;</span>,<span class="string">&#x27;China&#x27;</span>,<span class="literal">None</span>,<span class="string">&quot;MacOS&quot;</span>,<span class="number">35</span>),</span><br><span class="line">    (<span class="string">&quot;A205&quot;</span>,<span class="string">&#x27;UK&#x27;</span>,<span class="string">&quot;Mozilla&quot;</span>,<span class="string">&quot;Linux&quot;</span>,<span class="number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df_na.show()</span><br><span class="line">df_na.fillna(<span class="string">&#x27;0&#x27;</span>).show()</span><br><span class="line">df_na.fillna( &#123; <span class="string">&#x27;country&#x27;</span>:<span class="string">&#x27;USA&#x27;</span>, <span class="string">&#x27;browser&#x27;</span>:<span class="string">&#x27;Safari&#x27;</span> &#125; ).show()</span><br><span class="line">df_na.na.drop().show() <span class="comment"># dropna row</span></span><br><span class="line">df_na.na.drop(subset=<span class="string">&#x27;country&#x27;</span>).show() <span class="comment"># dropna row for column</span></span><br><span class="line">df_na.replace(<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;Google Chrome&quot;</span>).show()</span><br><span class="line">df_na.drop(<span class="string">&#x27;user_id&#x27;</span>).show() <span class="comment"># drop column</span></span><br><span class="line"></span><br><span class="line">df=spark.read.csv(<span class="string">&quot;customer_data.csv&quot;</span>,header=<span class="literal">True</span>,inferSchema=<span class="literal">True</span>)</span><br><span class="line">df.count()</span><br><span class="line"><span class="built_in">len</span>(df.columns)</span><br><span class="line">df.show(<span class="number">3</span>)</span><br><span class="line">df.summary().show() <span class="comment"># describe</span></span><br></pre></td></tr></table></figure>
-<h2 id="Subset-of-a-Dataframe"><a href="#Subset-of-a-Dataframe" class="headerlink" title="Subset of a Dataframe"></a>Subset of a Dataframe</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df.select([<span class="string">&#x27;Customer_subtype&#x27;</span>,<span class="string">&#x27;Avg_Salary&#x27;</span>]).show()</span><br><span class="line"></span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">1000000</span>).count()</span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">1000000</span>).show()</span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">500000</span>).<span class="built_in">filter</span>(df[<span class="string">&#x27;Number_of_houses&#x27;</span>] &gt; <span class="number">2</span>).show()</span><br><span class="line"></span><br><span class="line">df.where((df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">500000</span>) &amp; (df[<span class="string">&#x27;Number_of_houses&#x27;</span>] &gt; <span class="number">2</span>)).show()</span><br></pre></td></tr></table></figure>
-<h2 id="Aggregations"><a href="#Aggregations" class="headerlink" title="Aggregations"></a>Aggregations</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> df.columns:</span><br><span class="line">    <span class="keyword">if</span> col !=<span class="string">&#x27;Avg_Salary&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot; Aggregation for <span class="subst">&#123;col&#125;</span>&quot;</span>)</span><br><span class="line">        df.groupBy(col).count().orderBy(<span class="string">&#x27;count&#x27;</span>,ascending=<span class="literal">False</span>).show(truncate=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.mean(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">max</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">min</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line"></span><br><span class="line">df.sort(<span class="string">&quot;Avg_Salary&quot;</span>, ascending=<span class="literal">False</span>).show()</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>) \</span><br><span class="line">    .agg(F.avg(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .alias(<span class="string">&#x27;mean_salary&#x27;</span>)) \</span><br><span class="line">    .orderBy(<span class="string">&#x27;mean_salary&#x27;</span>,ascending=<span class="literal">False</span>) \</span><br><span class="line">    .show(<span class="number">50</span>,<span class="literal">False</span>)</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>) \</span><br><span class="line">    .agg(F.<span class="built_in">max</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .alias(<span class="string">&#x27;max_salary&#x27;</span>)) \</span><br><span class="line">    .orderBy(<span class="string">&#x27;max_salary&#x27;</span>,ascending=<span class="literal">False</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></table></figure>
-<h2 id="Collect"><a href="#Collect" class="headerlink" title="Collect"></a>Collect</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_set(<span class="string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line">df.groupby(<span class="string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_list(<span class="string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line"></span><br><span class="line">df=df.withColumn(<span class="string">&#x27;constant&#x27;</span>,F.lit(<span class="string">&#x27;finance&#x27;</span>))</span><br><span class="line">df.select(<span class="string">&#x27;Customer_subtype&#x27;</span>,<span class="string">&#x27;constant&#x27;</span>).show()</span><br></pre></td></tr></table></figure>
-<h2 id="User-Defined-Functions-UDFs"><a href="#User-Defined-Functions-UDFs" class="headerlink" title="User-Defined Functions (UDFs)"></a>User-Defined Functions (UDFs)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> udf</span><br><span class="line">df.groupby(<span class="string">&quot;Avg_age&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">age_category</span>(<span class="params">age</span>):</span><br><span class="line">    <span class="keyword">if</span> age == <span class="string">&quot;20-30 years&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Young&quot;</span></span><br><span class="line">    <span class="keyword">elif</span> age== <span class="string">&quot;30-40 years&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Mid Aged&quot;</span></span><br><span class="line">    <span class="keyword">elif</span> ((age== <span class="string">&quot;40-50 years&quot;</span>) <span class="keyword">or</span> (age== <span class="string">&quot;50-60 years&quot;</span>)) :</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Old&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Very Old&quot;</span></span><br><span class="line">age_udf=udf(age_category,StringType())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;age_category&#x27;</span>,age_udf(df[<span class="string">&#x27;Avg_age&#x27;</span>]))</span><br><span class="line">df.select(<span class="string">&#x27;Avg_age&#x27;</span>,<span class="string">&#x27;age_category&#x27;</span>).show()</span><br><span class="line">df.groupby(<span class="string">&quot;age_category&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line">df.select(<span class="string">&#x27;Avg_Salary&#x27;</span>).summary().show()</span><br><span class="line">min_sal=<span class="number">1361</span></span><br><span class="line">max_sal=<span class="number">48919896</span></span><br><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> pandas_udf, PandasUDFType</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">scaled_salary</span>(<span class="params">salary</span>):</span><br><span class="line">    scaled_sal=(salary-min_sal)/(max_sal-min_sal)</span><br><span class="line">    <span class="keyword">return</span> scaled_sal</span><br><span class="line">scaling_udf = pandas_udf(scaled_salary, DoubleType())</span><br><span class="line">df.withColumn(<span class="string">&quot;scaled_salary&quot;</span>,scaling_udf(df[<span class="string">&#x27;Avg_Salary&#x27;</span>])) \</span><br><span class="line">    .show(<span class="number">10</span>,<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="Joins"><a href="#Joins" class="headerlink" title="Joins"></a>Joins</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">region_data = spark.createDataFrame([</span><br><span class="line">    (<span class="string">&#x27;Family with grown ups&#x27;</span>,<span class="string">&#x27;PN&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Driven Growers&#x27;</span>,<span class="string">&#x27;GJ&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Conservative families&#x27;</span>,<span class="string">&#x27;DD&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Cruising Seniors&#x27;</span>,<span class="string">&#x27;DL&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Average Family &#x27;</span>,<span class="string">&#x27;MN&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Living well&#x27;</span>,<span class="string">&#x27;KA&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Successful hedonists&#x27;</span>,<span class="string">&#x27;JH&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Retired and Religious&#x27;</span>,<span class="string">&#x27;AX&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Career Loners&#x27;</span>,<span class="string">&#x27;HY&#x27;</span>),(<span class="string">&#x27;Farmers&#x27;</span>,<span class="string">&#x27;JH&#x27;</span>)</span><br><span class="line">], schema=StructType() \</span><br><span class="line">    .add(<span class="string">&quot;Customer_main_type&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;Region Code&quot;</span>,<span class="string">&quot;string&quot;</span>))</span><br><span class="line">new_df=df.join(region_data,on=<span class="string">&#x27;Customer_main_type&#x27;</span>)</span><br><span class="line">new_df.groupby(<span class="string">&quot;Region Code&quot;</span>).count().show()</span><br></pre></td></tr></table></figure>
-<h2 id="Pivoting"><a href="#Pivoting" class="headerlink" title="Pivoting"></a>Pivoting</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>) \</span><br><span class="line">    .pivot(<span class="string">&#x27;Avg_age&#x27;</span>) \ </span><br><span class="line">    .<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .fillna(<span class="number">0</span>) \ </span><br><span class="line">    .show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>) \</span><br><span class="line">    .pivot(<span class="string">&#x27;label&#x27;</span>) \</span><br><span class="line">    .<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .fillna(<span class="number">0</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></table></figure>
-<h2 id="Window-Functions-or-Windowed-Aggregates"><a href="#Window-Functions-or-Windowed-Aggregates" class="headerlink" title="Window Functions or Windowed Aggregates"></a>Window Functions or Windowed Aggregates</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.window <span class="keyword">import</span> Window</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> col,row_number</span><br><span class="line">win = Window.orderBy(df[<span class="string">&#x27;Avg_Salary&#x27;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;rank&#x27;</span>, row_number().over(win).alias(<span class="string">&#x27;rank&#x27;</span>)).show()</span><br><span class="line"></span><br><span class="line">win_1=Window.partitionBy(<span class="string">&quot;Customer_subtype&quot;</span>).orderBy(df[<span class="string">&#x27;Avg_Salary&#x27;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;rank&#x27;</span>, row_number().over(win_1).alias(<span class="string">&#x27;rank&#x27;</span>))</span><br><span class="line">df.groupBy(<span class="string">&#x27;rank&#x27;</span>).count().orderBy(<span class="string">&#x27;rank&#x27;</span>).show()</span><br><span class="line">df.<span class="built_in">filter</span>(col(<span class="string">&#x27;rank&#x27;</span>) &lt; <span class="number">4</span>).show()</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2020/07/26/spark-note/" data-id="clywj85gf001jt895axhw528o" class="article-share-link">
-        Share
-      </a>
-      
-<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/" rel="tag">spark</a></li></ul>
-
-    </footer>
-
   </div>
 
-  
-  
-<nav class="article-nav">
-  
-  <a href="/2020/08/12/algo-note/" class="article-nav-link">
-    <strong class="article-nav-caption">Newer</strong>
-    <div class="article-nav-title">
-      
-      Algo Note
-      
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">You Xie's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
-  </a>
-  
-  
-  <a href="/2020/07/13/cpp-note/" class="article-nav-link">
-    <strong class="article-nav-caption">Older</strong>
-    <div class="article-nav-title">CPP Note</div>
-  </a>
-  
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
 </nav>
 
-  
 
-  
-  
-  
-  
 
-</article>
-</section>
-    <footer class="footer">
-  <div class="outer">
-    <ul class="list-inline">
-      <li>You Xie&#39;s Blog &copy; 2024</li>
-      
-        <li>
-          
-            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
-            
-        </li>
-      
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
-    <p><ul class="list-inline">
-  
-  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
-  
-</ul></p>
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-</footer>
-  </main>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
   <aside class="sidebar">
-    <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/hexo.svg" alt="You Xie&#39;s Blog"></a>
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#data-processing"><span class="nav-number">1.</span> <span class="nav-text"> Data Processing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#creating-a-sparksession-object"><span class="nav-number">1.1.</span> <span class="nav-text"> Creating a SparkSession Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#creating-dataframes"><span class="nav-number">1.2.</span> <span class="nav-text"> Creating Dataframes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null-values"><span class="nav-number">1.3.</span> <span class="nav-text"> Null Values</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subset-of-a-dataframe"><span class="nav-number">1.4.</span> <span class="nav-text"> Subset of a Dataframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aggregations"><span class="nav-number">1.5.</span> <span class="nav-text"> Aggregations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#collect"><span class="nav-number">1.6.</span> <span class="nav-text"> Collect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-defined-functions-udfs"><span class="nav-number">1.7.</span> <span class="nav-text"> User-Defined Functions (UDFs)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#joins"><span class="nav-number">1.8.</span> <span class="nav-text"> Joins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pivoting"><span class="nav-number">1.9.</span> <span class="nav-text"> Pivoting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-functions-or-windowed-aggregates"><span class="nav-number">1.10.</span> <span class="nav-text"> Window Functions or Windowed Aggregates</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="You Xie"
+      src="https://avatars.githubusercontent.com/u/38464985?v=4">
+  <p class="site-author-name" itemprop="name">You Xie</p>
+  <div class="site-description" itemprop="description">Never too old to learn!</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xyshell" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xyshell" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyshell0@gmail.com" title="E-Mail → mailto:xyshell0@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
   </div>
-  
-  <ul class="nav nav-main">
+
+        </div>
+      </div>
+    </div>
+
     
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">Home</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">Archives</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/gallery">Gallery</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about">About</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      <div class="totop" id="totop">
-  <i class="fe fe-rocket"></i>
-</div>
-    </li>
-    <li class="nav-item">
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="fe fe-feed"></i>
-      </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
   </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
   
-<script src="/js/jquery-2.0.3.min.js"></script>
 
 
-<script src="/js/jquery.justifiedGallery.min.js"></script>
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xyshell.github.io/2020/07/26/spark-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/38464985?v=4">
+      <meta itemprop="name" content="You Xie">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You Xie's Blog">
+      <meta itemprop="description" content="Never too old to learn!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Spark Note | You Xie's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spark Note
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-07-26 22:27:48" itemprop="dateCreated datePublished" datetime="2020-07-26T22:27:48-05:00">2020-07-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-27 00:59:01" itemprop="dateModified" datetime="2023-09-27T00:59:01-05:00">2023-09-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="data-processing"><a class="markdownIt-Anchor" href="#data-processing"></a> Data Processing</h1>
+<h2 id="creating-a-sparksession-object"><a class="markdownIt-Anchor" href="#creating-a-sparksession-object"></a> Creating a SparkSession Object</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line">spark=SparkSession.builder.appName(<span class="string">&#x27;data_processing&#x27;</span>).getOrCreate()</span><br><span class="line"><span class="keyword">import</span> pyspark.sql.functions <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
+<h2 id="creating-dataframes"><a class="markdownIt-Anchor" href="#creating-dataframes"></a> Creating Dataframes</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">schema=StructType() \</span><br><span class="line">    .add(<span class="string">&quot;user_id&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;country&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;browser&quot;</span>, <span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;OS&quot;</span>,<span class="string">&#x27;string&#x27;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;integer&quot;</span>)</span><br><span class="line">df=spark.createDataFrame([</span><br><span class="line">    (<span class="string">&quot;A203&quot;</span>,<span class="string">&#x27;India&#x27;</span>,<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;WIN&quot;</span>,<span class="number">33</span>),</span><br><span class="line">    (<span class="string">&quot;A201&quot;</span>,<span class="string">&#x27;China&#x27;</span>,<span class="string">&quot;Safari&quot;</span>,<span class="string">&quot;MacOS&quot;</span>,<span class="number">35</span>),</span><br><span class="line">    (<span class="string">&quot;A205&quot;</span>,<span class="string">&#x27;UK&#x27;</span>,<span class="string">&quot;Mozilla&quot;</span>,<span class="string">&quot;Linux&quot;</span>,<span class="number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df.printSchema()</span><br><span class="line">df.show()</span><br></pre></td></tr></table></figure>
+<h2 id="null-values"><a class="markdownIt-Anchor" href="#null-values"></a> Null Values</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">df_na=spark.createDataFrame([</span><br><span class="line">    (<span class="string">&quot;A203&quot;</span>,<span class="literal">None</span>,<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;WIN&quot;</span>,<span class="number">33</span>),</span><br><span class="line">    (<span class="string">&quot;A201&quot;</span>,<span class="string">&#x27;China&#x27;</span>,<span class="literal">None</span>,<span class="string">&quot;MacOS&quot;</span>,<span class="number">35</span>),</span><br><span class="line">    (<span class="string">&quot;A205&quot;</span>,<span class="string">&#x27;UK&#x27;</span>,<span class="string">&quot;Mozilla&quot;</span>,<span class="string">&quot;Linux&quot;</span>,<span class="number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df_na.show()</span><br><span class="line">df_na.fillna(<span class="string">&#x27;0&#x27;</span>).show()</span><br><span class="line">df_na.fillna( &#123; <span class="string">&#x27;country&#x27;</span>:<span class="string">&#x27;USA&#x27;</span>, <span class="string">&#x27;browser&#x27;</span>:<span class="string">&#x27;Safari&#x27;</span> &#125; ).show()</span><br><span class="line">df_na.na.drop().show() <span class="comment"># dropna row</span></span><br><span class="line">df_na.na.drop(subset=<span class="string">&#x27;country&#x27;</span>).show() <span class="comment"># dropna row for column</span></span><br><span class="line">df_na.replace(<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;Google Chrome&quot;</span>).show()</span><br><span class="line">df_na.drop(<span class="string">&#x27;user_id&#x27;</span>).show() <span class="comment"># drop column</span></span><br><span class="line"></span><br><span class="line">df=spark.read.csv(<span class="string">&quot;customer_data.csv&quot;</span>,header=<span class="literal">True</span>,inferSchema=<span class="literal">True</span>)</span><br><span class="line">df.count()</span><br><span class="line"><span class="built_in">len</span>(df.columns)</span><br><span class="line">df.show(<span class="number">3</span>)</span><br><span class="line">df.summary().show() <span class="comment"># describe</span></span><br></pre></td></tr></table></figure>
+<h2 id="subset-of-a-dataframe"><a class="markdownIt-Anchor" href="#subset-of-a-dataframe"></a> Subset of a Dataframe</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df.select([<span class="string">&#x27;Customer_subtype&#x27;</span>,<span class="string">&#x27;Avg_Salary&#x27;</span>]).show()</span><br><span class="line"></span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">1000000</span>).count()</span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">1000000</span>).show()</span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">500000</span>).<span class="built_in">filter</span>(df[<span class="string">&#x27;Number_of_houses&#x27;</span>] &gt; <span class="number">2</span>).show()</span><br><span class="line"></span><br><span class="line">df.where((df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">500000</span>) &amp; (df[<span class="string">&#x27;Number_of_houses&#x27;</span>] &gt; <span class="number">2</span>)).show()</span><br></pre></td></tr></table></figure>
+<h2 id="aggregations"><a class="markdownIt-Anchor" href="#aggregations"></a> Aggregations</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> df.columns:</span><br><span class="line">    <span class="keyword">if</span> col !=<span class="string">&#x27;Avg_Salary&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot; Aggregation for <span class="subst">&#123;col&#125;</span>&quot;</span>)</span><br><span class="line">        df.groupBy(col).count().orderBy(<span class="string">&#x27;count&#x27;</span>,ascending=<span class="literal">False</span>).show(truncate=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.mean(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">max</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">min</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line"></span><br><span class="line">df.sort(<span class="string">&quot;Avg_Salary&quot;</span>, ascending=<span class="literal">False</span>).show()</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>) \</span><br><span class="line">    .agg(F.avg(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .alias(<span class="string">&#x27;mean_salary&#x27;</span>)) \</span><br><span class="line">    .orderBy(<span class="string">&#x27;mean_salary&#x27;</span>,ascending=<span class="literal">False</span>) \</span><br><span class="line">    .show(<span class="number">50</span>,<span class="literal">False</span>)</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>) \</span><br><span class="line">    .agg(F.<span class="built_in">max</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .alias(<span class="string">&#x27;max_salary&#x27;</span>)) \</span><br><span class="line">    .orderBy(<span class="string">&#x27;max_salary&#x27;</span>,ascending=<span class="literal">False</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></table></figure>
+<h2 id="collect"><a class="markdownIt-Anchor" href="#collect"></a> Collect</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_set(<span class="string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line">df.groupby(<span class="string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_list(<span class="string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line"></span><br><span class="line">df=df.withColumn(<span class="string">&#x27;constant&#x27;</span>,F.lit(<span class="string">&#x27;finance&#x27;</span>))</span><br><span class="line">df.select(<span class="string">&#x27;Customer_subtype&#x27;</span>,<span class="string">&#x27;constant&#x27;</span>).show()</span><br></pre></td></tr></table></figure>
+<h2 id="user-defined-functions-udfs"><a class="markdownIt-Anchor" href="#user-defined-functions-udfs"></a> User-Defined Functions (UDFs)</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> udf</span><br><span class="line">df.groupby(<span class="string">&quot;Avg_age&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">age_category</span>(<span class="params">age</span>):</span><br><span class="line">    <span class="keyword">if</span> age == <span class="string">&quot;20-30 years&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Young&quot;</span></span><br><span class="line">    <span class="keyword">elif</span> age== <span class="string">&quot;30-40 years&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Mid Aged&quot;</span></span><br><span class="line">    <span class="keyword">elif</span> ((age== <span class="string">&quot;40-50 years&quot;</span>) <span class="keyword">or</span> (age== <span class="string">&quot;50-60 years&quot;</span>)) :</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Old&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Very Old&quot;</span></span><br><span class="line">age_udf=udf(age_category,StringType())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;age_category&#x27;</span>,age_udf(df[<span class="string">&#x27;Avg_age&#x27;</span>]))</span><br><span class="line">df.select(<span class="string">&#x27;Avg_age&#x27;</span>,<span class="string">&#x27;age_category&#x27;</span>).show()</span><br><span class="line">df.groupby(<span class="string">&quot;age_category&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line">df.select(<span class="string">&#x27;Avg_Salary&#x27;</span>).summary().show()</span><br><span class="line">min_sal=<span class="number">1361</span></span><br><span class="line">max_sal=<span class="number">48919896</span></span><br><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> pandas_udf, PandasUDFType</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">scaled_salary</span>(<span class="params">salary</span>):</span><br><span class="line">    scaled_sal=(salary-min_sal)/(max_sal-min_sal)</span><br><span class="line">    <span class="keyword">return</span> scaled_sal</span><br><span class="line">scaling_udf = pandas_udf(scaled_salary, DoubleType())</span><br><span class="line">df.withColumn(<span class="string">&quot;scaled_salary&quot;</span>,scaling_udf(df[<span class="string">&#x27;Avg_Salary&#x27;</span>])) \</span><br><span class="line">    .show(<span class="number">10</span>,<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="joins"><a class="markdownIt-Anchor" href="#joins"></a> Joins</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">region_data = spark.createDataFrame([</span><br><span class="line">    (<span class="string">&#x27;Family with grown ups&#x27;</span>,<span class="string">&#x27;PN&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Driven Growers&#x27;</span>,<span class="string">&#x27;GJ&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Conservative families&#x27;</span>,<span class="string">&#x27;DD&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Cruising Seniors&#x27;</span>,<span class="string">&#x27;DL&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Average Family &#x27;</span>,<span class="string">&#x27;MN&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Living well&#x27;</span>,<span class="string">&#x27;KA&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Successful hedonists&#x27;</span>,<span class="string">&#x27;JH&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Retired and Religious&#x27;</span>,<span class="string">&#x27;AX&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Career Loners&#x27;</span>,<span class="string">&#x27;HY&#x27;</span>),(<span class="string">&#x27;Farmers&#x27;</span>,<span class="string">&#x27;JH&#x27;</span>)</span><br><span class="line">], schema=StructType() \</span><br><span class="line">    .add(<span class="string">&quot;Customer_main_type&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;Region Code&quot;</span>,<span class="string">&quot;string&quot;</span>))</span><br><span class="line">new_df=df.join(region_data,on=<span class="string">&#x27;Customer_main_type&#x27;</span>)</span><br><span class="line">new_df.groupby(<span class="string">&quot;Region Code&quot;</span>).count().show()</span><br></pre></td></tr></table></figure>
+<h2 id="pivoting"><a class="markdownIt-Anchor" href="#pivoting"></a> Pivoting</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>) \</span><br><span class="line">    .pivot(<span class="string">&#x27;Avg_age&#x27;</span>) \ </span><br><span class="line">    .<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .fillna(<span class="number">0</span>) \ </span><br><span class="line">    .show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>) \</span><br><span class="line">    .pivot(<span class="string">&#x27;label&#x27;</span>) \</span><br><span class="line">    .<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .fillna(<span class="number">0</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></table></figure>
+<h2 id="window-functions-or-windowed-aggregates"><a class="markdownIt-Anchor" href="#window-functions-or-windowed-aggregates"></a> Window Functions or Windowed Aggregates</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.window <span class="keyword">import</span> Window</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> col,row_number</span><br><span class="line">win = Window.orderBy(df[<span class="string">&#x27;Avg_Salary&#x27;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;rank&#x27;</span>, row_number().over(win).alias(<span class="string">&#x27;rank&#x27;</span>)).show()</span><br><span class="line"></span><br><span class="line">win_1=Window.partitionBy(<span class="string">&quot;Customer_subtype&quot;</span>).orderBy(df[<span class="string">&#x27;Avg_Salary&#x27;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;rank&#x27;</span>, row_number().over(win_1).alias(<span class="string">&#x27;rank&#x27;</span>))</span><br><span class="line">df.groupBy(<span class="string">&#x27;rank&#x27;</span>).count().orderBy(<span class="string">&#x27;rank&#x27;</span>).show()</span><br><span class="line">df.<span class="built_in">filter</span>(col(<span class="string">&#x27;rank&#x27;</span>) &lt; <span class="number">4</span>).show()</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/spark/" rel="tag"># spark</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/07/13/cpp-note/" rel="prev" title="CPP Note">
+                  <i class="fa fa-angle-left"></i> CPP Note
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/08/12/algo-note/" rel="next" title="Algo Note">
+                  Algo Note <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
 
 
-<script src="/js/lazyload.min.js"></script>
-
-
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-
-<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
+</div>
+  </main>
 
-<script src="/js/tocbot.min.js"></script>
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2020 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">You Xie</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
-<script>
-  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-  tocbot.init({
-    tocSelector: '.tocbot',
-    contentSelector: '.article-entry',
-    headingSelector: 'h1, h2, h3, h4, h5, h6',
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    positionFixedSelector: '.tocbot',
-    positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto',
-  });
-</script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
-<script src="/js/ocean.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="/js/third-party/math/katex.js"></script>
+
+
 
 </body>
-
 </html>

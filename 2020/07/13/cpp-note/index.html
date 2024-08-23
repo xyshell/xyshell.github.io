@@ -1,79 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  <title>
-    CPP Note |
-    
-    You Xie&#39;s Blog
-  </title>
-  <!-- Icon -->
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-    
-  
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
 
-  
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xyshell.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":350,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Cmake Cmake Cookbook  Chapter 1: From a Simple Executable to Libraries  1. Compiling a single source file into an executable CmakeLists.txt 123cmake_minimum_required(VERSION 3.5 FATAL_ERROR)project(r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPP Note">
+<meta property="og:url" content="https://xyshell.github.io/2020/07/13/cpp-note/index.html">
+<meta property="og:site_name" content="You Xie&#39;s Blog">
+<meta property="og:description" content="Cmake Cmake Cookbook  Chapter 1: From a Simple Executable to Libraries  1. Compiling a single source file into an executable CmakeLists.txt 123cmake_minimum_required(VERSION 3.5 FATAL_ERROR)project(r">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-13T06:56:16.000Z">
+<meta property="article:modified_time" content="2023-09-27T05:59:01.865Z">
+<meta property="article:author" content="You Xie">
+<meta property="article:tag" content="cpp">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://xyshell.github.io/2020/07/13/cpp-note/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://xyshell.github.io/2020/07/13/cpp-note/","path":"2020/07/13/cpp-note/","title":"CPP Note"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CPP Note | You Xie's Blog</title>
   
-  
-<script src="/js/pace.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJL0CGYTBX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-KJL0CGYTBX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
-<body>
-  <main class="content">
-    <section class="outer">
-  <article id="post-cpp-note" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
 
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-  <h1 class="article-title" itemprop="name">
-    CPP Note
-  </h1>
-  
-  
 
-    </header>
-    
 
-    
-    <div class="article-meta">
-      <a href="/2020/07/13/cpp-note/" class="article-date">
-  <time datetime="2020-07-13T06:56:16.000Z" itemprop="datePublished">2020-07-13</time>
-</a>
-      
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">You Xie's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cmake"><span class="nav-number">1.</span> <span class="nav-text"> Cmake</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-1-from-a-simple-executable-to-libraries"><span class="nav-number">1.1.</span> <span class="nav-text"> Chapter 1: From a Simple Executable to Libraries</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-compiling-a-single-source-file-into-an-executable"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 1. Compiling a single source file into an executable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-switching-generators"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 2. Switching generators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-building-and-linking-static-and-shared-libraries"><span class="nav-number">1.1.3.</span> <span class="nav-text"> 3. Building and linking static and shared libraries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-controlling-compilation-with-conditionals"><span class="nav-number">1.1.4.</span> <span class="nav-text"> 4. Controlling compilation with conditionals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-presenting-options-to-the-user"><span class="nav-number">1.1.5.</span> <span class="nav-text"> 5. Presenting options to the user</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-specifying-the-compiler"><span class="nav-number">1.1.6.</span> <span class="nav-text"> 6. Specifying the compiler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-switching-the-build-type"><span class="nav-number">1.1.7.</span> <span class="nav-text"> 7. Switching the build type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-controlling-compiler-flags"><span class="nav-number">1.1.8.</span> <span class="nav-text"> 8. Controlling compiler flags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-setting-the-standard-for-the-language"><span class="nav-number">1.1.9.</span> <span class="nav-text"> 9. Setting the standard for the language</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-using-control-flow-constructs"><span class="nav-number">1.1.10.</span> <span class="nav-text"> 10. Using control flow constructs</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="You Xie"
+      src="https://avatars.githubusercontent.com/u/38464985?v=4">
+  <p class="site-author-name" itemprop="name">You Xie</p>
+  <div class="site-description" itemprop="description">Never too old to learn!</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xyshell" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xyshell" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyshell0@gmail.com" title="E-Mail → mailto:xyshell0@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
     
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xyshell.github.io/2020/07/13/cpp-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/38464985?v=4">
+      <meta itemprop="name" content="You Xie">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You Xie's Blog">
+      <meta itemprop="description" content="Never too old to learn!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CPP Note | You Xie's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CPP Note
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-07-13 01:56:16" itemprop="dateCreated datePublished" datetime="2020-07-13T01:56:16-05:00">2020-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-27 00:59:01" itemprop="dateModified" datetime="2023-09-27T00:59:01-05:00">2023-09-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
 
     
     
-<div class="tocbot"></div>
-
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h1 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h1><p><a target="_blank" rel="noopener" href="https://chenxiaowei.gitbook.io/cmake-cookbook/">Cmake Cookbook</a></p>
-<h2 id="Chapter-1-From-a-Simple-Executable-to-Libraries"><a href="#Chapter-1-From-a-Simple-Executable-to-Libraries" class="headerlink" title="Chapter 1: From a Simple Executable to Libraries"></a>Chapter 1: From a Simple Executable to Libraries</h2><h3 id="1-Compiling-a-single-source-file-into-an-executable"><a href="#1-Compiling-a-single-source-file-into-an-executable" class="headerlink" title="1. Compiling a single source file into an executable"></a>1. Compiling a single source file into an executable</h3><p>CmakeLists.txt</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="cmake"><a class="markdownIt-Anchor" href="#cmake"></a> Cmake</h1>
+<p><a target="_blank" rel="noopener" href="https://chenxiaowei.gitbook.io/cmake-cookbook/">Cmake Cookbook</a></p>
+<h2 id="chapter-1-from-a-simple-executable-to-libraries"><a class="markdownIt-Anchor" href="#chapter-1-from-a-simple-executable-to-libraries"></a> Chapter 1: From a Simple Executable to Libraries</h2>
+<h3 id="1-compiling-a-single-source-file-into-an-executable"><a class="markdownIt-Anchor" href="#1-compiling-a-single-source-file-into-an-executable"></a> 1. Compiling a single source file into an executable</h3>
+<p>CmakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line">project(recipe-01 LANGUAGES CXX) <span class="comment"># default language is c++</span></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br></pre></td></tr></table></figure>
 <p>Normal steps:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake .. <span class="comment"># ../CmakeLists.txt exsits</span></span><br><span class="line">$ cmake --build .bash</span><br></pre></td></tr></table></figure>
@@ -83,11 +259,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p /tmp/someplace</span><br><span class="line">$ <span class="built_in">cd</span> /tmp/someplace</span><br><span class="line">$ cmake /path/to/source</span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
 <p>available targets:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cmake --build . -t <span class="built_in">help</span> <span class="comment"># --target</span></span><br><span class="line"></span><br><span class="line">The following are some of the valid targets <span class="keyword">for</span> this Makefile:</span><br><span class="line">... all (the default <span class="keyword">if</span> no target is provided)</span><br><span class="line">... clean</span><br><span class="line">... depend</span><br><span class="line">... edit_cache</span><br><span class="line">... rebuild_cache</span><br><span class="line">... hello-world</span><br><span class="line">... hello-world.o</span><br><span class="line">... hello-world.i</span><br><span class="line">... hello-world.s</span><br></pre></td></tr></table></figure>
-<h3 id="2-Switching-generators"><a href="#2-Switching-generators" class="headerlink" title="2. Switching generators"></a>2. Switching generators</h3><p>Choose Ninja:</p>
+<h3 id="2-switching-generators"><a class="markdownIt-Anchor" href="#2-switching-generators"></a> 2. Switching generators</h3>
+<p>Choose Ninja:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake -G Ninja .. <span class="comment"># must install Ninja first</span></span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
 <p>Single command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -H. -Bbuild -GNinja</span><br></pre></td></tr></table></figure>
-<h3 id="3-Building-and-linking-static-and-shared-libraries"><a href="#3-Building-and-linking-static-and-shared-libraries" class="headerlink" title="3. Building and linking static and shared libraries"></a>3. Building and linking static and shared libraries</h3><p>CmakeLists.txt</p>
+<h3 id="3-building-and-linking-static-and-shared-libraries"><a class="markdownIt-Anchor" href="#3-building-and-linking-static-and-shared-libraries"></a> 3. Building and linking static and shared libraries</h3>
+<p>CmakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line">project(recipe-03 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># generate a library from sources</span></span><br><span class="line">add_library(message</span><br><span class="line">  STATIC</span><br><span class="line">    Message.hpp</span><br><span class="line">    Message.cpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(hello-world message)</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>add_library(message STATIC Message.hpp Message.cpp)</code>: add_library’s first param is target name, available for entire CMakeLists.txt to be refered. Actually name will be prefixed with lib and suffixed withbash proper extension by cmake, determined by (STATIC or SHARED) and OS</li>
@@ -110,19 +288,23 @@
 <p>Make dynamic linking, optional to set name to <code>message-shared</code> and use set_target_properties so <code>#include &quot;message.h&quot;</code> is available in source code:</p>
 <p>CmakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line">project(recipe-03 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">add_library(message-shared</span><br><span class="line">  SHARED</span><br><span class="line">    Message.hpp</span><br><span class="line">    Message.cpp</span><br><span class="line">  )</span><br><span class="line">set_target_properties(message-shared</span><br><span class="line">  PROPERTIES</span><br><span class="line">    OUTPUT_NAME <span class="string">&quot;message&quot;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(hello-world message-shared)</span><br></pre></td></tr></table></figure>
-<h3 id="4-Controlling-compilation-with-conditionals"><a href="#4-Controlling-compilation-with-conditionals" class="headerlink" title="4. Controlling compilation with conditionals"></a>4. Controlling compilation with conditionals</h3><p>CmakeLists.txt</p>
+<h3 id="4-controlling-compilation-with-conditionals"><a class="markdownIt-Anchor" href="#4-controlling-compilation-with-conditionals"></a> 4. Controlling compilation with conditionals</h3>
+<p>CmakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-04 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># introduce a toggle for using a library</span></span><br><span class="line"><span class="built_in">set</span>(USE_LIBRARY OFF)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Compile sources into a library? <span class="variable">$&#123;USE_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># BUILD_SHARED_LIBS is a global flag offered by CMake</span></span><br><span class="line"><span class="comment"># to toggle the behavior of add_library</span></span><br><span class="line"><span class="built_in">set</span>(BUILD_SHARED_LIBS OFF)</span><br><span class="line"></span><br><span class="line"><span class="comment"># list sources</span></span><br><span class="line">list(APPEND _sources Message.hpp Message.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(USE_LIBRARY)</span><br><span class="line">  <span class="comment"># add_library will create a static library</span></span><br><span class="line">  <span class="comment"># since BUILD_SHARED_LIBS is OFF</span></span><br><span class="line">  add_library(message <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line"></span><br><span class="line">  add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">  target_link_libraries(hello-world message)</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">  add_executable(hello-world hello-world.cpp <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
-<h3 id="5-Presenting-options-to-the-user"><a href="#5-Presenting-options-to-the-user" class="headerlink" title="5. Presenting options to the user"></a>5. Presenting options to the user</h3><p>CmakeLists.txt</p>
+<h3 id="5-presenting-options-to-the-user"><a class="markdownIt-Anchor" href="#5-presenting-options-to-the-user"></a> 5. Presenting options to the user</h3>
+<p>CmakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-05 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># expose options to the user</span></span><br><span class="line">option(USE_LIBRARY <span class="string">&quot;Compile sources into a library&quot;</span> OFF)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Compile sources into a library? <span class="variable">$&#123;USE_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">include(CMakeDependentOption)</span><br><span class="line"></span><br><span class="line"><span class="comment"># second option depends on the value of the first</span></span><br><span class="line">cmake_dependent_option(</span><br><span class="line">  MAKE_STATIC_LIBRARY <span class="string">&quot;Compile sources into a static library&quot;</span> OFF</span><br><span class="line">  <span class="string">&quot;USE_LIBRARY&quot;</span> ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment"># third option depends on the value of the first</span></span><br><span class="line">cmake_dependent_option(</span><br><span class="line">  MAKE_SHARED_LIBRARY <span class="string">&quot;Compile sources into a shared library&quot;</span> ON</span><br><span class="line">  <span class="string">&quot;USE_LIBRARY&quot;</span> ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)</span><br><span class="line"></span><br><span class="line"><span class="comment"># list sources</span></span><br><span class="line">list(APPEND _sources Message.hpp Message.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(USE_LIBRARY)</span><br><span class="line">  message(STATUS <span class="string">&quot;Compile sources into a STATIC library? <span class="variable">$&#123;MAKE_STATIC_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Compile sources into a SHARED library? <span class="variable">$&#123;MAKE_SHARED_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(MAKE_SHARED_LIBRARY)</span><br><span class="line">    add_library(message SHARED <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line"></span><br><span class="line">    add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">    target_link_libraries(hello-world message)</span><br><span class="line">  endif()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(MAKE_STATIC_LIBRARY)</span><br><span class="line">    add_library(message STATIC <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line"></span><br><span class="line">    add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">    target_link_libraries(hello-world message)</span><br><span class="line">  endif()</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">  add_executable(hello-world hello-world.cpp <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
 <p>to toggle options:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -D USE_LIBRARY=OFF -D MAKE_SHARED_LIBRARY=ON ..</span><br></pre></td></tr></table></figure>
-<h3 id="6-Specifying-the-compiler"><a href="#6-Specifying-the-compiler" class="headerlink" title="6. Specifying the compiler"></a>6. Specifying the compiler</h3><p>prefered:</p>
+<h3 id="6-specifying-the-compiler"><a class="markdownIt-Anchor" href="#6-specifying-the-compiler"></a> 6. Specifying the compiler</h3>
+<p>prefered:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -D CMAKE_CXX_COMPILER=clang++ ..</span><br></pre></td></tr></table></figure>
 <p>not prefered:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">env</span> CXX=clang++ cmake ..</span><br></pre></td></tr></table></figure>
 <p>CMakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-06 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Is the C++ compiler loaded? <span class="variable">$&#123;CMAKE_CXX_COMPILER_LOADED&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(CMAKE_CXX_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C++ compiler ID is: <span class="variable">$&#123;CMAKE_CXX_COMPILER_ID&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Is the C++ from GNU? <span class="variable">$&#123;CMAKE_COMPILER_IS_GNUCXX&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C++ compiler version is: <span class="variable">$&#123;CMAKE_CXX_COMPILER_VERSION&#125;</span>&quot;</span>)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Is the C compiler loaded? <span class="variable">$&#123;CMAKE_C_COMPILER_LOADED&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(CMAKE_C_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C compiler ID is: <span class="variable">$&#123;CMAKE_C_COMPILER_ID&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Is the C from GNU? <span class="variable">$&#123;CMAKE_COMPILER_IS_GNUCC&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C compiler version is: <span class="variable">$&#123;CMAKE_C_COMPILER_VERSION&#125;</span>&quot;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
-<h3 id="7-Switching-the-build-type"><a href="#7-Switching-the-build-type" class="headerlink" title="7. Switching the build type"></a>7. Switching the build type</h3><ul>
+<h3 id="7-switching-the-build-type"><a class="markdownIt-Anchor" href="#7-switching-the-build-type"></a> 7. Switching the build type</h3>
+<ul>
 <li>Debug：用于在没有优化的情况下，使用带有调试符号构建库或可执行文件。</li>
 <li>Release：用于构建的优化的库或可执行文件，不包含调试符号。</li>
 <li>RelWithDebInfo：用于构建较少的优化库或可执行文件，包含调试符号。</li>
@@ -132,178 +314,110 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-07 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># we default to Release build type</span></span><br><span class="line"><span class="keyword">if</span>(NOT CMAKE_BUILD_TYPE)</span><br><span class="line">  <span class="built_in">set</span>(CMAKE_BUILD_TYPE Release CACHE STRING <span class="string">&quot;Build type&quot;</span> FORCE)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Build type: <span class="variable">$&#123;CMAKE_BUILD_TYPE&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;C flags, Debug configuration: <span class="variable">$&#123;CMAKE_C_FLAGS_DEBUG&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C flags, Release configuration: <span class="variable">$&#123;CMAKE_C_FLAGS_RELEASE&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C flags, Release configuration with Debug info: <span class="variable">$&#123;CMAKE_C_FLAGS_RELWITHDEBINFO&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C flags, minimal Release configuration: <span class="variable">$&#123;CMAKE_C_FLAGS_MINSIZEREL&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, Debug configuration: <span class="variable">$&#123;CMAKE_CXX_FLAGS_DEBUG&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, Release configuration: <span class="variable">$&#123;CMAKE_CXX_FLAGS_RELEASE&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, Release configuration with Debug info: <span class="variable">$&#123;CMAKE_CXX_FLAGS_RELWITHDEBINFO&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, minimal Release configuration: <span class="variable">$&#123;CMAKE_CXX_FLAGS_MINSIZEREL&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
 <p>to switch build type:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cmake -D CMAKE_BUILD_TYPE=Debug ..</span><br></pre></td></tr></table></figure>
-<h3 id="8-Controlling-compiler-flags"><a href="#8-Controlling-compiler-flags" class="headerlink" title="8. Controlling compiler flags"></a>8. Controlling compiler flags</h3><p>CMakeLists.txt</p>
+<h3 id="8-controlling-compiler-flags"><a class="markdownIt-Anchor" href="#8-controlling-compiler-flags"></a> 8. Controlling compiler flags</h3>
+<p>CMakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-08 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">message(<span class="string">&quot;C++ compiler flags: <span class="variable">$&#123;CMAKE_CXX_FLAGS&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">list(APPEND flags <span class="string">&quot;-fPIC&quot;</span> <span class="string">&quot;-Wall&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(NOT WIN32)</span><br><span class="line">  list(APPEND flags <span class="string">&quot;-Wextra&quot;</span> <span class="string">&quot;-Wpedantic&quot;</span>)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">add_library(geometry</span><br><span class="line">  STATIC</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_circle.hpp</span><br><span class="line">    geometry_polygon.cpp</span><br><span class="line">    geometry_polygon.hpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">    geometry_rhombus.hpp</span><br><span class="line">    geometry_square.cpp</span><br><span class="line">    geometry_square.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_compile_options(geometry</span><br><span class="line">  PRIVATE</span><br><span class="line">    <span class="variable">$&#123;flags&#125;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(compute-areas compute-areas.cpp)</span><br><span class="line"></span><br><span class="line">target_compile_options(compute-areas</span><br><span class="line">  PRIVATE</span><br><span class="line">    <span class="string">&quot;-fPIC&quot;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_link_libraries(compute-areas geometry)</span><br></pre></td></tr></table></figure>
-<h3 id="9-Setting-the-standard-for-the-language"><a href="#9-Setting-the-standard-for-the-language" class="headerlink" title="9. Setting the standard for the language"></a>9. Setting the standard for the language</h3><p>CMakeLists.txt</p>
+<h3 id="9-setting-the-standard-for-the-language"><a class="markdownIt-Anchor" href="#9-setting-the-standard-for-the-language"></a> 9. Setting the standard for the language</h3>
+<p>CMakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-09 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)</span><br><span class="line"></span><br><span class="line">add_library(animals</span><br><span class="line">  SHARED</span><br><span class="line">    Animal.cpp</span><br><span class="line">    Animal.hpp</span><br><span class="line">    Cat.cpp</span><br><span class="line">    Cat.hpp</span><br><span class="line">    Dog.cpp</span><br><span class="line">    Dog.hpp</span><br><span class="line">    Factory.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">set_target_properties(animals</span><br><span class="line">  PROPERTIES</span><br><span class="line">    CXX_STANDARD 14</span><br><span class="line">    CXX_EXTENSIONS OFF</span><br><span class="line">    CXX_STANDARD_REQUIRED ON</span><br><span class="line">    POSITION_INDEPENDENT_CODE 1</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(animal-farm animal-farm.cpp)</span><br><span class="line"></span><br><span class="line">set_target_properties(animal-farm</span><br><span class="line">  PROPERTIES</span><br><span class="line">    CXX_STANDARD 14</span><br><span class="line">    CXX_EXTENSIONS OFF</span><br><span class="line">    CXX_STANDARD_REQUIRED ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_link_libraries(animal-farm animals)</span><br></pre></td></tr></table></figure>
-<h3 id="10-Using-control-flow-constructs"><a href="#10-Using-control-flow-constructs" class="headerlink" title="10. Using control flow constructs"></a>10. Using control flow constructs</h3><p>CMakeLists.txt</p>
+<h3 id="10-using-control-flow-constructs"><a class="markdownIt-Anchor" href="#10-using-control-flow-constructs"></a> 10. Using control flow constructs</h3>
+<p>CMakeLists.txt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-10 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">add_library(geometry</span><br><span class="line">  STATIC</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_circle.hpp</span><br><span class="line">    geometry_polygon.cpp</span><br><span class="line">    geometry_polygon.hpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">    geometry_rhombus.hpp</span><br><span class="line">    geometry_square.cpp</span><br><span class="line">    geometry_square.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment"># we wish to compile the library with the optimization flag: -O3</span></span><br><span class="line">target_compile_options(geometry</span><br><span class="line">  PRIVATE</span><br><span class="line">    -O3</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">list(</span><br><span class="line">  APPEND sources_with_lower_optimization</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment"># we use the IN LISTS foreach syntax to set source properties</span></span><br><span class="line">message(STATUS <span class="string">&quot;Setting source properties using IN LISTS syntax:&quot;</span>)</span><br><span class="line">foreach(_source IN LISTS sources_with_lower_optimization)</span><br><span class="line">  set_source_files_properties(<span class="variable">$&#123;_source&#125;</span> PROPERTIES COMPILE_FLAGS -O2)</span><br><span class="line">  message(STATUS <span class="string">&quot;Appending -O2 flag for <span class="variable">$&#123;_source&#125;</span>&quot;</span>)</span><br><span class="line">endforeach()</span><br><span class="line"></span><br><span class="line"><span class="comment"># we demonstrate the plain foreach syntax to query source properties</span></span><br><span class="line"><span class="comment"># which requires to expand the contents of the variable</span></span><br><span class="line">message(STATUS <span class="string">&quot;Querying sources properties using plain syntax:&quot;</span>)</span><br><span class="line">foreach(_source <span class="variable">$&#123;sources_with_lower_optimization&#125;</span>)</span><br><span class="line">  get_source_file_property(_flags <span class="variable">$&#123;_source&#125;</span> COMPILE_FLAGS)</span><br><span class="line">  message(STATUS <span class="string">&quot;Source <span class="variable">$&#123;_source&#125;</span> has the following extra COMPILE_FLAGS: <span class="variable">$&#123;_flags&#125;</span>&quot;</span>)</span><br><span class="line">endforeach()</span><br><span class="line"></span><br><span class="line">add_executable(compute-areas compute-areas.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(compute-areas geometry)</span><br></pre></td></tr></table></figure>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2020/07/13/cpp-note/" data-id="clywj85g00008t8957t5d77ag" class="article-share-link">
-        Share
-      </a>
-      
-<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/" rel="tag">cpp</a></li></ul>
 
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cpp/" rel="tag"># cpp</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/07/09/julia-note/" rel="prev" title="Julia Note">
+                  <i class="fa fa-angle-left"></i> Julia Note
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/07/26/spark-note/" rel="next" title="Spark Note">
+                  Spark Note <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
 
-  </div>
 
-  
-  
-<nav class="article-nav">
-  
-  <a href="/2020/07/26/spark-note/" class="article-nav-link">
-    <strong class="article-nav-caption">Newer</strong>
-    <div class="article-nav-title">
-      
-      Spark Note
-      
-    </div>
-  </a>
-  
-  
-  <a href="/2020/07/09/julia-note/" class="article-nav-link">
-    <strong class="article-nav-caption">Older</strong>
-    <div class="article-nav-title">Julia Note</div>
-  </a>
-  
-</nav>
 
-  
 
-  
-  
-  
-  
 
-</article>
-</section>
-    <footer class="footer">
-  <div class="outer">
-    <ul class="list-inline">
-      <li>You Xie&#39;s Blog &copy; 2024</li>
-      
-        <li>
-          
-            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
-            
-        </li>
-      
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
-    <p><ul class="list-inline">
-  
-  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
-  
-</ul></p>
-  </div>
-</footer>
+
+</div>
   </main>
-  <aside class="sidebar">
-    <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/hexo.svg" alt="You Xie&#39;s Blog"></a>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2020 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">You Xie</span>
   </div>
+
+    </div>
+  </footer>
+
   
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">Home</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">Archives</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/gallery">Gallery</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about">About</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      <div class="totop" id="totop">
-  <i class="fe fe-rocket"></i>
-</div>
-    </li>
-    <li class="nav-item">
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="fe fe-feed"></i>
-      </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-  </aside>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
   
-<script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
-
-<script src="/js/jquery.justifiedGallery.min.js"></script>
-
-
-<script src="/js/lazyload.min.js"></script>
-
-
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
 
 
-<script src="/js/tocbot.min.js"></script>
 
 
-<script>
-  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-  tocbot.init({
-    tocSelector: '.tocbot',
-    contentSelector: '.article-entry',
-    headingSelector: 'h1, h2, h3, h4, h5, h6',
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    positionFixedSelector: '.tocbot',
-    positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto',
-  });
-</script>
+  
 
 
 
-<script src="/js/ocean.js"></script>
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="/js/third-party/math/katex.js"></script>
+
+
 
 </body>
-
 </html>

@@ -1,78 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  <title>
-    Docker Note |
-    
-    You Xie&#39;s Blog
-  </title>
-  <!-- Icon -->
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-    
-  
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
 
-  
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xyshell.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":350,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Install Docker  On Debian uninstall old versions: 1$ sudo apt-get remove docker docker-engine docker.io containerd runc 12345678$ sudo apt-get update$ sudo apt-get install \    apt-transport-https \">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker Note">
+<meta property="og:url" content="https://xyshell.github.io/2020/06/08/docker-note/index.html">
+<meta property="og:site_name" content="You Xie&#39;s Blog">
+<meta property="og:description" content="Install Docker  On Debian uninstall old versions: 1$ sudo apt-get remove docker docker-engine docker.io containerd runc 12345678$ sudo apt-get update$ sudo apt-get install \    apt-transport-https \">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/docker_engine.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/create_container.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/windows_container.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/docker_image.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/docker_image_container.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/image_manifest.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/modernize_traditional_apps.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/logging.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/swarm.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/orchestration_intro.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/container_network.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/bridge_network.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/overlay_network.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/secret.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/stack.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/stack_file.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/EECE.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/UCP.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/DTR.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/RBAC.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/routing_mesh.png">
+<meta property="og:image" content="https://xyshell.github.io/photos/docker-note/HRM.png">
+<meta property="article:published_time" content="2020-06-08T18:40:24.000Z">
+<meta property="article:modified_time" content="2023-09-27T05:59:01.866Z">
+<meta property="article:author" content="You Xie">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xyshell.github.io/photos/docker-note/docker_engine.png">
+
+
+<link rel="canonical" href="https://xyshell.github.io/2020/06/08/docker-note/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://xyshell.github.io/2020/06/08/docker-note/","path":"2020/06/08/docker-note/","title":"Docker Note"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Docker Note | You Xie's Blog</title>
   
-  
-<script src="/js/pace.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJL0CGYTBX"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-KJL0CGYTBX","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
-<body>
-  <main class="content">
-    <section class="outer">
-  <article id="post-docker-note" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
 
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-  <h1 class="article-title" itemprop="name">
-    Docker Note
-  </h1>
-  
-  
 
-    </header>
-    
 
-    
-    <div class="article-meta">
-      <a href="/2020/06/08/docker-note/" class="article-date">
-  <time datetime="2020-06-08T18:40:24.000Z" itemprop="datePublished">2020-06-08</time>
-</a>
-      
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">You Xie's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#install-docker"><span class="nav-number">1.</span> <span class="nav-text"> Install Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#on-debian"><span class="nav-number">1.1.</span> <span class="nav-text"> On Debian</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#on-ubuntu-by-shell-script"><span class="nav-number">1.2.</span> <span class="nav-text"> On Ubuntu by Shell Script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#launching-a-docker-container"><span class="nav-number">1.3.</span> <span class="nav-text"> Launching a Docker container</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-engine-architecture"><span class="nav-number">2.</span> <span class="nav-text"> Docker Engine Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#big-picture"><span class="nav-number">2.1.</span> <span class="nav-text"> Big Picture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example-of-creating-a-container"><span class="nav-number">2.2.</span> <span class="nav-text"> Example of creating a container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-on-windows-native-and-hyper-v"><span class="nav-number">2.3.</span> <span class="nav-text"> Docker on Windows: Native and Hyper-V</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-images"><span class="nav-number">3.</span> <span class="nav-text"> Docker Images</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pull-a-docker-image"><span class="nav-number">3.1.</span> <span class="nav-text"> Pull a docker image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#check-images"><span class="nav-number">3.2.</span> <span class="nav-text"> Check images</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-images"><span class="nav-number">3.3.</span> <span class="nav-text"> Delete images</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#registries"><span class="nav-number">3.4.</span> <span class="nav-text"> Registries</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#containerizing"><span class="nav-number">4.</span> <span class="nav-text"> Containerizing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dockerfile"><span class="nav-number">4.1.</span> <span class="nav-text"> Dockerfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-image"><span class="nav-number">4.2.</span> <span class="nav-text"> Build image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-container"><span class="nav-number">4.3.</span> <span class="nav-text"> Run container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multi-stage-builds"><span class="nav-number">4.4.</span> <span class="nav-text"> Multi-stage Builds</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-containers"><span class="nav-number">5.</span> <span class="nav-text"> Docker containers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#check-status"><span class="nav-number">5.1.</span> <span class="nav-text"> Check status</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-containers"><span class="nav-number">5.2.</span> <span class="nav-text"> Run containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stop-containers"><span class="nav-number">5.3.</span> <span class="nav-text"> Stop containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#start-containers"><span class="nav-number">5.4.</span> <span class="nav-text"> Start containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enter-containers"><span class="nav-number">5.5.</span> <span class="nav-text"> Enter containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remove-containers"><span class="nav-number">5.6.</span> <span class="nav-text"> Remove containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log"><span class="nav-number">5.7.</span> <span class="nav-text"> Log</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swarm-and-services"><span class="nav-number">6.</span> <span class="nav-text"> Swarm and Services</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#swarm"><span class="nav-number">6.1.</span> <span class="nav-text"> Swarm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#single-docker-node-to-swarm-mode"><span class="nav-number">6.1.1.</span> <span class="nav-text"> Single docker node to swarm mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join-another-manager-and-workers"><span class="nav-number">6.1.2.</span> <span class="nav-text"> Join another manager and workers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remmove-swarm-node"><span class="nav-number">6.1.3.</span> <span class="nav-text"> Remmove swarm node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autolock-swarm"><span class="nav-number">6.1.4.</span> <span class="nav-text"> Autolock swarm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update-certificate-expiry-time"><span class="nav-number">6.1.5.</span> <span class="nav-text"> Update certificate expiry time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update-a-node"><span class="nav-number">6.1.6.</span> <span class="nav-text"> Update a node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orchestration-intro"><span class="nav-number">6.1.7.</span> <span class="nav-text"> Orchestration intro</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#services"><span class="nav-number">6.2.</span> <span class="nav-text"> Services</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#create-service"><span class="nav-number">6.2.1.</span> <span class="nav-text"> Create service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#check-status-2"><span class="nav-number">6.2.2.</span> <span class="nav-text"> Check status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove-services"><span class="nav-number">6.2.3.</span> <span class="nav-text"> Remove services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update-services"><span class="nav-number">6.2.4.</span> <span class="nav-text"> Update services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logs"><span class="nav-number">6.2.5.</span> <span class="nav-text"> Logs</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#container-networking"><span class="nav-number">7.</span> <span class="nav-text"> Container Networking</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#network-types"><span class="nav-number">7.1.</span> <span class="nav-text"> Network types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bridge-networking"><span class="nav-number">7.1.1.</span> <span class="nav-text"> Bridge Networking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overlay-networking"><span class="nav-number">7.1.2.</span> <span class="nav-text"> Overlay Networking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#macvlan"><span class="nav-number">7.1.3.</span> <span class="nav-text"> MACVLAN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#network-services"><span class="nav-number">7.2.</span> <span class="nav-text"> Network services</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#service-discovery"><span class="nav-number">7.2.1.</span> <span class="nav-text"> Service discovery</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load-balancing"><span class="nav-number">7.2.2.</span> <span class="nav-text"> Load Balancing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volumes"><span class="nav-number">8.</span> <span class="nav-text"> Volumes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#create-volumes"><span class="nav-number">8.1.</span> <span class="nav-text"> Create Volumes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#check-status-3"><span class="nav-number">8.2.</span> <span class="nav-text"> Check status</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-volume"><span class="nav-number">8.3.</span> <span class="nav-text"> Delete volume</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#attach-volume"><span class="nav-number">8.4.</span> <span class="nav-text"> Attach volume</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volume-for-service"><span class="nav-number">8.5.</span> <span class="nav-text"> Volume for service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#read-only-volume"><span class="nav-number">8.6.</span> <span class="nav-text"> Read only volume</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#secrets"><span class="nav-number">9.</span> <span class="nav-text"> Secrets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-compose-and-stack"><span class="nav-number">10.</span> <span class="nav-text"> Docker Compose and Stack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose"><span class="nav-number">10.1.</span> <span class="nav-text"> Docker compose</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install-on-linux"><span class="nav-number">10.1.1.</span> <span class="nav-text"> Install on linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compose-files"><span class="nav-number">10.1.2.</span> <span class="nav-text"> Compose files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run-compose-app"><span class="nav-number">10.1.3.</span> <span class="nav-text"> Run compose app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stop-restart-and-delete-app"><span class="nav-number">10.1.4.</span> <span class="nav-text"> Stop, Restart and Delete App</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stack"><span class="nav-number">10.2.</span> <span class="nav-text"> Stack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deploy-the-stack"><span class="nav-number">10.2.1.</span> <span class="nav-text"> Deploy the stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#check-status-4"><span class="nav-number">10.2.2.</span> <span class="nav-text"> Check status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update-stack"><span class="nav-number">10.2.3.</span> <span class="nav-text"> Update stack</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#enterprise-editionee"><span class="nav-number">11.</span> <span class="nav-text"> Enterprise Edition(EE)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#universal-control-planeucp"><span class="nav-number">11.1.</span> <span class="nav-text"> Universal Control Plane(UCP)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-trusted-registrydtr"><span class="nav-number">11.2.</span> <span class="nav-text"> Docker Trusted Registry(DTR)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#role-based-access-controlrbac"><span class="nav-number">11.3.</span> <span class="nav-text"> Role-based Access Control(RBAC)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#image-scanning"><span class="nav-number">11.4.</span> <span class="nav-text"> Image scanning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http-routing-meshhrm"><span class="nav-number">11.5.</span> <span class="nav-text"> HTTP Routing Mesh(HRM)</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="You Xie"
+      src="https://avatars.githubusercontent.com/u/38464985?v=4">
+  <p class="site-author-name" itemprop="name">You Xie</p>
+  <div class="site-description" itemprop="description">Never too old to learn!</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xyshell" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xyshell" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyshell0@gmail.com" title="E-Mail → mailto:xyshell0@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
     
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xyshell.github.io/2020/06/08/docker-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/38464985?v=4">
+      <meta itemprop="name" content="You Xie">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You Xie's Blog">
+      <meta itemprop="description" content="Never too old to learn!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Docker Note | You Xie's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker Note
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-06-08 13:40:24" itemprop="dateCreated datePublished" datetime="2020-06-08T13:40:24-05:00">2020-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-27 00:59:01" itemprop="dateModified" datetime="2023-09-27T00:59:01-05:00">2023-09-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
 
     
     
-<div class="tocbot"></div>
-
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h1 id="Install-Docker"><a href="#Install-Docker" class="headerlink" title="Install Docker"></a>Install Docker</h1><h2 id="On-Debian"><a href="#On-Debian" class="headerlink" title="On Debian"></a>On Debian</h2><p>uninstall old versions:</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="install-docker"><a class="markdownIt-Anchor" href="#install-docker"></a> Install Docker</h1>
+<h2 id="on-debian"><a class="markdownIt-Anchor" href="#on-debian"></a> On Debian</h2>
+<p>uninstall old versions:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt-get remove docker docker-engine docker.io containerd runc</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt-get update</span><br><span class="line">$ <span class="built_in">sudo</span> apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    gnupg-agent \</span><br><span class="line">    software-properties-common</span><br><span class="line">$ curl -fsSL https://download.docker.com/linux/debian/gpg | <span class="built_in">sudo</span> apt-key add -</span><br></pre></td></tr></table></figure>
 <p>Verfiy key with the fingerprint:</p>
@@ -87,28 +285,37 @@
 <p>add username to <code>docker:x:999:&lt;username&gt;</code>, e.x. <code>docker:x:999:admin</code></p>
 <p>Or:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> usermod -a -G docker &lt;username&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="On-Ubuntu-by-Shell-Script"><a href="#On-Ubuntu-by-Shell-Script" class="headerlink" title="On Ubuntu by Shell Script"></a>On Ubuntu by Shell Script</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br></pre></td></tr></table></figure>
+<h2 id="on-ubuntu-by-shell-script"><a class="markdownIt-Anchor" href="#on-ubuntu-by-shell-script"></a> On Ubuntu by Shell Script</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://get.docker.com/ | sh</span><br></pre></td></tr></table></figure>
 <p>add user accout to local unix docker group, to avoid <code>sudo</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> usermod -aG docker &lt;username&gt; <span class="comment"># e.x. admin</span></span><br></pre></td></tr></table></figure>
-<h2 id="Launching-a-Docker-container"><a href="#Launching-a-Docker-container" class="headerlink" title="Launching a Docker container"></a>Launching a Docker container</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano Dockerfile</span><br></pre></td></tr></table></figure>
+<h2 id="launching-a-docker-container"><a class="markdownIt-Anchor" href="#launching-a-docker-container"></a> Launching a Docker container</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano Dockerfile</span><br></pre></td></tr></table></figure>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##############################</span></span><br><span class="line"><span class="comment"># Dockerfile to create Ubuntu webserver</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">18.04</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get install -y apache2</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">&quot;Welcome to my web site&quot;</span> &gt; /var/www/html/index.html</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"><span class="comment">##############################</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t <span class="string">&quot;webserver&quot;</span> .</span><br><span class="line">docker images</span><br><span class="line">docker run -d -p 80:80 webserver /usr/sbin/apache2ctl -D FOREGROUND</span><br><span class="line">docker ps</span><br><span class="line">curl localhost</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="Docker-Engine-Architecture"><a href="#Docker-Engine-Architecture" class="headerlink" title="Docker Engine Architecture"></a>Docker Engine Architecture</h1><h2 id="Big-Picture"><a href="#Big-Picture" class="headerlink" title="Big Picture"></a>Big Picture</h2><p><img src="/photos/docker-note/docker_engine.png" alt="docker_engine"></p>
-<h2 id="Example-of-creating-a-container"><a href="#Example-of-creating-a-container" class="headerlink" title="Example of creating a container"></a>Example of creating a container</h2><p><img src="/photos/docker-note/create_container.png" alt="create_container"></p>
+<hr />
+<h1 id="docker-engine-architecture"><a class="markdownIt-Anchor" href="#docker-engine-architecture"></a> Docker Engine Architecture</h1>
+<h2 id="big-picture"><a class="markdownIt-Anchor" href="#big-picture"></a> Big Picture</h2>
+<p><img src="/photos/docker-note/docker_engine.png" alt="docker_engine" /></p>
+<h2 id="example-of-creating-a-container"><a class="markdownIt-Anchor" href="#example-of-creating-a-container"></a> Example of creating a container</h2>
+<p><img src="/photos/docker-note/create_container.png" alt="create_container" /></p>
 <p>“Daemon” can restart without affecting on containers, which means upgrading doesn’t kill containers, same for “containerd”. Can restart them, leaving all containers running, when come back, they re-discover running containers and reconnect to the shim.</p>
-<h2 id="Docker-on-Windows-Native-and-Hyper-V"><a href="#Docker-on-Windows-Native-and-Hyper-V" class="headerlink" title="Docker on Windows: Native and Hyper-V"></a>Docker on Windows: Native and Hyper-V</h2><p><img src="/photos/docker-note/windows_container.png" alt="windows_container"></p>
-<p>only low level difference, APIs for users are the same.<br>The idea is by VM isolation of Hyper-V(lightweight VM) might be better or more secure than Namespaces. Also, can run different OS in VM.</p>
-<hr>
-<h1 id="Docker-Images"><a href="#Docker-Images" class="headerlink" title="Docker Images"></a>Docker Images</h1><p><img src="/photos/docker-note/docker_image.png" alt="docker_image"></p>
+<h2 id="docker-on-windows-native-and-hyper-v"><a class="markdownIt-Anchor" href="#docker-on-windows-native-and-hyper-v"></a> Docker on Windows: Native and Hyper-V</h2>
+<p><img src="/photos/docker-note/windows_container.png" alt="windows_container" /></p>
+<p>only low level difference, APIs for users are the same.<br />
+The idea is by VM isolation of Hyper-V(lightweight VM) might be better or more secure than Namespaces. Also, can run different OS in VM.</p>
+<hr />
+<h1 id="docker-images"><a class="markdownIt-Anchor" href="#docker-images"></a> Docker Images</h1>
+<p><img src="/photos/docker-note/docker_image.png" alt="docker_image" /></p>
 <p>Image is <strong>read-only</strong> template for creating application containers. <strong>Independent</strong> layer loosely connected by a manifest file(config file).</p>
-<p><img src="/photos/docker-note/docker_image_container.png" alt="docker_image_container"></p>
+<p><img src="/photos/docker-note/docker_image_container.png" alt="docker_image_container" /></p>
 <p>Every container can also write by copying read-only layer(files in it) to its writable layer, and do changes there.</p>
-<h2 id="Pull-a-docker-image"><a href="#Pull-a-docker-image" class="headerlink" title="Pull a docker image"></a>Pull a docker image</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image pull redis</span><br></pre></td></tr></table></figure>
+<h2 id="pull-a-docker-image"><a class="markdownIt-Anchor" href="#pull-a-docker-image"></a> Pull a docker image</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image pull redis</span><br></pre></td></tr></table></figure>
 <p>In fact, we are pulling layers:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/redis</span><br><span class="line">afb6ec6fdc1c: Pull complete <span class="comment"># layer</span></span><br><span class="line">608641ee4c3f: Pull complete</span><br><span class="line">668ab9e1f4bc: Pull complete</span><br><span class="line">78a12698914e: Pull complete</span><br><span class="line">d056855f4300: Pull complete</span><br><span class="line">618fdf7d0dec: Pull complete</span><br><span class="line">Digest: sha256:ec277acf143340fa338f0b1a9b2f23632335d2096940d8e754474e21476eae32</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> redis:latest</span><br><span class="line">docker.io/library/redis:latest</span><br></pre></td></tr></table></figure>
 <p>Fat manifest is specified by OS architecture, to get image manifest:</p>
-<p><img src="/photos/docker-note/image_manifest.png" alt="image_manifest"></p>
+<p><img src="/photos/docker-note/image_manifest.png" alt="image_manifest" /></p>
 <p>Referencing by hash to avoid mismatch between the image asking for and the image got.</p>
 <p>Using overlay2 as storage driver, those layers are stored at <code>/var/lib/docker/overlay2</code>. To see layers, run:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> <span class="built_in">ls</span> -l /var/lib/docker/overlay2</span><br></pre></td></tr></table></figure>
@@ -121,22 +328,28 @@
 <li>Updates …</li>
 </ol>
 <p>-&gt; a single unified file system.</p>
-<h2 id="Check-images"><a href="#Check-images" class="headerlink" title="Check images"></a>Check images</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ docker image <span class="built_in">ls</span>  / $ docker images</span><br><span class="line">$ docker image <span class="built_in">ls</span> --digests <span class="comment"># get sha256</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --filter dangling=<span class="literal">true</span> <span class="comment"># get &lt;none&gt;:&lt;none&gt;</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --filter=reference=<span class="string">&quot;*:latest&quot;</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --format <span class="string">&quot;&#123;&#123;.Size&#125;&#125;&quot;</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --format <span class="string">&quot;&#123;&#123;.Repository&#125;&#125;: &#123;&#123;.Tag&#125;&#125;: &#123;&#123;.Size&#125;&#125;&quot;</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --format <span class="string">&quot;&#123;&#123;json .&#125;&#125;&quot;</span> <span class="comment"># print in json format</span></span><br></pre></td></tr></table></figure>
+<h2 id="check-images"><a class="markdownIt-Anchor" href="#check-images"></a> Check images</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ docker image <span class="built_in">ls</span>  / $ docker images</span><br><span class="line">$ docker image <span class="built_in">ls</span> --digests <span class="comment"># get sha256</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --filter dangling=<span class="literal">true</span> <span class="comment"># get &lt;none&gt;:&lt;none&gt;</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --filter=reference=<span class="string">&quot;*:latest&quot;</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --format <span class="string">&quot;&#123;&#123;.Size&#125;&#125;&quot;</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --format <span class="string">&quot;&#123;&#123;.Repository&#125;&#125;: &#123;&#123;.Tag&#125;&#125;: &#123;&#123;.Size&#125;&#125;&quot;</span></span><br><span class="line">$ docker image <span class="built_in">ls</span> --format <span class="string">&quot;&#123;&#123;json .&#125;&#125;&quot;</span> <span class="comment"># print in json format</span></span><br></pre></td></tr></table></figure>
 <p>to see operation history of one image, run:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">history</span> redis</span><br></pre></td></tr></table></figure>
 <p>every non-zero size creates a new layer, the rests add something to image’s json config file.</p>
 <p>to get configs and layers of one image, run:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image inspect redis</span><br></pre></td></tr></table></figure>
-<h2 id="Delete-images"><a href="#Delete-images" class="headerlink" title="Delete images"></a>Delete images</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker image <span class="built_in">rm</span> redis</span><br><span class="line">$ docker rmi alpine</span><br><span class="line">$ docker image prune <span class="comment"># delete all dangle images</span></span><br><span class="line">$ docker image prune -a <span class="comment"># delete all unused images, not used by any container</span></span><br></pre></td></tr></table></figure>
-<h2 id="Registries"><a href="#Registries" class="headerlink" title="Registries"></a>Registries</h2><p>Images live in registries. When <code>docker image pull &lt;some-image&gt;</code>, defaultly pulling from Docker Hub.</p>
-<p>Official images live in the top level of Docker Hub namespaces, e.x. docker.io/redis, docker.io/nginx. Can ignore registry name “docker.io/“ by default, then do repo name “redis”, then do tag name “latest”, which is an image actually. So the full version is `docker image pull docker.io/redis:4.0.1</p>
+<h2 id="delete-images"><a class="markdownIt-Anchor" href="#delete-images"></a> Delete images</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker image <span class="built_in">rm</span> redis</span><br><span class="line">$ docker rmi alpine</span><br><span class="line">$ docker image prune <span class="comment"># delete all dangle images</span></span><br><span class="line">$ docker image prune -a <span class="comment"># delete all unused images, not used by any container</span></span><br></pre></td></tr></table></figure>
+<h2 id="registries"><a class="markdownIt-Anchor" href="#registries"></a> Registries</h2>
+<p>Images live in registries. When <code>docker image pull &lt;some-image&gt;</code>, defaultly pulling from Docker Hub.</p>
+<p>Official images live in the top level of Docker Hub namespaces, e.x. <a target="_blank" rel="noopener" href="http://docker.io/redis">docker.io/redis</a>, <a target="_blank" rel="noopener" href="http://docker.io/nginx">docker.io/nginx</a>. Can ignore registry name “<a target="_blank" rel="noopener" href="http://docker.io/">docker.io/</a>” by default, then do repo name “redis”, then do tag name “latest”, which is an image actually. So the full version is `docker image pull <a target="_blank" rel="noopener" href="http://docker.io/redis:4.0.1">docker.io/redis:4.0.1</a></p>
 <p>Unofficial ones, e.x. nigelpoulton/tu-demo</p>
 <p>To pull all tags of images from repo, run</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image pull &lt;some-image&gt; -a</span><br></pre></td></tr></table></figure>
 <p>Content hashes for host, compressed hashes(distribution hashes) for wire, to verify. UIDs used for storing layers are random.</p>
-<p>run sha256 on content of layer -&gt; layer’s hash as ID;<br>run sha256 on image config file -&gt; image’s hash as ID.</p>
-<hr>
-<h1 id="Containerizing"><a href="#Containerizing" class="headerlink" title="Containerizing"></a>Containerizing</h1><h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><p>Dockerfile is list of instructions for building images with an app inside(document the app).</p>
+<p>run sha256 on content of layer -&gt; layer’s hash as ID;<br />
+run sha256 on image config file -&gt; image’s hash as ID.</p>
+<hr />
+<h1 id="containerizing"><a class="markdownIt-Anchor" href="#containerizing"></a> Containerizing</h1>
+<h2 id="dockerfile"><a class="markdownIt-Anchor" href="#dockerfile"></a> Dockerfile</h2>
+<p>Dockerfile is list of instructions for building images with an app inside(document the app).</p>
 <p>Good practice: put Dockerfile in root folder of app.</p>
 <p>Good practice: <code>LABEL maintainer=&quot;xxx@gmail.com&quot;</code></p>
 <p>notes:</p>
@@ -153,12 +366,15 @@
 <p>e.x.:</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> alpine</span><br><span class="line"></span><br><span class="line"><span class="keyword">LABEL</span><span class="language-bash"> maintainer=<span class="string">&quot;xyshell@bu.edu&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apk add --update nodejs nodejs-npm</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /src</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /src</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm install</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;./app.js&quot;</span>] <span class="comment"># relative to WORKDIR</span></span></span><br></pre></td></tr></table></figure>
 <p>code: <a target="_blank" rel="noopener" href="https://github.com/nigelpoulton/psweb">https://github.com/nigelpoulton/psweb</a></p>
-<h2 id="Build-image"><a href="#Build-image" class="headerlink" title="Build image"></a>Build image</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image build -t &lt;image-name&gt; . <span class="comment"># current folder</span></span><br></pre></td></tr></table></figure>
+<h2 id="build-image"><a class="markdownIt-Anchor" href="#build-image"></a> Build image</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image build -t &lt;image-name&gt; . <span class="comment"># current folder</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image build -t psweb https://github.com/nigelpoulton/psweb.git <span class="comment"># git repo</span></span><br></pre></td></tr></table></figure>
 <p><code>docker image ls</code> to check it exists.</p>
 <p>During each step, docker spins up temporary containers, once the following layer is built, the container is removed.</p>
-<h2 id="Run-container"><a href="#Run-container" class="headerlink" title="Run container"></a>Run container</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker container run -d --name &lt;app-name&gt; -p 8080:8080 &lt;image&gt; <span class="comment"># detach mode</span></span><br><span class="line">$ docker run -dit --name alpine1 alpine ash <span class="comment"># iterative and detach, can docker attach alpine1 later</span></span><br></pre></td></tr></table></figure>
-<h2 id="Multi-stage-Builds"><a href="#Multi-stage-Builds" class="headerlink" title="Multi-stage Builds"></a>Multi-stage Builds</h2><p>use multiple FROM statements in Dockerfile.</p>
+<h2 id="run-container"><a class="markdownIt-Anchor" href="#run-container"></a> Run container</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker container run -d --name &lt;app-name&gt; -p 8080:8080 &lt;image&gt; <span class="comment"># detach mode</span></span><br><span class="line">$ docker run -dit --name alpine1 alpine ash <span class="comment"># iterative and detach, can docker attach alpine1 later</span></span><br></pre></td></tr></table></figure>
+<h2 id="multi-stage-builds"><a class="markdownIt-Anchor" href="#multi-stage-builds"></a> Multi-stage Builds</h2>
+<p>use multiple FROM statements in Dockerfile.</p>
 <p>Each FROM instruction can use a different base, and each of them begins a new stage of the build.</p>
 <p>can selectively copy artifacts from one stage to another, leaving behind everything you don’t want in the final image.</p>
 <ul>
@@ -173,30 +389,41 @@
 <p>source: <a target="_blank" rel="noopener" href="https://docs.docker.com/develop/develop-images/multistage-build/#name-your-build-stages">https://docs.docker.com/develop/develop-images/multistage-build/#name-your-build-stages</a></p>
 <p>When building image, don’t have to build the entire Dockerfile including every stage. Can specify a target build stage, and stop at that stage.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker build --target builder -t alexellis2/href-counter:latest .</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="Docker-containers"><a href="#Docker-containers" class="headerlink" title="Docker containers"></a>Docker containers</h1><p>Most atomic unit in docker is container.</p>
+<hr />
+<h1 id="docker-containers"><a class="markdownIt-Anchor" href="#docker-containers"></a> Docker containers</h1>
+<p>Most atomic unit in docker is container.</p>
 <p>microservices instead of monolith, glue by APIs. Containers should be as small and simple as possible. Single process per container.</p>
 <p>modernize traditional apps:</p>
-<p><img src="/photos/docker-note/modernize_traditional_apps.png" alt="modernize_traditional_apps"></p>
+<p><img src="/photos/docker-note/modernize_traditional_apps.png" alt="modernize_traditional_apps" /></p>
 <p>container should be ephemeral and immutable.</p>
-<h2 id="Check-status"><a href="#Check-status" class="headerlink" title="Check status"></a>Check status</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps / $ docker container <span class="built_in">ls</span> <span class="comment"># running containers</span></span><br><span class="line">$ docker ps -a <span class="comment"># all containers</span></span><br><span class="line">$ docker port &lt;container&gt; <span class="comment"># Port mapping e.x. 80/tcp -&gt; 0.0.0.0:80</span></span><br></pre></td></tr></table></figure>
-<h2 id="Run-containers"><a href="#Run-containers" class="headerlink" title="Run containers"></a>Run containers</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker container run ... / docker run ...</span><br><span class="line">$ docker container run -it alpine sh <span class="comment"># iterative terminal</span></span><br><span class="line">$ docker container run -d alpine <span class="built_in">sleep</span> 1d <span class="comment"># detached mode, command</span></span><br></pre></td></tr></table></figure>
-<h2 id="Stop-containers"><a href="#Stop-containers" class="headerlink" title="Stop containers"></a>Stop containers</h2><p>Stopping a container sends signal to main process in the container (PID1), gives 10s before force stop.</p>
+<h2 id="check-status"><a class="markdownIt-Anchor" href="#check-status"></a> Check status</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps / $ docker container <span class="built_in">ls</span> <span class="comment"># running containers</span></span><br><span class="line">$ docker ps -a <span class="comment"># all containers</span></span><br><span class="line">$ docker port &lt;container&gt; <span class="comment"># Port mapping e.x. 80/tcp -&gt; 0.0.0.0:80</span></span><br></pre></td></tr></table></figure>
+<h2 id="run-containers"><a class="markdownIt-Anchor" href="#run-containers"></a> Run containers</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker container run ... / docker run ...</span><br><span class="line">$ docker container run -it alpine sh <span class="comment"># iterative terminal</span></span><br><span class="line">$ docker container run -d alpine <span class="built_in">sleep</span> 1d <span class="comment"># detached mode, command</span></span><br></pre></td></tr></table></figure>
+<h2 id="stop-containers"><a class="markdownIt-Anchor" href="#stop-containers"></a> Stop containers</h2>
+<p>Stopping a container sends signal to main process in the container (PID1), gives 10s before force stop.</p>
 <p>Stopping and restarting a container doesn’t destory data.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker container stop &lt;container&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="Start-containers"><a href="#Start-containers" class="headerlink" title="Start containers"></a>Start containers</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker container start &lt;container&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="Enter-containers"><a href="#Enter-containers" class="headerlink" title="Enter containers"></a>Enter containers</h2><p>execing into a container starts a new process</p>
+<h2 id="start-containers"><a class="markdownIt-Anchor" href="#start-containers"></a> Start containers</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker container start &lt;container&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="enter-containers"><a class="markdownIt-Anchor" href="#enter-containers"></a> Enter containers</h2>
+<p>execing into a container starts a new process</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker container <span class="built_in">exec</span> -it &lt;container&gt; sh</span><br><span class="line">$ docker container <span class="built_in">exec</span> &lt;container&gt; <span class="built_in">ls</span> -l</span><br><span class="line">$ docker container <span class="built_in">exec</span> &lt;container&gt; <span class="built_in">cat</span> &lt;file-name&gt;</span><br></pre></td></tr></table></figure>
 <p>exiting by <code>exit</code> kills the process, if it’s the only one, container exits. However, ctrl+P+Q gets out of container without terminating its main process (can <code>docker attach</code> to it).</p>
-<h2 id="Remove-containers"><a href="#Remove-containers" class="headerlink" title="Remove containers"></a>Remove containers</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker container <span class="built_in">rm</span> &lt;container&gt;</span><br><span class="line">$ docker container <span class="built_in">rm</span> $(docker container <span class="built_in">ls</span> -aq) -f <span class="comment"># remove all containers, force</span></span><br></pre></td></tr></table></figure>
-<h2 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h2><p>Engine/daemon logs and Container/App logs</p>
+<h2 id="remove-containers"><a class="markdownIt-Anchor" href="#remove-containers"></a> Remove containers</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker container <span class="built_in">rm</span> &lt;container&gt;</span><br><span class="line">$ docker container <span class="built_in">rm</span> $(docker container <span class="built_in">ls</span> -aq) -f <span class="comment"># remove all containers, force</span></span><br></pre></td></tr></table></figure>
+<h2 id="log"><a class="markdownIt-Anchor" href="#log"></a> Log</h2>
+<p>Engine/daemon logs and Container/App logs</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker logs &lt;container&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/photos/docker-note/logging.png" alt="logging"></p>
-<h1 id="Swarm-and-Services"><a href="#Swarm-and-Services" class="headerlink" title="Swarm and Services"></a>Swarm and Services</h1><h2 id="Swarm"><a href="#Swarm" class="headerlink" title="Swarm"></a>Swarm</h2><p>swarm is a secure cluster of docker nodes, including “secure cluster” and “orchestrator”</p>
+<p><img src="/photos/docker-note/logging.png" alt="logging" /></p>
+<h1 id="swarm-and-services"><a class="markdownIt-Anchor" href="#swarm-and-services"></a> Swarm and Services</h1>
+<h2 id="swarm"><a class="markdownIt-Anchor" href="#swarm"></a> Swarm</h2>
+<p>swarm is a secure cluster of docker nodes, including “secure cluster” and “orchestrator”</p>
 <p>can do native swarm work and kubernetes on swarm cluster</p>
 <p>single-engine mode: install individual docker instances VS swarm mode: working on a cluster of docker instances.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker system info <span class="comment">#  Swarm: inactive/active</span></span><br></pre></td></tr></table></figure>
-<h3 id="Single-docker-node-to-swarm-mode"><a href="#Single-docker-node-to-swarm-mode" class="headerlink" title="Single docker node to swarm mode"></a>Single docker node to swarm mode</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker swarm init</span><br><span class="line">$ docker swarm init --external-ca</span><br></pre></td></tr></table></figure>
+<h3 id="single-docker-node-to-swarm-mode"><a class="markdownIt-Anchor" href="#single-docker-node-to-swarm-mode"></a> Single docker node to swarm mode</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker swarm init</span><br><span class="line">$ docker swarm init --external-ca</span><br></pre></td></tr></table></figure>
 <p>if it’s the first manager of swarm, it’s automatically elected as its leader(root CA).</p>
 <ul>
 <li>issue itself a client certificate.</li>
@@ -206,8 +433,9 @@
 </ul>
 <p>on manager node, query cluster store to check all nodes:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker node <span class="built_in">ls</span> <span class="comment"># lists all nodes in the swarm</span></span><br><span class="line">$ docker node <span class="built_in">ls</span> --filter role=manager/worker</span><br></pre></td></tr></table></figure>
-<h3 id="Join-another-manager-and-workers"><a href="#Join-another-manager-and-workers" class="headerlink" title="Join another manager and workers"></a>Join another manager and workers</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker swarm <span class="built_in">join</span></span><br></pre></td></tr></table></figure>
-<p><img src="/photos/docker-note/swarm.png" alt="swarm"></p>
+<h3 id="join-another-manager-and-workers"><a class="markdownIt-Anchor" href="#join-another-manager-and-workers"></a> Join another manager and workers</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker swarm <span class="built_in">join</span></span><br></pre></td></tr></table></figure>
+<p><img src="/photos/docker-note/swarm.png" alt="swarm" /></p>
 <p>Every swarm has a <strong>single leader manager</strong>, the rest are follower managers.</p>
 <p>Commands could be issued to any manager, hitting a follower manager will proxy commands to the leader.</p>
 <p>If the leader fails, another one gets selected as a new leader.</p>
@@ -238,8 +466,10 @@
 <li>OU: organizational unit, node’s role(swarm-manager/workder)</li>
 <li>CN: canonical name, cryptographic node ID</li>
 </ul>
-<h3 id="Remmove-swarm-node"><a href="#Remmove-swarm-node" class="headerlink" title="Remmove swarm node"></a>Remmove swarm node</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker node demote &lt;NODE&gt; <span class="comment"># To demote the node</span></span><br><span class="line">$ docker node <span class="built_in">rm</span> &lt;NODE&gt; <span class="comment"># To remove the node from the swarm</span></span><br><span class="line">$ docker swarm leave</span><br></pre></td></tr></table></figure>
-<h3 id="Autolock-swarm"><a href="#Autolock-swarm" class="headerlink" title="Autolock swarm"></a>Autolock swarm</h3><ul>
+<h3 id="remmove-swarm-node"><a class="markdownIt-Anchor" href="#remmove-swarm-node"></a> Remmove swarm node</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker node demote &lt;NODE&gt; <span class="comment"># To demote the node</span></span><br><span class="line">$ docker node <span class="built_in">rm</span> &lt;NODE&gt; <span class="comment"># To remove the node from the swarm</span></span><br><span class="line">$ docker swarm leave</span><br></pre></td></tr></table></figure>
+<h3 id="autolock-swarm"><a class="markdownIt-Anchor" href="#autolock-swarm"></a> Autolock swarm</h3>
+<ul>
 <li>prevents restarted managers(not applied to workers) from automatically re-joining the swarm</li>
 <li>pervents accidentally restoring old copies of the swarm</li>
 </ul>
@@ -250,38 +480,50 @@
 <p>re-join the swarm by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker swarm unlock</span><br><span class="line">Please enter unlock key: SWMKEY-1-7e7w/gsGI2iGL9dqRtY/JqOOffnP5INPRw5uME2o+hM</span><br></pre></td></tr></table></figure>
 <p>check again by <code>docker node ls</code> to confirm.</p>
-<h3 id="Update-certificate-expiry-time"><a href="#Update-certificate-expiry-time" class="headerlink" title="Update certificate expiry time"></a>Update certificate expiry time</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker swarm update --cert-expiry 48h</span><br></pre></td></tr></table></figure>
+<h3 id="update-certificate-expiry-time"><a class="markdownIt-Anchor" href="#update-certificate-expiry-time"></a> Update certificate expiry time</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker swarm update --cert-expiry 48h</span><br></pre></td></tr></table></figure>
 <p>check by <code>docker system info</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CA Configuration:</span><br><span class="line">  Expiry Duration: 2 days</span><br></pre></td></tr></table></figure>
-<h3 id="Update-a-node"><a href="#Update-a-node" class="headerlink" title="Update a node"></a>Update a node</h3><p>Add label metadata to a node by:</p>
+<h3 id="update-a-node"><a class="markdownIt-Anchor" href="#update-a-node"></a> Update a node</h3>
+<p>Add label metadata to a node by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker node update --label-add foo worker1</span><br><span class="line">$ docker node update --label-add foo --label-add bar worker1</span><br></pre></td></tr></table></figure>
 <p>then node labels used a placement constraint when creating service.</p>
-<h3 id="Orchestration-intro"><a href="#Orchestration-intro" class="headerlink" title="Orchestration intro"></a>Orchestration intro</h3><p><img src="/photos/docker-note/orchestration_intro.png" alt="orchestration_intro"></p>
-<hr>
-<h2 id="Services"><a href="#Services" class="headerlink" title="Services"></a>Services</h2><p>There are two types of service deployments, replicated and global:</p>
+<h3 id="orchestration-intro"><a class="markdownIt-Anchor" href="#orchestration-intro"></a> Orchestration intro</h3>
+<p><img src="/photos/docker-note/orchestration_intro.png" alt="orchestration_intro" /></p>
+<hr />
+<h2 id="services"><a class="markdownIt-Anchor" href="#services"></a> Services</h2>
+<p>There are two types of service deployments, replicated and global:</p>
 <ul>
 <li>For a replicated service, you specify the number of identical tasks you want to run. For example, you decide to deploy an HTTP service with three replicas, each serving the same content.</li>
 <li>A global service is a service that runs one task on every node. There is no pre-specified number of tasks. Each time you add a node to the swarm, the orchestrator creates a task and the scheduler assigns the task to the new node. Good candidates for global services are monitoring agents, an anti-virus scanners or other types of containers that you want to run on every node in the swarm.</li>
 </ul>
-<h3 id="Create-service"><a href="#Create-service" class="headerlink" title="Create service"></a>Create service</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker service create --replicas 5 &lt;service&gt; <span class="comment"># default replicated mode</span></span><br><span class="line">$ docker service create --mode global &lt;service&gt; <span class="comment"># global mode</span></span><br></pre></td></tr></table></figure>
-<h3 id="Check-status-1"><a href="#Check-status-1" class="headerlink" title="Check status"></a>Check status</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ docker service <span class="built_in">ls</span> <span class="comment"># list all services</span></span><br><span class="line">$ docker service ps &lt;service&gt; <span class="comment"># list all tasks</span></span><br><span class="line">$ docker service inspect &lt;service&gt; --pretty <span class="comment"># details</span></span><br><span class="line">$ docker service inspect &lt;service&gt; | jq -r <span class="string">&#x27;.[].CreatedAt&#x27;</span> </span><br><span class="line">$ docker service ps &lt;service&gt; --format <span class="string">&quot;&#123;&#123;json .&#125;&#125;&quot;</span> --filter <span class="string">&quot;desired-state=running&quot;</span> | jq -r .ID</span><br><span class="line">$ docker inspect &lt;task&gt; | jq -r <span class="string">&#x27;.[].Status.ContainerStatus.ContainerID&#x27;</span></span><br></pre></td></tr></table></figure>
-<h3 id="Remove-services"><a href="#Remove-services" class="headerlink" title="Remove services"></a>Remove services</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker service <span class="built_in">rm</span> $(docker service <span class="built_in">ls</span> -q) <span class="comment"># remove all services</span></span><br></pre></td></tr></table></figure>
-<h3 id="Update-services"><a href="#Update-services" class="headerlink" title="Update services"></a>Update services</h3><p>rescale services by:</p>
+<h3 id="create-service"><a class="markdownIt-Anchor" href="#create-service"></a> Create service</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker service create --replicas 5 &lt;service&gt; <span class="comment"># default replicated mode</span></span><br><span class="line">$ docker service create --mode global &lt;service&gt; <span class="comment"># global mode</span></span><br></pre></td></tr></table></figure>
+<h3 id="check-status-2"><a class="markdownIt-Anchor" href="#check-status-2"></a> Check status</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ docker service <span class="built_in">ls</span> <span class="comment"># list all services</span></span><br><span class="line">$ docker service ps &lt;service&gt; <span class="comment"># list all tasks</span></span><br><span class="line">$ docker service inspect &lt;service&gt; --pretty <span class="comment"># details</span></span><br><span class="line">$ docker service inspect &lt;service&gt; | jq -r <span class="string">&#x27;.[].CreatedAt&#x27;</span> </span><br><span class="line">$ docker service ps &lt;service&gt; --format <span class="string">&quot;&#123;&#123;json .&#125;&#125;&quot;</span> --filter <span class="string">&quot;desired-state=running&quot;</span> | jq -r .ID</span><br><span class="line">$ docker inspect &lt;task&gt; | jq -r <span class="string">&#x27;.[].Status.ContainerStatus.ContainerID&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="remove-services"><a class="markdownIt-Anchor" href="#remove-services"></a> Remove services</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker service <span class="built_in">rm</span> $(docker service <span class="built_in">ls</span> -q) <span class="comment"># remove all services</span></span><br></pre></td></tr></table></figure>
+<h3 id="update-services"><a class="markdownIt-Anchor" href="#update-services"></a> Update services</h3>
+<p>rescale services by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker service scale &lt;service&gt;=20</span><br></pre></td></tr></table></figure>
 <p>update service’s image by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker service update \</span><br><span class="line">  --image nigelpoulton/tu-demo:v2 \</span><br><span class="line">  --update-parallelism 2 \</span><br><span class="line">  --update-delay 20s &lt;service&gt;</span><br></pre></td></tr></table></figure>
 <p>then update parallelism and update delay settings are now part of the service definition.</p>
 <p>update service’s network by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker service update \</span><br><span class="line">  --network-add &lt;new-network&gt; \</span><br><span class="line">  --network-rm &lt;old-network \</span><br><span class="line">  &lt;service&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Logs"><a href="#Logs" class="headerlink" title="Logs"></a>Logs</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker service logs &lt;service&gt;</span><br><span class="line">  --follow</span><br><span class="line">  --<span class="built_in">tail</span> 1000</span><br><span class="line">  --details</span><br></pre></td></tr></table></figure>
-<h1 id="Container-Networking"><a href="#Container-Networking" class="headerlink" title="Container Networking"></a>Container Networking</h1><p>See the current network:</p>
+<h3 id="logs"><a class="markdownIt-Anchor" href="#logs"></a> Logs</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker service logs &lt;service&gt;</span><br><span class="line">  --follow</span><br><span class="line">  --<span class="built_in">tail</span> 1000</span><br><span class="line">  --details</span><br></pre></td></tr></table></figure>
+<h1 id="container-networking"><a class="markdownIt-Anchor" href="#container-networking"></a> Container Networking</h1>
+<p>See the current network:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker network <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
 <p>Every container goes onto bridge (nat on Windows) network by default.</p>
-<p><img src="/photos/docker-note/container_network.png" alt="container_network"></p>
-<h2 id="Network-types"><a href="#Network-types" class="headerlink" title="Network types"></a>Network types</h2><p>containers talk to each other, VMs, physicals and internet. Vice versa.</p>
-<h3 id="Bridge-Networking"><a href="#Bridge-Networking" class="headerlink" title="Bridge Networking"></a>Bridge Networking</h3><p>a.k.a single-host networking, docker0.</p>
+<p><img src="/photos/docker-note/container_network.png" alt="container_network" /></p>
+<h2 id="network-types"><a class="markdownIt-Anchor" href="#network-types"></a> Network types</h2>
+<p>containers talk to each other, VMs, physicals and internet. Vice versa.</p>
+<h3 id="bridge-networking"><a class="markdownIt-Anchor" href="#bridge-networking"></a> Bridge Networking</h3>
+<p>a.k.a single-host networking, docker0.</p>
 <p>can only connect containers on the same host. Isolated layer-two network, even on the same host. Get in/out traffic by mapping port to the host.</p>
-<p><img src="/photos/docker-note/bridge_network.png" alt="bridge_network"></p>
+<p><img src="/photos/docker-note/bridge_network.png" alt="bridge_network" /></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker network inspect bridge <span class="comment"># default bridge network</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bridge&quot;</span><span class="punctuation">,</span> <span class="comment">//</span></span><br><span class="line">  <span class="attr">&quot;Id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;f904473bbf1f625413c0cd2e1b7c0271253056709731cab4271ee95906ef270c&quot;</span><span class="punctuation">,</span> <span class="comment">//</span></span><br><span class="line">  <span class="attr">&quot;Created&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2020-06-09T21:03:39.158623688Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Scope&quot;</span><span class="punctuation">:</span> <span class="string">&quot;local&quot;</span><span class="punctuation">,</span> <span class="comment">//</span></span><br><span class="line">  <span class="attr">&quot;Driver&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bridge&quot;</span><span class="punctuation">,</span> <span class="comment">//</span></span><br><span class="line">  <span class="attr">&quot;EnableIPv6&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;IPAM&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Driver&quot;</span><span class="punctuation">:</span> <span class="string">&quot;default&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Options&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Config&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;Subnet&quot;</span><span class="punctuation">:</span> <span class="string">&quot;172.17.0.0/16&quot;</span> <span class="comment">// ip range</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Internal&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Attachable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Ingress&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;ConfigFrom&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Network&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;ConfigOnly&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Containers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="comment">// currently no containers</span></span><br><span class="line">  <span class="attr">&quot;Options&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;com.docker.network.bridge.default_bridge&quot;</span><span class="punctuation">:</span> <span class="string">&quot;true&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;com.docker.network.bridge.enable_icc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;true&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;com.docker.network.bridge.enable_ip_masquerade&quot;</span><span class="punctuation">:</span> <span class="string">&quot;true&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;com.docker.network.bridge.host_binding_ipv4&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;com.docker.network.bridge.name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;docker0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;com.docker.network.driver.mtu&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1500&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Labels&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>create a container without specifying network by <code>$ docker container run --rm -d alpine sleep 1d</code>, then inspect again:</p>
@@ -297,11 +539,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker container run --<span class="built_in">rm</span> -d --network &lt;network-name&gt; alpine <span class="built_in">sleep</span> 1d</span><br></pre></td></tr></table></figure>
 <p>to switch container between networks:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker network disconnect &lt;network1&gt; web <span class="comment"># even when container is running</span></span><br><span class="line">$ docker network connect &lt;network2&gt; web</span><br></pre></td></tr></table></figure>
-<h3 id="Overlay-Networking"><a href="#Overlay-Networking" class="headerlink" title="Overlay Networking"></a>Overlay Networking</h3><p>a.k.a multi-host networking.</p>
+<h3 id="overlay-networking"><a class="markdownIt-Anchor" href="#overlay-networking"></a> Overlay Networking</h3>
+<p>a.k.a multi-host networking.</p>
 <p>Single layer-two network spanning multiple hosts</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker network create</span><br><span class="line">$ docker network create -o encrypted <span class="comment"># encrypt data plane</span></span><br></pre></td></tr></table></figure>
 <p>built-in overlay is container to container only (not applied to VM, physicals)</p>
-<p><img src="/photos/docker-note/overlay_network.png" alt="overlay_network"></p>
+<p><img src="/photos/docker-note/overlay_network.png" alt="overlay_network" /></p>
 <p>To create a overlay network:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker network create -d overlay &lt;network-name&gt;</span><br></pre></td></tr></table></figure>
 <p>check by <code>docker network ls</code>, note its scope is “swarm”, which means availabel on every node in the swarm.</p>
@@ -311,34 +554,45 @@
 <p>switch to one node which runs this service and run <code>docker network inspect &lt;network-name&gt;</code></p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Containers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;7df4738446ac44a577d026a11ad73401c6cbdaaafcddbe75028954e7191fe1a1&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pinger.1.neku7xixs6g8oe2r8otlnqnep&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;EndpointID&quot;</span><span class="punctuation">:</span> <span class="string">&quot;9a2dbdda2c15b991eeba7c1ab6fabd93e42b5ed4495b2f47d038dc871143a409&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;MacAddress&quot;</span><span class="punctuation">:</span> <span class="string">&quot;02:42:0a:00:01:04&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;IPv4Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;10.0.1.4/24&quot;</span><span class="punctuation">,</span> <span class="comment">// jot down ip address</span></span><br><span class="line">      <span class="attr">&quot;IPv6Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;lb-overnet&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;overnet-endpoint&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;EndpointID&quot;</span><span class="punctuation">:</span> <span class="string">&quot;45c5d95a4d21eadcd2f99d0ff982ec4bc6d0c6a7f136136a93aeeb8c7d959898&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;MacAddress&quot;</span><span class="punctuation">:</span> <span class="string">&quot;02:42:0a:00:01:06&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;IPv4Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;10.0.1.6/24&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;IPv6Address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>switch to the other node, exec into the container by <code>docker container exec -it &lt;container&gt; sh</code>, <code>ping 10.0.1.4</code>, check success.</p>
-<h3 id="MACVLAN"><a href="#MACVLAN" class="headerlink" title="MACVLAN"></a>MACVLAN</h3><p>Containers also need to talk to VMs or physicals on existing VLANs.</p>
+<h3 id="macvlan"><a class="markdownIt-Anchor" href="#macvlan"></a> MACVLAN</h3>
+<p>Containers also need to talk to VMs or physicals on existing VLANs.</p>
 <p>Gives every container its own IP address and MAC address on the existing network (directly on the wire, no bridges, no port mapping)</p>
 <p>requires promiscuous mode on the host. (cloud providers generally don’t allow. look for IPVLAN instead, which doesn’t require promiscuous mode)</p>
-<h2 id="Network-services"><a href="#Network-services" class="headerlink" title="Network services"></a>Network services</h2><ul>
-<li><p>Service discovery: locate services in a swarm</p>
+<h2 id="network-services"><a class="markdownIt-Anchor" href="#network-services"></a> Network services</h2>
+<ul>
+<li>
+<p>Service discovery: locate services in a swarm</p>
 </li>
-<li><p>Load Balancing: access a service from any node in swarm (even nodes not hosting the service)</p>
+<li>
+<p>Load Balancing: access a service from any node in swarm (even nodes not hosting the service)</p>
 </li>
 </ul>
-<h3 id="Service-discovery"><a href="#Service-discovery" class="headerlink" title="Service discovery"></a>Service discovery</h3><p>Every service gets a name, registered with swarm DNS, uses swarm DNS</p>
+<h3 id="service-discovery"><a class="markdownIt-Anchor" href="#service-discovery"></a> Service discovery</h3>
+<p>Every service gets a name, registered with swarm DNS, uses swarm DNS</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker service create -d --name ping --network &lt;overlay&gt; --replicas 3 alpine <span class="built_in">sleep</span> 1d</span><br><span class="line">$ docker service create -d --name pong --network &lt;overlay&gt; --replicas 3 alpine <span class="built_in">sleep</span> 1d</span><br></pre></td></tr></table></figure>
 <p>check <code>docker service ls</code> to confirm (also check <code>docker container ls</code>), can locate other service in same overlay network by name, e.x.:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker container <span class="built_in">exec</span> -it &lt;container&gt; sh</span><br><span class="line">$ ping pong <span class="comment"># sucesss</span></span><br><span class="line">$ ping -c 2 pong <span class="comment"># -c 2: only two ping attempts.</span></span><br></pre></td></tr></table></figure>
-<h3 id="Load-Balancing"><a href="#Load-Balancing" class="headerlink" title="Load Balancing"></a>Load Balancing</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ docker service create -d --name web --network overnet --replicas 1 -p 8080:80 nginx</span><br><span class="line">$ docker service inspect web --pretty</span><br><span class="line">Ports:</span><br><span class="line"> PublishedPort = 8080 <span class="comment">#</span></span><br><span class="line">  Protocol = tcp</span><br><span class="line">  TargetPort = 80 <span class="comment">#</span></span><br><span class="line">  PublishMode = ingress <span class="comment"># default mode</span></span><br></pre></td></tr></table></figure>
+<h3 id="load-balancing"><a class="markdownIt-Anchor" href="#load-balancing"></a> Load Balancing</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ docker service create -d --name web --network overnet --replicas 1 -p 8080:80 nginx</span><br><span class="line">$ docker service inspect web --pretty</span><br><span class="line">Ports:</span><br><span class="line"> PublishedPort = 8080 <span class="comment">#</span></span><br><span class="line">  Protocol = tcp</span><br><span class="line">  TargetPort = 80 <span class="comment">#</span></span><br><span class="line">  PublishMode = ingress <span class="comment"># default mode</span></span><br></pre></td></tr></table></figure>
 <p>ingress mode: publish a port on every node in the swarm — even nodes not running service replicas. then can access by any node in the network by port 8080.</p>
-<p>The alternative mode is host mode which only publishes the service on swarm nodes running replicas. by adding mode=host to the —publish output, using —mode global instead of —replicas=5, since only one service task can bind a given port on a given node.</p>
-<h1 id="Volumes"><a href="#Volumes" class="headerlink" title="Volumes"></a>Volumes</h1><p>running a new container automatically gets its own non-persistent, ephemeral graph driver storage (copy-on-write union mount, /var/lib/docker). However, volume is to store persistent data, entirely decoupled from containers, seamlessly plugs into containers.</p>
+<p>The alternative mode is host mode which only publishes the service on swarm nodes running replicas. by adding mode=host to the --publish output, using --mode global instead of --replicas=5, since only one service task can bind a given port on a given node.</p>
+<h1 id="volumes"><a class="markdownIt-Anchor" href="#volumes"></a> Volumes</h1>
+<p>running a new container automatically gets its own non-persistent, ephemeral graph driver storage (copy-on-write union mount, /var/lib/docker). However, volume is to store persistent data, entirely decoupled from containers, seamlessly plugs into containers.</p>
 <p>a directory on the docker(also remote hosts or cloud providers by volume drivers), mounted into container at a specific mount point.</p>
 <p>can exist not only on local storage of docker host, but also on high-end external systems like SAN and NAS. Pluggable by docker store drive.</p>
-<h2 id="Create-Volumes"><a href="#Create-Volumes" class="headerlink" title="Create Volumes"></a>Create Volumes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume create &lt;volume&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="Check-status-2"><a href="#Check-status-2" class="headerlink" title="Check status"></a>Check status</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume <span class="built_in">ls</span></span><br><span class="line">$ docker volume inspect &lt;volume&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="create-volumes"><a class="markdownIt-Anchor" href="#create-volumes"></a> Create Volumes</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume create &lt;volume&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="check-status-3"><a class="markdownIt-Anchor" href="#check-status-3"></a> Check status</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume <span class="built_in">ls</span></span><br><span class="line">$ docker volume inspect &lt;volume&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;CreatedAt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2020-06-10T16:29:30Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Driver&quot;</span><span class="punctuation">:</span> <span class="string">&quot;local&quot;</span><span class="punctuation">,</span> <span class="comment">// default</span></span><br><span class="line">    <span class="attr">&quot;Labels&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Mountpoint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/var/lib/docker/volumes/myvol/_data&quot;</span><span class="punctuation">,</span> <span class="comment">// inspect by ls -l /var/lib/docker/volumes/</span></span><br><span class="line">    <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;myvol&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Options&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Scope&quot;</span><span class="punctuation">:</span> <span class="string">&quot;local&quot;</span> <span class="comment">//</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-<h2 id="Delete-volume"><a href="#Delete-volume" class="headerlink" title="Delete volume"></a>Delete volume</h2><p>to delete a specific volume:</p>
+<h2 id="delete-volume"><a class="markdownIt-Anchor" href="#delete-volume"></a> Delete volume</h2>
+<p>to delete a specific volume:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume <span class="built_in">rm</span> &lt;volume&gt;</span><br></pre></td></tr></table></figure>
 <p>rm an in-use volume causes error message.</p>
 <p>to delete all unused volumes:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume prune <span class="comment"># delete unused volume</span></span><br></pre></td></tr></table></figure>
-<h2 id="Attach-volume"><a href="#Attach-volume" class="headerlink" title="Attach volume"></a>Attach volume</h2><p>to attach volume to a container, either by —mount or -v:</p>
+<h2 id="attach-volume"><a class="markdownIt-Anchor" href="#attach-volume"></a> Attach volume</h2>
+<p>to attach volume to a container, either by --mount or -v:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d --name &lt;container&gt; --mount <span class="built_in">source</span>=&lt;volume&gt;,target=/vol &lt;image&gt;</span><br><span class="line">$ docker run -d --name &lt;container&gt; -v &lt;volume&gt;:/vol &lt;image&gt;</span><br></pre></td></tr></table></figure>
 <p>note:</p>
 <ul>
@@ -349,34 +603,42 @@
 <p>check by <code>docker inspect &lt;container&gt;</code>:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;Mounts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;volume&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;myvol&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/var/lib/docker/volumes/myvol/_data&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Destination&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/vol&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Driver&quot;</span><span class="punctuation">:</span> <span class="string">&quot;local&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;RW&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Propagation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 <p>Then, container can write data to <code>/vol</code> (e.x. <code>echo &quot;some data&quot; &gt; /vol/newfile</code>), accessible in <code>/var/lib/docker/volumes/</code> as well, even if the container is removed.</p>
-<p>—mount works with service as well.</p>
+<p>–mount works with service as well.</p>
 <p>Also useful in Dockerfile’s volume instruction.</p>
-<h2 id="Volume-for-service"><a href="#Volume-for-service" class="headerlink" title="Volume for service"></a>Volume for service</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker service create -d \</span><br><span class="line">  --replicas=4 \</span><br><span class="line">  --name &lt;service&gt; \</span><br><span class="line">  --mount <span class="built_in">source</span>=myvol,target=/app \</span><br><span class="line">  &lt;image&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="volume-for-service"><a class="markdownIt-Anchor" href="#volume-for-service"></a> Volume for service</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker service create -d \</span><br><span class="line">  --replicas=4 \</span><br><span class="line">  --name &lt;service&gt; \</span><br><span class="line">  --mount <span class="built_in">source</span>=myvol,target=/app \</span><br><span class="line">  &lt;image&gt;</span><br></pre></td></tr></table></figure>
 <p>note:</p>
 <ul>
-<li>docker service create command does not support the -v or —volume</li>
+<li>docker service create command does not support the -v or --volume</li>
 </ul>
-<h2 id="Read-only-volume"><a href="#Read-only-volume" class="headerlink" title="Read only volume"></a>Read only volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name=nginxtest \</span><br><span class="line">  --mount <span class="built_in">source</span>=nginx-vol,destination=/usr/share/nginx/html,<span class="built_in">readonly</span> \</span><br><span class="line">  nginx:latest</span><br></pre></td></tr></table></figure>
+<h2 id="read-only-volume"><a class="markdownIt-Anchor" href="#read-only-volume"></a> Read only volume</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name=nginxtest \</span><br><span class="line">  --mount <span class="built_in">source</span>=nginx-vol,destination=/usr/share/nginx/html,<span class="built_in">readonly</span> \</span><br><span class="line">  nginx:latest</span><br></pre></td></tr></table></figure>
 <p>verfify by <code>docker inspect nginxtest</code>:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;Mounts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;volume&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;nginx-vol&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/var/lib/docker/volumes/nginx-vol/_data&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Destination&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/usr/share/nginx/html&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Driver&quot;</span><span class="punctuation">:</span> <span class="string">&quot;local&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;Mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;RW&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> <span class="comment">//</span></span><br><span class="line">    <span class="attr">&quot;Propagation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-<h1 id="Secrets"><a href="#Secrets" class="headerlink" title="Secrets"></a>Secrets</h1><p>string &lt;= 500k, swarm mode for services only(not containers)</p>
-<p><img src="/photos/docker-note/secret.png" alt="secret"></p>
-<p>note:<br>/run/secrets/: stay in memory</p>
+<h1 id="secrets"><a class="markdownIt-Anchor" href="#secrets"></a> Secrets</h1>
+<p>string &lt;= 500k, swarm mode for services only(not containers)</p>
+<p><img src="/photos/docker-note/secret.png" alt="secret" /></p>
+<p>note:<br />
+/run/secrets/: stay in memory</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker secret create &lt;secret&gt; &lt;file&gt;</span><br></pre></td></tr></table></figure>
 <p>check by <code>docker secret ls</code>. inspect by <code>docker secret inspect &lt;secret&gt;</code></p>
 <p>create a service, using secret:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker service create -d --name &lt;service&gt; --secret &lt;secret&gt; --replicas 2 ...</span><br></pre></td></tr></table></figure>
 <p>inpect by <code>docker service inspect &lt;service&gt;</code> and look at secrets section. exec into containers by <code>docker container exec -it &lt;container&gt; sh</code>, find secret by <code>ls -l /run/secrets</code>, accessible</p>
 <p>can’t delete an in-use secret by <code>docker secret rm &lt;secret&gt;</code>, need to delete service first.</p>
-<h1 id="Docker-Compose-and-Stack"><a href="#Docker-Compose-and-Stack" class="headerlink" title="Docker Compose and Stack"></a>Docker Compose and Stack</h1><h2 id="Docker-compose"><a href="#Docker-compose" class="headerlink" title="Docker compose"></a>Docker compose</h2><h3 id="Install-on-linux"><a href="#Install-on-linux" class="headerlink" title="Install on linux"></a>Install on linux</h3><ol>
+<h1 id="docker-compose-and-stack"><a class="markdownIt-Anchor" href="#docker-compose-and-stack"></a> Docker Compose and Stack</h1>
+<h2 id="docker-compose"><a class="markdownIt-Anchor" href="#docker-compose"></a> Docker compose</h2>
+<h3 id="install-on-linux"><a class="markdownIt-Anchor" href="#install-on-linux"></a> Install on linux</h3>
+<ol>
 <li>Download the current stable release of Docker Compose:</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.26.0/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<ol>
+<ol start="2">
 <li>Make it executable:</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">chmod</span> +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<h3 id="Compose-files"><a href="#Compose-files" class="headerlink" title="Compose files"></a>Compose files</h3><p>Compose uses YAML files to define multi-service applications.</p>
+<h3 id="compose-files"><a class="markdownIt-Anchor" href="#compose-files"></a> Compose files</h3>
+<p>Compose uses YAML files to define multi-service applications.</p>
 <p>The default name for the Compose YAML file is docker-compose.yml</p>
 <p>Flask app example:</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.5&quot;</span> <span class="comment"># mandatory</span></span><br><span class="line"><span class="attr">services:</span> <span class="comment"># application services</span></span><br><span class="line">  <span class="attr">web-fe:</span> <span class="comment"># create a web front-end container called web-fe</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">.</span> <span class="comment"># build a new image by Dockerfile in &#x27;.&#x27; to create container for web-fe</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">python</span> <span class="string">app.py</span> <span class="comment"># Override CMD in Dockerfile, which has Python and app.py</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">target:</span> <span class="number">5000</span> <span class="comment"># container port</span></span><br><span class="line">        <span class="attr">published:</span> <span class="number">5000</span> <span class="comment"># host port</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">counter-net</span> <span class="comment"># already exist or to be defined</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">volume</span></span><br><span class="line">      <span class="attr">source:</span> <span class="string">counter-vol</span> <span class="comment"># already exist or to be defined</span></span><br><span class="line">      <span class="attr">target:</span> <span class="string">/code</span> <span class="comment"># mount to container</span></span><br><span class="line">  <span class="attr">redis:</span> <span class="comment"># create an in-memory database container called redis</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&quot;redis:alpine&quot;</span> <span class="comment"># pulled from Docker Hub.</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="attr">counter-net:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">networks:</span> <span class="comment"># create new networks, bridge by default</span></span><br><span class="line">    <span class="attr">counter-net:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">volumes:</span> <span class="comment"># create new volumes</span></span><br><span class="line">    <span class="attr">counter-vol:</span></span><br></pre></td></tr></table></figure>
@@ -387,10 +649,13 @@
 </ul>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">over-net:</span></span><br><span class="line">  <span class="attr">driver:</span> <span class="string">overlay</span></span><br><span class="line">  <span class="attr">attachable:</span> <span class="literal">true</span> <span class="comment"># for standalone containers(instead of Docker Services)</span></span><br></pre></td></tr></table></figure>
 <p>source: <a target="_blank" rel="noopener" href="https://github.com/nigelpoulton/counter-app">https://github.com/nigelpoulton/counter-app</a></p>
-<h3 id="Run-compose-app"><a href="#Run-compose-app" class="headerlink" title="Run compose app"></a>Run compose app</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose up <span class="comment"># docker-compose.yml in current folder</span></span><br><span class="line">$ docker-compose up &amp; <span class="comment"># ctrl+c doesn&#x27;t kill container</span></span><br><span class="line">$ docker-compose up -d <span class="comment"># run in daemon</span></span><br><span class="line">$ docker-compose -f prod-equus-bass.yml up <span class="comment"># -f flag</span></span><br></pre></td></tr></table></figure>
+<h3 id="run-compose-app"><a class="markdownIt-Anchor" href="#run-compose-app"></a> Run compose app</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose up <span class="comment"># docker-compose.yml in current folder</span></span><br><span class="line">$ docker-compose up &amp; <span class="comment"># ctrl+c doesn&#x27;t kill container</span></span><br><span class="line">$ docker-compose up -d <span class="comment"># run in daemon</span></span><br><span class="line">$ docker-compose -f prod-equus-bass.yml up <span class="comment"># -f flag</span></span><br></pre></td></tr></table></figure>
 <p>check the current state of the app by <code>docker-compose ps</code>.</p>
-<p>list the processes running inside of each<br>service (container) by <code>docker-compose top</code>.</p>
-<h3 id="Stop-Restart-and-Delete-App"><a href="#Stop-Restart-and-Delete-App" class="headerlink" title="Stop, Restart and Delete App"></a>Stop, Restart and Delete App</h3><p>stop without deleting:</p>
+<p>list the processes running inside of each<br />
+service (container) by <code>docker-compose top</code>.</p>
+<h3 id="stop-restart-and-delete-app"><a class="markdownIt-Anchor" href="#stop-restart-and-delete-app"></a> Stop, Restart and Delete App</h3>
+<p>stop without deleting:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose stop</span><br></pre></td></tr></table></figure>
 <p>could restart by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose restart</span><br></pre></td></tr></table></figure>
@@ -399,48 +664,60 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose <span class="built_in">rm</span></span><br></pre></td></tr></table></figure>
 <p>stop and delete containers and networks by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose down</span><br></pre></td></tr></table></figure>
-<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>swarm only</p>
+<h2 id="stack"><a class="markdownIt-Anchor" href="#stack"></a> Stack</h2>
+<p>swarm only</p>
 <p>stacks manage a bunch of services as a single app, highest layer of docker application hierarchy.</p>
-<p><img src="/photos/docker-note/stack.png" alt="stack"></p>
+<p><img src="/photos/docker-note/stack.png" alt="stack" /></p>
 <p>can run on Docker CLI, Docker UCP, Docker Cloud.</p>
 <p>docker-stack.yml: YAML config file including <strong>version</strong>, <strong>services</strong>, <strong>network</strong>, <strong>volumes</strong>, documenting the app. Can do version control.</p>
-<p><img src="/photos/docker-note/stack_file.png" alt="stack_file"></p>
+<p><img src="/photos/docker-note/stack_file.png" alt="stack_file" /></p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span> <span class="comment"># &gt;=3</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">redis:</span> <span class="comment"># service 1st</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis:alpine</span> <span class="comment">#</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">deploy:</span> <span class="comment"># new in version 3</span></span><br><span class="line">      <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">update_config:</span></span><br><span class="line">        <span class="attr">parallelism:</span> <span class="number">2</span></span><br><span class="line">        <span class="attr">delay:</span> <span class="string">10s</span></span><br><span class="line">      <span class="attr">restart_policy:</span></span><br><span class="line">        <span class="attr">condition:</span> <span class="string">on-failure</span></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">postgres:9.4</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">POSTGRES_USER:</span> <span class="string">&quot;postgres&quot;</span></span><br><span class="line">      <span class="attr">POSTGRES_PASSWORD:</span> <span class="string">&quot;postgres&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">db-data:/var/lib/postgresql/data</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">backend</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">placement:</span></span><br><span class="line">        <span class="attr">constraints:</span> [<span class="string">node.role</span> <span class="string">==</span> <span class="string">manager</span>] <span class="comment"># only run on manager nodes</span></span><br><span class="line">  <span class="attr">vote:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">dockersamples/examplevotingapp_vote:before</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">5000</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">replicas:</span> <span class="number">2</span></span><br><span class="line">      <span class="attr">update_config:</span></span><br><span class="line">        <span class="attr">parallelism:</span> <span class="number">2</span></span><br><span class="line">      <span class="attr">restart_policy:</span></span><br><span class="line">        <span class="attr">condition:</span> <span class="string">on-failure</span></span><br><span class="line">  <span class="attr">result:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">dockersamples/examplevotingapp_result:before</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">5001</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">backend</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">update_config:</span></span><br><span class="line">        <span class="attr">parallelism:</span> <span class="number">2</span></span><br><span class="line">        <span class="attr">delay:</span> <span class="string">10s</span></span><br><span class="line">      <span class="attr">restart_policy:</span></span><br><span class="line">        <span class="attr">condition:</span> <span class="string">on-failure</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">worker:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">dockersamples/examplevotingapp_worker</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">frontend</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">backend</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">db</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">mode:</span> <span class="string">replicated</span></span><br><span class="line">      <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">labels:</span> [<span class="string">APP=VOTING</span>]</span><br><span class="line">      <span class="attr">restart_policy:</span></span><br><span class="line">        <span class="attr">condition:</span> <span class="string">on-failure</span></span><br><span class="line">        <span class="attr">delay:</span> <span class="string">10s</span></span><br><span class="line">        <span class="attr">max_attempts:</span> <span class="number">3</span></span><br><span class="line">        <span class="attr">window:</span> <span class="string">120s</span></span><br><span class="line">      <span class="attr">placement:</span></span><br><span class="line">        <span class="attr">constraints:</span> [<span class="string">node.role</span> <span class="string">==</span> <span class="string">manager</span>]</span><br><span class="line"></span><br><span class="line">  <span class="attr">visualizer:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">dockersamples/visualizer:stable</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br><span class="line">    <span class="attr">stop_grace_period:</span> <span class="string">1m30s</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;/var/run/docker.sock:/var/run/docker.sock&quot;</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">placement:</span></span><br><span class="line">        <span class="attr">constraints:</span> [<span class="string">node.role</span> <span class="string">==</span> <span class="string">manager</span>]</span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">  <span class="attr">backend:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">db-data:</span></span><br></pre></td></tr></table></figure>
 <p>source: <a target="_blank" rel="noopener" href="https://github.com/dockersamples/example-voting-app/docker-stack.yml">https://github.com/dockersamples/example-voting-app/docker-stack.yml</a></p>
 <p>Check <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/compose-file/">Compose file version 3 reference</a></p>
 <p>Placement constraints:</p>
 <ul>
-<li>Node ID: node.id == o2p4kw2uuw2a</li>
+<li>Node ID: <a target="_blank" rel="noopener" href="http://node.id">node.id</a> == o2p4kw2uuw2a</li>
 <li>Node name: node.hostname == wrk-12</li>
 <li>Role: node.role != manager</li>
 <li>Engine labels: engine.labels.operatingsystem==ubuntu 16.04</li>
 <li>Custom node labels: node.labels.zone == prod1 <strong>zone: prod1</strong></li>
 </ul>
-<p><code>service.&lt;service&gt;.deploy.update_config</code>:<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">update_config:</span></span><br><span class="line">  <span class="attr">parallelism:</span> <span class="number">2</span> <span class="comment"># update two replicas at-atime</span></span><br><span class="line">  <span class="attr">failure_action:</span> <span class="string">rollback</span> <span class="comment"># [pause, continue, rollback]</span></span><br></pre></td></tr></table></figure></p>
-<p><code>services.&lt;service&gt;.deploy.restart-policy</code>:<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">restart_policy:</span></span><br><span class="line">  <span class="attr">condition:</span> <span class="string">on-failure</span> <span class="comment"># non-zero exit code</span></span><br><span class="line">  <span class="attr">delay:</span> <span class="string">5s</span> <span class="comment"># between each of the restart attempts</span></span><br><span class="line">  <span class="attr">max_attempts:</span> <span class="number">3</span> </span><br><span class="line">  <span class="attr">window:</span> <span class="string">120s</span> <span class="comment"># wait up to 120 seconds to decide if the restart worked</span></span><br></pre></td></tr></table></figure></p>
-<p><code>services.&lt;service&gt;.stop_grace_period</code>:<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stop_grace_period:</span> <span class="string">1m30s</span> <span class="comment"># for PID 1 to handle SIGTERM, default 10s, then SIGKILL.</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Deploy-the-stack"><a href="#Deploy-the-stack" class="headerlink" title="Deploy the stack"></a>Deploy the stack</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stack deploy -c &lt;stackfile&gt; &lt;stack&gt; <span class="comment"># -c: --compose-file</span></span><br></pre></td></tr></table></figure>
-<h3 id="Check-status-3"><a href="#Check-status-3" class="headerlink" title="Check status"></a>Check status</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker stack <span class="built_in">ls</span></span><br><span class="line">$ docker stack ps &lt;stack&gt;</span><br><span class="line">$ docker stack services &lt;stack&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Update-stack"><a href="#Update-stack" class="headerlink" title="Update stack"></a>Update stack</h3><p>update config file, and re-deploy by:</p>
+<p><code>service.&lt;service&gt;.deploy.update_config</code>:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">update_config:</span></span><br><span class="line">  <span class="attr">parallelism:</span> <span class="number">2</span> <span class="comment"># update two replicas at-atime</span></span><br><span class="line">  <span class="attr">failure_action:</span> <span class="string">rollback</span> <span class="comment"># [pause, continue, rollback]</span></span><br></pre></td></tr></table></figure>
+<p><code>services.&lt;service&gt;.deploy.restart-policy</code>:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">restart_policy:</span></span><br><span class="line">  <span class="attr">condition:</span> <span class="string">on-failure</span> <span class="comment"># non-zero exit code</span></span><br><span class="line">  <span class="attr">delay:</span> <span class="string">5s</span> <span class="comment"># between each of the restart attempts</span></span><br><span class="line">  <span class="attr">max_attempts:</span> <span class="number">3</span> </span><br><span class="line">  <span class="attr">window:</span> <span class="string">120s</span> <span class="comment"># wait up to 120 seconds to decide if the restart worked</span></span><br></pre></td></tr></table></figure>
+<p><code>services.&lt;service&gt;.stop_grace_period</code>:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stop_grace_period:</span> <span class="string">1m30s</span> <span class="comment"># for PID 1 to handle SIGTERM, default 10s, then SIGKILL.</span></span><br></pre></td></tr></table></figure>
+<h3 id="deploy-the-stack"><a class="markdownIt-Anchor" href="#deploy-the-stack"></a> Deploy the stack</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stack deploy -c &lt;stackfile&gt; &lt;stack&gt; <span class="comment"># -c: --compose-file</span></span><br></pre></td></tr></table></figure>
+<h3 id="check-status-4"><a class="markdownIt-Anchor" href="#check-status-4"></a> Check status</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker stack <span class="built_in">ls</span></span><br><span class="line">$ docker stack ps &lt;stack&gt;</span><br><span class="line">$ docker stack services &lt;stack&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="update-stack"><a class="markdownIt-Anchor" href="#update-stack"></a> Update stack</h3>
+<p>update config file, and re-deploy by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stack deploy -c &lt;stackfile&gt; &lt;stack&gt;</span><br></pre></td></tr></table></figure>
 <p>will update every service in the stack.</p>
-<h1 id="Enterprise-Edition-EE"><a href="#Enterprise-Edition-EE" class="headerlink" title="Enterprise Edition(EE)"></a>Enterprise Edition(EE)</h1><ul>
+<h1 id="enterprise-editionee"><a class="markdownIt-Anchor" href="#enterprise-editionee"></a> Enterprise Edition(EE)</h1>
+<ul>
 <li>a hardened Docker Engine</li>
 <li>Ops UI</li>
 <li>Secure on-premises registry</li>
 </ul>
-<p><img src="/photos/docker-note/EECE.png" alt="EECE"></p>
-<h2 id="Universal-Control-Plane-UCP"><a href="#Universal-Control-Plane-UCP" class="headerlink" title="Universal Control Plane(UCP)"></a>Universal Control Plane(UCP)</h2><p>based on EE, the operations GUI from Docker Inc, to manage swarm and k8s apps.</p>
-<p><img src="/photos/docker-note/UCP.png" alt="UCP"></p>
-<h2 id="Docker-Trusted-Registry-DTR"><a href="#Docker-Trusted-Registry-DTR" class="headerlink" title="Docker Trusted Registry(DTR)"></a>Docker Trusted Registry(DTR)</h2><p>based on EE and UCP, a registry to store images, a containerized app.</p>
-<p><img src="/photos/docker-note/DTR.png" alt="DTR"></p>
-<h2 id="Role-based-Access-Control-RBAC"><a href="#Role-based-Access-Control-RBAC" class="headerlink" title="Role-based Access Control(RBAC)"></a>Role-based Access Control(RBAC)</h2><ul>
+<p><img src="/photos/docker-note/EECE.png" alt="EECE" /></p>
+<h2 id="universal-control-planeucp"><a class="markdownIt-Anchor" href="#universal-control-planeucp"></a> Universal Control Plane(UCP)</h2>
+<p>based on EE, the operations GUI from Docker Inc, to manage swarm and k8s apps.</p>
+<p><img src="/photos/docker-note/UCP.png" alt="UCP" /></p>
+<h2 id="docker-trusted-registrydtr"><a class="markdownIt-Anchor" href="#docker-trusted-registrydtr"></a> Docker Trusted Registry(DTR)</h2>
+<p>based on EE and UCP, a registry to store images, a containerized app.</p>
+<p><img src="/photos/docker-note/DTR.png" alt="DTR" /></p>
+<h2 id="role-based-access-controlrbac"><a class="markdownIt-Anchor" href="#role-based-access-controlrbac"></a> Role-based Access Control(RBAC)</h2>
+<ul>
 <li>subject: user, team</li>
 <li>role: permissions</li>
 <li>collection: resources(docker node)</li>
 </ul>
-<p><img src="/photos/docker-note/RBAC.png" alt="RBAC"></p>
-<h2 id="Image-scanning"><a href="#Image-scanning" class="headerlink" title="Image scanning"></a>Image scanning</h2><p>after update the image in local, need to push into registry.</p>
+<p><img src="/photos/docker-note/RBAC.png" alt="RBAC" /></p>
+<h2 id="image-scanning"><a class="markdownIt-Anchor" href="#image-scanning"></a> Image scanning</h2>
+<p>after update the image in local, need to push into registry.</p>
 <p>Tag the updated image:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image tag &lt;image&gt; &lt;dtr-dns&gt;/&lt;repo&gt;/&lt;image&gt;:latest</span><br></pre></td></tr></table></figure>
 <p>check by <code>docker image ls</code> to see a new tagged image.</p>
@@ -449,176 +726,106 @@
 <p>ensure image scanning sets to “scan on push” in UCP’s DTR’s repo setting. Then push:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image push &lt;tagged-image&gt;</span><br></pre></td></tr></table></figure>
 <p>Check in DTR’s repo’s images’ vulnerabilities field.</p>
-<h2 id="HTTP-Routing-Mesh-HRM"><a href="#HTTP-Routing-Mesh-HRM" class="headerlink" title="HTTP Routing Mesh(HRM)"></a>HTTP Routing Mesh(HRM)</h2><p>For Docker CE’s Routing Mesh(Swarm-mode Routing Mesh), Transport layer(L4).</p>
-<p><img src="/photos/docker-note/routing_mesh.png" alt="routing_mesh"></p>
+<h2 id="http-routing-meshhrm"><a class="markdownIt-Anchor" href="#http-routing-meshhrm"></a> HTTP Routing Mesh(HRM)</h2>
+<p>For Docker CE’s Routing Mesh(Swarm-mode Routing Mesh), Transport layer(L4).</p>
+<p><img src="/photos/docker-note/routing_mesh.png" alt="routing_mesh" /></p>
 <p>For Docker EE’s HRM, Application layer(L7). Route based on host header.</p>
-<p><img src="/photos/docker-note/HRM.png" alt="HRM"></p>
+<p><img src="/photos/docker-note/HRM.png" alt="HRM" /></p>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://xyshell.github.io/2020/06/08/docker-note/" data-id="clywj85g4000ft895htg76gk2" class="article-share-link">
-        Share
-      </a>
-      
-<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
 
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/06/08/aws-note/" rel="prev" title="AWS Note">
+                  <i class="fa fa-angle-left"></i> AWS Note
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/06/11/DCA-note/" rel="next" title="DCA Note">
+                  DCA Note <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
 
-  </div>
 
-  
-  
-<nav class="article-nav">
-  
-  <a href="/2020/06/11/DCA-note/" class="article-nav-link">
-    <strong class="article-nav-caption">Newer</strong>
-    <div class="article-nav-title">
-      
-      DCA Note
-      
-    </div>
-  </a>
-  
-  
-  <a href="/2020/06/08/aws-note/" class="article-nav-link">
-    <strong class="article-nav-caption">Older</strong>
-    <div class="article-nav-title">AWS Note</div>
-  </a>
-  
-</nav>
 
-  
 
-  
-  
-  
-  
 
-</article>
-</section>
-    <footer class="footer">
-  <div class="outer">
-    <ul class="list-inline">
-      <li>You Xie&#39;s Blog &copy; 2024</li>
-      
-        <li>
-          
-            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
-            
-        </li>
-      
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
-    <p><ul class="list-inline">
-  
-  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
-  
-</ul></p>
-  </div>
-</footer>
+
+</div>
   </main>
-  <aside class="sidebar">
-    <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/hexo.svg" alt="You Xie&#39;s Blog"></a>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2020 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class=""></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">You Xie</span>
   </div>
+
+    </div>
+  </footer>
+
   
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">Home</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">Archives</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/gallery">Gallery</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about">About</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      <div class="totop" id="totop">
-  <i class="fe fe-rocket"></i>
-</div>
-    </li>
-    <li class="nav-item">
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="fe fe-feed"></i>
-      </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-  </aside>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
   
-<script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
-
-<script src="/js/jquery.justifiedGallery.min.js"></script>
-
-
-<script src="/js/lazyload.min.js"></script>
-
-
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
 
 
-<script src="/js/tocbot.min.js"></script>
 
 
-<script>
-  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-  tocbot.init({
-    tocSelector: '.tocbot',
-    contentSelector: '.article-entry',
-    headingSelector: 'h1, h2, h3, h4, h5, h6',
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    positionFixedSelector: '.tocbot',
-    positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto',
-  });
-</script>
+  
 
 
 
-<script src="/js/ocean.js"></script>
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="/js/third-party/math/katex.js"></script>
+
+
 
 </body>
-
 </html>
