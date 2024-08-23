@@ -513,34 +513,6 @@ Add permissions to the production Lambda function that allow it to be invoked by
       </tags>
   </entry>
   <entry>
-    <title>Algo Note</title>
-    <url>/2020/08/12/algo-note/</url>
-    <content><![CDATA[<h1 id="merge-sort"><a class="markdownIt-Anchor" href="#merge-sort"></a> Merge Sort</h1>
-<h2 id="explanation"><a class="markdownIt-Anchor" href="#explanation"></a> Explanation:</h2>
-<ol>
-<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Merge_sort">https://en.wikipedia.org/wiki/Merge_sort</a></li>
-<li>Youtube: <a href="https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo">https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo</a></li>
-</ol>
-<p>Time complexity: O(nlogn)<br />
-Space complexity: O(n)</p>
-<h2 id="implementation"><a class="markdownIt-Anchor" href="#implementation"></a> Implementation:</h2>
-<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">arr1: <span class="built_in">list</span>, arr2: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge two arrays</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr1 (list): first array</span></span><br><span class="line"><span class="string">        arr2 (list): second array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(arr1), <span class="built_in">len</span>(arr2)</span><br><span class="line">    <span class="keyword">while</span> i &lt; m <span class="keyword">and</span> j &lt; n:</span><br><span class="line">        <span class="keyword">if</span> arr1[i] &lt;= arr2[j]:</span><br><span class="line">            result.append(arr1[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(arr2[j])</span><br><span class="line">            count += m - i</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    result += arr1[i:]</span><br><span class="line">    result += arr2[j:]</span><br><span class="line">    <span class="keyword">return</span> count, result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">msort</span>(<span class="params">arr: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge Sort Algorithm</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr (list): unsorted array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">if</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        mid = n // <span class="number">2</span></span><br><span class="line">        left_swaps, left_result = msort(arr[:mid])</span><br><span class="line">        right_swaps, right_result = msort(arr[mid:])</span><br><span class="line">        merge_swaps, result = merge(left_result, right_result)</span><br><span class="line">        <span class="keyword">return</span> left_swaps+right_swaps+merge_swaps, result</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>, arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> msort([<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>, <span class="number">8</span>]) == (<span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
-<h1 id="lcslongest-common-subsequence-problem"><a class="markdownIt-Anchor" href="#lcslongest-common-subsequence-problem"></a> LCS(longest common subsequence) problem</h1>
-<h2 id="explanation-2"><a class="markdownIt-Anchor" href="#explanation-2"></a> Explanation:</h2>
-<ol>
-<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Longest_common_subsequence_problem">https://en.wikipedia.org/wiki/Longest_common_subsequence_problem</a></li>
-</ol>
-<p>complexity: O(n × m)</p>
-<h2 id="implementation-2"><a class="markdownIt-Anchor" href="#implementation-2"></a> Implementation</h2>
-<h3 id="python-2"><a class="markdownIt-Anchor" href="#python-2"></a> Python</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">commonChild</span>(<span class="params">s1: <span class="built_in">str</span>, s2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Find length of common child string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        s1 (str): first string</span></span><br><span class="line"><span class="string">        s2 (str): second string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        int: length of common child string</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    m = <span class="built_in">len</span>(s1)</span><br><span class="line">    n = <span class="built_in">len</span>(s2)</span><br><span class="line">    mat = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">            i, j = r - <span class="number">1</span>, c - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> s1[i] == s2[j]:</span><br><span class="line">                mat[r][c] = mat[r-<span class="number">1</span>][c-<span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                mat[r][c] = <span class="built_in">max</span>(mat[r-<span class="number">1</span>][c], mat[r][c-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> mat[m][n]</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> commonChild(<span class="string">&quot;SHINCHAN&quot;</span>, <span class="string">&quot;NOHARAAA&quot;</span>) == <span class="number">3</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>algo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CKA Note</title>
     <url>/2022/01/18/cka-note/</url>
     <content><![CDATA[<h1 id="installation-and-configuration"><a class="markdownIt-Anchor" href="#installation-and-configuration"></a> Installation and Configuration</h1>
@@ -601,6 +573,210 @@ Space complexity: O(n)</p>
 ]]></content>
       <tags>
         <tag>k8s, cka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algo Note</title>
+    <url>/2020/08/12/algo-note/</url>
+    <content><![CDATA[<h1 id="merge-sort"><a class="markdownIt-Anchor" href="#merge-sort"></a> Merge Sort</h1>
+<h2 id="explanation"><a class="markdownIt-Anchor" href="#explanation"></a> Explanation:</h2>
+<ol>
+<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Merge_sort">https://en.wikipedia.org/wiki/Merge_sort</a></li>
+<li>Youtube: <a href="https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo">https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo</a></li>
+</ol>
+<p>Time complexity: O(nlogn)<br />
+Space complexity: O(n)</p>
+<h2 id="implementation"><a class="markdownIt-Anchor" href="#implementation"></a> Implementation:</h2>
+<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">arr1: <span class="built_in">list</span>, arr2: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge two arrays</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr1 (list): first array</span></span><br><span class="line"><span class="string">        arr2 (list): second array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(arr1), <span class="built_in">len</span>(arr2)</span><br><span class="line">    <span class="keyword">while</span> i &lt; m <span class="keyword">and</span> j &lt; n:</span><br><span class="line">        <span class="keyword">if</span> arr1[i] &lt;= arr2[j]:</span><br><span class="line">            result.append(arr1[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(arr2[j])</span><br><span class="line">            count += m - i</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    result += arr1[i:]</span><br><span class="line">    result += arr2[j:]</span><br><span class="line">    <span class="keyword">return</span> count, result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">msort</span>(<span class="params">arr: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge Sort Algorithm</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr (list): unsorted array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">if</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        mid = n // <span class="number">2</span></span><br><span class="line">        left_swaps, left_result = msort(arr[:mid])</span><br><span class="line">        right_swaps, right_result = msort(arr[mid:])</span><br><span class="line">        merge_swaps, result = merge(left_result, right_result)</span><br><span class="line">        <span class="keyword">return</span> left_swaps+right_swaps+merge_swaps, result</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>, arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> msort([<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>, <span class="number">8</span>]) == (<span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="lcslongest-common-subsequence-problem"><a class="markdownIt-Anchor" href="#lcslongest-common-subsequence-problem"></a> LCS(longest common subsequence) problem</h1>
+<h2 id="explanation-2"><a class="markdownIt-Anchor" href="#explanation-2"></a> Explanation:</h2>
+<ol>
+<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Longest_common_subsequence_problem">https://en.wikipedia.org/wiki/Longest_common_subsequence_problem</a></li>
+</ol>
+<p>complexity: O(n × m)</p>
+<h2 id="implementation-2"><a class="markdownIt-Anchor" href="#implementation-2"></a> Implementation</h2>
+<h3 id="python-2"><a class="markdownIt-Anchor" href="#python-2"></a> Python</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">commonChild</span>(<span class="params">s1: <span class="built_in">str</span>, s2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Find length of common child string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        s1 (str): first string</span></span><br><span class="line"><span class="string">        s2 (str): second string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        int: length of common child string</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    m = <span class="built_in">len</span>(s1)</span><br><span class="line">    n = <span class="built_in">len</span>(s2)</span><br><span class="line">    mat = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">            i, j = r - <span class="number">1</span>, c - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> s1[i] == s2[j]:</span><br><span class="line">                mat[r][c] = mat[r-<span class="number">1</span>][c-<span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                mat[r][c] = <span class="built_in">max</span>(mat[r-<span class="number">1</span>][c], mat[r][c-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> mat[m][n]</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> commonChild(<span class="string">&quot;SHINCHAN&quot;</span>, <span class="string">&quot;NOHARAAA&quot;</span>) == <span class="number">3</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>algo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CPA Note</title>
+    <url>/2020/11/20/cpa-note/</url>
+    <content><![CDATA[<h1 id="cpa-c-certified-associate-programmer"><a class="markdownIt-Anchor" href="#cpa-c-certified-associate-programmer"></a> CPA – C++ Certified Associate Programmer</h1>
+<h2 id="readings"><a class="markdownIt-Anchor" href="#readings"></a> Readings</h2>
+<ul>
+<li><a href="https://www.stroustrup.com/4th.html">The C++ Programming Language (4th Edition)</a> by Bjarne Stroustrup</li>
+<li>Thinking in C++ by Bruce Eckel</li>
+<li><a href="https://www.cprogramming.com/c++book/?inl=sb">Jumping into C++.</a></li>
+<li><a href="https://www.amazon.com/gp/product/0321334876?ie=UTF8&amp;tag=aristeia.com-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321334876">Effective C++.</a> by Scott Meyers</li>
+</ul>
+<p>More books: <a href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p>
+<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+<ul>
+<li><a href="https://isocpp.org/std">https://isocpp.org/std</a></li>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#main">C++ Core Guidelines</a></li>
+</ul>
+<h2 id="cout-manipulator"><a class="markdownIt-Anchor" href="#cout-manipulator"></a> cout manipulator</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> byte = <span class="number">255</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in hex: &quot;</span> &lt;&lt; hex &lt;&lt; byte;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in decimal: &quot;</span> &lt;&lt; dec &lt;&lt; byte;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in octal: &quot;</span> &lt;&lt; oct &lt;&lt; byte;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> byte = <span class="number">255</span>;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">setbase</span>(<span class="number">16</span>) &lt;&lt; byte;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> x = <span class="number">2.5</span>, y = <span class="number">0.0000000025</span>;</span><br><span class="line">cout &lt;&lt; fixed &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; scientific &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<h2 id="string-methods"><a class="markdownIt-Anchor" href="#string-methods"></a> String methods</h2>
+<h3 id="compare"><a class="markdownIt-Anchor" href="#compare"></a> compare</h3>
+<p>str1.compare(str2)</p>
+<ul>
+<li>
+<p>str1.compare(str2) == 0 when str1 == str2</p>
+</li>
+<li>
+<p>str1.compare(str2) &gt; 0 when str1 &gt; str2</p>
+</li>
+<li>
+<p>str1.compare(str2) &lt; 0 when str1 &lt; str2</p>
+</li>
+</ul>
+<p>S.compare(substr_start, substr_length, other_string)</p>
+<p>S.compare(substr_start, substr_length, other_string, other_substr_start, other_substr_length)</p>
+<h3 id="substr"><a class="markdownIt-Anchor" href="#substr"></a> substr</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string newstr = oldstr.<span class="built_in">substr</span>(substring_start_position, length_of_substring)</span><br></pre></td></tr></table></figure>
+<h3 id="length-size-capacity-max_size"><a class="markdownIt-Anchor" href="#length-size-capacity-max_size"></a> length, size, capacity, max_size</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> string_size = S.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_length = S.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_capacity = s.<span class="built_in">capacity</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_max_size = s.<span class="built_in">max_size</span>();</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">TheString.<span class="built_in">reserve</span>(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="reserve-resize-clear-empty"><a class="markdownIt-Anchor" href="#reserve-resize-clear-empty"></a> reserve, resize, clear, empty</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> is_empty = TheString.<span class="built_in">empty</span>();</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">resize</span>(<span class="number">50</span>,<span class="string">&#x27;?&#x27;</span>);</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">resize</span>(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
+<h3 id="find"><a class="markdownIt-Anchor" href="#find"></a> find</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> where_it_begins = S.<span class="built_in">find</span>(another_string, start_here);</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> where_it_is = S.<span class="built_in">find</span>(any_character, start_here);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> comma = greeting.<span class="built_in">find</span>(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(comma != string::npos)&#123;</span><br><span class="line">	<span class="comment">//found</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="append-push_back-insert"><a class="markdownIt-Anchor" href="#append-push_back-insert"></a> append, push_back, insert</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">NewString.<span class="built_in">append</span>(TheString);</span><br><span class="line">NewString.<span class="built_in">append</span>(TheString,<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line">NewString.<span class="built_in">append</span>(<span class="number">2</span>,<span class="string">&#x27;!&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">TheString.<span class="built_in">push_back</span>(car);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string quote = <span class="string">&quot;Whyserious?&quot;</span>, anyword = <span class="string">&quot;monsoon&quot;</span>;</span><br><span class="line">quote.<span class="built_in">insert</span>(<span class="number">3</span>,<span class="number">2</span>,<span class="string">&#x27; &#x27;</span>).<span class="built_in">insert</span>(<span class="number">4</span>,anyword,<span class="number">3</span>,<span class="number">2</span>); <span class="comment">// Why so serious?</span></span><br></pre></td></tr></table></figure>
+<h3 id="assign"><a class="markdownIt-Anchor" href="#assign"></a> assign</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string sky; </span><br><span class="line">sky.<span class="built_in">assign</span>(<span class="number">80</span>,<span class="string">&#x27;*&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="replace"><a class="markdownIt-Anchor" href="#replace"></a> replace</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string ToDo = <span class="string">&quot;I&#x27;ll think about that in one hour&quot;</span>; </span><br><span class="line">string Schedule = <span class="string">&quot;today yesterday tomorrow&quot;</span>;</span><br><span class="line"></span><br><span class="line">ToDo.<span class="built_in">replace</span>(<span class="number">22</span>, <span class="number">12</span>, Schedule, <span class="number">16</span>, <span class="number">8</span>); <span class="comment">// I&#x27;ll think about that tomorrow</span></span><br></pre></td></tr></table></figure>
+<h3 id="erase"><a class="markdownIt-Anchor" href="#erase"></a> erase</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string WhereAreWe = <span class="string">&quot;I&#x27;ve got a feeling we&#x27;re not in Kansas anymore&quot;</span>; </span><br><span class="line"></span><br><span class="line">WhereAreWe.<span class="built_in">erase</span>(<span class="number">38</span>, <span class="number">8</span>).<span class="built_in">erase</span>(<span class="number">25</span>, <span class="number">4</span>); <span class="comment">// I&#x27;ve got a feeling we&#x27;re in Kansas</span></span><br><span class="line">TheString.<span class="built_in">erase</span>();</span><br></pre></td></tr></table></figure>
+<h3 id="swap"><a class="markdownIt-Anchor" href="#swap"></a> swap</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string Drink = <span class="string">&quot;A martini&quot;</span>;</span><br><span class="line">string Needs = <span class="string">&quot;Shaken, not stirred&quot;</span>;</span><br><span class="line">	</span><br><span class="line">Drink.<span class="built_in">swap</span>(Needs);</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>cpp, cpa</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CPP Note</title>
+    <url>/2020/07/13/cpp-note/</url>
+    <content><![CDATA[<h1 id="cmake"><a class="markdownIt-Anchor" href="#cmake"></a> Cmake</h1>
+<p><a href="https://chenxiaowei.gitbook.io/cmake-cookbook/">Cmake Cookbook</a></p>
+<h2 id="chapter-1-from-a-simple-executable-to-libraries"><a class="markdownIt-Anchor" href="#chapter-1-from-a-simple-executable-to-libraries"></a> Chapter 1: From a Simple Executable to Libraries</h2>
+<h3 id="1-compiling-a-single-source-file-into-an-executable"><a class="markdownIt-Anchor" href="#1-compiling-a-single-source-file-into-an-executable"></a> 1. Compiling a single source file into an executable</h3>
+<p>CmakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line">project(recipe-01 LANGUAGES CXX) <span class="comment"># default language is c++</span></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br></pre></td></tr></table></figure>
+<p>Normal steps:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake .. <span class="comment"># ../CmakeLists.txt exsits</span></span><br><span class="line">$ cmake --build .bash</span><br></pre></td></tr></table></figure>
+<p>Single command build:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake -H. -Bbuild</span><br></pre></td></tr></table></figure>
+<p>Build outside:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p /tmp/someplace</span><br><span class="line">$ <span class="built_in">cd</span> /tmp/someplace</span><br><span class="line">$ cmake /path/to/source</span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
+<p>available targets:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake --build . -t <span class="built_in">help</span> <span class="comment"># --target</span></span><br><span class="line"></span><br><span class="line">The following are some of the valid targets <span class="keyword">for</span> this Makefile:</span><br><span class="line">... all (the default <span class="keyword">if</span> no target is provided)</span><br><span class="line">... clean</span><br><span class="line">... depend</span><br><span class="line">... edit_cache</span><br><span class="line">... rebuild_cache</span><br><span class="line">... hello-world</span><br><span class="line">... hello-world.o</span><br><span class="line">... hello-world.i</span><br><span class="line">... hello-world.s</span><br></pre></td></tr></table></figure>
+<h3 id="2-switching-generators"><a class="markdownIt-Anchor" href="#2-switching-generators"></a> 2. Switching generators</h3>
+<p>Choose Ninja:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake -G Ninja .. <span class="comment"># must install Ninja first</span></span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
+<p>Single command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake -H. -Bbuild -GNinja</span><br></pre></td></tr></table></figure>
+<h3 id="3-building-and-linking-static-and-shared-libraries"><a class="markdownIt-Anchor" href="#3-building-and-linking-static-and-shared-libraries"></a> 3. Building and linking static and shared libraries</h3>
+<p>CmakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line">project(recipe-03 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># generate a library from sources</span></span><br><span class="line">add_library(message</span><br><span class="line">  STATIC</span><br><span class="line">    Message.hpp</span><br><span class="line">    Message.cpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(hello-world message)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>add_library(message STATIC Message.hpp Message.cpp)</code>: add_library’s first param is target name, available for entire CMakeLists.txt to be refered. Actually name will be prefixed with lib and suffixed withbash proper extension by cmake, determined by (STATIC or SHARED) and OS</li>
+<li><code>target_link_libraries(hello-world message)</code>: link library to executable and make sure hello-world depends correctly on library. Must after <code>add_library</code>.</li>
+</ul>
+<p>After build, we get <code>libmessage.a</code> together with executable <code>hello-world</code>.</p>
+<p>second parameter of <code>add_library</code>:</p>
+<ul>
+<li>STATIC：用于创建静态库，即编译文件的打包存档，以便在链接其他目标时使用，例如：可执行文件。</li>
+<li>SHARED：用于创建动态库，即可以动态链接，并在运行时加载的库。可以在 CMakeLists.txt 中使用<code>add_library(message SHAREDbash Message.hpp Message.cpp)</code>从静态库切换到动态共享对象(DSO)。</li>
+<li>OBJECT：可将给定 add_library 的列表中的源码编译到目标文件，不将它们归档到静态库中，也不能将它们链接到共享对象中。如果需要一次性创建静态库和动态库，那么使用对象库尤其有用。我们将在本示例中演示。</li>
+<li>MODULE：又为 DSO 组。与 SHARED 库不同，它们不链接到项目中的任何目标，不过可以进行动态加载。该参数可以用于构建运行时插件。</li>
+</ul>
+<p>other special type of library:</p>
+<ul>
+<li>IMPORTED：此类库目标表示位于项目外部的库。此类库的主要用途是，对现有依赖项进行构建。因此，IMPORTED 库将被视为不可变的。我们将在本书的其他章节演示使用 IMPORTED 库的示例。参见: <a href="https://cmake.org/cmake/help/latest/manual/cmakebuildsystem.7.html#imported-targets">https://cmake.org/cmake/help/latest/manual/cmakebuildsystem.7.html#imported-targets</a></li>
+<li>INTERFACE：与 IMPORTED 库类似。不过，该类型库可变，没有位置信息。它主要用于项目之外的目标构建使用。我们将在本章第 5 节中演示 INTERFACE 库的示例。参见: <a href="https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#interface-libraries">https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#interface-libraries</a></li>
+<li>ALIAS：顾名思义，这种库为项目中已存在的库目标定义别名。不过，不能为 IMPORTED 库选择别名。参见: <a href="https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#alias-libraries">https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#alias-libraries</a></li>
+</ul>
+<p>Make dynamic linking, optional to set name to <code>message-shared</code> and use set_target_properties so <code>#include &quot;message.h&quot;</code> is available in source code:</p>
+<p>CmakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line">project(recipe-03 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">add_library(message-shared</span><br><span class="line">  SHARED</span><br><span class="line">    Message.hpp</span><br><span class="line">    Message.cpp</span><br><span class="line">  )</span><br><span class="line">set_target_properties(message-shared</span><br><span class="line">  PROPERTIES</span><br><span class="line">    OUTPUT_NAME <span class="string">&quot;message&quot;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(hello-world message-shared)</span><br></pre></td></tr></table></figure>
+<h3 id="4-controlling-compilation-with-conditionals"><a class="markdownIt-Anchor" href="#4-controlling-compilation-with-conditionals"></a> 4. Controlling compilation with conditionals</h3>
+<p>CmakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-04 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># introduce a toggle for using a library</span></span><br><span class="line"><span class="built_in">set</span>(USE_LIBRARY OFF)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Compile sources into a library? <span class="variable">$&#123;USE_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># BUILD_SHARED_LIBS is a global flag offered by CMake</span></span><br><span class="line"><span class="comment"># to toggle the behavior of add_library</span></span><br><span class="line"><span class="built_in">set</span>(BUILD_SHARED_LIBS OFF)</span><br><span class="line"></span><br><span class="line"><span class="comment"># list sources</span></span><br><span class="line">list(APPEND _sources Message.hpp Message.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(USE_LIBRARY)</span><br><span class="line">  <span class="comment"># add_library will create a static library</span></span><br><span class="line">  <span class="comment"># since BUILD_SHARED_LIBS is OFF</span></span><br><span class="line">  add_library(message <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line"></span><br><span class="line">  add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">  target_link_libraries(hello-world message)</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">  add_executable(hello-world hello-world.cpp <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
+<h3 id="5-presenting-options-to-the-user"><a class="markdownIt-Anchor" href="#5-presenting-options-to-the-user"></a> 5. Presenting options to the user</h3>
+<p>CmakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-05 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># expose options to the user</span></span><br><span class="line">option(USE_LIBRARY <span class="string">&quot;Compile sources into a library&quot;</span> OFF)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Compile sources into a library? <span class="variable">$&#123;USE_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">include(CMakeDependentOption)</span><br><span class="line"></span><br><span class="line"><span class="comment"># second option depends on the value of the first</span></span><br><span class="line">cmake_dependent_option(</span><br><span class="line">  MAKE_STATIC_LIBRARY <span class="string">&quot;Compile sources into a static library&quot;</span> OFF</span><br><span class="line">  <span class="string">&quot;USE_LIBRARY&quot;</span> ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment"># third option depends on the value of the first</span></span><br><span class="line">cmake_dependent_option(</span><br><span class="line">  MAKE_SHARED_LIBRARY <span class="string">&quot;Compile sources into a shared library&quot;</span> ON</span><br><span class="line">  <span class="string">&quot;USE_LIBRARY&quot;</span> ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)</span><br><span class="line"></span><br><span class="line"><span class="comment"># list sources</span></span><br><span class="line">list(APPEND _sources Message.hpp Message.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(USE_LIBRARY)</span><br><span class="line">  message(STATUS <span class="string">&quot;Compile sources into a STATIC library? <span class="variable">$&#123;MAKE_STATIC_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Compile sources into a SHARED library? <span class="variable">$&#123;MAKE_SHARED_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(MAKE_SHARED_LIBRARY)</span><br><span class="line">    add_library(message SHARED <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line"></span><br><span class="line">    add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">    target_link_libraries(hello-world message)</span><br><span class="line">  endif()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(MAKE_STATIC_LIBRARY)</span><br><span class="line">    add_library(message STATIC <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line"></span><br><span class="line">    add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">    target_link_libraries(hello-world message)</span><br><span class="line">  endif()</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">  add_executable(hello-world hello-world.cpp <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
+<p>to toggle options:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake -D USE_LIBRARY=OFF -D MAKE_SHARED_LIBRARY=ON ..</span><br></pre></td></tr></table></figure>
+<h3 id="6-specifying-the-compiler"><a class="markdownIt-Anchor" href="#6-specifying-the-compiler"></a> 6. Specifying the compiler</h3>
+<p>prefered:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake -D CMAKE_CXX_COMPILER=clang++ ..</span><br></pre></td></tr></table></figure>
+<p>not prefered:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">env</span> CXX=clang++ cmake ..</span><br></pre></td></tr></table></figure>
+<p>CMakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-06 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Is the C++ compiler loaded? <span class="variable">$&#123;CMAKE_CXX_COMPILER_LOADED&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(CMAKE_CXX_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C++ compiler ID is: <span class="variable">$&#123;CMAKE_CXX_COMPILER_ID&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Is the C++ from GNU? <span class="variable">$&#123;CMAKE_COMPILER_IS_GNUCXX&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C++ compiler version is: <span class="variable">$&#123;CMAKE_CXX_COMPILER_VERSION&#125;</span>&quot;</span>)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Is the C compiler loaded? <span class="variable">$&#123;CMAKE_C_COMPILER_LOADED&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(CMAKE_C_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C compiler ID is: <span class="variable">$&#123;CMAKE_C_COMPILER_ID&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Is the C from GNU? <span class="variable">$&#123;CMAKE_COMPILER_IS_GNUCC&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C compiler version is: <span class="variable">$&#123;CMAKE_C_COMPILER_VERSION&#125;</span>&quot;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
+<h3 id="7-switching-the-build-type"><a class="markdownIt-Anchor" href="#7-switching-the-build-type"></a> 7. Switching the build type</h3>
+<ul>
+<li>Debug：用于在没有优化的情况下，使用带有调试符号构建库或可执行文件。</li>
+<li>Release：用于构建的优化的库或可执行文件，不包含调试符号。</li>
+<li>RelWithDebInfo：用于构建较少的优化库或可执行文件，包含调试符号。</li>
+<li>MinSizeRel：用于不增加目标代码大小的优化方式，来构建库或可执行文件。</li>
+</ul>
+<p>CMakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-07 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># we default to Release build type</span></span><br><span class="line"><span class="keyword">if</span>(NOT CMAKE_BUILD_TYPE)</span><br><span class="line">  <span class="built_in">set</span>(CMAKE_BUILD_TYPE Release CACHE STRING <span class="string">&quot;Build type&quot;</span> FORCE)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Build type: <span class="variable">$&#123;CMAKE_BUILD_TYPE&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;C flags, Debug configuration: <span class="variable">$&#123;CMAKE_C_FLAGS_DEBUG&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C flags, Release configuration: <span class="variable">$&#123;CMAKE_C_FLAGS_RELEASE&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C flags, Release configuration with Debug info: <span class="variable">$&#123;CMAKE_C_FLAGS_RELWITHDEBINFO&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C flags, minimal Release configuration: <span class="variable">$&#123;CMAKE_C_FLAGS_MINSIZEREL&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, Debug configuration: <span class="variable">$&#123;CMAKE_CXX_FLAGS_DEBUG&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, Release configuration: <span class="variable">$&#123;CMAKE_CXX_FLAGS_RELEASE&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, Release configuration with Debug info: <span class="variable">$&#123;CMAKE_CXX_FLAGS_RELWITHDEBINFO&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, minimal Release configuration: <span class="variable">$&#123;CMAKE_CXX_FLAGS_MINSIZEREL&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>to switch build type:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake -D CMAKE_BUILD_TYPE=Debug ..</span><br></pre></td></tr></table></figure>
+<h3 id="8-controlling-compiler-flags"><a class="markdownIt-Anchor" href="#8-controlling-compiler-flags"></a> 8. Controlling compiler flags</h3>
+<p>CMakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-08 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">message(<span class="string">&quot;C++ compiler flags: <span class="variable">$&#123;CMAKE_CXX_FLAGS&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">list(APPEND flags <span class="string">&quot;-fPIC&quot;</span> <span class="string">&quot;-Wall&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(NOT WIN32)</span><br><span class="line">  list(APPEND flags <span class="string">&quot;-Wextra&quot;</span> <span class="string">&quot;-Wpedantic&quot;</span>)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">add_library(geometry</span><br><span class="line">  STATIC</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_circle.hpp</span><br><span class="line">    geometry_polygon.cpp</span><br><span class="line">    geometry_polygon.hpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">    geometry_rhombus.hpp</span><br><span class="line">    geometry_square.cpp</span><br><span class="line">    geometry_square.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_compile_options(geometry</span><br><span class="line">  PRIVATE</span><br><span class="line">    <span class="variable">$&#123;flags&#125;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(compute-areas compute-areas.cpp)</span><br><span class="line"></span><br><span class="line">target_compile_options(compute-areas</span><br><span class="line">  PRIVATE</span><br><span class="line">    <span class="string">&quot;-fPIC&quot;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_link_libraries(compute-areas geometry)</span><br></pre></td></tr></table></figure>
+<h3 id="9-setting-the-standard-for-the-language"><a class="markdownIt-Anchor" href="#9-setting-the-standard-for-the-language"></a> 9. Setting the standard for the language</h3>
+<p>CMakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-09 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)</span><br><span class="line"></span><br><span class="line">add_library(animals</span><br><span class="line">  SHARED</span><br><span class="line">    Animal.cpp</span><br><span class="line">    Animal.hpp</span><br><span class="line">    Cat.cpp</span><br><span class="line">    Cat.hpp</span><br><span class="line">    Dog.cpp</span><br><span class="line">    Dog.hpp</span><br><span class="line">    Factory.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">set_target_properties(animals</span><br><span class="line">  PROPERTIES</span><br><span class="line">    CXX_STANDARD 14</span><br><span class="line">    CXX_EXTENSIONS OFF</span><br><span class="line">    CXX_STANDARD_REQUIRED ON</span><br><span class="line">    POSITION_INDEPENDENT_CODE 1</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(animal-farm animal-farm.cpp)</span><br><span class="line"></span><br><span class="line">set_target_properties(animal-farm</span><br><span class="line">  PROPERTIES</span><br><span class="line">    CXX_STANDARD 14</span><br><span class="line">    CXX_EXTENSIONS OFF</span><br><span class="line">    CXX_STANDARD_REQUIRED ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_link_libraries(animal-farm animals)</span><br></pre></td></tr></table></figure>
+<h3 id="10-using-control-flow-constructs"><a class="markdownIt-Anchor" href="#10-using-control-flow-constructs"></a> 10. Using control flow constructs</h3>
+<p>CMakeLists.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-10 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">add_library(geometry</span><br><span class="line">  STATIC</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_circle.hpp</span><br><span class="line">    geometry_polygon.cpp</span><br><span class="line">    geometry_polygon.hpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">    geometry_rhombus.hpp</span><br><span class="line">    geometry_square.cpp</span><br><span class="line">    geometry_square.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment"># we wish to compile the library with the optimization flag: -O3</span></span><br><span class="line">target_compile_options(geometry</span><br><span class="line">  PRIVATE</span><br><span class="line">    -O3</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">list(</span><br><span class="line">  APPEND sources_with_lower_optimization</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment"># we use the IN LISTS foreach syntax to set source properties</span></span><br><span class="line">message(STATUS <span class="string">&quot;Setting source properties using IN LISTS syntax:&quot;</span>)</span><br><span class="line">foreach(_source IN LISTS sources_with_lower_optimization)</span><br><span class="line">  set_source_files_properties(<span class="variable">$&#123;_source&#125;</span> PROPERTIES COMPILE_FLAGS -O2)</span><br><span class="line">  message(STATUS <span class="string">&quot;Appending -O2 flag for <span class="variable">$&#123;_source&#125;</span>&quot;</span>)</span><br><span class="line">endforeach()</span><br><span class="line"></span><br><span class="line"><span class="comment"># we demonstrate the plain foreach syntax to query source properties</span></span><br><span class="line"><span class="comment"># which requires to expand the contents of the variable</span></span><br><span class="line">message(STATUS <span class="string">&quot;Querying sources properties using plain syntax:&quot;</span>)</span><br><span class="line">foreach(_source <span class="variable">$&#123;sources_with_lower_optimization&#125;</span>)</span><br><span class="line">  get_source_file_property(_flags <span class="variable">$&#123;_source&#125;</span> COMPILE_FLAGS)</span><br><span class="line">  message(STATUS <span class="string">&quot;Source <span class="variable">$&#123;_source&#125;</span> has the following extra COMPILE_FLAGS: <span class="variable">$&#123;_flags&#125;</span>&quot;</span>)</span><br><span class="line">endforeach()</span><br><span class="line"></span><br><span class="line">add_executable(compute-areas compute-areas.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(compute-areas geometry)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS Note</title>
+    <url>/2021/10/25/css-note/</url>
+    <content><![CDATA[<h1 id="css-selectors"><a class="markdownIt-Anchor" href="#css-selectors"></a> CSS selectors</h1>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* html tag selector, h1-h6 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#id</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* id selector */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* class selector */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* descendant combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* user action pseudo class */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span><span class="selector-pseudo">:nth-of-type</span>(odd) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* location pseudo class</span></span><br><span class="line"><span class="comment">nth-of-type: number or odd/even</span></span><br><span class="line"><span class="comment">first-of-type/last-of-type</span></span><br><span class="line"><span class="comment">nth-child</span></span><br><span class="line"><span class="comment">first-child/last-child</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#leftmenu</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &gt; <span class="selector-tag">a</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* child combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> + <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* adjacent sibling combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> ~ <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* general sibling combinator */</span></span><br></pre></td></tr></table></figure>
+<h1 id="css-property-reference"><a class="markdownIt-Anchor" href="#css-property-reference"></a> CSS property reference</h1>
+<h2 id="text-style"><a class="markdownIt-Anchor" href="#text-style"></a> text style</h2>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">color</span>: white; <span class="comment">/* default black */</span></span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">18px</span>; <span class="comment">/* default 16px */</span></span><br><span class="line"><span class="attribute">font-weight</span>: bold; <span class="comment">/* default normal */</span></span><br><span class="line"><span class="attribute">font-style</span>: italic; <span class="comment">/* default normal */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* whitespace between lines of test */</span></span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">1.5</span>; <span class="comment">/* default 1, relative to font-size */</span></span><br><span class="line"><span class="comment">/* space between characters */</span></span><br><span class="line"><span class="attribute">letter-spacing</span>: <span class="number">2px</span>; <span class="comment">/* default 0 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* visit cssfontstack.com to find more web-safe fonts. */</span></span><br><span class="line"><span class="attribute">font-family</span>: Verdana, Arial, sans-serif, cursive, fantasy; <span class="comment">/* web-safe fonts, default Arial */</span></span><br><span class="line"><span class="comment">/* serif: Georgia, Times New Roman</span></span><br><span class="line"><span class="comment">sans-serif: Arial, Verdana, Comic Sans, Trebuchet</span></span><br><span class="line"><span class="comment">monospace: Courier New */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">text-align</span>: center; <span class="comment">/* justify, default left */</span></span><br><span class="line"><span class="attribute">text-transform</span>: capitalize; <span class="comment">/* uppercase, default none */</span></span><br></pre></td></tr></table></figure>
+<h2 id="container-style"><a class="markdownIt-Anchor" href="#container-style"></a> container style</h2>
+<p>The Box Model: element &lt; padding &lt; border &lt; margin</p>
+<p>Use chrome dev tools to inspect the box model.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"><span class="comment">/* relative to parent width, default auto</span></span><br><span class="line"><span class="comment">width: 1em; relative to parent font-size</span></span><br><span class="line"><span class="comment">width: 1rem; relative to html font-size */</span></span><br><span class="line">backgroud-<span class="selector-tag">image</span>: <span class="built_in">url</span>(<span class="string">../images/image.png</span>);</span><br><span class="line"><span class="attribute">background-repeat</span>: repeat; <span class="comment">/* repeat, repeat-x, repeat-y, no-repeat */</span></span><br><span class="line"><span class="attribute">background-color</span>: <span class="number">#23cea6</span>; <span class="comment">/* RGB, default transparent */</span></span><br><span class="line"><span class="attribute">border</span>: <span class="number">10px</span> solid <span class="number">#a693c2</span>;</span><br><span class="line"><span class="attribute">border-color</span>: <span class="number">#a693c2</span>;</span><br><span class="line"><span class="comment">/* border inside, width, style, color(default text color)</span></span><br><span class="line"><span class="comment">style: solid, dashed, dotted, ridge, double, groove, inset, outset</span></span><br><span class="line"><span class="comment">border-left: xxx; left only */</span></span><br><span class="line"><span class="attribute">outline</span>: <span class="number">10px</span> solid red; <span class="comment">/* border outside */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line"><span class="comment">/* space between container and content</span></span><br><span class="line"><span class="comment">top right bottom left</span></span><br><span class="line"><span class="comment">top/bottom left/right</span></span><br><span class="line"><span class="comment">top/right/bottom/left */</span></span><br><span class="line"><span class="attribute">padding-left</span>: <span class="number">10px</span>;</span><br><span class="line"></span><br><span class="line"><span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line"><span class="comment">/* space between container and next element</span></span><br><span class="line"><span class="comment">margin collapse, max(margin-bottom, margin-top) applied */</span></span><br><span class="line"><span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="css-templates"><a class="markdownIt-Anchor" href="#css-templates"></a> CSS templates</h1>
+<h2 id="normalizecss"><a class="markdownIt-Anchor" href="#normalizecss"></a> normalize.css</h2>
+<p><a href="github.com/necolas/normalize.css">normalize.css v8.0.1</a> is a collection of CSS resets and normalizations.</p>
+<h2 id="mobile-first-design"><a class="markdownIt-Anchor" href="#mobile-first-design"></a> Mobile first design</h2>
+<p>small.css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  -webkit-<span class="selector-tag">text</span>-size-adjust: <span class="number">100%</span>;</span><br><span class="line">  -ms-<span class="selector-tag">text</span>-size-adjust: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">* &#123;</span><br><span class="line">  -moz-<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  -webkit-<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;Lato&quot;</span>, sans-serif;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>medium.css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>large.css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1024px</span>) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -2521,182 +2697,6 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
       </tags>
   </entry>
   <entry>
-    <title>CPA Note</title>
-    <url>/2020/11/20/cpa-note/</url>
-    <content><![CDATA[<h1 id="cpa-c-certified-associate-programmer"><a class="markdownIt-Anchor" href="#cpa-c-certified-associate-programmer"></a> CPA – C++ Certified Associate Programmer</h1>
-<h2 id="readings"><a class="markdownIt-Anchor" href="#readings"></a> Readings</h2>
-<ul>
-<li><a href="https://www.stroustrup.com/4th.html">The C++ Programming Language (4th Edition)</a> by Bjarne Stroustrup</li>
-<li>Thinking in C++ by Bruce Eckel</li>
-<li><a href="https://www.cprogramming.com/c++book/?inl=sb">Jumping into C++.</a></li>
-<li><a href="https://www.amazon.com/gp/product/0321334876?ie=UTF8&amp;tag=aristeia.com-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321334876">Effective C++.</a> by Scott Meyers</li>
-</ul>
-<p>More books: <a href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p>
-<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
-<ul>
-<li><a href="https://isocpp.org/std">https://isocpp.org/std</a></li>
-<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#main">C++ Core Guidelines</a></li>
-</ul>
-<h2 id="cout-manipulator"><a class="markdownIt-Anchor" href="#cout-manipulator"></a> cout manipulator</h2>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> byte = <span class="number">255</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in hex: &quot;</span> &lt;&lt; hex &lt;&lt; byte;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in decimal: &quot;</span> &lt;&lt; dec &lt;&lt; byte;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Byte in octal: &quot;</span> &lt;&lt; oct &lt;&lt; byte;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> byte = <span class="number">255</span>;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">setbase</span>(<span class="number">16</span>) &lt;&lt; byte;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> x = <span class="number">2.5</span>, y = <span class="number">0.0000000025</span>;</span><br><span class="line">cout &lt;&lt; fixed &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; scientific &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; y &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<h2 id="string-methods"><a class="markdownIt-Anchor" href="#string-methods"></a> String methods</h2>
-<h3 id="compare"><a class="markdownIt-Anchor" href="#compare"></a> compare</h3>
-<p>str1.compare(str2)</p>
-<ul>
-<li>
-<p>str1.compare(str2) == 0 when str1 == str2</p>
-</li>
-<li>
-<p>str1.compare(str2) &gt; 0 when str1 &gt; str2</p>
-</li>
-<li>
-<p>str1.compare(str2) &lt; 0 when str1 &lt; str2</p>
-</li>
-</ul>
-<p>S.compare(substr_start, substr_length, other_string)</p>
-<p>S.compare(substr_start, substr_length, other_string, other_substr_start, other_substr_length)</p>
-<h3 id="substr"><a class="markdownIt-Anchor" href="#substr"></a> substr</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string newstr = oldstr.<span class="built_in">substr</span>(substring_start_position, length_of_substring)</span><br></pre></td></tr></table></figure>
-<h3 id="length-size-capacity-max_size"><a class="markdownIt-Anchor" href="#length-size-capacity-max_size"></a> length, size, capacity, max_size</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> string_size = S.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_length = S.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_capacity = s.<span class="built_in">capacity</span>();</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> string_max_size = s.<span class="built_in">max_size</span>();</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">TheString.<span class="built_in">reserve</span>(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="reserve-resize-clear-empty"><a class="markdownIt-Anchor" href="#reserve-resize-clear-empty"></a> reserve, resize, clear, empty</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> is_empty = TheString.<span class="built_in">empty</span>();</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">resize</span>(<span class="number">50</span>,<span class="string">&#x27;?&#x27;</span>);</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">resize</span>(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">TheString.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
-<h3 id="find"><a class="markdownIt-Anchor" href="#find"></a> find</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> where_it_begins = S.<span class="built_in">find</span>(another_string, start_here);</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> where_it_is = S.<span class="built_in">find</span>(any_character, start_here);</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> comma = greeting.<span class="built_in">find</span>(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(comma != string::npos)&#123;</span><br><span class="line">	<span class="comment">//found</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="append-push_back-insert"><a class="markdownIt-Anchor" href="#append-push_back-insert"></a> append, push_back, insert</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">NewString.<span class="built_in">append</span>(TheString);</span><br><span class="line">NewString.<span class="built_in">append</span>(TheString,<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line">NewString.<span class="built_in">append</span>(<span class="number">2</span>,<span class="string">&#x27;!&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">TheString.<span class="built_in">push_back</span>(car);</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string quote = <span class="string">&quot;Whyserious?&quot;</span>, anyword = <span class="string">&quot;monsoon&quot;</span>;</span><br><span class="line">quote.<span class="built_in">insert</span>(<span class="number">3</span>,<span class="number">2</span>,<span class="string">&#x27; &#x27;</span>).<span class="built_in">insert</span>(<span class="number">4</span>,anyword,<span class="number">3</span>,<span class="number">2</span>); <span class="comment">// Why so serious?</span></span><br></pre></td></tr></table></figure>
-<h3 id="assign"><a class="markdownIt-Anchor" href="#assign"></a> assign</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string sky; </span><br><span class="line">sky.<span class="built_in">assign</span>(<span class="number">80</span>,<span class="string">&#x27;*&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="replace"><a class="markdownIt-Anchor" href="#replace"></a> replace</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string ToDo = <span class="string">&quot;I&#x27;ll think about that in one hour&quot;</span>; </span><br><span class="line">string Schedule = <span class="string">&quot;today yesterday tomorrow&quot;</span>;</span><br><span class="line"></span><br><span class="line">ToDo.<span class="built_in">replace</span>(<span class="number">22</span>, <span class="number">12</span>, Schedule, <span class="number">16</span>, <span class="number">8</span>); <span class="comment">// I&#x27;ll think about that tomorrow</span></span><br></pre></td></tr></table></figure>
-<h3 id="erase"><a class="markdownIt-Anchor" href="#erase"></a> erase</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string WhereAreWe = <span class="string">&quot;I&#x27;ve got a feeling we&#x27;re not in Kansas anymore&quot;</span>; </span><br><span class="line"></span><br><span class="line">WhereAreWe.<span class="built_in">erase</span>(<span class="number">38</span>, <span class="number">8</span>).<span class="built_in">erase</span>(<span class="number">25</span>, <span class="number">4</span>); <span class="comment">// I&#x27;ve got a feeling we&#x27;re in Kansas</span></span><br><span class="line">TheString.<span class="built_in">erase</span>();</span><br></pre></td></tr></table></figure>
-<h3 id="swap"><a class="markdownIt-Anchor" href="#swap"></a> swap</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">string Drink = <span class="string">&quot;A martini&quot;</span>;</span><br><span class="line">string Needs = <span class="string">&quot;Shaken, not stirred&quot;</span>;</span><br><span class="line">	</span><br><span class="line">Drink.<span class="built_in">swap</span>(Needs);</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>cpp, cpa</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CPP Note</title>
-    <url>/2020/07/13/cpp-note/</url>
-    <content><![CDATA[<h1 id="cmake"><a class="markdownIt-Anchor" href="#cmake"></a> Cmake</h1>
-<p><a href="https://chenxiaowei.gitbook.io/cmake-cookbook/">Cmake Cookbook</a></p>
-<h2 id="chapter-1-from-a-simple-executable-to-libraries"><a class="markdownIt-Anchor" href="#chapter-1-from-a-simple-executable-to-libraries"></a> Chapter 1: From a Simple Executable to Libraries</h2>
-<h3 id="1-compiling-a-single-source-file-into-an-executable"><a class="markdownIt-Anchor" href="#1-compiling-a-single-source-file-into-an-executable"></a> 1. Compiling a single source file into an executable</h3>
-<p>CmakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line">project(recipe-01 LANGUAGES CXX) <span class="comment"># default language is c++</span></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br></pre></td></tr></table></figure>
-<p>Normal steps:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake .. <span class="comment"># ../CmakeLists.txt exsits</span></span><br><span class="line">$ cmake --build .bash</span><br></pre></td></tr></table></figure>
-<p>Single command build:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake -H. -Bbuild</span><br></pre></td></tr></table></figure>
-<p>Build outside:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p /tmp/someplace</span><br><span class="line">$ <span class="built_in">cd</span> /tmp/someplace</span><br><span class="line">$ cmake /path/to/source</span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
-<p>available targets:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake --build . -t <span class="built_in">help</span> <span class="comment"># --target</span></span><br><span class="line"></span><br><span class="line">The following are some of the valid targets <span class="keyword">for</span> this Makefile:</span><br><span class="line">... all (the default <span class="keyword">if</span> no target is provided)</span><br><span class="line">... clean</span><br><span class="line">... depend</span><br><span class="line">... edit_cache</span><br><span class="line">... rebuild_cache</span><br><span class="line">... hello-world</span><br><span class="line">... hello-world.o</span><br><span class="line">... hello-world.i</span><br><span class="line">... hello-world.s</span><br></pre></td></tr></table></figure>
-<h3 id="2-switching-generators"><a class="markdownIt-Anchor" href="#2-switching-generators"></a> 2. Switching generators</h3>
-<p>Choose Ninja:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake -G Ninja .. <span class="comment"># must install Ninja first</span></span><br><span class="line">$ cmake --build .</span><br></pre></td></tr></table></figure>
-<p>Single command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake -H. -Bbuild -GNinja</span><br></pre></td></tr></table></figure>
-<h3 id="3-building-and-linking-static-and-shared-libraries"><a class="markdownIt-Anchor" href="#3-building-and-linking-static-and-shared-libraries"></a> 3. Building and linking static and shared libraries</h3>
-<p>CmakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line">project(recipe-03 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># generate a library from sources</span></span><br><span class="line">add_library(message</span><br><span class="line">  STATIC</span><br><span class="line">    Message.hpp</span><br><span class="line">    Message.cpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(hello-world message)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>add_library(message STATIC Message.hpp Message.cpp)</code>: add_library’s first param is target name, available for entire CMakeLists.txt to be refered. Actually name will be prefixed with lib and suffixed withbash proper extension by cmake, determined by (STATIC or SHARED) and OS</li>
-<li><code>target_link_libraries(hello-world message)</code>: link library to executable and make sure hello-world depends correctly on library. Must after <code>add_library</code>.</li>
-</ul>
-<p>After build, we get <code>libmessage.a</code> together with executable <code>hello-world</code>.</p>
-<p>second parameter of <code>add_library</code>:</p>
-<ul>
-<li>STATIC：用于创建静态库，即编译文件的打包存档，以便在链接其他目标时使用，例如：可执行文件。</li>
-<li>SHARED：用于创建动态库，即可以动态链接，并在运行时加载的库。可以在 CMakeLists.txt 中使用<code>add_library(message SHAREDbash Message.hpp Message.cpp)</code>从静态库切换到动态共享对象(DSO)。</li>
-<li>OBJECT：可将给定 add_library 的列表中的源码编译到目标文件，不将它们归档到静态库中，也不能将它们链接到共享对象中。如果需要一次性创建静态库和动态库，那么使用对象库尤其有用。我们将在本示例中演示。</li>
-<li>MODULE：又为 DSO 组。与 SHARED 库不同，它们不链接到项目中的任何目标，不过可以进行动态加载。该参数可以用于构建运行时插件。</li>
-</ul>
-<p>other special type of library:</p>
-<ul>
-<li>IMPORTED：此类库目标表示位于项目外部的库。此类库的主要用途是，对现有依赖项进行构建。因此，IMPORTED 库将被视为不可变的。我们将在本书的其他章节演示使用 IMPORTED 库的示例。参见: <a href="https://cmake.org/cmake/help/latest/manual/cmakebuildsystem.7.html#imported-targets">https://cmake.org/cmake/help/latest/manual/cmakebuildsystem.7.html#imported-targets</a></li>
-<li>INTERFACE：与 IMPORTED 库类似。不过，该类型库可变，没有位置信息。它主要用于项目之外的目标构建使用。我们将在本章第 5 节中演示 INTERFACE 库的示例。参见: <a href="https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#interface-libraries">https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#interface-libraries</a></li>
-<li>ALIAS：顾名思义，这种库为项目中已存在的库目标定义别名。不过，不能为 IMPORTED 库选择别名。参见: <a href="https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#alias-libraries">https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#alias-libraries</a></li>
-</ul>
-<p>Make dynamic linking, optional to set name to <code>message-shared</code> and use set_target_properties so <code>#include &quot;message.h&quot;</code> is available in source code:</p>
-<p>CmakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line">project(recipe-03 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">add_library(message-shared</span><br><span class="line">  SHARED</span><br><span class="line">    Message.hpp</span><br><span class="line">    Message.cpp</span><br><span class="line">  )</span><br><span class="line">set_target_properties(message-shared</span><br><span class="line">  PROPERTIES</span><br><span class="line">    OUTPUT_NAME <span class="string">&quot;message&quot;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(hello-world message-shared)</span><br></pre></td></tr></table></figure>
-<h3 id="4-controlling-compilation-with-conditionals"><a class="markdownIt-Anchor" href="#4-controlling-compilation-with-conditionals"></a> 4. Controlling compilation with conditionals</h3>
-<p>CmakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-04 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># introduce a toggle for using a library</span></span><br><span class="line"><span class="built_in">set</span>(USE_LIBRARY OFF)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Compile sources into a library? <span class="variable">$&#123;USE_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># BUILD_SHARED_LIBS is a global flag offered by CMake</span></span><br><span class="line"><span class="comment"># to toggle the behavior of add_library</span></span><br><span class="line"><span class="built_in">set</span>(BUILD_SHARED_LIBS OFF)</span><br><span class="line"></span><br><span class="line"><span class="comment"># list sources</span></span><br><span class="line">list(APPEND _sources Message.hpp Message.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(USE_LIBRARY)</span><br><span class="line">  <span class="comment"># add_library will create a static library</span></span><br><span class="line">  <span class="comment"># since BUILD_SHARED_LIBS is OFF</span></span><br><span class="line">  add_library(message <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line"></span><br><span class="line">  add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">  target_link_libraries(hello-world message)</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">  add_executable(hello-world hello-world.cpp <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
-<h3 id="5-presenting-options-to-the-user"><a class="markdownIt-Anchor" href="#5-presenting-options-to-the-user"></a> 5. Presenting options to the user</h3>
-<p>CmakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-05 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># expose options to the user</span></span><br><span class="line">option(USE_LIBRARY <span class="string">&quot;Compile sources into a library&quot;</span> OFF)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Compile sources into a library? <span class="variable">$&#123;USE_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">include(CMakeDependentOption)</span><br><span class="line"></span><br><span class="line"><span class="comment"># second option depends on the value of the first</span></span><br><span class="line">cmake_dependent_option(</span><br><span class="line">  MAKE_STATIC_LIBRARY <span class="string">&quot;Compile sources into a static library&quot;</span> OFF</span><br><span class="line">  <span class="string">&quot;USE_LIBRARY&quot;</span> ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment"># third option depends on the value of the first</span></span><br><span class="line">cmake_dependent_option(</span><br><span class="line">  MAKE_SHARED_LIBRARY <span class="string">&quot;Compile sources into a shared library&quot;</span> ON</span><br><span class="line">  <span class="string">&quot;USE_LIBRARY&quot;</span> ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)</span><br><span class="line"></span><br><span class="line"><span class="comment"># list sources</span></span><br><span class="line">list(APPEND _sources Message.hpp Message.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(USE_LIBRARY)</span><br><span class="line">  message(STATUS <span class="string">&quot;Compile sources into a STATIC library? <span class="variable">$&#123;MAKE_STATIC_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Compile sources into a SHARED library? <span class="variable">$&#123;MAKE_SHARED_LIBRARY&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(MAKE_SHARED_LIBRARY)</span><br><span class="line">    add_library(message SHARED <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line"></span><br><span class="line">    add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">    target_link_libraries(hello-world message)</span><br><span class="line">  endif()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(MAKE_STATIC_LIBRARY)</span><br><span class="line">    add_library(message STATIC <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line"></span><br><span class="line">    add_executable(hello-world hello-world.cpp)</span><br><span class="line"></span><br><span class="line">    target_link_libraries(hello-world message)</span><br><span class="line">  endif()</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">  add_executable(hello-world hello-world.cpp <span class="variable">$&#123;_sources&#125;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
-<p>to toggle options:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake -D USE_LIBRARY=OFF -D MAKE_SHARED_LIBRARY=ON ..</span><br></pre></td></tr></table></figure>
-<h3 id="6-specifying-the-compiler"><a class="markdownIt-Anchor" href="#6-specifying-the-compiler"></a> 6. Specifying the compiler</h3>
-<p>prefered:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake -D CMAKE_CXX_COMPILER=clang++ ..</span><br></pre></td></tr></table></figure>
-<p>not prefered:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">env</span> CXX=clang++ cmake ..</span><br></pre></td></tr></table></figure>
-<p>CMakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-06 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Is the C++ compiler loaded? <span class="variable">$&#123;CMAKE_CXX_COMPILER_LOADED&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(CMAKE_CXX_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C++ compiler ID is: <span class="variable">$&#123;CMAKE_CXX_COMPILER_ID&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Is the C++ from GNU? <span class="variable">$&#123;CMAKE_COMPILER_IS_GNUCXX&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C++ compiler version is: <span class="variable">$&#123;CMAKE_CXX_COMPILER_VERSION&#125;</span>&quot;</span>)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Is the C compiler loaded? <span class="variable">$&#123;CMAKE_C_COMPILER_LOADED&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(CMAKE_C_COMPILER_LOADED)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C compiler ID is: <span class="variable">$&#123;CMAKE_C_COMPILER_ID&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;Is the C from GNU? <span class="variable">$&#123;CMAKE_COMPILER_IS_GNUCC&#125;</span>&quot;</span>)</span><br><span class="line">  message(STATUS <span class="string">&quot;The C compiler version is: <span class="variable">$&#123;CMAKE_C_COMPILER_VERSION&#125;</span>&quot;</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
-<h3 id="7-switching-the-build-type"><a class="markdownIt-Anchor" href="#7-switching-the-build-type"></a> 7. Switching the build type</h3>
-<ul>
-<li>Debug：用于在没有优化的情况下，使用带有调试符号构建库或可执行文件。</li>
-<li>Release：用于构建的优化的库或可执行文件，不包含调试符号。</li>
-<li>RelWithDebInfo：用于构建较少的优化库或可执行文件，包含调试符号。</li>
-<li>MinSizeRel：用于不增加目标代码大小的优化方式，来构建库或可执行文件。</li>
-</ul>
-<p>CMakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-07 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line"><span class="comment"># we default to Release build type</span></span><br><span class="line"><span class="keyword">if</span>(NOT CMAKE_BUILD_TYPE)</span><br><span class="line">  <span class="built_in">set</span>(CMAKE_BUILD_TYPE Release CACHE STRING <span class="string">&quot;Build type&quot;</span> FORCE)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;Build type: <span class="variable">$&#123;CMAKE_BUILD_TYPE&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;C flags, Debug configuration: <span class="variable">$&#123;CMAKE_C_FLAGS_DEBUG&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C flags, Release configuration: <span class="variable">$&#123;CMAKE_C_FLAGS_RELEASE&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C flags, Release configuration with Debug info: <span class="variable">$&#123;CMAKE_C_FLAGS_RELWITHDEBINFO&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C flags, minimal Release configuration: <span class="variable">$&#123;CMAKE_C_FLAGS_MINSIZEREL&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, Debug configuration: <span class="variable">$&#123;CMAKE_CXX_FLAGS_DEBUG&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, Release configuration: <span class="variable">$&#123;CMAKE_CXX_FLAGS_RELEASE&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, Release configuration with Debug info: <span class="variable">$&#123;CMAKE_CXX_FLAGS_RELWITHDEBINFO&#125;</span>&quot;</span>)</span><br><span class="line">message(STATUS <span class="string">&quot;C++ flags, minimal Release configuration: <span class="variable">$&#123;CMAKE_CXX_FLAGS_MINSIZEREL&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>to switch build type:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cmake -D CMAKE_BUILD_TYPE=Debug ..</span><br></pre></td></tr></table></figure>
-<h3 id="8-controlling-compiler-flags"><a class="markdownIt-Anchor" href="#8-controlling-compiler-flags"></a> 8. Controlling compiler flags</h3>
-<p>CMakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-08 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">message(<span class="string">&quot;C++ compiler flags: <span class="variable">$&#123;CMAKE_CXX_FLAGS&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">list(APPEND flags <span class="string">&quot;-fPIC&quot;</span> <span class="string">&quot;-Wall&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(NOT WIN32)</span><br><span class="line">  list(APPEND flags <span class="string">&quot;-Wextra&quot;</span> <span class="string">&quot;-Wpedantic&quot;</span>)</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">add_library(geometry</span><br><span class="line">  STATIC</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_circle.hpp</span><br><span class="line">    geometry_polygon.cpp</span><br><span class="line">    geometry_polygon.hpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">    geometry_rhombus.hpp</span><br><span class="line">    geometry_square.cpp</span><br><span class="line">    geometry_square.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_compile_options(geometry</span><br><span class="line">  PRIVATE</span><br><span class="line">    <span class="variable">$&#123;flags&#125;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(compute-areas compute-areas.cpp)</span><br><span class="line"></span><br><span class="line">target_compile_options(compute-areas</span><br><span class="line">  PRIVATE</span><br><span class="line">    <span class="string">&quot;-fPIC&quot;</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_link_libraries(compute-areas geometry)</span><br></pre></td></tr></table></figure>
-<h3 id="9-setting-the-standard-for-the-language"><a class="markdownIt-Anchor" href="#9-setting-the-standard-for-the-language"></a> 9. Setting the standard for the language</h3>
-<p>CMakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-09 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)</span><br><span class="line"></span><br><span class="line">add_library(animals</span><br><span class="line">  SHARED</span><br><span class="line">    Animal.cpp</span><br><span class="line">    Animal.hpp</span><br><span class="line">    Cat.cpp</span><br><span class="line">    Cat.hpp</span><br><span class="line">    Dog.cpp</span><br><span class="line">    Dog.hpp</span><br><span class="line">    Factory.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">set_target_properties(animals</span><br><span class="line">  PROPERTIES</span><br><span class="line">    CXX_STANDARD 14</span><br><span class="line">    CXX_EXTENSIONS OFF</span><br><span class="line">    CXX_STANDARD_REQUIRED ON</span><br><span class="line">    POSITION_INDEPENDENT_CODE 1</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">add_executable(animal-farm animal-farm.cpp)</span><br><span class="line"></span><br><span class="line">set_target_properties(animal-farm</span><br><span class="line">  PROPERTIES</span><br><span class="line">    CXX_STANDARD 14</span><br><span class="line">    CXX_EXTENSIONS OFF</span><br><span class="line">    CXX_STANDARD_REQUIRED ON</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">target_link_libraries(animal-farm animals)</span><br></pre></td></tr></table></figure>
-<h3 id="10-using-control-flow-constructs"><a class="markdownIt-Anchor" href="#10-using-control-flow-constructs"></a> 10. Using control flow constructs</h3>
-<p>CMakeLists.txt</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># set minimum cmake version</span></span><br><span class="line">cmake_minimum_required(VERSION 3.5 FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># project name and language</span></span><br><span class="line">project(recipe-10 LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line">add_library(geometry</span><br><span class="line">  STATIC</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_circle.hpp</span><br><span class="line">    geometry_polygon.cpp</span><br><span class="line">    geometry_polygon.hpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">    geometry_rhombus.hpp</span><br><span class="line">    geometry_square.cpp</span><br><span class="line">    geometry_square.hpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment"># we wish to compile the library with the optimization flag: -O3</span></span><br><span class="line">target_compile_options(geometry</span><br><span class="line">  PRIVATE</span><br><span class="line">    -O3</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">list(</span><br><span class="line">  APPEND sources_with_lower_optimization</span><br><span class="line">    geometry_circle.cpp</span><br><span class="line">    geometry_rhombus.cpp</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment"># we use the IN LISTS foreach syntax to set source properties</span></span><br><span class="line">message(STATUS <span class="string">&quot;Setting source properties using IN LISTS syntax:&quot;</span>)</span><br><span class="line">foreach(_source IN LISTS sources_with_lower_optimization)</span><br><span class="line">  set_source_files_properties(<span class="variable">$&#123;_source&#125;</span> PROPERTIES COMPILE_FLAGS -O2)</span><br><span class="line">  message(STATUS <span class="string">&quot;Appending -O2 flag for <span class="variable">$&#123;_source&#125;</span>&quot;</span>)</span><br><span class="line">endforeach()</span><br><span class="line"></span><br><span class="line"><span class="comment"># we demonstrate the plain foreach syntax to query source properties</span></span><br><span class="line"><span class="comment"># which requires to expand the contents of the variable</span></span><br><span class="line">message(STATUS <span class="string">&quot;Querying sources properties using plain syntax:&quot;</span>)</span><br><span class="line">foreach(_source <span class="variable">$&#123;sources_with_lower_optimization&#125;</span>)</span><br><span class="line">  get_source_file_property(_flags <span class="variable">$&#123;_source&#125;</span> COMPILE_FLAGS)</span><br><span class="line">  message(STATUS <span class="string">&quot;Source <span class="variable">$&#123;_source&#125;</span> has the following extra COMPILE_FLAGS: <span class="variable">$&#123;_flags&#125;</span>&quot;</span>)</span><br><span class="line">endforeach()</span><br><span class="line"></span><br><span class="line">add_executable(compute-areas compute-areas.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(compute-areas geometry)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>cpp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS Note</title>
-    <url>/2021/10/25/css-note/</url>
-    <content><![CDATA[<h1 id="css-selectors"><a class="markdownIt-Anchor" href="#css-selectors"></a> CSS selectors</h1>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* html tag selector, h1-h6 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#id</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* id selector */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* class selector */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* descendant combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* user action pseudo class */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span><span class="selector-pseudo">:nth-of-type</span>(odd) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* location pseudo class</span></span><br><span class="line"><span class="comment">nth-of-type: number or odd/even</span></span><br><span class="line"><span class="comment">first-of-type/last-of-type</span></span><br><span class="line"><span class="comment">nth-child</span></span><br><span class="line"><span class="comment">first-child/last-child</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#leftmenu</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &gt; <span class="selector-tag">a</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* child combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> + <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* adjacent sibling combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> ~ <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* general sibling combinator */</span></span><br></pre></td></tr></table></figure>
-<h1 id="css-property-reference"><a class="markdownIt-Anchor" href="#css-property-reference"></a> CSS property reference</h1>
-<h2 id="text-style"><a class="markdownIt-Anchor" href="#text-style"></a> text style</h2>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">color</span>: white; <span class="comment">/* default black */</span></span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">18px</span>; <span class="comment">/* default 16px */</span></span><br><span class="line"><span class="attribute">font-weight</span>: bold; <span class="comment">/* default normal */</span></span><br><span class="line"><span class="attribute">font-style</span>: italic; <span class="comment">/* default normal */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* whitespace between lines of test */</span></span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">1.5</span>; <span class="comment">/* default 1, relative to font-size */</span></span><br><span class="line"><span class="comment">/* space between characters */</span></span><br><span class="line"><span class="attribute">letter-spacing</span>: <span class="number">2px</span>; <span class="comment">/* default 0 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* visit cssfontstack.com to find more web-safe fonts. */</span></span><br><span class="line"><span class="attribute">font-family</span>: Verdana, Arial, sans-serif, cursive, fantasy; <span class="comment">/* web-safe fonts, default Arial */</span></span><br><span class="line"><span class="comment">/* serif: Georgia, Times New Roman</span></span><br><span class="line"><span class="comment">sans-serif: Arial, Verdana, Comic Sans, Trebuchet</span></span><br><span class="line"><span class="comment">monospace: Courier New */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">text-align</span>: center; <span class="comment">/* justify, default left */</span></span><br><span class="line"><span class="attribute">text-transform</span>: capitalize; <span class="comment">/* uppercase, default none */</span></span><br></pre></td></tr></table></figure>
-<h2 id="container-style"><a class="markdownIt-Anchor" href="#container-style"></a> container style</h2>
-<p>The Box Model: element &lt; padding &lt; border &lt; margin</p>
-<p>Use chrome dev tools to inspect the box model.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"><span class="comment">/* relative to parent width, default auto</span></span><br><span class="line"><span class="comment">width: 1em; relative to parent font-size</span></span><br><span class="line"><span class="comment">width: 1rem; relative to html font-size */</span></span><br><span class="line">backgroud-<span class="selector-tag">image</span>: <span class="built_in">url</span>(<span class="string">../images/image.png</span>);</span><br><span class="line"><span class="attribute">background-repeat</span>: repeat; <span class="comment">/* repeat, repeat-x, repeat-y, no-repeat */</span></span><br><span class="line"><span class="attribute">background-color</span>: <span class="number">#23cea6</span>; <span class="comment">/* RGB, default transparent */</span></span><br><span class="line"><span class="attribute">border</span>: <span class="number">10px</span> solid <span class="number">#a693c2</span>;</span><br><span class="line"><span class="attribute">border-color</span>: <span class="number">#a693c2</span>;</span><br><span class="line"><span class="comment">/* border inside, width, style, color(default text color)</span></span><br><span class="line"><span class="comment">style: solid, dashed, dotted, ridge, double, groove, inset, outset</span></span><br><span class="line"><span class="comment">border-left: xxx; left only */</span></span><br><span class="line"><span class="attribute">outline</span>: <span class="number">10px</span> solid red; <span class="comment">/* border outside */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line"><span class="comment">/* space between container and content</span></span><br><span class="line"><span class="comment">top right bottom left</span></span><br><span class="line"><span class="comment">top/bottom left/right</span></span><br><span class="line"><span class="comment">top/right/bottom/left */</span></span><br><span class="line"><span class="attribute">padding-left</span>: <span class="number">10px</span>;</span><br><span class="line"></span><br><span class="line"><span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line"><span class="comment">/* space between container and next element</span></span><br><span class="line"><span class="comment">margin collapse, max(margin-bottom, margin-top) applied */</span></span><br><span class="line"><span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="css-templates"><a class="markdownIt-Anchor" href="#css-templates"></a> CSS templates</h1>
-<h2 id="normalizecss"><a class="markdownIt-Anchor" href="#normalizecss"></a> normalize.css</h2>
-<p><a href="github.com/necolas/normalize.css">normalize.css v8.0.1</a> is a collection of CSS resets and normalizations.</p>
-<h2 id="mobile-first-design"><a class="markdownIt-Anchor" href="#mobile-first-design"></a> Mobile first design</h2>
-<p>small.css</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  -webkit-<span class="selector-tag">text</span>-size-adjust: <span class="number">100%</span>;</span><br><span class="line">  -ms-<span class="selector-tag">text</span>-size-adjust: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">* &#123;</span><br><span class="line">  -moz-<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  -webkit-<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;Lato&quot;</span>, sans-serif;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>medium.css</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>large.css</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1024px</span>) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker Note</title>
     <url>/2020/06/08/docker-note/</url>
     <content><![CDATA[<h1 id="install-docker"><a class="markdownIt-Anchor" href="#install-docker"></a> Install Docker</h1>
@@ -3168,52 +3168,6 @@ service (container) by <code>docker-compose top</code>.</p>
       </tags>
   </entry>
   <entry>
-    <title>Hexo Note</title>
-    <url>/2023/09/27/hexo-note/</url>
-    <content><![CDATA[<p><a href="https://hexo.io/">Hexo</a>, <a href="https://hexo.io/docs/">documentation</a>, <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a>, <a href="https://github.com/hexojs/hexo/issues">GitHub Issues</a>.</p>
-<h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
-<h2 id="install-setup"><a class="markdownIt-Anchor" href="#install-setup"></a> Install &amp; Setup</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h2 id="initialize"><a class="markdownIt-Anchor" href="#initialize"></a> Initialize</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>File Structure:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml # configuration file for hexo</span><br><span class="line">|-- source</span><br><span class="line">    |-- _posts</span><br><span class="line">        |-- one_blog.md # blog file</span><br><span class="line">    |-- _drafts</span><br><span class="line">        |-- one_draft.md # draft file</span><br><span class="line">|-- themes</span><br><span class="line">    |-- landscape # default theme</span><br><span class="line">    |-- ocean </span><br><span class="line">        |-- _config.yml # configuration file for ocean</span><br></pre></td></tr></table></figure>
-<h2 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span> / $ hexo n <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h2 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server / $ hexo s</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h2 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate / $ hexo g</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h2 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy / $ hexo d</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-<h2 id="deploy-to-github"><a class="markdownIt-Anchor" href="#deploy-to-github"></a> Deploy to github</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-deployer-git</span><br></pre></td></tr></table></figure>
-<p>Then, go to hexo’s _config.yml, add this to deploy session:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/xyshell/xyshell.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-<h1 id="theme"><a class="markdownIt-Anchor" href="#theme"></a> Theme</h1>
-<h2 id="install-setup-update"><a class="markdownIt-Anchor" href="#install-setup-update"></a> Install &amp; Setup &amp; Update</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</span><br></pre></td></tr></table></figure>
-<p>Modify theme setting in hexo’s _config.yml to ocean:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">ocean</span></span><br></pre></td></tr></table></figure>
-<p>Further update:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/ocean</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<h1 id="theme-reference"><a class="markdownIt-Anchor" href="#theme-reference"></a> Theme Reference</h1>
-<h2 id="ocean"><a class="markdownIt-Anchor" href="#ocean"></a> Ocean</h2>
-<p><a href="https://github.com/zhwangart/hexo-theme-ocean">https://github.com/zhwangart/hexo-theme-ocean</a></p>
-<h2 id="minos"><a class="markdownIt-Anchor" href="#minos"></a> Minos</h2>
-<p><a href="https://github.com/ppoffice/hexo-theme-minos">https://github.com/ppoffice/hexo-theme-minos</a></p>
-<h2 id="next"><a class="markdownIt-Anchor" href="#next"></a> Next</h2>
-<p><a href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git Note</title>
     <url>/2020/06/08/git-note/</url>
     <content><![CDATA[<h1 id="git-object-model"><a class="markdownIt-Anchor" href="#git-object-model"></a> Git Object Model</h1>
@@ -3264,6 +3218,52 @@ service (container) by <code>docker-compose top</code>.</p>
 ]]></content>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Note</title>
+    <url>/2023/09/27/hexo-note/</url>
+    <content><![CDATA[<p><a href="https://hexo.io/">Hexo</a>, <a href="https://hexo.io/docs/">documentation</a>, <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a>, <a href="https://github.com/hexojs/hexo/issues">GitHub Issues</a>.</p>
+<h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
+<h2 id="install-setup"><a class="markdownIt-Anchor" href="#install-setup"></a> Install &amp; Setup</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h2 id="initialize"><a class="markdownIt-Anchor" href="#initialize"></a> Initialize</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>File Structure:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml # configuration file for hexo</span><br><span class="line">|-- source</span><br><span class="line">    |-- _posts</span><br><span class="line">        |-- one_blog.md # blog file</span><br><span class="line">    |-- _drafts</span><br><span class="line">        |-- one_draft.md # draft file</span><br><span class="line">|-- themes</span><br><span class="line">    |-- landscape # default theme</span><br><span class="line">    |-- ocean </span><br><span class="line">        |-- _config.yml # configuration file for ocean</span><br></pre></td></tr></table></figure>
+<h2 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span> / $ hexo n <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h2 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server / $ hexo s</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h2 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate / $ hexo g</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h2 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy / $ hexo d</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+<h2 id="deploy-to-github"><a class="markdownIt-Anchor" href="#deploy-to-github"></a> Deploy to github</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<p>Then, go to hexo’s _config.yml, add this to deploy session:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/xyshell/xyshell.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<h1 id="theme"><a class="markdownIt-Anchor" href="#theme"></a> Theme</h1>
+<h2 id="install-setup-update"><a class="markdownIt-Anchor" href="#install-setup-update"></a> Install &amp; Setup &amp; Update</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</span><br></pre></td></tr></table></figure>
+<p>Modify theme setting in hexo’s _config.yml to ocean:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">ocean</span></span><br></pre></td></tr></table></figure>
+<p>Further update:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/ocean</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h1 id="theme-reference"><a class="markdownIt-Anchor" href="#theme-reference"></a> Theme Reference</h1>
+<h2 id="ocean"><a class="markdownIt-Anchor" href="#ocean"></a> Ocean</h2>
+<p><a href="https://github.com/zhwangart/hexo-theme-ocean">https://github.com/zhwangart/hexo-theme-ocean</a></p>
+<h2 id="minos"><a class="markdownIt-Anchor" href="#minos"></a> Minos</h2>
+<p><a href="https://github.com/ppoffice/hexo-theme-minos">https://github.com/ppoffice/hexo-theme-minos</a></p>
+<h2 id="next"><a class="markdownIt-Anchor" href="#next"></a> Next</h2>
+<p><a href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3419,107 +3419,6 @@ service (container) by <code>docker-compose top</code>.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip/dns&gt;:/home/admin/&lt;path-to-target-file&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="auto-start-after-reboot"><a class="markdownIt-Anchor" href="#auto-start-after-reboot"></a> Auto-start after reboot</h1>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ systemctl <span class="built_in">enable</span> docker</span><br><span class="line">Synchronizing state of docker.service...</span><br><span class="line">Executing /lib/systemd/systemd-sysv-install <span class="built_in">enable</span> docker</span><br><span class="line">$ systemctl is-enabled docker</span><br><span class="line">enabled</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>Network Note</title>
-    <url>/2020/06/20/network-note/</url>
-    <content><![CDATA[<h1 id="osi-model"><a class="markdownIt-Anchor" href="#osi-model"></a> OSI Model</h1>
-<p><img src="/photos/intro-network-note/OSI_model.png" alt="OSI_model" /></p>
-<h1 id="protocols"><a class="markdownIt-Anchor" href="#protocols"></a> Protocols</h1>
-<h2 id="data-transfer"><a class="markdownIt-Anchor" href="#data-transfer"></a> Data Transfer</h2>
-<p><img src="/photos/intro-network-note/http.png" alt="http" /></p>
-<h2 id="file-transfer"><a class="markdownIt-Anchor" href="#file-transfer"></a> File Transfer</h2>
-<p><img src="/photos/intro-network-note/ftp.png" alt="ftp" /></p>
-<h2 id="email"><a class="markdownIt-Anchor" href="#email"></a> Email</h2>
-<p><img src="/photos/intro-network-note/email.png" alt="email" /></p>
-<h2 id="authentication"><a class="markdownIt-Anchor" href="#authentication"></a> Authentication</h2>
-<p><img src="/photos/intro-network-note/auth.png" alt="auth" /></p>
-<h2 id="network-service"><a class="markdownIt-Anchor" href="#network-service"></a> Network Service</h2>
-<p><img src="/photos/intro-network-note/dhcp.png" alt="dhcp" /></p>
-<h2 id="domain-name-systemdns"><a class="markdownIt-Anchor" href="#domain-name-systemdns"></a> Domain Name System(DNS)</h2>
-<p><img src="/photos/intro-network-note/dns.png" alt="dns" /></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nslookup google.com <span class="comment"># check google&#x27;s ip</span></span><br><span class="line">$ nslookup </span><br><span class="line">&gt; facebook.com</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nslookup</span><br><span class="line">&gt; server 8.8.8.8 <span class="comment"># config dns server</span></span><br></pre></td></tr></table></figure>
-<h2 id="network-time-protocolntp"><a class="markdownIt-Anchor" href="#network-time-protocolntp"></a> Network Time Protocol(NTP)</h2>
-<p><img src="/photos/intro-network-note/ntp.png" alt="ntp" /></p>
-<h2 id="network-management"><a class="markdownIt-Anchor" href="#network-management"></a> Network Management</h2>
-<p><img src="/photos/intro-network-note/ssh_telnet.png" alt="ssh_telnet" /></p>
-<p>ssh: encryted; telnet: clear text</p>
-<p>ssh used encrypt ftp</p>
-<p><img src="/photos/intro-network-note/snmp.png" alt="snmp" /></p>
-<p>Walk the tree: server collect information(statistics, log) from client</p>
-<p>Trap: client send SNMP trap to server</p>
-<h2 id="remote-desktop-protocolrdp"><a class="markdownIt-Anchor" href="#remote-desktop-protocolrdp"></a> Remote Desktop Protocol(RDP)</h2>
-<p><img src="/photos/intro-network-note/rdp.png" alt="rdp" /></p>
-<h2 id="audiovisual-protocol"><a class="markdownIt-Anchor" href="#audiovisual-protocol"></a> Audio/Visual Protocol</h2>
-<p><img src="/photos/intro-network-note/h323.png" alt="h323" /></p>
-<p><img src="/photos/intro-network-note/sip.png" alt="sip" /></p>
-<p>session initiation protocol: voice over ip communication</p>
-<h1 id="tcp-and-udp"><a class="markdownIt-Anchor" href="#tcp-and-udp"></a> TCP and UDP</h1>
-<p>TCP: transmission control protocol</p>
-<p>UDP: user datagram protocol</p>
-<h2 id="tcp"><a class="markdownIt-Anchor" href="#tcp"></a> TCP</h2>
-<p>reliable, verifiable(sequence numbers / acknowledge numbers), notion of session</p>
-<h3 id="the-3-way-handshake"><a class="markdownIt-Anchor" href="#the-3-way-handshake"></a> The 3-way handshake</h3>
-<p><img src="/photos/intro-network-note/3way.png" alt="3way" /></p>
-<ol>
-<li>SYN: send syn msg, wait for reply from server(change state to SYN-RECEIVED)</li>
-<li>SYN-ACK: send msg to client</li>
-<li>ACK: client respond to server</li>
-</ol>
-<p>then session establish between client and server by layer 4 protocol</p>
-<p>client or server can ask for missing / additional information from each other</p>
-<p>then use layer 7 protocol</p>
-<h3 id="the-4-way-disconnect"><a class="markdownIt-Anchor" href="#the-4-way-disconnect"></a> The 4-way Disconnect</h3>
-<p><img src="/photos/intro-network-note/4way.png" alt="4way" /></p>
-<ol>
-<li>FIN: server to client</li>
-<li>FIN-ACK: client to server</li>
-<li>FIN: client to server</li>
-<li>FIN-ACK</li>
-</ol>
-<p>shutdown the session</p>
-<p>RST: tcp reset, server to client, to shutdown quickly</p>
-<h2 id="udp"><a class="markdownIt-Anchor" href="#udp"></a> UDP</h2>
-<p>no 3-way handshake, no reliable communication, no sequence numbers / acknowledge numbers</p>
-<p>very efficient for small data transfer (e.x. DNS)</p>
-<p><img src="/photos/intro-network-note/udp.png" alt="udp" /></p>
-<h2 id="port-numberstransport-layer-addressing"><a class="markdownIt-Anchor" href="#port-numberstransport-layer-addressing"></a> Port numbers(Transport layer addressing)</h2>
-<p><img src="/photos/intro-network-note/port.png" alt="port" /></p>
-<h3 id="source-port-and-destination-port"><a class="markdownIt-Anchor" href="#source-port-and-destination-port"></a> Source port and Destination port</h3>
-<p><img src="/photos/intro-network-note/src_dstnt.png" alt="src_dstnt" /></p>
-<h2 id="application-layer-portocol-dependency"><a class="markdownIt-Anchor" href="#application-layer-portocol-dependency"></a> Application layer portocol dependency</h2>
-<p><img src="/photos/intro-network-note/protocol_dependency_1.png" alt="protocol_dependency_1" /></p>
-<p><img src="/photos/intro-network-note/protocol_dependency_2.png" alt="protocol_dependency_2" /></p>
-<h1 id="ip-addressing"><a class="markdownIt-Anchor" href="#ip-addressing"></a> IP Addressing</h1>
-<ul>
-<li>
-<p>unicast: class A, B, C(public internet), one device to one device</p>
-</li>
-<li>
-<p>multicast: class D(enterprise org’s live video streamming), one device to many devices</p>
-</li>
-<li>
-<p>experimental: class E</p>
-</li>
-</ul>
-<h2 id="class-a"><a class="markdownIt-Anchor" href="#class-a"></a> class A</h2>
-<p><img src="/photos/intro-network-note/class_a.png" alt="class_a" /></p>
-<h2 id="class-b"><a class="markdownIt-Anchor" href="#class-b"></a> class B</h2>
-<p><img src="/photos/intro-network-note/class_b.png" alt="class_b" /></p>
-<h2 id="class-c"><a class="markdownIt-Anchor" href="#class-c"></a> class C</h2>
-<p><img src="/photos/intro-network-note/class_c.png" alt="class_c" /></p>
-<h2 id="class-d"><a class="markdownIt-Anchor" href="#class-d"></a> class D</h2>
-<p><img src="/photos/intro-network-note/class_d.png" alt="class_d" /></p>
-<h2 id="address-types"><a class="markdownIt-Anchor" href="#address-types"></a> Address types</h2>
-<p><img src="/photos/intro-network-note/address_types.png" alt="address_types" /></p>
-<h2 id="private-ip-address"><a class="markdownIt-Anchor" href="#private-ip-address"></a> Private ip address</h2>
-<p>127.0.0.1: loopback address, localhost</p>
-<p><img src="/photos/intro-network-note/private_ip.png" alt="private_ip" /></p>
-]]></content>
-      <tags>
-        <tag>network</tag>
-      </tags>
   </entry>
   <entry>
     <title>k8s Note</title>
@@ -3734,6 +3633,107 @@ OpenShift Container Platform by Red Hat.</p>
       </tags>
   </entry>
   <entry>
+    <title>Network Note</title>
+    <url>/2020/06/20/network-note/</url>
+    <content><![CDATA[<h1 id="osi-model"><a class="markdownIt-Anchor" href="#osi-model"></a> OSI Model</h1>
+<p><img src="/photos/intro-network-note/OSI_model.png" alt="OSI_model" /></p>
+<h1 id="protocols"><a class="markdownIt-Anchor" href="#protocols"></a> Protocols</h1>
+<h2 id="data-transfer"><a class="markdownIt-Anchor" href="#data-transfer"></a> Data Transfer</h2>
+<p><img src="/photos/intro-network-note/http.png" alt="http" /></p>
+<h2 id="file-transfer"><a class="markdownIt-Anchor" href="#file-transfer"></a> File Transfer</h2>
+<p><img src="/photos/intro-network-note/ftp.png" alt="ftp" /></p>
+<h2 id="email"><a class="markdownIt-Anchor" href="#email"></a> Email</h2>
+<p><img src="/photos/intro-network-note/email.png" alt="email" /></p>
+<h2 id="authentication"><a class="markdownIt-Anchor" href="#authentication"></a> Authentication</h2>
+<p><img src="/photos/intro-network-note/auth.png" alt="auth" /></p>
+<h2 id="network-service"><a class="markdownIt-Anchor" href="#network-service"></a> Network Service</h2>
+<p><img src="/photos/intro-network-note/dhcp.png" alt="dhcp" /></p>
+<h2 id="domain-name-systemdns"><a class="markdownIt-Anchor" href="#domain-name-systemdns"></a> Domain Name System(DNS)</h2>
+<p><img src="/photos/intro-network-note/dns.png" alt="dns" /></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nslookup google.com <span class="comment"># check google&#x27;s ip</span></span><br><span class="line">$ nslookup </span><br><span class="line">&gt; facebook.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nslookup</span><br><span class="line">&gt; server 8.8.8.8 <span class="comment"># config dns server</span></span><br></pre></td></tr></table></figure>
+<h2 id="network-time-protocolntp"><a class="markdownIt-Anchor" href="#network-time-protocolntp"></a> Network Time Protocol(NTP)</h2>
+<p><img src="/photos/intro-network-note/ntp.png" alt="ntp" /></p>
+<h2 id="network-management"><a class="markdownIt-Anchor" href="#network-management"></a> Network Management</h2>
+<p><img src="/photos/intro-network-note/ssh_telnet.png" alt="ssh_telnet" /></p>
+<p>ssh: encryted; telnet: clear text</p>
+<p>ssh used encrypt ftp</p>
+<p><img src="/photos/intro-network-note/snmp.png" alt="snmp" /></p>
+<p>Walk the tree: server collect information(statistics, log) from client</p>
+<p>Trap: client send SNMP trap to server</p>
+<h2 id="remote-desktop-protocolrdp"><a class="markdownIt-Anchor" href="#remote-desktop-protocolrdp"></a> Remote Desktop Protocol(RDP)</h2>
+<p><img src="/photos/intro-network-note/rdp.png" alt="rdp" /></p>
+<h2 id="audiovisual-protocol"><a class="markdownIt-Anchor" href="#audiovisual-protocol"></a> Audio/Visual Protocol</h2>
+<p><img src="/photos/intro-network-note/h323.png" alt="h323" /></p>
+<p><img src="/photos/intro-network-note/sip.png" alt="sip" /></p>
+<p>session initiation protocol: voice over ip communication</p>
+<h1 id="tcp-and-udp"><a class="markdownIt-Anchor" href="#tcp-and-udp"></a> TCP and UDP</h1>
+<p>TCP: transmission control protocol</p>
+<p>UDP: user datagram protocol</p>
+<h2 id="tcp"><a class="markdownIt-Anchor" href="#tcp"></a> TCP</h2>
+<p>reliable, verifiable(sequence numbers / acknowledge numbers), notion of session</p>
+<h3 id="the-3-way-handshake"><a class="markdownIt-Anchor" href="#the-3-way-handshake"></a> The 3-way handshake</h3>
+<p><img src="/photos/intro-network-note/3way.png" alt="3way" /></p>
+<ol>
+<li>SYN: send syn msg, wait for reply from server(change state to SYN-RECEIVED)</li>
+<li>SYN-ACK: send msg to client</li>
+<li>ACK: client respond to server</li>
+</ol>
+<p>then session establish between client and server by layer 4 protocol</p>
+<p>client or server can ask for missing / additional information from each other</p>
+<p>then use layer 7 protocol</p>
+<h3 id="the-4-way-disconnect"><a class="markdownIt-Anchor" href="#the-4-way-disconnect"></a> The 4-way Disconnect</h3>
+<p><img src="/photos/intro-network-note/4way.png" alt="4way" /></p>
+<ol>
+<li>FIN: server to client</li>
+<li>FIN-ACK: client to server</li>
+<li>FIN: client to server</li>
+<li>FIN-ACK</li>
+</ol>
+<p>shutdown the session</p>
+<p>RST: tcp reset, server to client, to shutdown quickly</p>
+<h2 id="udp"><a class="markdownIt-Anchor" href="#udp"></a> UDP</h2>
+<p>no 3-way handshake, no reliable communication, no sequence numbers / acknowledge numbers</p>
+<p>very efficient for small data transfer (e.x. DNS)</p>
+<p><img src="/photos/intro-network-note/udp.png" alt="udp" /></p>
+<h2 id="port-numberstransport-layer-addressing"><a class="markdownIt-Anchor" href="#port-numberstransport-layer-addressing"></a> Port numbers(Transport layer addressing)</h2>
+<p><img src="/photos/intro-network-note/port.png" alt="port" /></p>
+<h3 id="source-port-and-destination-port"><a class="markdownIt-Anchor" href="#source-port-and-destination-port"></a> Source port and Destination port</h3>
+<p><img src="/photos/intro-network-note/src_dstnt.png" alt="src_dstnt" /></p>
+<h2 id="application-layer-portocol-dependency"><a class="markdownIt-Anchor" href="#application-layer-portocol-dependency"></a> Application layer portocol dependency</h2>
+<p><img src="/photos/intro-network-note/protocol_dependency_1.png" alt="protocol_dependency_1" /></p>
+<p><img src="/photos/intro-network-note/protocol_dependency_2.png" alt="protocol_dependency_2" /></p>
+<h1 id="ip-addressing"><a class="markdownIt-Anchor" href="#ip-addressing"></a> IP Addressing</h1>
+<ul>
+<li>
+<p>unicast: class A, B, C(public internet), one device to one device</p>
+</li>
+<li>
+<p>multicast: class D(enterprise org’s live video streamming), one device to many devices</p>
+</li>
+<li>
+<p>experimental: class E</p>
+</li>
+</ul>
+<h2 id="class-a"><a class="markdownIt-Anchor" href="#class-a"></a> class A</h2>
+<p><img src="/photos/intro-network-note/class_a.png" alt="class_a" /></p>
+<h2 id="class-b"><a class="markdownIt-Anchor" href="#class-b"></a> class B</h2>
+<p><img src="/photos/intro-network-note/class_b.png" alt="class_b" /></p>
+<h2 id="class-c"><a class="markdownIt-Anchor" href="#class-c"></a> class C</h2>
+<p><img src="/photos/intro-network-note/class_c.png" alt="class_c" /></p>
+<h2 id="class-d"><a class="markdownIt-Anchor" href="#class-d"></a> class D</h2>
+<p><img src="/photos/intro-network-note/class_d.png" alt="class_d" /></p>
+<h2 id="address-types"><a class="markdownIt-Anchor" href="#address-types"></a> Address types</h2>
+<p><img src="/photos/intro-network-note/address_types.png" alt="address_types" /></p>
+<h2 id="private-ip-address"><a class="markdownIt-Anchor" href="#private-ip-address"></a> Private ip address</h2>
+<p>127.0.0.1: loopback address, localhost</p>
+<p><img src="/photos/intro-network-note/private_ip.png" alt="private_ip" /></p>
+]]></content>
+      <tags>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Regex Note</title>
     <url>/2020/09/05/regex-note/</url>
     <content><![CDATA[<p><img src="/photos/regex-note/reference.png" alt="reference" /></p>
@@ -3773,36 +3773,6 @@ OpenShift Container Platform by Red Hat.</p>
       <tags>
         <tag>spark</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Trick Note</title>
-    <url>/2020/10/07/trick-note/</url>
-    <content><![CDATA[<p>References of some interesting tricks.</p>
-<h2 id="show-password-in-web"><a class="markdownIt-Anchor" href="#show-password-in-web"></a> Show password in web</h2>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;input[type=password]&quot;</span>).<span class="property">value</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="show-ip-address"><a class="markdownIt-Anchor" href="#show-ip-address"></a> Show IP address</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl ifconfig.me</span><br></pre></td></tr></table></figure>
-<h2 id="download-file-and-unzip"><a class="markdownIt-Anchor" href="#download-file-and-unzip"></a> Download file and unzip</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://training.linuxfoundation.org/cm/LFS258/LFS258V2021-09-20SOLUTIONS.tar.xz --user=xxx --password=xxx</span><br><span class="line">tar -xvf LFS258V2021-09-20SOLUTIONS.tar.xz</span><br></pre></td></tr></table></figure>
-<h2 id="send-email-from-gmail"><a class="markdownIt-Anchor" href="#send-email-from-gmail"></a> Send email from gmail</h2>
-<p>Reference:</p>
-<ul>
-<li><a href="https://julien.danjou.info/sending-emails-in-python-tutorial-code-examples/">Send email in Python</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/24180606">简单三步，用 Python 发邮件</a></li>
-</ul>
-<p>Note:</p>
-<ul>
-<li>Turn on <a href="https://myaccount.google.com/lesssecureapps">Less secure app access</a></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">port = <span class="number">465</span></span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&quot;your password&quot;</span>)</span><br><span class="line">context = ssl.create_default_context()</span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&quot;The body of the email is here&quot;</span>)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = <span class="string">&quot;An Email Alert&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = <span class="string">&quot;my@gmail.com&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = <span class="string">&quot;other@xxx.xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> smtplib.SMTP_SSL(<span class="string">&quot;smtp.gmail.com&quot;</span>, port, context=context) <span class="keyword">as</span> server:</span><br><span class="line">    server.login(<span class="string">&quot;my@gmail.com&quot;</span>, password)</span><br><span class="line">    server.send_message(msg)</span><br></pre></td></tr></table></figure>
-<h2 id="check-the-quality-of-a-website"><a class="markdownIt-Anchor" href="#check-the-quality-of-a-website"></a> Check the quality of a website</h2>
-<ul>
-<li><a href="https://validator.w3.org/">html validator</a></li>
-<li><a href="https://jigsaw.w3.org/css-validator/">css validator</a></li>
-<li><a href="https://search.google.com/test/mobile-friendly">google’s mobile-friendly test</a></li>
-<li><a href="https://tools.pingdom.com/">website speed test</a></li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>Sql Note</title>
@@ -3958,5 +3928,35 @@ OpenShift Container Platform by Red Hat.</p>
       <tags>
         <tag>sql</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Trick Note</title>
+    <url>/2020/10/07/trick-note/</url>
+    <content><![CDATA[<p>References of some interesting tricks.</p>
+<h2 id="show-password-in-web"><a class="markdownIt-Anchor" href="#show-password-in-web"></a> Show password in web</h2>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;input[type=password]&quot;</span>).<span class="property">value</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="show-ip-address"><a class="markdownIt-Anchor" href="#show-ip-address"></a> Show IP address</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl ifconfig.me</span><br></pre></td></tr></table></figure>
+<h2 id="download-file-and-unzip"><a class="markdownIt-Anchor" href="#download-file-and-unzip"></a> Download file and unzip</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://training.linuxfoundation.org/cm/LFS258/LFS258V2021-09-20SOLUTIONS.tar.xz --user=xxx --password=xxx</span><br><span class="line">tar -xvf LFS258V2021-09-20SOLUTIONS.tar.xz</span><br></pre></td></tr></table></figure>
+<h2 id="send-email-from-gmail"><a class="markdownIt-Anchor" href="#send-email-from-gmail"></a> Send email from gmail</h2>
+<p>Reference:</p>
+<ul>
+<li><a href="https://julien.danjou.info/sending-emails-in-python-tutorial-code-examples/">Send email in Python</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24180606">简单三步，用 Python 发邮件</a></li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>Turn on <a href="https://myaccount.google.com/lesssecureapps">Less secure app access</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">port = <span class="number">465</span></span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&quot;your password&quot;</span>)</span><br><span class="line">context = ssl.create_default_context()</span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&quot;The body of the email is here&quot;</span>)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = <span class="string">&quot;An Email Alert&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = <span class="string">&quot;my@gmail.com&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = <span class="string">&quot;other@xxx.xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> smtplib.SMTP_SSL(<span class="string">&quot;smtp.gmail.com&quot;</span>, port, context=context) <span class="keyword">as</span> server:</span><br><span class="line">    server.login(<span class="string">&quot;my@gmail.com&quot;</span>, password)</span><br><span class="line">    server.send_message(msg)</span><br></pre></td></tr></table></figure>
+<h2 id="check-the-quality-of-a-website"><a class="markdownIt-Anchor" href="#check-the-quality-of-a-website"></a> Check the quality of a website</h2>
+<ul>
+<li><a href="https://validator.w3.org/">html validator</a></li>
+<li><a href="https://jigsaw.w3.org/css-validator/">css validator</a></li>
+<li><a href="https://search.google.com/test/mobile-friendly">google’s mobile-friendly test</a></li>
+<li><a href="https://tools.pingdom.com/">website speed test</a></li>
+</ul>
+]]></content>
   </entry>
 </search>
