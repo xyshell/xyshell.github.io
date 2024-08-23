@@ -350,6 +350,34 @@ replica using the <code>dtr join</code> command.</p>
       </tags>
   </entry>
   <entry>
+    <title>Algo Note</title>
+    <url>/2020/08/12/algo-note/</url>
+    <content><![CDATA[<h1 id="merge-sort"><a class="markdownIt-Anchor" href="#merge-sort"></a> Merge Sort</h1>
+<h2 id="explanation"><a class="markdownIt-Anchor" href="#explanation"></a> Explanation:</h2>
+<ol>
+<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Merge_sort">https://en.wikipedia.org/wiki/Merge_sort</a></li>
+<li>Youtube: <a href="https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo">https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo</a></li>
+</ol>
+<p>Time complexity: O(nlogn)<br />
+Space complexity: O(n)</p>
+<h2 id="implementation"><a class="markdownIt-Anchor" href="#implementation"></a> Implementation:</h2>
+<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">arr1: <span class="built_in">list</span>, arr2: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge two arrays</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr1 (list): first array</span></span><br><span class="line"><span class="string">        arr2 (list): second array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(arr1), <span class="built_in">len</span>(arr2)</span><br><span class="line">    <span class="keyword">while</span> i &lt; m <span class="keyword">and</span> j &lt; n:</span><br><span class="line">        <span class="keyword">if</span> arr1[i] &lt;= arr2[j]:</span><br><span class="line">            result.append(arr1[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(arr2[j])</span><br><span class="line">            count += m - i</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    result += arr1[i:]</span><br><span class="line">    result += arr2[j:]</span><br><span class="line">    <span class="keyword">return</span> count, result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">msort</span>(<span class="params">arr: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge Sort Algorithm</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr (list): unsorted array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">if</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        mid = n // <span class="number">2</span></span><br><span class="line">        left_swaps, left_result = msort(arr[:mid])</span><br><span class="line">        right_swaps, right_result = msort(arr[mid:])</span><br><span class="line">        merge_swaps, result = merge(left_result, right_result)</span><br><span class="line">        <span class="keyword">return</span> left_swaps+right_swaps+merge_swaps, result</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>, arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> msort([<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>, <span class="number">8</span>]) == (<span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="lcslongest-common-subsequence-problem"><a class="markdownIt-Anchor" href="#lcslongest-common-subsequence-problem"></a> LCS(longest common subsequence) problem</h1>
+<h2 id="explanation-2"><a class="markdownIt-Anchor" href="#explanation-2"></a> Explanation:</h2>
+<ol>
+<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Longest_common_subsequence_problem">https://en.wikipedia.org/wiki/Longest_common_subsequence_problem</a></li>
+</ol>
+<p>complexity: O(n × m)</p>
+<h2 id="implementation-2"><a class="markdownIt-Anchor" href="#implementation-2"></a> Implementation</h2>
+<h3 id="python-2"><a class="markdownIt-Anchor" href="#python-2"></a> Python</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">commonChild</span>(<span class="params">s1: <span class="built_in">str</span>, s2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Find length of common child string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        s1 (str): first string</span></span><br><span class="line"><span class="string">        s2 (str): second string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        int: length of common child string</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    m = <span class="built_in">len</span>(s1)</span><br><span class="line">    n = <span class="built_in">len</span>(s2)</span><br><span class="line">    mat = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">            i, j = r - <span class="number">1</span>, c - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> s1[i] == s2[j]:</span><br><span class="line">                mat[r][c] = mat[r-<span class="number">1</span>][c-<span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                mat[r][c] = <span class="built_in">max</span>(mat[r-<span class="number">1</span>][c], mat[r][c-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> mat[m][n]</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> commonChild(<span class="string">&quot;SHINCHAN&quot;</span>, <span class="string">&quot;NOHARAAA&quot;</span>) == <span class="number">3</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>algo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AWS Note</title>
     <url>/2020/06/08/aws-note/</url>
     <content><![CDATA[<h1 id="aws-basics"><a class="markdownIt-Anchor" href="#aws-basics"></a> AWS Basics</h1>
@@ -510,34 +538,6 @@ Add permissions to the production Lambda function that allow it to be invoked by
 ]]></content>
       <tags>
         <tag>aws</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Algo Note</title>
-    <url>/2020/08/12/algo-note/</url>
-    <content><![CDATA[<h1 id="merge-sort"><a class="markdownIt-Anchor" href="#merge-sort"></a> Merge Sort</h1>
-<h2 id="explanation"><a class="markdownIt-Anchor" href="#explanation"></a> Explanation:</h2>
-<ol>
-<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Merge_sort">https://en.wikipedia.org/wiki/Merge_sort</a></li>
-<li>Youtube: <a href="https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo">https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo</a></li>
-</ol>
-<p>Time complexity: O(nlogn)<br />
-Space complexity: O(n)</p>
-<h2 id="implementation"><a class="markdownIt-Anchor" href="#implementation"></a> Implementation:</h2>
-<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">arr1: <span class="built_in">list</span>, arr2: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge two arrays</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr1 (list): first array</span></span><br><span class="line"><span class="string">        arr2 (list): second array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(arr1), <span class="built_in">len</span>(arr2)</span><br><span class="line">    <span class="keyword">while</span> i &lt; m <span class="keyword">and</span> j &lt; n:</span><br><span class="line">        <span class="keyword">if</span> arr1[i] &lt;= arr2[j]:</span><br><span class="line">            result.append(arr1[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(arr2[j])</span><br><span class="line">            count += m - i</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    result += arr1[i:]</span><br><span class="line">    result += arr2[j:]</span><br><span class="line">    <span class="keyword">return</span> count, result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">msort</span>(<span class="params">arr: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge Sort Algorithm</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr (list): unsorted array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">if</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        mid = n // <span class="number">2</span></span><br><span class="line">        left_swaps, left_result = msort(arr[:mid])</span><br><span class="line">        right_swaps, right_result = msort(arr[mid:])</span><br><span class="line">        merge_swaps, result = merge(left_result, right_result)</span><br><span class="line">        <span class="keyword">return</span> left_swaps+right_swaps+merge_swaps, result</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>, arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> msort([<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>, <span class="number">8</span>]) == (<span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
-<h1 id="lcslongest-common-subsequence-problem"><a class="markdownIt-Anchor" href="#lcslongest-common-subsequence-problem"></a> LCS(longest common subsequence) problem</h1>
-<h2 id="explanation-2"><a class="markdownIt-Anchor" href="#explanation-2"></a> Explanation:</h2>
-<ol>
-<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Longest_common_subsequence_problem">https://en.wikipedia.org/wiki/Longest_common_subsequence_problem</a></li>
-</ol>
-<p>complexity: O(n × m)</p>
-<h2 id="implementation-2"><a class="markdownIt-Anchor" href="#implementation-2"></a> Implementation</h2>
-<h3 id="python-2"><a class="markdownIt-Anchor" href="#python-2"></a> Python</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">commonChild</span>(<span class="params">s1: <span class="built_in">str</span>, s2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Find length of common child string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        s1 (str): first string</span></span><br><span class="line"><span class="string">        s2 (str): second string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        int: length of common child string</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    m = <span class="built_in">len</span>(s1)</span><br><span class="line">    n = <span class="built_in">len</span>(s2)</span><br><span class="line">    mat = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">            i, j = r - <span class="number">1</span>, c - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> s1[i] == s2[j]:</span><br><span class="line">                mat[r][c] = mat[r-<span class="number">1</span>][c-<span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                mat[r][c] = <span class="built_in">max</span>(mat[r-<span class="number">1</span>][c], mat[r][c-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> mat[m][n]</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> commonChild(<span class="string">&quot;SHINCHAN&quot;</span>, <span class="string">&quot;NOHARAAA&quot;</span>) == <span class="number">3</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>algo</tag>
       </tags>
   </entry>
   <entry>
@@ -2584,33 +2584,6 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
       </tags>
   </entry>
   <entry>
-    <title>CSS Note</title>
-    <url>/2021/10/25/css-note/</url>
-    <content><![CDATA[<h1 id="css-selectors"><a class="markdownIt-Anchor" href="#css-selectors"></a> CSS selectors</h1>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* html tag selector, h1-h6 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#id</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* id selector */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* class selector */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* descendant combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* user action pseudo class */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span><span class="selector-pseudo">:nth-of-type</span>(odd) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* location pseudo class</span></span><br><span class="line"><span class="comment">nth-of-type: number or odd/even</span></span><br><span class="line"><span class="comment">first-of-type/last-of-type</span></span><br><span class="line"><span class="comment">nth-child</span></span><br><span class="line"><span class="comment">first-child/last-child</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#leftmenu</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &gt; <span class="selector-tag">a</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* child combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> + <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* adjacent sibling combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> ~ <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* general sibling combinator */</span></span><br></pre></td></tr></table></figure>
-<h1 id="css-property-reference"><a class="markdownIt-Anchor" href="#css-property-reference"></a> CSS property reference</h1>
-<h2 id="text-style"><a class="markdownIt-Anchor" href="#text-style"></a> text style</h2>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">color</span>: white; <span class="comment">/* default black */</span></span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">18px</span>; <span class="comment">/* default 16px */</span></span><br><span class="line"><span class="attribute">font-weight</span>: bold; <span class="comment">/* default normal */</span></span><br><span class="line"><span class="attribute">font-style</span>: italic; <span class="comment">/* default normal */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* whitespace between lines of test */</span></span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">1.5</span>; <span class="comment">/* default 1, relative to font-size */</span></span><br><span class="line"><span class="comment">/* space between characters */</span></span><br><span class="line"><span class="attribute">letter-spacing</span>: <span class="number">2px</span>; <span class="comment">/* default 0 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* visit cssfontstack.com to find more web-safe fonts. */</span></span><br><span class="line"><span class="attribute">font-family</span>: Verdana, Arial, sans-serif, cursive, fantasy; <span class="comment">/* web-safe fonts, default Arial */</span></span><br><span class="line"><span class="comment">/* serif: Georgia, Times New Roman</span></span><br><span class="line"><span class="comment">sans-serif: Arial, Verdana, Comic Sans, Trebuchet</span></span><br><span class="line"><span class="comment">monospace: Courier New */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">text-align</span>: center; <span class="comment">/* justify, default left */</span></span><br><span class="line"><span class="attribute">text-transform</span>: capitalize; <span class="comment">/* uppercase, default none */</span></span><br></pre></td></tr></table></figure>
-<h2 id="container-style"><a class="markdownIt-Anchor" href="#container-style"></a> container style</h2>
-<p>The Box Model: element &lt; padding &lt; border &lt; margin</p>
-<p>Use chrome dev tools to inspect the box model.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"><span class="comment">/* relative to parent width, default auto</span></span><br><span class="line"><span class="comment">width: 1em; relative to parent font-size</span></span><br><span class="line"><span class="comment">width: 1rem; relative to html font-size */</span></span><br><span class="line">backgroud-<span class="selector-tag">image</span>: <span class="built_in">url</span>(<span class="string">../images/image.png</span>);</span><br><span class="line"><span class="attribute">background-repeat</span>: repeat; <span class="comment">/* repeat, repeat-x, repeat-y, no-repeat */</span></span><br><span class="line"><span class="attribute">background-color</span>: <span class="number">#23cea6</span>; <span class="comment">/* RGB, default transparent */</span></span><br><span class="line"><span class="attribute">border</span>: <span class="number">10px</span> solid <span class="number">#a693c2</span>;</span><br><span class="line"><span class="attribute">border-color</span>: <span class="number">#a693c2</span>;</span><br><span class="line"><span class="comment">/* border inside, width, style, color(default text color)</span></span><br><span class="line"><span class="comment">style: solid, dashed, dotted, ridge, double, groove, inset, outset</span></span><br><span class="line"><span class="comment">border-left: xxx; left only */</span></span><br><span class="line"><span class="attribute">outline</span>: <span class="number">10px</span> solid red; <span class="comment">/* border outside */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line"><span class="comment">/* space between container and content</span></span><br><span class="line"><span class="comment">top right bottom left</span></span><br><span class="line"><span class="comment">top/bottom left/right</span></span><br><span class="line"><span class="comment">top/right/bottom/left */</span></span><br><span class="line"><span class="attribute">padding-left</span>: <span class="number">10px</span>;</span><br><span class="line"></span><br><span class="line"><span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line"><span class="comment">/* space between container and next element</span></span><br><span class="line"><span class="comment">margin collapse, max(margin-bottom, margin-top) applied */</span></span><br><span class="line"><span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="css-templates"><a class="markdownIt-Anchor" href="#css-templates"></a> CSS templates</h1>
-<h2 id="normalizecss"><a class="markdownIt-Anchor" href="#normalizecss"></a> normalize.css</h2>
-<p><a href="github.com/necolas/normalize.css">normalize.css v8.0.1</a> is a collection of CSS resets and normalizations.</p>
-<h2 id="mobile-first-design"><a class="markdownIt-Anchor" href="#mobile-first-design"></a> Mobile first design</h2>
-<p>small.css</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  -webkit-<span class="selector-tag">text</span>-size-adjust: <span class="number">100%</span>;</span><br><span class="line">  -ms-<span class="selector-tag">text</span>-size-adjust: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">* &#123;</span><br><span class="line">  -moz-<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  -webkit-<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;Lato&quot;</span>, sans-serif;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>medium.css</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>large.css</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1024px</span>) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CPP Note</title>
     <url>/2020/07/13/cpp-note/</url>
     <content><![CDATA[<h1 id="cmake"><a class="markdownIt-Anchor" href="#cmake"></a> Cmake</h1>
@@ -2694,6 +2667,79 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
 ]]></content>
       <tags>
         <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS Note</title>
+    <url>/2021/10/25/css-note/</url>
+    <content><![CDATA[<h1 id="css-selectors"><a class="markdownIt-Anchor" href="#css-selectors"></a> CSS selectors</h1>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* html tag selector, h1-h6 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#id</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* id selector */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* class selector */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* descendant combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* user action pseudo class */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.class</span><span class="selector-pseudo">:nth-of-type</span>(odd) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* location pseudo class</span></span><br><span class="line"><span class="comment">nth-of-type: number or odd/even</span></span><br><span class="line"><span class="comment">first-of-type/last-of-type</span></span><br><span class="line"><span class="comment">nth-child</span></span><br><span class="line"><span class="comment">first-child/last-child</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#leftmenu</span> &gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &gt; <span class="selector-tag">a</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* child combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> + <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* adjacent sibling combinator */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> ~ <span class="selector-tag">h2</span> &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125; <span class="comment">/* general sibling combinator */</span></span><br></pre></td></tr></table></figure>
+<h1 id="css-property-reference"><a class="markdownIt-Anchor" href="#css-property-reference"></a> CSS property reference</h1>
+<h2 id="text-style"><a class="markdownIt-Anchor" href="#text-style"></a> text style</h2>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">color</span>: white; <span class="comment">/* default black */</span></span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">18px</span>; <span class="comment">/* default 16px */</span></span><br><span class="line"><span class="attribute">font-weight</span>: bold; <span class="comment">/* default normal */</span></span><br><span class="line"><span class="attribute">font-style</span>: italic; <span class="comment">/* default normal */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* whitespace between lines of test */</span></span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">1.5</span>; <span class="comment">/* default 1, relative to font-size */</span></span><br><span class="line"><span class="comment">/* space between characters */</span></span><br><span class="line"><span class="attribute">letter-spacing</span>: <span class="number">2px</span>; <span class="comment">/* default 0 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* visit cssfontstack.com to find more web-safe fonts. */</span></span><br><span class="line"><span class="attribute">font-family</span>: Verdana, Arial, sans-serif, cursive, fantasy; <span class="comment">/* web-safe fonts, default Arial */</span></span><br><span class="line"><span class="comment">/* serif: Georgia, Times New Roman</span></span><br><span class="line"><span class="comment">sans-serif: Arial, Verdana, Comic Sans, Trebuchet</span></span><br><span class="line"><span class="comment">monospace: Courier New */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">text-align</span>: center; <span class="comment">/* justify, default left */</span></span><br><span class="line"><span class="attribute">text-transform</span>: capitalize; <span class="comment">/* uppercase, default none */</span></span><br></pre></td></tr></table></figure>
+<h2 id="container-style"><a class="markdownIt-Anchor" href="#container-style"></a> container style</h2>
+<p>The Box Model: element &lt; padding &lt; border &lt; margin</p>
+<p>Use chrome dev tools to inspect the box model.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"><span class="comment">/* relative to parent width, default auto</span></span><br><span class="line"><span class="comment">width: 1em; relative to parent font-size</span></span><br><span class="line"><span class="comment">width: 1rem; relative to html font-size */</span></span><br><span class="line">backgroud-<span class="selector-tag">image</span>: <span class="built_in">url</span>(<span class="string">../images/image.png</span>);</span><br><span class="line"><span class="attribute">background-repeat</span>: repeat; <span class="comment">/* repeat, repeat-x, repeat-y, no-repeat */</span></span><br><span class="line"><span class="attribute">background-color</span>: <span class="number">#23cea6</span>; <span class="comment">/* RGB, default transparent */</span></span><br><span class="line"><span class="attribute">border</span>: <span class="number">10px</span> solid <span class="number">#a693c2</span>;</span><br><span class="line"><span class="attribute">border-color</span>: <span class="number">#a693c2</span>;</span><br><span class="line"><span class="comment">/* border inside, width, style, color(default text color)</span></span><br><span class="line"><span class="comment">style: solid, dashed, dotted, ridge, double, groove, inset, outset</span></span><br><span class="line"><span class="comment">border-left: xxx; left only */</span></span><br><span class="line"><span class="attribute">outline</span>: <span class="number">10px</span> solid red; <span class="comment">/* border outside */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line"><span class="comment">/* space between container and content</span></span><br><span class="line"><span class="comment">top right bottom left</span></span><br><span class="line"><span class="comment">top/bottom left/right</span></span><br><span class="line"><span class="comment">top/right/bottom/left */</span></span><br><span class="line"><span class="attribute">padding-left</span>: <span class="number">10px</span>;</span><br><span class="line"></span><br><span class="line"><span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line"><span class="comment">/* space between container and next element</span></span><br><span class="line"><span class="comment">margin collapse, max(margin-bottom, margin-top) applied */</span></span><br><span class="line"><span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="css-templates"><a class="markdownIt-Anchor" href="#css-templates"></a> CSS templates</h1>
+<h2 id="normalizecss"><a class="markdownIt-Anchor" href="#normalizecss"></a> normalize.css</h2>
+<p><a href="github.com/necolas/normalize.css">normalize.css v8.0.1</a> is a collection of CSS resets and normalizations.</p>
+<h2 id="mobile-first-design"><a class="markdownIt-Anchor" href="#mobile-first-design"></a> Mobile first design</h2>
+<p>small.css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  -webkit-<span class="selector-tag">text</span>-size-adjust: <span class="number">100%</span>;</span><br><span class="line">  -ms-<span class="selector-tag">text</span>-size-adjust: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">* &#123;</span><br><span class="line">  -moz-<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  -webkit-<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;Lato&quot;</span>, sans-serif;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>medium.css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>large.css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">1024px</span>) &#123;</span><br><span class="line">  ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Note</title>
+    <url>/2023/09/27/hexo-note/</url>
+    <content><![CDATA[<p><a href="https://hexo.io/">Hexo</a>, <a href="https://hexo.io/docs/">documentation</a>, <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a>, <a href="https://github.com/hexojs/hexo/issues">GitHub Issues</a>.</p>
+<h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
+<h2 id="install-setup"><a class="markdownIt-Anchor" href="#install-setup"></a> Install &amp; Setup</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h2 id="initialize"><a class="markdownIt-Anchor" href="#initialize"></a> Initialize</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>File Structure:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml # configuration file for hexo</span><br><span class="line">|-- source</span><br><span class="line">    |-- _posts</span><br><span class="line">        |-- one_blog.md # blog file</span><br><span class="line">    |-- _drafts</span><br><span class="line">        |-- one_draft.md # draft file</span><br><span class="line">|-- themes</span><br><span class="line">    |-- landscape # default theme</span><br><span class="line">    |-- ocean </span><br><span class="line">        |-- _config.yml # configuration file for ocean</span><br></pre></td></tr></table></figure>
+<h2 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span> / $ hexo n <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h2 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server / $ hexo s</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h2 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate / $ hexo g</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h2 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy / $ hexo d</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+<h2 id="deploy-to-github"><a class="markdownIt-Anchor" href="#deploy-to-github"></a> Deploy to github</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<p>Then, go to hexo’s _config.yml, add this to deploy session:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/xyshell/xyshell.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<h1 id="theme"><a class="markdownIt-Anchor" href="#theme"></a> Theme</h1>
+<h2 id="install-setup-update"><a class="markdownIt-Anchor" href="#install-setup-update"></a> Install &amp; Setup &amp; Update</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</span><br></pre></td></tr></table></figure>
+<p>Modify theme setting in hexo’s _config.yml to ocean:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">ocean</span></span><br></pre></td></tr></table></figure>
+<p>Further update:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/ocean</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h1 id="theme-reference"><a class="markdownIt-Anchor" href="#theme-reference"></a> Theme Reference</h1>
+<h2 id="ocean"><a class="markdownIt-Anchor" href="#ocean"></a> Ocean</h2>
+<p><a href="https://github.com/zhwangart/hexo-theme-ocean">https://github.com/zhwangart/hexo-theme-ocean</a></p>
+<h2 id="minos"><a class="markdownIt-Anchor" href="#minos"></a> Minos</h2>
+<p><a href="https://github.com/ppoffice/hexo-theme-minos">https://github.com/ppoffice/hexo-theme-minos</a></p>
+<h2 id="next"><a class="markdownIt-Anchor" href="#next"></a> Next</h2>
+<p><a href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3221,52 +3267,6 @@ service (container) by <code>docker-compose top</code>.</p>
       </tags>
   </entry>
   <entry>
-    <title>Hexo Note</title>
-    <url>/2023/09/27/hexo-note/</url>
-    <content><![CDATA[<p><a href="https://hexo.io/">Hexo</a>, <a href="https://hexo.io/docs/">documentation</a>, <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a>, <a href="https://github.com/hexojs/hexo/issues">GitHub Issues</a>.</p>
-<h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
-<h2 id="install-setup"><a class="markdownIt-Anchor" href="#install-setup"></a> Install &amp; Setup</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h2 id="initialize"><a class="markdownIt-Anchor" href="#initialize"></a> Initialize</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>File Structure:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml # configuration file for hexo</span><br><span class="line">|-- source</span><br><span class="line">    |-- _posts</span><br><span class="line">        |-- one_blog.md # blog file</span><br><span class="line">    |-- _drafts</span><br><span class="line">        |-- one_draft.md # draft file</span><br><span class="line">|-- themes</span><br><span class="line">    |-- landscape # default theme</span><br><span class="line">    |-- ocean </span><br><span class="line">        |-- _config.yml # configuration file for ocean</span><br></pre></td></tr></table></figure>
-<h2 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span> / $ hexo n <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h2 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server / $ hexo s</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h2 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate / $ hexo g</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h2 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy / $ hexo d</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-<h2 id="deploy-to-github"><a class="markdownIt-Anchor" href="#deploy-to-github"></a> Deploy to github</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-deployer-git</span><br></pre></td></tr></table></figure>
-<p>Then, go to hexo’s _config.yml, add this to deploy session:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/xyshell/xyshell.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-<h1 id="theme"><a class="markdownIt-Anchor" href="#theme"></a> Theme</h1>
-<h2 id="install-setup-update"><a class="markdownIt-Anchor" href="#install-setup-update"></a> Install &amp; Setup &amp; Update</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</span><br></pre></td></tr></table></figure>
-<p>Modify theme setting in hexo’s _config.yml to ocean:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">ocean</span></span><br></pre></td></tr></table></figure>
-<p>Further update:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/ocean</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<h1 id="theme-reference"><a class="markdownIt-Anchor" href="#theme-reference"></a> Theme Reference</h1>
-<h2 id="ocean"><a class="markdownIt-Anchor" href="#ocean"></a> Ocean</h2>
-<p><a href="https://github.com/zhwangart/hexo-theme-ocean">https://github.com/zhwangart/hexo-theme-ocean</a></p>
-<h2 id="minos"><a class="markdownIt-Anchor" href="#minos"></a> Minos</h2>
-<p><a href="https://github.com/ppoffice/hexo-theme-minos">https://github.com/ppoffice/hexo-theme-minos</a></p>
-<h2 id="next"><a class="markdownIt-Anchor" href="#next"></a> Next</h2>
-<p><a href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IDE Note</title>
     <url>/2021/07/30/ide-note/</url>
     <content><![CDATA[<h1 id="ide-features"><a class="markdownIt-Anchor" href="#ide-features"></a> IDE features</h1>
@@ -3375,6 +3375,37 @@ service (container) by <code>docker-compose top</code>.</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> id = <span class="title class_">Symbol</span>(<span class="string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> id2 = <span class="title class_">Symbol</span>(<span class="string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(id === id2); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> id = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> id2 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;My Id&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(id === id2); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// create secret property</span></span><br><span class="line"><span class="keyword">var</span> loan = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;Barry&quot;</span>,</span><br><span class="line">    [<span class="title class_">Symbol</span>(<span class="string">&quot;income&quot;</span>)]: <span class="number">15000</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(load[<span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;income&quot;</span>)]); <span class="comment">// 15000</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(loan)); <span class="comment">// [&quot;name&quot;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbol</span>(loan)); <span class="comment">// [Symbol(income)]</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Julia Note</title>
+    <url>/2020/07/09/julia-note/</url>
+    <content><![CDATA[<h1 id="variable"><a class="markdownIt-Anchor" href="#variable"></a> Variable</h1>
+<h2 id="stylistic-conventions"><a class="markdownIt-Anchor" href="#stylistic-conventions"></a> Stylistic Conventions</h2>
+<ul>
+<li>
+<p>Names of variables are in lower case.</p>
+</li>
+<li>
+<p>Word separation can be indicated by underscores (‘_’), but use of underscores is discouraged unless the name would be hard to read otherwise.</p>
+</li>
+<li>
+<p>Names of Types and Modules begin with a capital letter and word separation is shown with upper camel case instead of underscores.</p>
+</li>
+<li>
+<p>Names of functions and macros are in lower case, without underscores.</p>
+</li>
+<li>
+<p>Functions that write to their arguments have names that end in !. These are sometimes called “mutating” or “in-place” functions because they are intended to produce changes in their arguments after the function is called, not just return a value.</p>
+</li>
+</ul>
+<h1 id="package"><a class="markdownIt-Anchor" href="#package"></a> Package</h1>
+<h2 id="add-package"><a class="markdownIt-Anchor" href="#add-package"></a> Add package</h2>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Pkg; Pkg.add(<span class="string">&quot;Date&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="use-package"><a class="markdownIt-Anchor" href="#use-package"></a> Use package</h2>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> Dates</span><br><span class="line">isleapyear(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Dates</span><br><span class="line">Dates.isleapyear(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>julia</tag>
       </tags>
   </entry>
   <entry>
@@ -3590,37 +3621,6 @@ OpenShift Container Platform by Red Hat.</p>
       </tags>
   </entry>
   <entry>
-    <title>Julia Note</title>
-    <url>/2020/07/09/julia-note/</url>
-    <content><![CDATA[<h1 id="variable"><a class="markdownIt-Anchor" href="#variable"></a> Variable</h1>
-<h2 id="stylistic-conventions"><a class="markdownIt-Anchor" href="#stylistic-conventions"></a> Stylistic Conventions</h2>
-<ul>
-<li>
-<p>Names of variables are in lower case.</p>
-</li>
-<li>
-<p>Word separation can be indicated by underscores (‘_’), but use of underscores is discouraged unless the name would be hard to read otherwise.</p>
-</li>
-<li>
-<p>Names of Types and Modules begin with a capital letter and word separation is shown with upper camel case instead of underscores.</p>
-</li>
-<li>
-<p>Names of functions and macros are in lower case, without underscores.</p>
-</li>
-<li>
-<p>Functions that write to their arguments have names that end in !. These are sometimes called “mutating” or “in-place” functions because they are intended to produce changes in their arguments after the function is called, not just return a value.</p>
-</li>
-</ul>
-<h1 id="package"><a class="markdownIt-Anchor" href="#package"></a> Package</h1>
-<h2 id="add-package"><a class="markdownIt-Anchor" href="#add-package"></a> Add package</h2>
-<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Pkg; Pkg.add(<span class="string">&quot;Date&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="use-package"><a class="markdownIt-Anchor" href="#use-package"></a> Use package</h2>
-<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> Dates</span><br><span class="line">isleapyear(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Dates</span><br><span class="line">Dates.isleapyear(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>julia</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux Note</title>
     <url>/2020/06/08/linux-note/</url>
     <content><![CDATA[<h1 id="ssh"><a class="markdownIt-Anchor" href="#ssh"></a> SSH</h1>
@@ -3731,19 +3731,6 @@ OpenShift Container Platform by Red Hat.</p>
 ]]></content>
       <tags>
         <tag>network</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Regex Note</title>
-    <url>/2020/09/05/regex-note/</url>
-    <content><![CDATA[<p><img src="/photos/regex-note/reference.png" alt="reference" /></p>
-<h1 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h1>
-<ul>
-<li>email address: <code>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</code></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>regex</tag>
       </tags>
   </entry>
   <entry>
@@ -3927,6 +3914,19 @@ OpenShift Container Platform by Red Hat.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Artist = Base.classes.Artist</span><br><span class="line">Album = Base.classes.Album</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> Session</span><br><span class="line"></span><br><span class="line">session = Session(engine)</span><br><span class="line"><span class="keyword">for</span> artist <span class="keyword">in</span> session.query(Artist).limit(<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(artist.ArtistId, artist.Name)</span><br><span class="line"></span><br><span class="line">artist = session.query(Artist).first()</span><br><span class="line"><span class="keyword">for</span> album <span class="keyword">in</span> artist.album_collection:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125; - &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(artist.Name, album.Title))</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Regex Note</title>
+    <url>/2020/09/05/regex-note/</url>
+    <content><![CDATA[<p><img src="/photos/regex-note/reference.png" alt="reference" /></p>
+<h1 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h1>
+<ul>
+<li>email address: <code>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</code></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>regex</tag>
       </tags>
   </entry>
   <entry>
