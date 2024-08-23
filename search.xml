@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Algo Note</title>
-    <url>/2020/08/12/algo-note/</url>
-    <content><![CDATA[<h1 id="merge-sort"><a class="markdownIt-Anchor" href="#merge-sort"></a> Merge Sort</h1>
-<h2 id="explanation"><a class="markdownIt-Anchor" href="#explanation"></a> Explanation:</h2>
-<ol>
-<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Merge_sort">https://en.wikipedia.org/wiki/Merge_sort</a></li>
-<li>Youtube: <a href="https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo">https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo</a></li>
-</ol>
-<p>Time complexity: O(nlogn)<br />
-Space complexity: O(n)</p>
-<h2 id="implementation"><a class="markdownIt-Anchor" href="#implementation"></a> Implementation:</h2>
-<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">arr1: <span class="built_in">list</span>, arr2: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge two arrays</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr1 (list): first array</span></span><br><span class="line"><span class="string">        arr2 (list): second array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(arr1), <span class="built_in">len</span>(arr2)</span><br><span class="line">    <span class="keyword">while</span> i &lt; m <span class="keyword">and</span> j &lt; n:</span><br><span class="line">        <span class="keyword">if</span> arr1[i] &lt;= arr2[j]:</span><br><span class="line">            result.append(arr1[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(arr2[j])</span><br><span class="line">            count += m - i</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    result += arr1[i:]</span><br><span class="line">    result += arr2[j:]</span><br><span class="line">    <span class="keyword">return</span> count, result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">msort</span>(<span class="params">arr: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge Sort Algorithm</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr (list): unsorted array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">if</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        mid = n // <span class="number">2</span></span><br><span class="line">        left_swaps, left_result = msort(arr[:mid])</span><br><span class="line">        right_swaps, right_result = msort(arr[mid:])</span><br><span class="line">        merge_swaps, result = merge(left_result, right_result)</span><br><span class="line">        <span class="keyword">return</span> left_swaps+right_swaps+merge_swaps, result</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>, arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> msort([<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>, <span class="number">8</span>]) == (<span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
-<h1 id="lcslongest-common-subsequence-problem"><a class="markdownIt-Anchor" href="#lcslongest-common-subsequence-problem"></a> LCS(longest common subsequence) problem</h1>
-<h2 id="explanation-2"><a class="markdownIt-Anchor" href="#explanation-2"></a> Explanation:</h2>
-<ol>
-<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Longest_common_subsequence_problem">https://en.wikipedia.org/wiki/Longest_common_subsequence_problem</a></li>
-</ol>
-<p>complexity: O(n × m)</p>
-<h2 id="implementation-2"><a class="markdownIt-Anchor" href="#implementation-2"></a> Implementation</h2>
-<h3 id="python-2"><a class="markdownIt-Anchor" href="#python-2"></a> Python</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">commonChild</span>(<span class="params">s1: <span class="built_in">str</span>, s2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Find length of common child string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        s1 (str): first string</span></span><br><span class="line"><span class="string">        s2 (str): second string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        int: length of common child string</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    m = <span class="built_in">len</span>(s1)</span><br><span class="line">    n = <span class="built_in">len</span>(s2)</span><br><span class="line">    mat = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">            i, j = r - <span class="number">1</span>, c - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> s1[i] == s2[j]:</span><br><span class="line">                mat[r][c] = mat[r-<span class="number">1</span>][c-<span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                mat[r][c] = <span class="built_in">max</span>(mat[r-<span class="number">1</span>][c], mat[r][c-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> mat[m][n]</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> commonChild(<span class="string">&quot;SHINCHAN&quot;</span>, <span class="string">&quot;NOHARAAA&quot;</span>) == <span class="number">3</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>algo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DCA Note</title>
     <url>/2020/06/11/DCA-note/</url>
     <content><![CDATA[<h1 id="docker-certified-associate-exam-preparation-guide-v13"><a class="markdownIt-Anchor" href="#docker-certified-associate-exam-preparation-guide-v13"></a> Docker Certified Associate Exam Preparation Guide (v1.3)</h1>
@@ -538,6 +510,97 @@ Add permissions to the production Lambda function that allow it to be invoked by
 ]]></content>
       <tags>
         <tag>aws</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algo Note</title>
+    <url>/2020/08/12/algo-note/</url>
+    <content><![CDATA[<h1 id="merge-sort"><a class="markdownIt-Anchor" href="#merge-sort"></a> Merge Sort</h1>
+<h2 id="explanation"><a class="markdownIt-Anchor" href="#explanation"></a> Explanation:</h2>
+<ol>
+<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Merge_sort">https://en.wikipedia.org/wiki/Merge_sort</a></li>
+<li>Youtube: <a href="https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo">https://www.youtube.com/watch?time_continue=17&amp;v=KF2j-9iSf4Q&amp;feature=emb_logo</a></li>
+</ol>
+<p>Time complexity: O(nlogn)<br />
+Space complexity: O(n)</p>
+<h2 id="implementation"><a class="markdownIt-Anchor" href="#implementation"></a> Implementation:</h2>
+<h3 id="python"><a class="markdownIt-Anchor" href="#python"></a> Python</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">arr1: <span class="built_in">list</span>, arr2: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge two arrays</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr1 (list): first array</span></span><br><span class="line"><span class="string">        arr2 (list): second array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(arr1), <span class="built_in">len</span>(arr2)</span><br><span class="line">    <span class="keyword">while</span> i &lt; m <span class="keyword">and</span> j &lt; n:</span><br><span class="line">        <span class="keyword">if</span> arr1[i] &lt;= arr2[j]:</span><br><span class="line">            result.append(arr1[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(arr2[j])</span><br><span class="line">            count += m - i</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    result += arr1[i:]</span><br><span class="line">    result += arr2[j:]</span><br><span class="line">    <span class="keyword">return</span> count, result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">msort</span>(<span class="params">arr: <span class="built_in">list</span></span>) -&gt; <span class="built_in">tuple</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Merge Sort Algorithm</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        arr (list): unsorted array</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        tuple(int, list): number of swaps, sorted array</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">if</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        mid = n // <span class="number">2</span></span><br><span class="line">        left_swaps, left_result = msort(arr[:mid])</span><br><span class="line">        right_swaps, right_result = msort(arr[mid:])</span><br><span class="line">        merge_swaps, result = merge(left_result, right_result)</span><br><span class="line">        <span class="keyword">return</span> left_swaps+right_swaps+merge_swaps, result</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>, arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> msort([<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>, <span class="number">8</span>]) == (<span class="number">5</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="lcslongest-common-subsequence-problem"><a class="markdownIt-Anchor" href="#lcslongest-common-subsequence-problem"></a> LCS(longest common subsequence) problem</h1>
+<h2 id="explanation-2"><a class="markdownIt-Anchor" href="#explanation-2"></a> Explanation:</h2>
+<ol>
+<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Longest_common_subsequence_problem">https://en.wikipedia.org/wiki/Longest_common_subsequence_problem</a></li>
+</ol>
+<p>complexity: O(n × m)</p>
+<h2 id="implementation-2"><a class="markdownIt-Anchor" href="#implementation-2"></a> Implementation</h2>
+<h3 id="python-2"><a class="markdownIt-Anchor" href="#python-2"></a> Python</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">commonChild</span>(<span class="params">s1: <span class="built_in">str</span>, s2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Find length of common child string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        s1 (str): first string</span></span><br><span class="line"><span class="string">        s2 (str): second string</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        int: length of common child string</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    m = <span class="built_in">len</span>(s1)</span><br><span class="line">    n = <span class="built_in">len</span>(s2)</span><br><span class="line">    mat = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m+<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">            i, j = r - <span class="number">1</span>, c - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> s1[i] == s2[j]:</span><br><span class="line">                mat[r][c] = mat[r-<span class="number">1</span>][c-<span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                mat[r][c] = <span class="built_in">max</span>(mat[r-<span class="number">1</span>][c], mat[r][c-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> mat[m][n]</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> commonChild(<span class="string">&quot;SHINCHAN&quot;</span>, <span class="string">&quot;NOHARAAA&quot;</span>) == <span class="number">3</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>algo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CKA Note</title>
+    <url>/2022/01/18/cka-note/</url>
+    <content><![CDATA[<h1 id="installation-and-configuration"><a class="markdownIt-Anchor" href="#installation-and-configuration"></a> Installation and Configuration</h1>
+<h2 id="intall-kubectl"><a class="markdownIt-Anchor" href="#intall-kubectl"></a> Intall kubectl</h2>
+<ul>
+<li>
+<p>configuration file location: <code>$HOME/.kube/config</code>.</p>
+</li>
+<li>
+<p>handy when going from a local environment to a cluster in the cloud, or from one cluster to another, such as from development to production.</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubectl config use-context foobar</span><br></pre></td></tr></table></figure>
+<h2 id="gke-quickstart"><a class="markdownIt-Anchor" href="#gke-quickstart"></a> GKE Quickstart</h2>
+<ol>
+<li>
+<p><a href="https://cloud.google.com/sdk/docs/install#linux">GKE Install</a></p>
+</li>
+<li>
+<p><a href="https://cloud.google.com/kubernetes-engine/docs/quickstart">GKE Quickstart</a></p>
+</li>
+<li>
+<p>quick start command</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gcloud container clusters create linuxfoundation</span><br><span class="line"></span><br><span class="line">$ gcloud container clusters list</span><br><span class="line"></span><br><span class="line">$ kubectl get nodes <span class="comment"># kubectl comes free from gcloud</span></span><br><span class="line"></span><br><span class="line">$ gcloud container clusters delete linuxfoundation</span><br></pre></td></tr></table></figure>
+<h2 id="minikube"><a class="markdownIt-Anchor" href="#minikube"></a> Minikube</h2>
+<ol>
+<li>
+<p><a href="https://github.com/kubernetes/minikube">github repo</a></p>
+</li>
+<li>
+<p>install</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">chmod</span> +x minikube</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">sudo</span> <span class="built_in">mv</span> minikube /usr/local/bin</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>quick start command</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ minikube start</span><br><span class="line"></span><br><span class="line">$ kubectl get nodes</span><br></pre></td></tr></table></figure>
+<h2 id="main-deployment-configuration"><a class="markdownIt-Anchor" href="#main-deployment-configuration"></a> Main Deployment configuration</h2>
+<ol>
+<li>Single-node</li>
+</ol>
+<p>With a single-node deployment, all the components run on the same server. This is great for testing, learning, and developing around Kubernetes.</p>
+<ol start="2">
+<li>Single head node, multiple workers</li>
+</ol>
+<p>Adding more workers, a single head node and multiple workers typically will consist of a single node etcd instance running on the head node with the API, the scheduler, and the controller-manager.</p>
+<ol start="3">
+<li>Multiple head nodes with HA, multiple workers</li>
+</ol>
+<p>Multiple head nodes in an HA configuration and multiple workers add more durability to the cluster. The API server will be fronted by a load balancer, the scheduler and the controller-manager will elect a leader (which is configured via flags). The etcd setup can still be single node.</p>
+<ol start="4">
+<li>HA etcd, HA head nodes, multiple workers</li>
+</ol>
+<p>The most advanced and resilient setup would be an HA etcd cluster, with HA head nodes and multiple workers. Also, etcd would run as a true cluster, which would provide HA and would run on nodes separate from the Kubernetes head nodes.</p>
+]]></content>
+      <tags>
+        <tag>k8s, cka</tag>
       </tags>
   </entry>
   <entry>
@@ -2458,69 +2521,6 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
       </tags>
   </entry>
   <entry>
-    <title>CKA Note</title>
-    <url>/2022/01/18/cka-note/</url>
-    <content><![CDATA[<h1 id="installation-and-configuration"><a class="markdownIt-Anchor" href="#installation-and-configuration"></a> Installation and Configuration</h1>
-<h2 id="intall-kubectl"><a class="markdownIt-Anchor" href="#intall-kubectl"></a> Intall kubectl</h2>
-<ul>
-<li>
-<p>configuration file location: <code>$HOME/.kube/config</code>.</p>
-</li>
-<li>
-<p>handy when going from a local environment to a cluster in the cloud, or from one cluster to another, such as from development to production.</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubectl config use-context foobar</span><br></pre></td></tr></table></figure>
-<h2 id="gke-quickstart"><a class="markdownIt-Anchor" href="#gke-quickstart"></a> GKE Quickstart</h2>
-<ol>
-<li>
-<p><a href="https://cloud.google.com/sdk/docs/install#linux">GKE Install</a></p>
-</li>
-<li>
-<p><a href="https://cloud.google.com/kubernetes-engine/docs/quickstart">GKE Quickstart</a></p>
-</li>
-<li>
-<p>quick start command</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gcloud container clusters create linuxfoundation</span><br><span class="line"></span><br><span class="line">$ gcloud container clusters list</span><br><span class="line"></span><br><span class="line">$ kubectl get nodes <span class="comment"># kubectl comes free from gcloud</span></span><br><span class="line"></span><br><span class="line">$ gcloud container clusters delete linuxfoundation</span><br></pre></td></tr></table></figure>
-<h2 id="minikube"><a class="markdownIt-Anchor" href="#minikube"></a> Minikube</h2>
-<ol>
-<li>
-<p><a href="https://github.com/kubernetes/minikube">github repo</a></p>
-</li>
-<li>
-<p>install</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">chmod</span> +x minikube</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">sudo</span> <span class="built_in">mv</span> minikube /usr/local/bin</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>quick start command</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ minikube start</span><br><span class="line"></span><br><span class="line">$ kubectl get nodes</span><br></pre></td></tr></table></figure>
-<h2 id="main-deployment-configuration"><a class="markdownIt-Anchor" href="#main-deployment-configuration"></a> Main Deployment configuration</h2>
-<ol>
-<li>Single-node</li>
-</ol>
-<p>With a single-node deployment, all the components run on the same server. This is great for testing, learning, and developing around Kubernetes.</p>
-<ol start="2">
-<li>Single head node, multiple workers</li>
-</ol>
-<p>Adding more workers, a single head node and multiple workers typically will consist of a single node etcd instance running on the head node with the API, the scheduler, and the controller-manager.</p>
-<ol start="3">
-<li>Multiple head nodes with HA, multiple workers</li>
-</ol>
-<p>Multiple head nodes in an HA configuration and multiple workers add more durability to the cluster. The API server will be fronted by a load balancer, the scheduler and the controller-manager will elect a leader (which is configured via flags). The etcd setup can still be single node.</p>
-<ol start="4">
-<li>HA etcd, HA head nodes, multiple workers</li>
-</ol>
-<p>The most advanced and resilient setup would be an HA etcd cluster, with HA head nodes and multiple workers. Also, etcd would run as a true cluster, which would provide HA and would run on nodes separate from the Kubernetes head nodes.</p>
-]]></content>
-      <tags>
-        <tag>k8s, cka</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CPA Note</title>
     <url>/2020/11/20/cpa-note/</url>
     <content><![CDATA[<h1 id="cpa-c-certified-associate-programmer"><a class="markdownIt-Anchor" href="#cpa-c-certified-associate-programmer"></a> CPA – C++ Certified Associate Programmer</h1>
@@ -3168,6 +3168,52 @@ service (container) by <code>docker-compose top</code>.</p>
       </tags>
   </entry>
   <entry>
+    <title>Hexo Note</title>
+    <url>/2023/09/27/hexo-note/</url>
+    <content><![CDATA[<p><a href="https://hexo.io/">Hexo</a>, <a href="https://hexo.io/docs/">documentation</a>, <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a>, <a href="https://github.com/hexojs/hexo/issues">GitHub Issues</a>.</p>
+<h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
+<h2 id="install-setup"><a class="markdownIt-Anchor" href="#install-setup"></a> Install &amp; Setup</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h2 id="initialize"><a class="markdownIt-Anchor" href="#initialize"></a> Initialize</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>File Structure:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml # configuration file for hexo</span><br><span class="line">|-- source</span><br><span class="line">    |-- _posts</span><br><span class="line">        |-- one_blog.md # blog file</span><br><span class="line">    |-- _drafts</span><br><span class="line">        |-- one_draft.md # draft file</span><br><span class="line">|-- themes</span><br><span class="line">    |-- landscape # default theme</span><br><span class="line">    |-- ocean </span><br><span class="line">        |-- _config.yml # configuration file for ocean</span><br></pre></td></tr></table></figure>
+<h2 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span> / $ hexo n <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h2 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server / $ hexo s</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h2 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate / $ hexo g</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h2 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy / $ hexo d</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+<h2 id="deploy-to-github"><a class="markdownIt-Anchor" href="#deploy-to-github"></a> Deploy to github</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<p>Then, go to hexo’s _config.yml, add this to deploy session:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/xyshell/xyshell.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<h1 id="theme"><a class="markdownIt-Anchor" href="#theme"></a> Theme</h1>
+<h2 id="install-setup-update"><a class="markdownIt-Anchor" href="#install-setup-update"></a> Install &amp; Setup &amp; Update</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</span><br></pre></td></tr></table></figure>
+<p>Modify theme setting in hexo’s _config.yml to ocean:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">ocean</span></span><br></pre></td></tr></table></figure>
+<p>Further update:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/ocean</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h1 id="theme-reference"><a class="markdownIt-Anchor" href="#theme-reference"></a> Theme Reference</h1>
+<h2 id="ocean"><a class="markdownIt-Anchor" href="#ocean"></a> Ocean</h2>
+<p><a href="https://github.com/zhwangart/hexo-theme-ocean">https://github.com/zhwangart/hexo-theme-ocean</a></p>
+<h2 id="minos"><a class="markdownIt-Anchor" href="#minos"></a> Minos</h2>
+<p><a href="https://github.com/ppoffice/hexo-theme-minos">https://github.com/ppoffice/hexo-theme-minos</a></p>
+<h2 id="next"><a class="markdownIt-Anchor" href="#next"></a> Next</h2>
+<p><a href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git Note</title>
     <url>/2020/06/08/git-note/</url>
     <content><![CDATA[<h1 id="git-object-model"><a class="markdownIt-Anchor" href="#git-object-model"></a> Git Object Model</h1>
@@ -3218,52 +3264,6 @@ service (container) by <code>docker-compose top</code>.</p>
 ]]></content>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Note</title>
-    <url>/2023/09/27/hexo-note/</url>
-    <content><![CDATA[<p><a href="https://hexo.io/">Hexo</a>, <a href="https://hexo.io/docs/">documentation</a>, <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a>, <a href="https://github.com/hexojs/hexo/issues">GitHub Issues</a>.</p>
-<h1 id="hexo"><a class="markdownIt-Anchor" href="#hexo"></a> Hexo</h1>
-<h2 id="install-setup"><a class="markdownIt-Anchor" href="#install-setup"></a> Install &amp; Setup</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h2 id="initialize"><a class="markdownIt-Anchor" href="#initialize"></a> Initialize</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>File Structure:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- _config.yml # configuration file for hexo</span><br><span class="line">|-- source</span><br><span class="line">    |-- _posts</span><br><span class="line">        |-- one_blog.md # blog file</span><br><span class="line">    |-- _drafts</span><br><span class="line">        |-- one_draft.md # draft file</span><br><span class="line">|-- themes</span><br><span class="line">    |-- landscape # default theme</span><br><span class="line">    |-- ocean </span><br><span class="line">        |-- _config.yml # configuration file for ocean</span><br></pre></td></tr></table></figure>
-<h2 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span> / $ hexo n <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h2 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server / $ hexo s</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h2 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate / $ hexo g</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h2 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy / $ hexo d</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-<h2 id="deploy-to-github"><a class="markdownIt-Anchor" href="#deploy-to-github"></a> Deploy to github</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-deployer-git</span><br></pre></td></tr></table></figure>
-<p>Then, go to hexo’s _config.yml, add this to deploy session:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/xyshell/xyshell.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-<h1 id="theme"><a class="markdownIt-Anchor" href="#theme"></a> Theme</h1>
-<h2 id="install-setup-update"><a class="markdownIt-Anchor" href="#install-setup-update"></a> Install &amp; Setup &amp; Update</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zhwangart/hexo-theme-ocean.git themes/ocean</span><br></pre></td></tr></table></figure>
-<p>Modify theme setting in hexo’s _config.yml to ocean:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">ocean</span></span><br></pre></td></tr></table></figure>
-<p>Further update:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/ocean</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<h1 id="theme-reference"><a class="markdownIt-Anchor" href="#theme-reference"></a> Theme Reference</h1>
-<h2 id="ocean"><a class="markdownIt-Anchor" href="#ocean"></a> Ocean</h2>
-<p><a href="https://github.com/zhwangart/hexo-theme-ocean">https://github.com/zhwangart/hexo-theme-ocean</a></p>
-<h2 id="minos"><a class="markdownIt-Anchor" href="#minos"></a> Minos</h2>
-<p><a href="https://github.com/ppoffice/hexo-theme-minos">https://github.com/ppoffice/hexo-theme-minos</a></p>
-<h2 id="next"><a class="markdownIt-Anchor" href="#next"></a> Next</h2>
-<p><a href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3406,6 +3406,119 @@ service (container) by <code>docker-compose top</code>.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> Dates</span><br><span class="line">isleapyear(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Dates</span><br><span class="line">Dates.isleapyear(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>julia</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux Note</title>
+    <url>/2020/06/08/linux-note/</url>
+    <content><![CDATA[<h1 id="ssh"><a class="markdownIt-Anchor" href="#ssh"></a> SSH</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -i &lt;path-to-pem&gt; admin@&lt;ip/dns&gt;</span><br></pre></td></tr></table></figure>
+<p>Local Port Forwarding:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -i &lt;path-to-pem&gt; -l admin &lt;ip/dns&gt; -L 9999:localhost:9999</span><br></pre></td></tr></table></figure>
+<h1 id="scp"><a class="markdownIt-Anchor" href="#scp"></a> SCP</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip/dns&gt;:/home/admin/&lt;path-to-target-file&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="auto-start-after-reboot"><a class="markdownIt-Anchor" href="#auto-start-after-reboot"></a> Auto-start after reboot</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ systemctl <span class="built_in">enable</span> docker</span><br><span class="line">Synchronizing state of docker.service...</span><br><span class="line">Executing /lib/systemd/systemd-sysv-install <span class="built_in">enable</span> docker</span><br><span class="line">$ systemctl is-enabled docker</span><br><span class="line">enabled</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Network Note</title>
+    <url>/2020/06/20/network-note/</url>
+    <content><![CDATA[<h1 id="osi-model"><a class="markdownIt-Anchor" href="#osi-model"></a> OSI Model</h1>
+<p><img src="/photos/intro-network-note/OSI_model.png" alt="OSI_model" /></p>
+<h1 id="protocols"><a class="markdownIt-Anchor" href="#protocols"></a> Protocols</h1>
+<h2 id="data-transfer"><a class="markdownIt-Anchor" href="#data-transfer"></a> Data Transfer</h2>
+<p><img src="/photos/intro-network-note/http.png" alt="http" /></p>
+<h2 id="file-transfer"><a class="markdownIt-Anchor" href="#file-transfer"></a> File Transfer</h2>
+<p><img src="/photos/intro-network-note/ftp.png" alt="ftp" /></p>
+<h2 id="email"><a class="markdownIt-Anchor" href="#email"></a> Email</h2>
+<p><img src="/photos/intro-network-note/email.png" alt="email" /></p>
+<h2 id="authentication"><a class="markdownIt-Anchor" href="#authentication"></a> Authentication</h2>
+<p><img src="/photos/intro-network-note/auth.png" alt="auth" /></p>
+<h2 id="network-service"><a class="markdownIt-Anchor" href="#network-service"></a> Network Service</h2>
+<p><img src="/photos/intro-network-note/dhcp.png" alt="dhcp" /></p>
+<h2 id="domain-name-systemdns"><a class="markdownIt-Anchor" href="#domain-name-systemdns"></a> Domain Name System(DNS)</h2>
+<p><img src="/photos/intro-network-note/dns.png" alt="dns" /></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nslookup google.com <span class="comment"># check google&#x27;s ip</span></span><br><span class="line">$ nslookup </span><br><span class="line">&gt; facebook.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nslookup</span><br><span class="line">&gt; server 8.8.8.8 <span class="comment"># config dns server</span></span><br></pre></td></tr></table></figure>
+<h2 id="network-time-protocolntp"><a class="markdownIt-Anchor" href="#network-time-protocolntp"></a> Network Time Protocol(NTP)</h2>
+<p><img src="/photos/intro-network-note/ntp.png" alt="ntp" /></p>
+<h2 id="network-management"><a class="markdownIt-Anchor" href="#network-management"></a> Network Management</h2>
+<p><img src="/photos/intro-network-note/ssh_telnet.png" alt="ssh_telnet" /></p>
+<p>ssh: encryted; telnet: clear text</p>
+<p>ssh used encrypt ftp</p>
+<p><img src="/photos/intro-network-note/snmp.png" alt="snmp" /></p>
+<p>Walk the tree: server collect information(statistics, log) from client</p>
+<p>Trap: client send SNMP trap to server</p>
+<h2 id="remote-desktop-protocolrdp"><a class="markdownIt-Anchor" href="#remote-desktop-protocolrdp"></a> Remote Desktop Protocol(RDP)</h2>
+<p><img src="/photos/intro-network-note/rdp.png" alt="rdp" /></p>
+<h2 id="audiovisual-protocol"><a class="markdownIt-Anchor" href="#audiovisual-protocol"></a> Audio/Visual Protocol</h2>
+<p><img src="/photos/intro-network-note/h323.png" alt="h323" /></p>
+<p><img src="/photos/intro-network-note/sip.png" alt="sip" /></p>
+<p>session initiation protocol: voice over ip communication</p>
+<h1 id="tcp-and-udp"><a class="markdownIt-Anchor" href="#tcp-and-udp"></a> TCP and UDP</h1>
+<p>TCP: transmission control protocol</p>
+<p>UDP: user datagram protocol</p>
+<h2 id="tcp"><a class="markdownIt-Anchor" href="#tcp"></a> TCP</h2>
+<p>reliable, verifiable(sequence numbers / acknowledge numbers), notion of session</p>
+<h3 id="the-3-way-handshake"><a class="markdownIt-Anchor" href="#the-3-way-handshake"></a> The 3-way handshake</h3>
+<p><img src="/photos/intro-network-note/3way.png" alt="3way" /></p>
+<ol>
+<li>SYN: send syn msg, wait for reply from server(change state to SYN-RECEIVED)</li>
+<li>SYN-ACK: send msg to client</li>
+<li>ACK: client respond to server</li>
+</ol>
+<p>then session establish between client and server by layer 4 protocol</p>
+<p>client or server can ask for missing / additional information from each other</p>
+<p>then use layer 7 protocol</p>
+<h3 id="the-4-way-disconnect"><a class="markdownIt-Anchor" href="#the-4-way-disconnect"></a> The 4-way Disconnect</h3>
+<p><img src="/photos/intro-network-note/4way.png" alt="4way" /></p>
+<ol>
+<li>FIN: server to client</li>
+<li>FIN-ACK: client to server</li>
+<li>FIN: client to server</li>
+<li>FIN-ACK</li>
+</ol>
+<p>shutdown the session</p>
+<p>RST: tcp reset, server to client, to shutdown quickly</p>
+<h2 id="udp"><a class="markdownIt-Anchor" href="#udp"></a> UDP</h2>
+<p>no 3-way handshake, no reliable communication, no sequence numbers / acknowledge numbers</p>
+<p>very efficient for small data transfer (e.x. DNS)</p>
+<p><img src="/photos/intro-network-note/udp.png" alt="udp" /></p>
+<h2 id="port-numberstransport-layer-addressing"><a class="markdownIt-Anchor" href="#port-numberstransport-layer-addressing"></a> Port numbers(Transport layer addressing)</h2>
+<p><img src="/photos/intro-network-note/port.png" alt="port" /></p>
+<h3 id="source-port-and-destination-port"><a class="markdownIt-Anchor" href="#source-port-and-destination-port"></a> Source port and Destination port</h3>
+<p><img src="/photos/intro-network-note/src_dstnt.png" alt="src_dstnt" /></p>
+<h2 id="application-layer-portocol-dependency"><a class="markdownIt-Anchor" href="#application-layer-portocol-dependency"></a> Application layer portocol dependency</h2>
+<p><img src="/photos/intro-network-note/protocol_dependency_1.png" alt="protocol_dependency_1" /></p>
+<p><img src="/photos/intro-network-note/protocol_dependency_2.png" alt="protocol_dependency_2" /></p>
+<h1 id="ip-addressing"><a class="markdownIt-Anchor" href="#ip-addressing"></a> IP Addressing</h1>
+<ul>
+<li>
+<p>unicast: class A, B, C(public internet), one device to one device</p>
+</li>
+<li>
+<p>multicast: class D(enterprise org’s live video streamming), one device to many devices</p>
+</li>
+<li>
+<p>experimental: class E</p>
+</li>
+</ul>
+<h2 id="class-a"><a class="markdownIt-Anchor" href="#class-a"></a> class A</h2>
+<p><img src="/photos/intro-network-note/class_a.png" alt="class_a" /></p>
+<h2 id="class-b"><a class="markdownIt-Anchor" href="#class-b"></a> class B</h2>
+<p><img src="/photos/intro-network-note/class_b.png" alt="class_b" /></p>
+<h2 id="class-c"><a class="markdownIt-Anchor" href="#class-c"></a> class C</h2>
+<p><img src="/photos/intro-network-note/class_c.png" alt="class_c" /></p>
+<h2 id="class-d"><a class="markdownIt-Anchor" href="#class-d"></a> class D</h2>
+<p><img src="/photos/intro-network-note/class_d.png" alt="class_d" /></p>
+<h2 id="address-types"><a class="markdownIt-Anchor" href="#address-types"></a> Address types</h2>
+<p><img src="/photos/intro-network-note/address_types.png" alt="address_types" /></p>
+<h2 id="private-ip-address"><a class="markdownIt-Anchor" href="#private-ip-address"></a> Private ip address</h2>
+<p>127.0.0.1: loopback address, localhost</p>
+<p><img src="/photos/intro-network-note/private_ip.png" alt="private_ip" /></p>
+]]></content>
+      <tags>
+        <tag>network</tag>
       </tags>
   </entry>
   <entry>
@@ -3621,119 +3734,6 @@ OpenShift Container Platform by Red Hat.</p>
       </tags>
   </entry>
   <entry>
-    <title>Linux Note</title>
-    <url>/2020/06/08/linux-note/</url>
-    <content><![CDATA[<h1 id="ssh"><a class="markdownIt-Anchor" href="#ssh"></a> SSH</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -i &lt;path-to-pem&gt; admin@&lt;ip/dns&gt;</span><br></pre></td></tr></table></figure>
-<p>Local Port Forwarding:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -i &lt;path-to-pem&gt; -l admin &lt;ip/dns&gt; -L 9999:localhost:9999</span><br></pre></td></tr></table></figure>
-<h1 id="scp"><a class="markdownIt-Anchor" href="#scp"></a> SCP</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp -i &lt;path-to-pem&gt; &lt;path-to-source-file&gt; admin@&lt;ip/dns&gt;:/home/admin/&lt;path-to-target-file&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="auto-start-after-reboot"><a class="markdownIt-Anchor" href="#auto-start-after-reboot"></a> Auto-start after reboot</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ systemctl <span class="built_in">enable</span> docker</span><br><span class="line">Synchronizing state of docker.service...</span><br><span class="line">Executing /lib/systemd/systemd-sysv-install <span class="built_in">enable</span> docker</span><br><span class="line">$ systemctl is-enabled docker</span><br><span class="line">enabled</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>Network Note</title>
-    <url>/2020/06/20/network-note/</url>
-    <content><![CDATA[<h1 id="osi-model"><a class="markdownIt-Anchor" href="#osi-model"></a> OSI Model</h1>
-<p><img src="/photos/intro-network-note/OSI_model.png" alt="OSI_model" /></p>
-<h1 id="protocols"><a class="markdownIt-Anchor" href="#protocols"></a> Protocols</h1>
-<h2 id="data-transfer"><a class="markdownIt-Anchor" href="#data-transfer"></a> Data Transfer</h2>
-<p><img src="/photos/intro-network-note/http.png" alt="http" /></p>
-<h2 id="file-transfer"><a class="markdownIt-Anchor" href="#file-transfer"></a> File Transfer</h2>
-<p><img src="/photos/intro-network-note/ftp.png" alt="ftp" /></p>
-<h2 id="email"><a class="markdownIt-Anchor" href="#email"></a> Email</h2>
-<p><img src="/photos/intro-network-note/email.png" alt="email" /></p>
-<h2 id="authentication"><a class="markdownIt-Anchor" href="#authentication"></a> Authentication</h2>
-<p><img src="/photos/intro-network-note/auth.png" alt="auth" /></p>
-<h2 id="network-service"><a class="markdownIt-Anchor" href="#network-service"></a> Network Service</h2>
-<p><img src="/photos/intro-network-note/dhcp.png" alt="dhcp" /></p>
-<h2 id="domain-name-systemdns"><a class="markdownIt-Anchor" href="#domain-name-systemdns"></a> Domain Name System(DNS)</h2>
-<p><img src="/photos/intro-network-note/dns.png" alt="dns" /></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nslookup google.com <span class="comment"># check google&#x27;s ip</span></span><br><span class="line">$ nslookup </span><br><span class="line">&gt; facebook.com</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nslookup</span><br><span class="line">&gt; server 8.8.8.8 <span class="comment"># config dns server</span></span><br></pre></td></tr></table></figure>
-<h2 id="network-time-protocolntp"><a class="markdownIt-Anchor" href="#network-time-protocolntp"></a> Network Time Protocol(NTP)</h2>
-<p><img src="/photos/intro-network-note/ntp.png" alt="ntp" /></p>
-<h2 id="network-management"><a class="markdownIt-Anchor" href="#network-management"></a> Network Management</h2>
-<p><img src="/photos/intro-network-note/ssh_telnet.png" alt="ssh_telnet" /></p>
-<p>ssh: encryted; telnet: clear text</p>
-<p>ssh used encrypt ftp</p>
-<p><img src="/photos/intro-network-note/snmp.png" alt="snmp" /></p>
-<p>Walk the tree: server collect information(statistics, log) from client</p>
-<p>Trap: client send SNMP trap to server</p>
-<h2 id="remote-desktop-protocolrdp"><a class="markdownIt-Anchor" href="#remote-desktop-protocolrdp"></a> Remote Desktop Protocol(RDP)</h2>
-<p><img src="/photos/intro-network-note/rdp.png" alt="rdp" /></p>
-<h2 id="audiovisual-protocol"><a class="markdownIt-Anchor" href="#audiovisual-protocol"></a> Audio/Visual Protocol</h2>
-<p><img src="/photos/intro-network-note/h323.png" alt="h323" /></p>
-<p><img src="/photos/intro-network-note/sip.png" alt="sip" /></p>
-<p>session initiation protocol: voice over ip communication</p>
-<h1 id="tcp-and-udp"><a class="markdownIt-Anchor" href="#tcp-and-udp"></a> TCP and UDP</h1>
-<p>TCP: transmission control protocol</p>
-<p>UDP: user datagram protocol</p>
-<h2 id="tcp"><a class="markdownIt-Anchor" href="#tcp"></a> TCP</h2>
-<p>reliable, verifiable(sequence numbers / acknowledge numbers), notion of session</p>
-<h3 id="the-3-way-handshake"><a class="markdownIt-Anchor" href="#the-3-way-handshake"></a> The 3-way handshake</h3>
-<p><img src="/photos/intro-network-note/3way.png" alt="3way" /></p>
-<ol>
-<li>SYN: send syn msg, wait for reply from server(change state to SYN-RECEIVED)</li>
-<li>SYN-ACK: send msg to client</li>
-<li>ACK: client respond to server</li>
-</ol>
-<p>then session establish between client and server by layer 4 protocol</p>
-<p>client or server can ask for missing / additional information from each other</p>
-<p>then use layer 7 protocol</p>
-<h3 id="the-4-way-disconnect"><a class="markdownIt-Anchor" href="#the-4-way-disconnect"></a> The 4-way Disconnect</h3>
-<p><img src="/photos/intro-network-note/4way.png" alt="4way" /></p>
-<ol>
-<li>FIN: server to client</li>
-<li>FIN-ACK: client to server</li>
-<li>FIN: client to server</li>
-<li>FIN-ACK</li>
-</ol>
-<p>shutdown the session</p>
-<p>RST: tcp reset, server to client, to shutdown quickly</p>
-<h2 id="udp"><a class="markdownIt-Anchor" href="#udp"></a> UDP</h2>
-<p>no 3-way handshake, no reliable communication, no sequence numbers / acknowledge numbers</p>
-<p>very efficient for small data transfer (e.x. DNS)</p>
-<p><img src="/photos/intro-network-note/udp.png" alt="udp" /></p>
-<h2 id="port-numberstransport-layer-addressing"><a class="markdownIt-Anchor" href="#port-numberstransport-layer-addressing"></a> Port numbers(Transport layer addressing)</h2>
-<p><img src="/photos/intro-network-note/port.png" alt="port" /></p>
-<h3 id="source-port-and-destination-port"><a class="markdownIt-Anchor" href="#source-port-and-destination-port"></a> Source port and Destination port</h3>
-<p><img src="/photos/intro-network-note/src_dstnt.png" alt="src_dstnt" /></p>
-<h2 id="application-layer-portocol-dependency"><a class="markdownIt-Anchor" href="#application-layer-portocol-dependency"></a> Application layer portocol dependency</h2>
-<p><img src="/photos/intro-network-note/protocol_dependency_1.png" alt="protocol_dependency_1" /></p>
-<p><img src="/photos/intro-network-note/protocol_dependency_2.png" alt="protocol_dependency_2" /></p>
-<h1 id="ip-addressing"><a class="markdownIt-Anchor" href="#ip-addressing"></a> IP Addressing</h1>
-<ul>
-<li>
-<p>unicast: class A, B, C(public internet), one device to one device</p>
-</li>
-<li>
-<p>multicast: class D(enterprise org’s live video streamming), one device to many devices</p>
-</li>
-<li>
-<p>experimental: class E</p>
-</li>
-</ul>
-<h2 id="class-a"><a class="markdownIt-Anchor" href="#class-a"></a> class A</h2>
-<p><img src="/photos/intro-network-note/class_a.png" alt="class_a" /></p>
-<h2 id="class-b"><a class="markdownIt-Anchor" href="#class-b"></a> class B</h2>
-<p><img src="/photos/intro-network-note/class_b.png" alt="class_b" /></p>
-<h2 id="class-c"><a class="markdownIt-Anchor" href="#class-c"></a> class C</h2>
-<p><img src="/photos/intro-network-note/class_c.png" alt="class_c" /></p>
-<h2 id="class-d"><a class="markdownIt-Anchor" href="#class-d"></a> class D</h2>
-<p><img src="/photos/intro-network-note/class_d.png" alt="class_d" /></p>
-<h2 id="address-types"><a class="markdownIt-Anchor" href="#address-types"></a> Address types</h2>
-<p><img src="/photos/intro-network-note/address_types.png" alt="address_types" /></p>
-<h2 id="private-ip-address"><a class="markdownIt-Anchor" href="#private-ip-address"></a> Private ip address</h2>
-<p>127.0.0.1: loopback address, localhost</p>
-<p><img src="/photos/intro-network-note/private_ip.png" alt="private_ip" /></p>
-]]></content>
-      <tags>
-        <tag>network</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Regex Note</title>
     <url>/2020/09/05/regex-note/</url>
     <content><![CDATA[<p><img src="/photos/regex-note/reference.png" alt="reference" /></p>
@@ -3745,6 +3745,64 @@ OpenShift Container Platform by Red Hat.</p>
       <tags>
         <tag>regex</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Spark Note</title>
+    <url>/2020/07/26/spark-note/</url>
+    <content><![CDATA[<h1 id="data-processing"><a class="markdownIt-Anchor" href="#data-processing"></a> Data Processing</h1>
+<h2 id="creating-a-sparksession-object"><a class="markdownIt-Anchor" href="#creating-a-sparksession-object"></a> Creating a SparkSession Object</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line">spark=SparkSession.builder.appName(<span class="string">&#x27;data_processing&#x27;</span>).getOrCreate()</span><br><span class="line"><span class="keyword">import</span> pyspark.sql.functions <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
+<h2 id="creating-dataframes"><a class="markdownIt-Anchor" href="#creating-dataframes"></a> Creating Dataframes</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">schema=StructType() \</span><br><span class="line">    .add(<span class="string">&quot;user_id&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;country&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;browser&quot;</span>, <span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;OS&quot;</span>,<span class="string">&#x27;string&#x27;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;integer&quot;</span>)</span><br><span class="line">df=spark.createDataFrame([</span><br><span class="line">    (<span class="string">&quot;A203&quot;</span>,<span class="string">&#x27;India&#x27;</span>,<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;WIN&quot;</span>,<span class="number">33</span>),</span><br><span class="line">    (<span class="string">&quot;A201&quot;</span>,<span class="string">&#x27;China&#x27;</span>,<span class="string">&quot;Safari&quot;</span>,<span class="string">&quot;MacOS&quot;</span>,<span class="number">35</span>),</span><br><span class="line">    (<span class="string">&quot;A205&quot;</span>,<span class="string">&#x27;UK&#x27;</span>,<span class="string">&quot;Mozilla&quot;</span>,<span class="string">&quot;Linux&quot;</span>,<span class="number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df.printSchema()</span><br><span class="line">df.show()</span><br></pre></td></tr></table></figure>
+<h2 id="null-values"><a class="markdownIt-Anchor" href="#null-values"></a> Null Values</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_na=spark.createDataFrame([</span><br><span class="line">    (<span class="string">&quot;A203&quot;</span>,<span class="literal">None</span>,<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;WIN&quot;</span>,<span class="number">33</span>),</span><br><span class="line">    (<span class="string">&quot;A201&quot;</span>,<span class="string">&#x27;China&#x27;</span>,<span class="literal">None</span>,<span class="string">&quot;MacOS&quot;</span>,<span class="number">35</span>),</span><br><span class="line">    (<span class="string">&quot;A205&quot;</span>,<span class="string">&#x27;UK&#x27;</span>,<span class="string">&quot;Mozilla&quot;</span>,<span class="string">&quot;Linux&quot;</span>,<span class="number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df_na.show()</span><br><span class="line">df_na.fillna(<span class="string">&#x27;0&#x27;</span>).show()</span><br><span class="line">df_na.fillna( &#123; <span class="string">&#x27;country&#x27;</span>:<span class="string">&#x27;USA&#x27;</span>, <span class="string">&#x27;browser&#x27;</span>:<span class="string">&#x27;Safari&#x27;</span> &#125; ).show()</span><br><span class="line">df_na.na.drop().show() <span class="comment"># dropna row</span></span><br><span class="line">df_na.na.drop(subset=<span class="string">&#x27;country&#x27;</span>).show() <span class="comment"># dropna row for column</span></span><br><span class="line">df_na.replace(<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;Google Chrome&quot;</span>).show()</span><br><span class="line">df_na.drop(<span class="string">&#x27;user_id&#x27;</span>).show() <span class="comment"># drop column</span></span><br><span class="line"></span><br><span class="line">df=spark.read.csv(<span class="string">&quot;customer_data.csv&quot;</span>,header=<span class="literal">True</span>,inferSchema=<span class="literal">True</span>)</span><br><span class="line">df.count()</span><br><span class="line"><span class="built_in">len</span>(df.columns)</span><br><span class="line">df.show(<span class="number">3</span>)</span><br><span class="line">df.summary().show() <span class="comment"># describe</span></span><br></pre></td></tr></table></figure>
+<h2 id="subset-of-a-dataframe"><a class="markdownIt-Anchor" href="#subset-of-a-dataframe"></a> Subset of a Dataframe</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.select([<span class="string">&#x27;Customer_subtype&#x27;</span>,<span class="string">&#x27;Avg_Salary&#x27;</span>]).show()</span><br><span class="line"></span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">1000000</span>).count()</span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">1000000</span>).show()</span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">500000</span>).<span class="built_in">filter</span>(df[<span class="string">&#x27;Number_of_houses&#x27;</span>] &gt; <span class="number">2</span>).show()</span><br><span class="line"></span><br><span class="line">df.where((df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">500000</span>) &amp; (df[<span class="string">&#x27;Number_of_houses&#x27;</span>] &gt; <span class="number">2</span>)).show()</span><br></pre></td></tr></table></figure>
+<h2 id="aggregations"><a class="markdownIt-Anchor" href="#aggregations"></a> Aggregations</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> df.columns:</span><br><span class="line">    <span class="keyword">if</span> col !=<span class="string">&#x27;Avg_Salary&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot; Aggregation for <span class="subst">&#123;col&#125;</span>&quot;</span>)</span><br><span class="line">        df.groupBy(col).count().orderBy(<span class="string">&#x27;count&#x27;</span>,ascending=<span class="literal">False</span>).show(truncate=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.mean(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">max</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">min</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line"></span><br><span class="line">df.sort(<span class="string">&quot;Avg_Salary&quot;</span>, ascending=<span class="literal">False</span>).show()</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>) \</span><br><span class="line">    .agg(F.avg(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .alias(<span class="string">&#x27;mean_salary&#x27;</span>)) \</span><br><span class="line">    .orderBy(<span class="string">&#x27;mean_salary&#x27;</span>,ascending=<span class="literal">False</span>) \</span><br><span class="line">    .show(<span class="number">50</span>,<span class="literal">False</span>)</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>) \</span><br><span class="line">    .agg(F.<span class="built_in">max</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .alias(<span class="string">&#x27;max_salary&#x27;</span>)) \</span><br><span class="line">    .orderBy(<span class="string">&#x27;max_salary&#x27;</span>,ascending=<span class="literal">False</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></table></figure>
+<h2 id="collect"><a class="markdownIt-Anchor" href="#collect"></a> Collect</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.groupby(<span class="string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_set(<span class="string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line">df.groupby(<span class="string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_list(<span class="string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line"></span><br><span class="line">df=df.withColumn(<span class="string">&#x27;constant&#x27;</span>,F.lit(<span class="string">&#x27;finance&#x27;</span>))</span><br><span class="line">df.select(<span class="string">&#x27;Customer_subtype&#x27;</span>,<span class="string">&#x27;constant&#x27;</span>).show()</span><br></pre></td></tr></table></figure>
+<h2 id="user-defined-functions-udfs"><a class="markdownIt-Anchor" href="#user-defined-functions-udfs"></a> User-Defined Functions (UDFs)</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> udf</span><br><span class="line">df.groupby(<span class="string">&quot;Avg_age&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">age_category</span>(<span class="params">age</span>):</span><br><span class="line">    <span class="keyword">if</span> age == <span class="string">&quot;20-30 years&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Young&quot;</span></span><br><span class="line">    <span class="keyword">elif</span> age== <span class="string">&quot;30-40 years&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Mid Aged&quot;</span></span><br><span class="line">    <span class="keyword">elif</span> ((age== <span class="string">&quot;40-50 years&quot;</span>) <span class="keyword">or</span> (age== <span class="string">&quot;50-60 years&quot;</span>)) :</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Old&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Very Old&quot;</span></span><br><span class="line">age_udf=udf(age_category,StringType())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;age_category&#x27;</span>,age_udf(df[<span class="string">&#x27;Avg_age&#x27;</span>]))</span><br><span class="line">df.select(<span class="string">&#x27;Avg_age&#x27;</span>,<span class="string">&#x27;age_category&#x27;</span>).show()</span><br><span class="line">df.groupby(<span class="string">&quot;age_category&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line">df.select(<span class="string">&#x27;Avg_Salary&#x27;</span>).summary().show()</span><br><span class="line">min_sal=<span class="number">1361</span></span><br><span class="line">max_sal=<span class="number">48919896</span></span><br><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> pandas_udf, PandasUDFType</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">scaled_salary</span>(<span class="params">salary</span>):</span><br><span class="line">    scaled_sal=(salary-min_sal)/(max_sal-min_sal)</span><br><span class="line">    <span class="keyword">return</span> scaled_sal</span><br><span class="line">scaling_udf = pandas_udf(scaled_salary, DoubleType())</span><br><span class="line">df.withColumn(<span class="string">&quot;scaled_salary&quot;</span>,scaling_udf(df[<span class="string">&#x27;Avg_Salary&#x27;</span>])) \</span><br><span class="line">    .show(<span class="number">10</span>,<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="joins"><a class="markdownIt-Anchor" href="#joins"></a> Joins</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">region_data = spark.createDataFrame([</span><br><span class="line">    (<span class="string">&#x27;Family with grown ups&#x27;</span>,<span class="string">&#x27;PN&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Driven Growers&#x27;</span>,<span class="string">&#x27;GJ&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Conservative families&#x27;</span>,<span class="string">&#x27;DD&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Cruising Seniors&#x27;</span>,<span class="string">&#x27;DL&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Average Family &#x27;</span>,<span class="string">&#x27;MN&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Living well&#x27;</span>,<span class="string">&#x27;KA&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Successful hedonists&#x27;</span>,<span class="string">&#x27;JH&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Retired and Religious&#x27;</span>,<span class="string">&#x27;AX&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Career Loners&#x27;</span>,<span class="string">&#x27;HY&#x27;</span>),(<span class="string">&#x27;Farmers&#x27;</span>,<span class="string">&#x27;JH&#x27;</span>)</span><br><span class="line">], schema=StructType() \</span><br><span class="line">    .add(<span class="string">&quot;Customer_main_type&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;Region Code&quot;</span>,<span class="string">&quot;string&quot;</span>))</span><br><span class="line">new_df=df.join(region_data,on=<span class="string">&#x27;Customer_main_type&#x27;</span>)</span><br><span class="line">new_df.groupby(<span class="string">&quot;Region Code&quot;</span>).count().show()</span><br></pre></td></tr></table></figure>
+<h2 id="pivoting"><a class="markdownIt-Anchor" href="#pivoting"></a> Pivoting</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>) \</span><br><span class="line">    .pivot(<span class="string">&#x27;Avg_age&#x27;</span>) \ </span><br><span class="line">    .<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .fillna(<span class="number">0</span>) \ </span><br><span class="line">    .show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>) \</span><br><span class="line">    .pivot(<span class="string">&#x27;label&#x27;</span>) \</span><br><span class="line">    .<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .fillna(<span class="number">0</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></table></figure>
+<h2 id="window-functions-or-windowed-aggregates"><a class="markdownIt-Anchor" href="#window-functions-or-windowed-aggregates"></a> Window Functions or Windowed Aggregates</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.window <span class="keyword">import</span> Window</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> col,row_number</span><br><span class="line">win = Window.orderBy(df[<span class="string">&#x27;Avg_Salary&#x27;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;rank&#x27;</span>, row_number().over(win).alias(<span class="string">&#x27;rank&#x27;</span>)).show()</span><br><span class="line"></span><br><span class="line">win_1=Window.partitionBy(<span class="string">&quot;Customer_subtype&quot;</span>).orderBy(df[<span class="string">&#x27;Avg_Salary&#x27;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;rank&#x27;</span>, row_number().over(win_1).alias(<span class="string">&#x27;rank&#x27;</span>))</span><br><span class="line">df.groupBy(<span class="string">&#x27;rank&#x27;</span>).count().orderBy(<span class="string">&#x27;rank&#x27;</span>).show()</span><br><span class="line">df.<span class="built_in">filter</span>(col(<span class="string">&#x27;rank&#x27;</span>) &lt; <span class="number">4</span>).show()</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>spark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Trick Note</title>
+    <url>/2020/10/07/trick-note/</url>
+    <content><![CDATA[<p>References of some interesting tricks.</p>
+<h2 id="show-password-in-web"><a class="markdownIt-Anchor" href="#show-password-in-web"></a> Show password in web</h2>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;input[type=password]&quot;</span>).<span class="property">value</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="show-ip-address"><a class="markdownIt-Anchor" href="#show-ip-address"></a> Show IP address</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl ifconfig.me</span><br></pre></td></tr></table></figure>
+<h2 id="download-file-and-unzip"><a class="markdownIt-Anchor" href="#download-file-and-unzip"></a> Download file and unzip</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://training.linuxfoundation.org/cm/LFS258/LFS258V2021-09-20SOLUTIONS.tar.xz --user=xxx --password=xxx</span><br><span class="line">tar -xvf LFS258V2021-09-20SOLUTIONS.tar.xz</span><br></pre></td></tr></table></figure>
+<h2 id="send-email-from-gmail"><a class="markdownIt-Anchor" href="#send-email-from-gmail"></a> Send email from gmail</h2>
+<p>Reference:</p>
+<ul>
+<li><a href="https://julien.danjou.info/sending-emails-in-python-tutorial-code-examples/">Send email in Python</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24180606">简单三步，用 Python 发邮件</a></li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>Turn on <a href="https://myaccount.google.com/lesssecureapps">Less secure app access</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">port = <span class="number">465</span></span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&quot;your password&quot;</span>)</span><br><span class="line">context = ssl.create_default_context()</span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&quot;The body of the email is here&quot;</span>)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = <span class="string">&quot;An Email Alert&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = <span class="string">&quot;my@gmail.com&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = <span class="string">&quot;other@xxx.xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> smtplib.SMTP_SSL(<span class="string">&quot;smtp.gmail.com&quot;</span>, port, context=context) <span class="keyword">as</span> server:</span><br><span class="line">    server.login(<span class="string">&quot;my@gmail.com&quot;</span>, password)</span><br><span class="line">    server.send_message(msg)</span><br></pre></td></tr></table></figure>
+<h2 id="check-the-quality-of-a-website"><a class="markdownIt-Anchor" href="#check-the-quality-of-a-website"></a> Check the quality of a website</h2>
+<ul>
+<li><a href="https://validator.w3.org/">html validator</a></li>
+<li><a href="https://jigsaw.w3.org/css-validator/">css validator</a></li>
+<li><a href="https://search.google.com/test/mobile-friendly">google’s mobile-friendly test</a></li>
+<li><a href="https://tools.pingdom.com/">website speed test</a></li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>Sql Note</title>
@@ -3900,63 +3958,5 @@ OpenShift Container Platform by Red Hat.</p>
       <tags>
         <tag>sql</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Spark Note</title>
-    <url>/2020/07/26/spark-note/</url>
-    <content><![CDATA[<h1 id="data-processing"><a class="markdownIt-Anchor" href="#data-processing"></a> Data Processing</h1>
-<h2 id="creating-a-sparksession-object"><a class="markdownIt-Anchor" href="#creating-a-sparksession-object"></a> Creating a SparkSession Object</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line">spark=SparkSession.builder.appName(<span class="string">&#x27;data_processing&#x27;</span>).getOrCreate()</span><br><span class="line"><span class="keyword">import</span> pyspark.sql.functions <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
-<h2 id="creating-dataframes"><a class="markdownIt-Anchor" href="#creating-dataframes"></a> Creating Dataframes</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">schema=StructType() \</span><br><span class="line">    .add(<span class="string">&quot;user_id&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;country&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;browser&quot;</span>, <span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;OS&quot;</span>,<span class="string">&#x27;string&#x27;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;integer&quot;</span>)</span><br><span class="line">df=spark.createDataFrame([</span><br><span class="line">    (<span class="string">&quot;A203&quot;</span>,<span class="string">&#x27;India&#x27;</span>,<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;WIN&quot;</span>,<span class="number">33</span>),</span><br><span class="line">    (<span class="string">&quot;A201&quot;</span>,<span class="string">&#x27;China&#x27;</span>,<span class="string">&quot;Safari&quot;</span>,<span class="string">&quot;MacOS&quot;</span>,<span class="number">35</span>),</span><br><span class="line">    (<span class="string">&quot;A205&quot;</span>,<span class="string">&#x27;UK&#x27;</span>,<span class="string">&quot;Mozilla&quot;</span>,<span class="string">&quot;Linux&quot;</span>,<span class="number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df.printSchema()</span><br><span class="line">df.show()</span><br></pre></td></tr></table></figure>
-<h2 id="null-values"><a class="markdownIt-Anchor" href="#null-values"></a> Null Values</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_na=spark.createDataFrame([</span><br><span class="line">    (<span class="string">&quot;A203&quot;</span>,<span class="literal">None</span>,<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;WIN&quot;</span>,<span class="number">33</span>),</span><br><span class="line">    (<span class="string">&quot;A201&quot;</span>,<span class="string">&#x27;China&#x27;</span>,<span class="literal">None</span>,<span class="string">&quot;MacOS&quot;</span>,<span class="number">35</span>),</span><br><span class="line">    (<span class="string">&quot;A205&quot;</span>,<span class="string">&#x27;UK&#x27;</span>,<span class="string">&quot;Mozilla&quot;</span>,<span class="string">&quot;Linux&quot;</span>,<span class="number">25</span>)</span><br><span class="line">],schema=schema)</span><br><span class="line">df_na.show()</span><br><span class="line">df_na.fillna(<span class="string">&#x27;0&#x27;</span>).show()</span><br><span class="line">df_na.fillna( &#123; <span class="string">&#x27;country&#x27;</span>:<span class="string">&#x27;USA&#x27;</span>, <span class="string">&#x27;browser&#x27;</span>:<span class="string">&#x27;Safari&#x27;</span> &#125; ).show()</span><br><span class="line">df_na.na.drop().show() <span class="comment"># dropna row</span></span><br><span class="line">df_na.na.drop(subset=<span class="string">&#x27;country&#x27;</span>).show() <span class="comment"># dropna row for column</span></span><br><span class="line">df_na.replace(<span class="string">&quot;Chrome&quot;</span>,<span class="string">&quot;Google Chrome&quot;</span>).show()</span><br><span class="line">df_na.drop(<span class="string">&#x27;user_id&#x27;</span>).show() <span class="comment"># drop column</span></span><br><span class="line"></span><br><span class="line">df=spark.read.csv(<span class="string">&quot;customer_data.csv&quot;</span>,header=<span class="literal">True</span>,inferSchema=<span class="literal">True</span>)</span><br><span class="line">df.count()</span><br><span class="line"><span class="built_in">len</span>(df.columns)</span><br><span class="line">df.show(<span class="number">3</span>)</span><br><span class="line">df.summary().show() <span class="comment"># describe</span></span><br></pre></td></tr></table></figure>
-<h2 id="subset-of-a-dataframe"><a class="markdownIt-Anchor" href="#subset-of-a-dataframe"></a> Subset of a Dataframe</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.select([<span class="string">&#x27;Customer_subtype&#x27;</span>,<span class="string">&#x27;Avg_Salary&#x27;</span>]).show()</span><br><span class="line"></span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">1000000</span>).count()</span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">1000000</span>).show()</span><br><span class="line">df.<span class="built_in">filter</span>(df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">500000</span>).<span class="built_in">filter</span>(df[<span class="string">&#x27;Number_of_houses&#x27;</span>] &gt; <span class="number">2</span>).show()</span><br><span class="line"></span><br><span class="line">df.where((df[<span class="string">&#x27;Avg_Salary&#x27;</span>] &gt; <span class="number">500000</span>) &amp; (df[<span class="string">&#x27;Number_of_houses&#x27;</span>] &gt; <span class="number">2</span>)).show()</span><br></pre></td></tr></table></figure>
-<h2 id="aggregations"><a class="markdownIt-Anchor" href="#aggregations"></a> Aggregations</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> df.columns:</span><br><span class="line">    <span class="keyword">if</span> col !=<span class="string">&#x27;Avg_Salary&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot; Aggregation for <span class="subst">&#123;col&#125;</span>&quot;</span>)</span><br><span class="line">        df.groupBy(col).count().orderBy(<span class="string">&#x27;count&#x27;</span>,ascending=<span class="literal">False</span>).show(truncate=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.mean(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">max</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">min</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>).agg(F.<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>)).show()</span><br><span class="line"></span><br><span class="line">df.sort(<span class="string">&quot;Avg_Salary&quot;</span>, ascending=<span class="literal">False</span>).show()</span><br><span class="line"></span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>) \</span><br><span class="line">    .agg(F.avg(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .alias(<span class="string">&#x27;mean_salary&#x27;</span>)) \</span><br><span class="line">    .orderBy(<span class="string">&#x27;mean_salary&#x27;</span>,ascending=<span class="literal">False</span>) \</span><br><span class="line">    .show(<span class="number">50</span>,<span class="literal">False</span>)</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_subtype&#x27;</span>) \</span><br><span class="line">    .agg(F.<span class="built_in">max</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .alias(<span class="string">&#x27;max_salary&#x27;</span>)) \</span><br><span class="line">    .orderBy(<span class="string">&#x27;max_salary&#x27;</span>,ascending=<span class="literal">False</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></table></figure>
-<h2 id="collect"><a class="markdownIt-Anchor" href="#collect"></a> Collect</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.groupby(<span class="string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_set(<span class="string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line">df.groupby(<span class="string">&quot;Customer_subtype&quot;</span>) \</span><br><span class="line">    .agg(F.collect_list(<span class="string">&quot;Number_of_houses&quot;</span>)) \</span><br><span class="line">    .show()</span><br><span class="line"></span><br><span class="line">df=df.withColumn(<span class="string">&#x27;constant&#x27;</span>,F.lit(<span class="string">&#x27;finance&#x27;</span>))</span><br><span class="line">df.select(<span class="string">&#x27;Customer_subtype&#x27;</span>,<span class="string">&#x27;constant&#x27;</span>).show()</span><br></pre></td></tr></table></figure>
-<h2 id="user-defined-functions-udfs"><a class="markdownIt-Anchor" href="#user-defined-functions-udfs"></a> User-Defined Functions (UDFs)</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> udf</span><br><span class="line">df.groupby(<span class="string">&quot;Avg_age&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">age_category</span>(<span class="params">age</span>):</span><br><span class="line">    <span class="keyword">if</span> age == <span class="string">&quot;20-30 years&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Young&quot;</span></span><br><span class="line">    <span class="keyword">elif</span> age== <span class="string">&quot;30-40 years&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Mid Aged&quot;</span></span><br><span class="line">    <span class="keyword">elif</span> ((age== <span class="string">&quot;40-50 years&quot;</span>) <span class="keyword">or</span> (age== <span class="string">&quot;50-60 years&quot;</span>)) :</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Old&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Very Old&quot;</span></span><br><span class="line">age_udf=udf(age_category,StringType())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;age_category&#x27;</span>,age_udf(df[<span class="string">&#x27;Avg_age&#x27;</span>]))</span><br><span class="line">df.select(<span class="string">&#x27;Avg_age&#x27;</span>,<span class="string">&#x27;age_category&#x27;</span>).show()</span><br><span class="line">df.groupby(<span class="string">&quot;age_category&quot;</span>).count().show()</span><br><span class="line"></span><br><span class="line">df.select(<span class="string">&#x27;Avg_Salary&#x27;</span>).summary().show()</span><br><span class="line">min_sal=<span class="number">1361</span></span><br><span class="line">max_sal=<span class="number">48919896</span></span><br><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> pandas_udf, PandasUDFType</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">scaled_salary</span>(<span class="params">salary</span>):</span><br><span class="line">    scaled_sal=(salary-min_sal)/(max_sal-min_sal)</span><br><span class="line">    <span class="keyword">return</span> scaled_sal</span><br><span class="line">scaling_udf = pandas_udf(scaled_salary, DoubleType())</span><br><span class="line">df.withColumn(<span class="string">&quot;scaled_salary&quot;</span>,scaling_udf(df[<span class="string">&#x27;Avg_Salary&#x27;</span>])) \</span><br><span class="line">    .show(<span class="number">10</span>,<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="joins"><a class="markdownIt-Anchor" href="#joins"></a> Joins</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">region_data = spark.createDataFrame([</span><br><span class="line">    (<span class="string">&#x27;Family with grown ups&#x27;</span>,<span class="string">&#x27;PN&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Driven Growers&#x27;</span>,<span class="string">&#x27;GJ&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Conservative families&#x27;</span>,<span class="string">&#x27;DD&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Cruising Seniors&#x27;</span>,<span class="string">&#x27;DL&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Average Family &#x27;</span>,<span class="string">&#x27;MN&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Living well&#x27;</span>,<span class="string">&#x27;KA&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Successful hedonists&#x27;</span>,<span class="string">&#x27;JH&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Retired and Religious&#x27;</span>,<span class="string">&#x27;AX&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;Career Loners&#x27;</span>,<span class="string">&#x27;HY&#x27;</span>),(<span class="string">&#x27;Farmers&#x27;</span>,<span class="string">&#x27;JH&#x27;</span>)</span><br><span class="line">], schema=StructType() \</span><br><span class="line">    .add(<span class="string">&quot;Customer_main_type&quot;</span>,<span class="string">&quot;string&quot;</span>) \</span><br><span class="line">    .add(<span class="string">&quot;Region Code&quot;</span>,<span class="string">&quot;string&quot;</span>))</span><br><span class="line">new_df=df.join(region_data,on=<span class="string">&#x27;Customer_main_type&#x27;</span>)</span><br><span class="line">new_df.groupby(<span class="string">&quot;Region Code&quot;</span>).count().show()</span><br></pre></td></tr></table></figure>
-<h2 id="pivoting"><a class="markdownIt-Anchor" href="#pivoting"></a> Pivoting</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>) \</span><br><span class="line">    .pivot(<span class="string">&#x27;Avg_age&#x27;</span>) \ </span><br><span class="line">    .<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .fillna(<span class="number">0</span>) \ </span><br><span class="line">    .show()</span><br><span class="line">df.groupBy(<span class="string">&#x27;Customer_main_type&#x27;</span>) \</span><br><span class="line">    .pivot(<span class="string">&#x27;label&#x27;</span>) \</span><br><span class="line">    .<span class="built_in">sum</span>(<span class="string">&#x27;Avg_Salary&#x27;</span>) \</span><br><span class="line">    .fillna(<span class="number">0</span>) \</span><br><span class="line">    .show()</span><br></pre></td></tr></table></figure>
-<h2 id="window-functions-or-windowed-aggregates"><a class="markdownIt-Anchor" href="#window-functions-or-windowed-aggregates"></a> Window Functions or Windowed Aggregates</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.window <span class="keyword">import</span> Window</span><br><span class="line"><span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> col,row_number</span><br><span class="line">win = Window.orderBy(df[<span class="string">&#x27;Avg_Salary&#x27;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;rank&#x27;</span>, row_number().over(win).alias(<span class="string">&#x27;rank&#x27;</span>)).show()</span><br><span class="line"></span><br><span class="line">win_1=Window.partitionBy(<span class="string">&quot;Customer_subtype&quot;</span>).orderBy(df[<span class="string">&#x27;Avg_Salary&#x27;</span>].desc())</span><br><span class="line">df=df.withColumn(<span class="string">&#x27;rank&#x27;</span>, row_number().over(win_1).alias(<span class="string">&#x27;rank&#x27;</span>))</span><br><span class="line">df.groupBy(<span class="string">&#x27;rank&#x27;</span>).count().orderBy(<span class="string">&#x27;rank&#x27;</span>).show()</span><br><span class="line">df.<span class="built_in">filter</span>(col(<span class="string">&#x27;rank&#x27;</span>) &lt; <span class="number">4</span>).show()</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>spark</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Trick Note</title>
-    <url>/2020/10/07/trick-note/</url>
-    <content><![CDATA[<p>References of some interesting tricks.</p>
-<h2 id="show-password-in-web"><a class="markdownIt-Anchor" href="#show-password-in-web"></a> Show password in web</h2>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;input[type=password]&quot;</span>).<span class="property">value</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="show-ip-address"><a class="markdownIt-Anchor" href="#show-ip-address"></a> Show IP address</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl ifconfig.me</span><br></pre></td></tr></table></figure>
-<h2 id="download-file-and-unzip"><a class="markdownIt-Anchor" href="#download-file-and-unzip"></a> Download file and unzip</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://training.linuxfoundation.org/cm/LFS258/LFS258V2021-09-20SOLUTIONS.tar.xz --user=xxx --password=xxx</span><br><span class="line">tar -xvf LFS258V2021-09-20SOLUTIONS.tar.xz</span><br></pre></td></tr></table></figure>
-<h2 id="send-email-from-gmail"><a class="markdownIt-Anchor" href="#send-email-from-gmail"></a> Send email from gmail</h2>
-<p>Reference:</p>
-<ul>
-<li><a href="https://julien.danjou.info/sending-emails-in-python-tutorial-code-examples/">Send email in Python</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/24180606">简单三步，用 Python 发邮件</a></li>
-</ul>
-<p>Note:</p>
-<ul>
-<li>Turn on <a href="https://myaccount.google.com/lesssecureapps">Less secure app access</a></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">import</span> ssl</span><br><span class="line"></span><br><span class="line">port = <span class="number">465</span></span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&quot;your password&quot;</span>)</span><br><span class="line">context = ssl.create_default_context()</span><br><span class="line"></span><br><span class="line">msg = MIMEText(<span class="string">&quot;The body of the email is here&quot;</span>)</span><br><span class="line">msg[<span class="string">&#x27;Subject&#x27;</span>] = <span class="string">&quot;An Email Alert&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;From&#x27;</span>] = <span class="string">&quot;my@gmail.com&quot;</span></span><br><span class="line">msg[<span class="string">&#x27;To&#x27;</span>] = <span class="string">&quot;other@xxx.xxx&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> smtplib.SMTP_SSL(<span class="string">&quot;smtp.gmail.com&quot;</span>, port, context=context) <span class="keyword">as</span> server:</span><br><span class="line">    server.login(<span class="string">&quot;my@gmail.com&quot;</span>, password)</span><br><span class="line">    server.send_message(msg)</span><br></pre></td></tr></table></figure>
-<h2 id="check-the-quality-of-a-website"><a class="markdownIt-Anchor" href="#check-the-quality-of-a-website"></a> Check the quality of a website</h2>
-<ul>
-<li><a href="https://validator.w3.org/">html validator</a></li>
-<li><a href="https://jigsaw.w3.org/css-validator/">css validator</a></li>
-<li><a href="https://search.google.com/test/mobile-friendly">google’s mobile-friendly test</a></li>
-<li><a href="https://tools.pingdom.com/">website speed test</a></li>
-</ul>
-]]></content>
   </entry>
 </search>
