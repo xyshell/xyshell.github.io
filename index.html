@@ -3000,7 +3000,7 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://xyshell.github.io/2020/10/07/trick-note/">
+    <link itemprop="mainEntityOfPage" href="https://xyshell.github.io/2020/10/07/misc-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/38464985?v=4">
@@ -3018,7 +3018,7 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/10/07/trick-note/" class="post-title-link" itemprop="url">Trick Note</a>
+          <a href="/2020/10/07/misc-note/" class="post-title-link" itemprop="url">Misc Note</a>
         </h2>
 
         <div class="post-meta-container">
@@ -3036,7 +3036,7 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-08-22 23:38:57" itemprop="dateModified" datetime="2024-08-22T23:38:57-05:00">2024-08-22</time>
+      <time title="Modified: 2024-10-20 20:01:30" itemprop="dateModified" datetime="2024-10-20T20:01:30-05:00">2024-10-20</time>
     </span>
 
   
@@ -3049,11 +3049,13 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>References of some interesting tricks.</p>
-<h2 id="show-password-in-web"><a class="markdownIt-Anchor" href="#show-password-in-web"></a> Show password in web</h2>
+          <h2 id="show-password-in-web"><a class="markdownIt-Anchor" href="#show-password-in-web"></a> Show password in web</h2>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;input[type=password]&quot;</span>).<span class="property">value</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="show-ip-address"><a class="markdownIt-Anchor" href="#show-ip-address"></a> Show IP address</h2>
+<p>public:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl ifconfig.me</span><br></pre></td></tr></table></figure>
+<p>private:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
 <h2 id="download-file-and-unzip"><a class="markdownIt-Anchor" href="#download-file-and-unzip"></a> Download file and unzip</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://training.linuxfoundation.org/cm/LFS258/LFS258V2021-09-20SOLUTIONS.tar.xz --user=xxx --password=xxx</span><br><span class="line">tar -xvf LFS258V2021-09-20SOLUTIONS.tar.xz</span><br></pre></td></tr></table></figure>
 <h2 id="send-email-from-gmail"><a class="markdownIt-Anchor" href="#send-email-from-gmail"></a> Send email from gmail</h2>
@@ -3074,6 +3076,13 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
 <li><a target="_blank" rel="noopener" href="https://search.google.com/test/mobile-friendly">google’s mobile-friendly test</a></li>
 <li><a target="_blank" rel="noopener" href="https://tools.pingdom.com/">website speed test</a></li>
 </ul>
+<h2 id="setup-personal-pc-as-ssh-server"><a class="markdownIt-Anchor" href="#setup-personal-pc-as-ssh-server"></a> Setup personal PC as SSH server</h2>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell&amp;pivots=windows-server-2022">Get started with OpenSSH for Windows<br />
+</a></p>
+<p>related commands:</p>
+<figure class="highlight ps1"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-NetFirewallRule</span> <span class="literal">-Name</span> sshd <span class="literal">-DisplayName</span> <span class="string">&#x27;OpenSSH Server (sshd)&#x27;</span> <span class="literal">-Enabled</span></span><br><span class="line"> True <span class="literal">-Direction</span> Inbound <span class="literal">-Protocol</span> TCP <span class="literal">-Action</span> Allow <span class="literal">-Local</span> Port <span class="number">22</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ps1"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">icacls.exe <span class="string">&quot;C:\Users\&lt;username&gt;\.ssh\authorized_keys&quot;</span> /inheritance:<span class="built_in">r</span> /grant <span class="string">&quot;Administrators:F&quot;</span> /grant <span class="string">&quot;SYSTEM:F&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ps1"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Test-NetConnection</span> <span class="literal">-ComputerName</span> <span class="number">192.168</span>.<span class="number">1.67</span> <span class="literal">-Port</span> <span class="number">57859</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
